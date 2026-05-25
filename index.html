@@ -74,11 +74,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#F0F4EF;--white:#fff;--ink:#101810;--ink2:#384038;--muted:#7A8C7A;
-  --border:#D4DED4;--green:#1A7A4A;--gm:#22A85E;--gl:#E5F5ED;
-  --blue:#1A3A6A;--bluel:#EEF3FF;
-  --accent:#D4520A;--al:#FDF0E8;
-  --gold:#B8880A;--goldl:#FDF7E6;
+  --bg:#FBF8F3;--white:#fff;--ink:#2C2416;--ink2:#5C4F3A;--muted:#9C8E78;
+  --border:#E8DFD0;--green:#3A7D44;--gm:#4CAF64;--gl:#EDF7EF;
+  --blue:#5B6E3A;--bluel:#F0F5E8;
+  --accent:#C8620A;--al:#FDF0E8;
+  --gold:#C49A2A;--goldl:#FDF8E6;
+  --amarillo:#F5C842;--amarillol:#FFFBEA;
+  --terracota:#C8620A;
   --r:14px;--rsm:9px;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -87,78 +89,119 @@ body{font-family:'Instrument Sans',sans-serif;background:var(--bg);color:var(--i
 .view{display:none;}.view.active{display:block;}
 
 /* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:300;height:56px;background:var(--ink);display:flex;align-items:center;padding:0 16px;gap:8px;}
-.nlogo{font-family:'Cabinet Grotesk',sans-serif;font-weight:900;font-size:1.05rem;color:#fff;cursor:pointer;letter-spacing:-0.02em;flex-shrink:0;}
+nav{position:fixed;top:0;left:0;right:0;z-index:300;height:56px;background:#fff;border-bottom:1.5px solid var(--border);display:flex;align-items:center;padding:0 16px;gap:8px;}
+.nlogo{font-family:'Cabinet Grotesk',sans-serif;font-weight:900;font-size:1.05rem;color:var(--ink);cursor:pointer;letter-spacing:-0.02em;flex-shrink:0;}
 .nlogo em{color:var(--gm);font-style:normal;}
 .nsp{flex:1;}
-.nlink{background:none;border:none;color:rgba(255,255,255,0.5);font-size:0.76rem;cursor:pointer;font-family:'Instrument Sans',sans-serif;padding:4px 8px;transition:color 0.2s;white-space:nowrap;}
-.nlink:hover{color:#fff;}
+.nlink{background:none;border:none;color:var(--muted);font-size:0.76rem;cursor:pointer;font-family:'Instrument Sans',sans-serif;padding:4px 8px;transition:color 0.2s;white-space:nowrap;}
+.nlink:hover{color:var(--ink);}
 .nlink.hl{background:var(--gm);color:#fff;border-radius:100px;padding:6px 14px;font-weight:600;}
-.cart-btn{position:relative;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:#fff;padding:6px 12px;border-radius:100px;font-size:0.75rem;cursor:pointer;font-family:'Instrument Sans',sans-serif;display:flex;align-items:center;gap:5px;transition:all 0.2s;white-space:nowrap;}
-.cart-btn:hover{background:rgba(255,255,255,0.15);}
+.cart-btn{position:relative;background:var(--amarillol);border:1.5px solid var(--amarillo);color:var(--ink);padding:6px 12px;border-radius:100px;font-size:0.75rem;cursor:pointer;font-family:'Instrument Sans',sans-serif;display:flex;align-items:center;gap:5px;transition:all 0.2s;white-space:nowrap;}
+.cart-btn:hover{background:var(--amarillo);}
 .cart-n{background:var(--accent);color:#fff;width:17px;height:17px;border-radius:50%;font-size:0.62rem;font-weight:700;display:none;align-items:center;justify-content:center;}
 .cart-n.on{display:flex;}
-.nadm{color:rgba(255,255,255,0.2);font-size:0.7rem;cursor:pointer;background:none;border:none;font-family:'Instrument Sans',sans-serif;}
-.nadm:hover{color:rgba(255,255,255,0.5);}
+.nadm{color:var(--border);font-size:0.7rem;cursor:pointer;background:none;border:none;font-family:'Instrument Sans',sans-serif;}
+.nadm:hover{color:var(--muted);}
 
 /* ── HOME ── */
 #view-home{padding-top:56px;}
-.hero{background:var(--ink);padding:40px 20px 0;position:relative;overflow:hidden;}
-.hglow{position:absolute;top:-60px;right:-60px;width:320px;height:320px;background:radial-gradient(circle,rgba(34,168,94,0.16) 0%,transparent 70%);pointer-events:none;}
+.hero{background:linear-gradient(160deg,#F5F0E8 0%,#EDF5EF 100%);padding:48px 20px 0;position:relative;overflow:hidden;}
+.hglow{position:absolute;top:-60px;right:-60px;width:320px;height:320px;background:radial-gradient(circle,rgba(245,200,66,0.2) 0%,transparent 70%);pointer-events:none;}
 .hi{position:relative;z-index:1;max-width:600px;margin:0 auto;}
-.hbadge{display:inline-flex;align-items:center;gap:6px;background:rgba(34,168,94,0.15);border:1px solid rgba(34,168,94,0.3);color:var(--gm);font-size:0.67rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:4px 11px;border-radius:100px;margin-bottom:14px;}
-.hbadge span{width:5px;height:5px;background:var(--gm);border-radius:50%;animation:blink 2s infinite;}
+.hbadge{display:inline-flex;align-items:center;gap:6px;background:var(--amarillol);border:1.5px solid var(--amarillo);color:#8B6914;font-size:0.67rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 11px;border-radius:100px;margin-bottom:14px;}
+.hbadge span{width:5px;height:5px;background:var(--amarillo);border-radius:50%;animation:blink 2s infinite;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
-h1{font-family:'Cabinet Grotesk',sans-serif;font-weight:900;font-size:clamp(1.8rem,6vw,3rem);line-height:1.0;letter-spacing:-0.03em;color:#fff;}
-h1 em{color:var(--gm);font-style:normal;}
-.hsub{margin-top:10px;font-size:0.85rem;color:rgba(255,255,255,0.5);line-height:1.6;max-width:440px;}
+h1{font-family:'Cabinet Grotesk',sans-serif;font-weight:900;font-size:clamp(1.8rem,6vw,3rem);line-height:1.05;letter-spacing:-0.03em;color:var(--ink);}
+h1 em{color:var(--green);font-style:normal;}
+.hsub{margin-top:10px;font-size:0.88rem;color:var(--ink2);line-height:1.6;max-width:440px;}
 
 /* TWO SECTIONS on home */
 .home-sections{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:28px;padding-bottom:0;}
 @media(max-width:480px){.home-sections{grid-template-columns:1fr;}}
-.hsec{border-radius:var(--r) var(--r) 0 0;padding:20px;cursor:pointer;transition:all 0.2s;position:relative;overflow:hidden;}
-.hsec-serv{background:linear-gradient(135deg,#1A3A6A 0%,#2B5A9A 100%);}
-.hsec-prod{background:linear-gradient(135deg,#1A7A4A 0%,#22A85E 100%);}
+.hsec{border-radius:var(--r) var(--r) 0 0;padding:22px;cursor:pointer;transition:all 0.2s;position:relative;overflow:hidden;border:2px solid transparent;}
+.hsec-serv{background:#fff;border-color:var(--border);box-shadow:0 2px 12px rgba(0,0,0,0.06);}
+.hsec-serv:hover{border-color:var(--gm);box-shadow:0 4px 20px rgba(76,175,100,0.15);}
+.hsec-prod{background:#fff;border-color:var(--border);box-shadow:0 2px 12px rgba(0,0,0,0.06);}
+.hsec-prod:hover{border-color:var(--amarillo);box-shadow:0 4px 20px rgba(245,200,66,0.2);}
 .hsec:hover{transform:translateY(-2px);}
-.hsec-tag{font-size:0.62rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:8px;}
-.hsec-title{font-family:'Cabinet Grotesk',sans-serif;font-weight:900;font-size:1.1rem;color:#fff;line-height:1.15;margin-bottom:6px;}
-.hsec-sub{font-size:0.72rem;color:rgba(255,255,255,0.6);line-height:1.4;}
+.hsec-tag{font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+.hsec-title{font-family:'Cabinet Grotesk',sans-serif;font-weight:900;font-size:1.15rem;color:var(--ink);line-height:1.15;margin-bottom:6px;}
+.hsec-sub{font-size:0.73rem;color:var(--ink2);line-height:1.5;}
 .hsec-items{display:flex;gap:5px;flex-wrap:wrap;margin-top:10px;}
-.hsec-item{background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.85);font-size:0.65rem;padding:3px 8px;border-radius:100px;}
-.hsec-arrow{position:absolute;bottom:16px;right:16px;font-size:1.2rem;color:rgba(255,255,255,0.4);}
+.hsec-item{background:var(--bg);color:var(--ink2);font-size:0.65rem;padding:3px 9px;border-radius:100px;border:1px solid var(--border);}
+.hsec-arrow{position:absolute;bottom:16px;right:16px;font-size:1.1rem;color:var(--border);}
+
+/* ── COMO FUNCIONA ── */
+.como-funciona{padding:36px 20px;background:var(--white);border-top:1.5px solid var(--border);}
+.cf-title{font-family:'Cabinet Grotesk',sans-serif;font-weight:900;font-size:1.2rem;color:var(--ink);text-align:center;margin-bottom:4px;}
+.cf-sub{font-size:0.8rem;color:var(--muted);text-align:center;margin-bottom:24px;}
+.cf-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:600px;margin:0 auto;}
+@media(max-width:480px){.cf-steps{grid-template-columns:1fr;gap:12px;}}
+.cf-step{text-align:center;padding:16px 12px;}
+.cf-num{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cabinet Grotesk',sans-serif;font-weight:900;font-size:1.1rem;margin:0 auto 10px;background:var(--amarillol);color:#8B6914;border:2px solid var(--amarillo);}
+.cf-step-t{font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:0.88rem;color:var(--ink);margin-bottom:5px;}
+.cf-step-s{font-size:0.75rem;color:var(--muted);line-height:1.5;}
+
+/* ── TESTIMONIOS ── */
+.testimonios{padding:36px 20px;background:var(--bg);border-top:1.5px solid var(--border);}
+.test-title{font-family:'Cabinet Grotesk',sans-serif;font-weight:900;font-size:1.2rem;color:var(--ink);text-align:center;margin-bottom:4px;}
+.test-sub{font-size:0.8rem;color:var(--muted);text-align:center;margin-bottom:22px;}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:700px;margin:0 auto;}
+@media(max-width:560px){.test-grid{grid-template-columns:1fr;}}
+.test-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r);padding:16px;position:relative;}
+.test-quote{font-size:0.8rem;color:var(--ink2);line-height:1.6;margin-bottom:12px;font-style:italic;}
+.test-autor{display:flex;align-items:center;gap:8px;}
+.test-avatar{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:0.75rem;color:#fff;flex-shrink:0;}
+.test-name{font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:0.78rem;color:var(--ink);}
+.test-loc{font-size:0.67rem;color:var(--muted);}
+.test-stars{color:var(--amarillo);font-size:0.75rem;margin-bottom:8px;}
+
+/* ── FAQ ── */
+.faq-section{padding:36px 20px 48px;background:var(--white);border-top:1.5px solid var(--border);}
+.faq-title{font-family:'Cabinet Grotesk',sans-serif;font-weight:900;font-size:1.2rem;color:var(--ink);text-align:center;margin-bottom:4px;}
+.faq-sub{font-size:0.8rem;color:var(--muted);text-align:center;margin-bottom:22px;}
+.faq-list{max-width:600px;margin:0 auto;display:flex;flex-direction:column;gap:8px;}
+.faq-item{background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;}
+.faq-q{padding:14px 16px;font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:0.85rem;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px;}
+.faq-q:hover{background:var(--amarillol);}
+.faq-chevron{color:var(--muted);font-size:0.8rem;transition:transform 0.2s;flex-shrink:0;}
+.faq-item.open .faq-chevron{transform:rotate(180deg);}
+.faq-a{padding:0 16px;max-height:0;overflow:hidden;transition:max-height 0.3s ease,padding 0.3s;}
+.faq-item.open .faq-a{max-height:200px;padding:0 16px 14px;}
+.faq-a p{font-size:0.8rem;color:var(--ink2);line-height:1.65;}
 
 /* ── SECCIÓN SERVICIOS ── */
 #view-servicios{padding-top:56px;}
 .sec-hero{padding:36px 20px 28px;position:relative;overflow:hidden;}
-.sec-hero-serv{background:linear-gradient(135deg,#1A3A6A 0%,#2B5A9A 100%);}
-.sec-hero-prod{background:linear-gradient(135deg,#1A7A4A 0%,#22A85E 100%);}
-.sec-hero h2{font-family:'Cabinet Grotesk',sans-serif;font-weight:900;font-size:clamp(1.5rem,5vw,2.2rem);color:#fff;letter-spacing:-0.03em;margin-bottom:6px;}
-.sec-hero p{font-size:0.82rem;color:rgba(255,255,255,0.55);}
-.back-btn{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.7);font-size:0.75rem;padding:5px 12px;border-radius:100px;cursor:pointer;margin-bottom:14px;font-family:'Instrument Sans',sans-serif;border:none;}
-.back-btn:hover{background:rgba(255,255,255,0.18);}
+.sec-hero-serv{background:linear-gradient(135deg,#EDF5EF 0%,#D8EDD8 100%);border-bottom:1.5px solid var(--border);}
+.sec-hero-prod{background:linear-gradient(135deg,#FFFBEA 0%,#FEF3C7 100%);border-bottom:1.5px solid var(--border);}
+.sec-hero h2{font-family:'Cabinet Grotesk',sans-serif;font-weight:900;font-size:clamp(1.5rem,5vw,2.2rem);color:var(--ink);letter-spacing:-0.03em;margin-bottom:6px;}
+.sec-hero p{font-size:0.82rem;color:var(--ink2);}
+.back-btn{display:inline-flex;align-items:center;gap:6px;background:rgba(0,0,0,0.06);border:none;color:var(--ink2);font-size:0.75rem;padding:5px 12px;border-radius:100px;cursor:pointer;margin-bottom:14px;font-family:'Instrument Sans',sans-serif;}
+.back-btn:hover{background:rgba(0,0,0,0.1);}
 
 /* SEARCH */
 .swrap{background:inherit;padding:0 16px 20px;}
-.swrap-serv{background:linear-gradient(180deg,#2B5A9A 0%,#1A3A6A 100%);}
-.swrap-prod{background:linear-gradient(180deg,#22A85E 0%,#1A7A4A 100%);}
-.sbox{background:rgba(255,255,255,0.1);border:1.5px solid rgba(255,255,255,0.15);border-radius:var(--r);overflow:hidden;transition:border-color 0.2s;}
-.sbox:focus-within{border-color:rgba(255,255,255,0.5);}
+.swrap-serv{background:linear-gradient(180deg,#D8EDD8 0%,#EDF5EF 100%);}
+.swrap-prod{background:linear-gradient(180deg,#FEF3C7 0%,#FFFBEA 100%);}
+.sbox{background:rgba(255,255,255,0.8);border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;transition:border-color 0.2s;}
+.sbox:focus-within{border-color:var(--gm);}
 .srow{display:flex;align-items:center;}
-.sic{padding:0 12px;font-size:0.9rem;color:rgba(255,255,255,0.4);flex-shrink:0;}
-.sinput{flex:1;background:none;border:none;outline:none;padding:12px 0;font-family:'Instrument Sans',sans-serif;font-size:0.88rem;color:#fff;}
-.sinput::placeholder{color:rgba(255,255,255,0.3);}
-.sgo{background:rgba(255,255,255,0.15);border:none;cursor:pointer;padding:8px 14px;margin:5px;border-radius:9px;color:#fff;font-family:'Instrument Sans',sans-serif;font-size:0.75rem;font-weight:600;white-space:nowrap;transition:background 0.2s;}
-.sgo:hover{background:rgba(255,255,255,0.25);}
-.schips{padding:6px 12px 8px;display:flex;gap:5px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,0.08);}
-.sc{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.6);font-size:0.67rem;padding:3px 9px;border-radius:100px;cursor:pointer;transition:all 0.2s;}
-.sc:hover{background:rgba(255,255,255,0.15);color:#fff;}
+.sic{padding:0 12px;font-size:0.9rem;color:var(--muted);flex-shrink:0;}
+.sinput{flex:1;background:none;border:none;outline:none;padding:12px 0;font-family:'Instrument Sans',sans-serif;font-size:0.88rem;color:var(--ink);}
+.sinput::placeholder{color:var(--muted);}
+.sgo{background:var(--gm);border:none;cursor:pointer;padding:8px 14px;margin:5px;border-radius:9px;color:#fff;font-family:'Instrument Sans',sans-serif;font-size:0.75rem;font-weight:600;white-space:nowrap;transition:background 0.2s;}
+.sgo:hover{background:var(--green);}
+.schips{padding:6px 12px 8px;display:flex;gap:5px;flex-wrap:wrap;border-top:1px solid var(--border);}
+.sc{background:var(--bg);border:1px solid var(--border);color:var(--ink2);font-size:0.67rem;padding:3px 9px;border-radius:100px;cursor:pointer;transition:all 0.2s;}
+.sc:hover{background:var(--gl);border-color:var(--gm);color:var(--green);}
 
 /* TYPE TABS */
 .type-tabs{display:flex;gap:6px;padding:16px 16px 10px;overflow-x:auto;scrollbar-width:none;}
 .type-tabs::-webkit-scrollbar{display:none;}
 .ttab{background:var(--white);border:1.5px solid var(--border);color:var(--ink2);font-size:0.72rem;font-weight:600;padding:7px 14px;border-radius:100px;cursor:pointer;white-space:nowrap;transition:all 0.2s;flex-shrink:0;font-family:'Instrument Sans',sans-serif;display:flex;align-items:center;gap:5px;}
-.ttab:hover,.ttab.on{border-color:var(--blue);background:var(--bluel);color:var(--blue);}
-.ttab.on-green{border-color:var(--gm)!important;background:var(--gl)!important;color:var(--green)!important;}
+.ttab:hover,.ttab.on{border-color:var(--green);background:var(--gl);color:var(--green);}
+.ttab.on-green{border-color:var(--amarillo)!important;background:var(--amarillol)!important;color:#8B6914!important;}
 
 /* DEPT FILTER */
 .dbar{padding:0 16px 12px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;}
@@ -167,7 +210,7 @@ h1 em{color:var(--gm);font-style:normal;}
 .dc:hover,.dc.on{border-color:var(--gm);background:var(--gl);color:var(--green);}
 
 /* AI BOX */
-.ai-box{background:var(--gl);border:1.5px solid rgba(34,168,94,0.25);border-radius:var(--r);padding:11px 14px;margin:0 16px 12px;display:none;}
+.ai-box{background:var(--gl);border:1.5px solid rgba(76,175,100,0.25);border-radius:var(--r);padding:11px 14px;margin:0 16px 12px;display:none;}
 .ai-box.on{display:block;}
 .ai-hd{font-size:0.67rem;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;}
 .ai-txt{font-size:0.82rem;line-height:1.55;color:var(--ink2);}
@@ -448,11 +491,11 @@ h1 em{color:var(--gm);font-style:normal;}
     <div class="hglow"></div>
     <div class="hi">
       <div class="hbadge"><span></span>San Juan · Red de Salud</div>
-      <h1>Salud en San Juan,<br><em>todo en un lugar.</em></h1>
-      <p class="hsub">Encontrá residencias, clínicas y profesionales — o pedí insumos y medicamentos directo a tu casa.</p>
+      <h1>El cuidado que tu<br>familiar necesita,<br><em>todo en un lugar.</em></h1>
+      <p class="hsub">Encontrá residencias, clínicas y profesionales verificados en San Juan — o pedí insumos y medicamentos directo a tu casa.</p>
       <div class="home-sections">
         <div class="hsec hsec-serv" onclick="showView('servicios')">
-          <div class="hsec-tag">Sección 1</div>
+          <div class="hsec-tag">Servicios</div>
           <div class="hsec-title">Encontrá<br>un servicio</div>
           <div class="hsec-sub">Residencias, clínicas, médicos a domicilio. Compará y contactá.</div>
           <div class="hsec-items">
@@ -463,7 +506,7 @@ h1 em{color:var(--gm);font-style:normal;}
           <div class="hsec-arrow">→</div>
         </div>
         <div class="hsec hsec-prod" onclick="showView('productos')">
-          <div class="hsec-tag">Sección 2</div>
+          <div class="hsec-tag">Productos</div>
           <div class="hsec-title">Pedí<br>productos</div>
           <div class="hsec-sub">Insumos, medicamentos y oxígeno. Te lo llevan a casa.</div>
           <div class="hsec-items">
@@ -476,21 +519,110 @@ h1 em{color:var(--gm);font-style:normal;}
       </div>
     </div>
   </div>
+
   <!-- Stats bar -->
-  <div style="background:var(--white);border-top:1px solid var(--border);padding:16px 20px;display:flex;gap:0;max-width:600px;margin:0 auto;">
+  <div style="background:var(--white);border-top:1.5px solid var(--border);border-bottom:1.5px solid var(--border);padding:16px 20px;display:flex;gap:0;max-width:600px;margin:0 auto;">
     <div style="flex:1;text-align:center;border-right:1px solid var(--border);">
-      <div style="font-family:'Cabinet Grotesk',sans-serif;font-weight:900;font-size:1.4rem;color:var(--ink)" id="st-serv">0</div>
+      <div style="font-family:'Cabinet Grotesk',sans-serif;font-weight:900;font-size:1.4rem;color:var(--green)" id="st-serv">0</div>
       <div style="font-size:0.62rem;color:var(--muted);margin-top:1px">Servicios</div>
     </div>
     <div style="flex:1;text-align:center;border-right:1px solid var(--border);">
-      <div style="font-family:'Cabinet Grotesk',sans-serif;font-weight:900;font-size:1.4rem;color:var(--ink)" id="st-prod">0</div>
-      <div style="font-size:0.62rem;color:var(--muted);margin-top:1px">Proveedores productos</div>
+      <div style="font-family:'Cabinet Grotesk',sans-serif;font-weight:900;font-size:1.4rem;color:var(--green)" id="st-prod">0</div>
+      <div style="font-size:0.62rem;color:var(--muted);margin-top:1px">Proveedores</div>
     </div>
     <div style="flex:1;text-align:center;">
-      <div style="font-family:'Cabinet Grotesk',sans-serif;font-weight:900;font-size:1.4rem;color:var(--ink)">100<span style="color:var(--gm)">%</span></div>
+      <div style="font-family:'Cabinet Grotesk',sans-serif;font-weight:900;font-size:1.4rem;color:var(--green)">100<span style="color:var(--amarillo)">%</span></div>
       <div style="font-size:0.62rem;color:var(--muted);margin-top:1px">Verificados</div>
     </div>
   </div>
+
+  <!-- Cómo funciona -->
+  <div class="como-funciona">
+    <div class="cf-title">¿Cómo funciona SaludRed?</div>
+    <div class="cf-sub">Encontrar el cuidado adecuado es simple con estos 3 pasos</div>
+    <div class="cf-steps">
+      <div class="cf-step">
+        <div class="cf-num">1</div>
+        <div class="cf-step-t">Buscá</div>
+        <div class="cf-step-s">Usá los filtros para encontrar la residencia, clínica o profesional según las necesidades de tu familiar.</div>
+      </div>
+      <div class="cf-step">
+        <div class="cf-num">2</div>
+        <div class="cf-step-t">Compará</div>
+        <div class="cf-step-s">Revisá servicios, obras sociales, especialidades y aranceles para tomar la mejor decisión.</div>
+      </div>
+      <div class="cf-step">
+        <div class="cf-num">3</div>
+        <div class="cf-step-t">Contactá</div>
+        <div class="cf-step-s">Con un toque enviás un mensaje por WhatsApp con toda la información ya preparada.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Testimonios -->
+  <div class="testimonios">
+    <div class="test-title">Familias que confiaron en SaludRed</div>
+    <div class="test-sub">Experiencias reales de familias sanjuaninas</div>
+    <div class="test-grid">
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <div class="test-quote">"Encontré residencia para mi mamá en dos días. Antes estuve semanas sin saber por dónde empezar. El botón de WhatsApp fue clave."</div>
+        <div class="test-autor">
+          <div class="test-avatar" style="background:#4CAF64">MG</div>
+          <div><div class="test-name">María G.</div><div class="test-loc">Capital, San Juan</div></div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <div class="test-quote">"Pedí el concentrador de oxígeno y me lo trajeron al día siguiente. No tuve que moverme de casa y mi papá lo necesitaba urgente."</div>
+        <div class="test-autor">
+          <div class="test-avatar" style="background:#C8620A">RL</div>
+          <div><div class="test-name">Roberto L.</div><div class="test-loc">Rawson, San Juan</div></div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <div class="test-quote">"Encontré kinesiólogo con PAMI que viene a domicilio. Nunca imaginé que iba a ser tan fácil encontrarlo acá en San Juan."</div>
+        <div class="test-autor">
+          <div class="test-avatar" style="background:#F5C842;color:#8B6914">AP</div>
+          <div><div class="test-name">Ana P.</div><div class="test-loc">Rivadavia, San Juan</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-section">
+    <div class="faq-title">Preguntas frecuentes</div>
+    <div class="faq-sub">Las dudas más comunes antes de usar SaludRed</div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">¿SaludRed tiene algún costo para las familias? <span class="faq-chevron">▼</span></div>
+        <div class="faq-a"><p>No. Para las familias que buscan servicios o productos es completamente gratuito. Los prestadores son quienes abonan un plan para aparecer en el directorio.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">¿Cómo sé que los proveedores son confiables? <span class="faq-chevron">▼</span></div>
+        <div class="faq-a"><p>Todos los proveedores están verificados antes de aparecer en el directorio. Revisamos matrícula, habilitación y datos de contacto reales.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">¿Puedo contactar directo a la residencia o profesional? <span class="faq-chevron">▼</span></div>
+        <div class="faq-a"><p>Sí. Cada perfil tiene un botón que abre WhatsApp con un mensaje ya preparado con el contexto de tu consulta. El contacto es directo, sin intermediarios.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">¿Puedo pedir insumos médicos a domicilio? <span class="faq-chevron">▼</span></div>
+        <div class="faq-a"><p>Sí, en la sección Productos encontrás farmacias, ortopedias y proveedores de oxígeno que entregan en San Juan. Agregás al carrito y el pedido va por WhatsApp.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">¿Hay residencias que aceptan PAMI? <span class="faq-chevron">▼</span></div>
+        <div class="faq-a"><p>Sí. En el perfil de cada residencia aparecen las obras sociales que acepta. Podés filtrar por tipo de servicio y ver los detalles antes de contactar.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">¿Cómo sumo mi negocio a SaludRed? <span class="faq-chevron">▼</span></div>
+        <div class="faq-a"><p>Hacé clic en "+ Sumarme" en el menú. Hay planes desde gratuito. El alta es inmediata y aparecés en el directorio en menos de 24 horas.</p></div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <!-- ══════════ SERVICIOS ══════════ -->
