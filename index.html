@@ -893,12 +893,53 @@ const HINTS={
   oxigeno:'📄 Requerido: autorización ANMAT (DROG o DISP).',
 };
 const CAMPOS={
-  residencia:{t:'Información de la residencia',c:[{l:'Capacidad total de residentes',id:'r-cap',ph:'Ej: 12 residentes'},{l:'Modalidad de estadía',id:'r-mod',ph:'Permanente / Temporal / Ambas'},{l:'Tipo de residentes que reciben',id:'r-tip',ph:'Ej: Autoválidos, Semidependientes, Dependientes, Deterioro cognitivo'},{l:'Equipo profesional',id:'r-equ',ph:'Ej: Médico, Enfermería, Psicología, Nutrición, Kinesiología'},{l:'Servicios incluidos',id:'r-srv',ph:'Ej: Alimentación, Medicación, Higiene, Lavandería, Actividades recreativas'},{l:'Infraestructura y comodidades',id:'r-inf',ph:'Ej: Habitaciones individuales/compartidas, WiFi, TV, Espacios verdes, A/C'},{l:'Horarios de visita familiar',id:'r-vis',ph:'Ej: Todos los días 10-12hs y 16-19hs'},{l:'¿Reciben residentes de otros departamentos o provincias?',id:'r-zona',ph:'Sí / No'}]},
-  clinica:{t:'Especialidades médicas',c:[{l:'Especialidades disponibles',id:'r-esp',ph:'Ej: Traumatología, Cardiología, Pediatría, Ginecología'},{l:'¿Tienen internación?',id:'r-int',ph:'Sí, hasta 30 camas. / No, solo consultorios.'},{l:'Equipamiento especial',id:'r-eq',ph:'Ej: UCI, cirugía, laboratorio propio, radiología'}]},
-  profesional:{t:'Especialidad y formación',c:[{l:'Especialidad / Título',id:'r-esp',ph:'Ej: Médico clínico, Kinesióloga, Enfermero profesional'},{l:'Servicios que ofrecés',id:'r-ps',ph:'Ej: Consulta domiciliaria, control de crónicos, curaciones...'},{l:'Zona de cobertura',id:'r-zn',ph:'Ej: Capital y Rawson. Todo Gran San Juan.'},{l:'Equipamiento disponible',id:'r-pe',ph:'Ej: tensiómetro, glucómetro, oxímetro, set de curaciones'}]},
-  farmacia:{t:'Servicios de la farmacia',c:[{l:'¿Hacen preparados magistrales?',id:'r-mag',ph:'Sí / No'},{l:'¿Ponen inyecciones?',id:'r-iny',ph:'Sí / No'},{l:'Turno: días de turno completo',id:'r-tur',ph:'Ej: Turno los lunes y jueves 24hs'},{l:'Zona de cobertura del delivery',id:'r-zdl',ph:'Ej: Capital y Rawson'}]},
-  insumos:{t:'Catálogo y servicios',c:[{l:'Productos principales',id:'r-prod',ph:'Ej: Sillas de ruedas, andadores, camas ortopédicas, pañales'},{l:'¿Alquilan o solo venden?',id:'r-alq',ph:'Vendemos y alquilamos / Solo vendemos'},{l:'Zona de cobertura del delivery',id:'r-zdl',ph:'Ej: Toda la provincia'}]},
-  oxigeno:{t:'Equipos y servicios',c:[{l:'Equipos disponibles',id:'r-oeq',ph:'Ej: Oxígeno medicinal, concentradores, CPAP, nebulizadores'},{l:'¿Instalación y mantenimiento?',id:'r-om',ph:'Sí, incluido / Sí, con costo adicional / No'},{l:'Tiempo de respuesta urgencias',id:'r-oug',ph:'Ej: Dentro de 2 horas en Capital'}]},
+  residencia:{t:'Información de la residencia',c:[
+    {l:'Capacidad total de residentes',id:'r-cap',ph:'Ej: 12 residentes'},
+    {l:'Modalidad de estadía',id:'r-mod',ph:'Permanente / Temporal / Ambas'},
+    {l:'Tipo de residentes que reciben',id:'r-tip',ph:'Ej: Autoválidos, Semidependientes, Dependientes, Deterioro cognitivo'},
+    {l:'Equipo profesional',id:'r-equ',ph:'Ej: Médico clínico, Enfermería 24hs, Psicología, Nutrición, Kinesiología'},
+    {l:'Servicios incluidos',id:'r-srv',ph:'Ej: Alimentación, Medicación, Higiene, Lavandería, Actividades recreativas'},
+    {l:'Infraestructura y comodidades',id:'r-inf',ph:'Ej: Habitaciones individuales/compartidas, WiFi, TV, Espacios verdes, A/C'},
+    {l:'Horarios de visita familiar',id:'r-vis',ph:'Ej: Todos los días 10-12hs y 16-19hs'},
+    {l:'¿Reciben residentes de otros departamentos?',id:'r-zona',ph:'Sí / No — indicar de dónde'}
+  ]},
+  clinica:{t:'Datos de la clínica / sanatorio',c:[
+    {l:'Especialidades médicas disponibles',id:'r-esp',ph:'Ej: Traumatología, Cardiología, Pediatría, Ginecología, Clínica médica'},
+    {l:'¿Tienen guardia permanente?',id:'r-guard',ph:'Sí, 24hs / Solo en horario / No'},
+    {l:'¿Tienen internación?',id:'r-int',ph:'Sí, hasta N camas / No, solo consultorios'},
+    {l:'Equipamiento y servicios especiales',id:'r-eq',ph:'Ej: UCI, quirófano, laboratorio, ecografía, rayos X'},
+    {l:'Obras sociales y prepagas principales',id:'r-os2',ph:'Ej: OSDE, Swiss Medical, PAMI, IPOS, Galeno'},
+    {l:'Modalidad de atención',id:'r-mod',ph:'Ej: Con turno previo / Guardia espontánea / Ambas'}
+  ]},
+  profesional:{t:'Datos profesionales',c:[
+    {l:'Especialidad o título',id:'r-esp',ph:'Ej: Médico clínico, Kinesióloga, Enfermero/a, Psicólogo/a'},
+    {l:'Matrícula provincial',id:'r-mat',ph:'Número de matrícula del Colegio correspondiente'},
+    {l:'Años de experiencia',id:'r-exp',ph:'Ej: 10 años'},
+    {l:'Servicios que ofrecés',id:'r-ps',ph:'Ej: Consulta domiciliaria, control de crónicos, rehabilitación, curaciones'},
+    {l:'Zona de cobertura',id:'r-zn',ph:'Ej: Capital y Rawson. Todo Gran San Juan.'},
+    {l:'Equipamiento con el que trabajás',id:'r-pe',ph:'Ej: Tensiómetro, glucómetro, oxímetro, electro, set de curaciones'}
+  ]},
+  farmacia:{t:'Servicios de la farmacia',c:[
+    {l:'¿Realizan preparados magistrales?',id:'r-mag',ph:'Sí / No'},
+    {l:'¿Aplican inyecciones?',id:'r-iny',ph:'Sí / No'},
+    {l:'¿Tienen turno de guardia?',id:'r-tur',ph:'Ej: Turno los lunes y jueves 24hs'},
+    {l:'¿Hacen delivery?',id:'r-del2',ph:'Sí, en zona / No'},
+    {l:'Zona de cobertura del delivery',id:'r-zdl',ph:'Ej: Capital y Rawson'},
+    {l:'¿Venden insumos médicos o pañales?',id:'r-ins',ph:'Sí / No — detallar qué'}
+  ]},
+  insumos:{t:'Catálogo y servicios',c:[
+    {l:'Productos principales',id:'r-prod',ph:'Ej: Sillas de ruedas, andadores, camas ortopédicas, colchones antiescaras, pañales'},
+    {l:'¿Alquilan equipos?',id:'r-alq',ph:'Sí, alquilamos y vendemos / Solo vendemos'},
+    {l:'¿Tienen servicio técnico o reparaciones?',id:'r-tec',ph:'Sí / No'},
+    {l:'¿Trabajan con obras sociales para cobertura?',id:'r-os3',ph:'Sí — indicar cuáles / No'},
+    {l:'Zona de cobertura del delivery',id:'r-zdl',ph:'Ej: Toda la provincia'}
+  ]},
+  oxigeno:{t:'Equipos y servicios',c:[
+    {l:'Equipos disponibles',id:'r-oeq',ph:'Ej: Oxígeno medicinal, concentradores, CPAP, BiPAP, nebulizadores'},
+    {l:'¿Realizan instalación y mantenimiento?',id:'r-om',ph:'Sí, incluido / Sí, con costo adicional / No'},
+    {l:'¿Tienen servicio de urgencias?',id:'r-oug',ph:'Sí, 24hs / No — tiempo de respuesta en zona'},
+    {l:'¿Trabajan con obras sociales?',id:'r-oos',ph:'Sí — indicar cuáles / Solo particular'}
+  ]},
 };
 
 let db=[];
