@@ -901,7 +901,7 @@ const CAMPOS={
   oxigeno:{t:'Equipos y servicios',c:[{l:'Equipos disponibles',id:'r-oeq',ph:'Ej: Oxígeno medicinal, concentradores, CPAP, nebulizadores'},{l:'¿Instalación y mantenimiento?',id:'r-om',ph:'Sí, incluido / Sí, con costo adicional / No'},{l:'Tiempo de respuesta urgencias',id:'r-oug',ph:'Ej: Dentro de 2 horas en Capital'}]},
 };
 
-let db=JSON.parse(localStorage.getItem('sr9_db')||'[]');
+let db=[];
 let pending=JSON.parse(localStorage.getItem('sr9_pend')||'[]');
 let cart={};
 if(!db.length){
@@ -918,13 +918,13 @@ if(!db.length){
      visitas:'Lunes a lunes, mañana y tarde',
      otrosDepts:'Consultar',
      precio:'Desde $1.600.000/mes. Consultar presupuesto actualizado.',
-     desc:'Residencia geriátrica para adultos mayores autoválidos, dirigida por sus propios dueños con participación activa en cada aspecto del cuidado. Más de 15 años de trayectoria en el cuidado integral del adulto mayor. Ambiente cálido, familiar y de puertas abiertas, con visitas todos los días. Contamos con equipo interdisciplinario completo y tecnología para que las familias estén conectadas con sus seres queridos.',
+     desc:'Residencia geriátrica para adultos mayores autoválidos, dirigida por sus propios dueños desde 2019 con participación activa en cada aspecto del cuidado. Ambiente cálido, familiar y de puertas abiertas, con visitas todos los días. Contamos con equipo interdisciplinario completo y tecnología para que las familias estén conectadas con sus seres queridos.',
      fotos:["https://lh3.googleusercontent.com/d/1ks6Zu7b7suYcpO9Nu7-9f0gejtmiqXSF", "https://lh3.googleusercontent.com/d/1-dO51CAI97WSPoP46-XDoUDGOr4nOKtl", "https://lh3.googleusercontent.com/d/18P0pLrLnV78_rRVI1erPvjbLUPSsQHnb", "https://lh3.googleusercontent.com/d/1AyzV4cAb7fbx-w6oNvdqR7tbKC9aW9Cl", "https://lh3.googleusercontent.com/d/1grtZmaGJ7MZn6SkMHANDw5j9Pvqqy1ex", "https://lh3.googleusercontent.com/d/1o7Zm2pYcmSlknsgBjsEBO59EnB_FbBtM", "https://lh3.googleusercontent.com/d/1Yz2WOT3mlvBZIq-orkt-SnkGyDRE0xhk", "https://lh3.googleusercontent.com/d/1c4gZXuwQVbdV5aT8FbFDqG_-o3ud5Rad", "https://lh3.googleusercontent.com/d/10c5KMw3bvn42otBDO4k8Gf_TYugN7Qn4", "https://lh3.googleusercontent.com/d/10hqDxvk9Rx09RrGCxEJT9y9nDHSTdh-3", "https://lh3.googleusercontent.com/d/1hRoqp69vrHEWFLZWw-hotr7cLuEi03wt", "https://lh3.googleusercontent.com/d/1smFIBtVPUH-EBdCFSnNnjjpfxJ06Z6Tc"],
      plan:'premium',status:'active'},
-    {id:12,tipo:'residencia',nombre:'Residencia Sol de Otoño',dept:'Capital',dir:'Ezpeleta 95 Oeste, San Juan',tel:'2645057363',
+    {id:12,tipo:'residencia',nombre:'Residencia Sol de Otoño',dept:'Rawson',dir:'Ezpeleta 95 Oeste, San Juan',tel:'2645057363',
      horario:'Lunes a lunes, mañana y tarde.',urgencias:'Sí, enfermería 24hs',disponibilidad:'Disponible — hay lugares',
      obras:[],osOtras:'Solo particular',
-     capacidad:'12 residentes',
+     capacidad:'18 residentes',
      modalidades:'Permanente',
      tipoResidentes:'Patologías polivalentes — Semidependientes y Dependientes',
      equipo:'Enfermería 24hs, Médico clínico, Nutricionista, Psicología',
@@ -937,9 +937,8 @@ if(!db.length){
      fotos:["https://lh3.googleusercontent.com/d/1khyjdyEKjDVJhro5u6eRMxb3dkRvGk88", "https://lh3.googleusercontent.com/d/1avlFv2gqun4QaGzCJNi1UAFHtRrO0o9c", "https://lh3.googleusercontent.com/d/1rGDp5_nY6Kk3ySArK8XE8LEynMeaa73p", "https://lh3.googleusercontent.com/d/1BeKAEFhHG_HvwDoJ4djHOv6bgViw2cZT", "https://lh3.googleusercontent.com/d/1bidfPvLj_AUULz1Ike8jRC6bYpExU0Ru", "https://lh3.googleusercontent.com/d/1ECZF8nJBXey04Ujo5oSvoJynGvWewl6p", "https://lh3.googleusercontent.com/d/1YfrzpvSXjT5ibSIQEcIjWBnQId9T__WZ", "https://lh3.googleusercontent.com/d/1GfGad4KSqN4ftbXO9AKJRHWNLTg_m9gt", "https://lh3.googleusercontent.com/d/15FpMUxeBsVKtSgu10c1Q5ygfbs7bIcdR", "https://lh3.googleusercontent.com/d/1rO-WvqBPPfFsn_54bq3Aq2RHOVdWrIQr", "https://lh3.googleusercontent.com/d/1figf-YsFhYgYXsNbGoR8dL-lew-ioHpX", "https://lh3.googleusercontent.com/d/1Y79ognXUVl9wwDLw2g4IY7bhE5C60K1t"],
      plan:'premium',status:'active'},
   ];
-  localStorage.setItem('sr9_db',JSON.stringify(db));
 }
-function save(){localStorage.setItem('sr9_db',JSON.stringify(db));localStorage.setItem('sr9_pend',JSON.stringify(pending));}
+function save(){localStorage.setItem('sr9_pend',JSON.stringify(pending));}
 
 let tsS='todos',tdS='todos',tsP='todos',tdP='todos';
 let regPlan='estandar',rdos={};
