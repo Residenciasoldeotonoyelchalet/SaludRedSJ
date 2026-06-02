@@ -622,7 +622,7 @@ nav{position:sticky;top:0;z-index:300;background:#fff;border-bottom:2px solid va
           <div class="fg"><label class="fl">WhatsApp / Teléfono *</label><input type="text" class="fi" id="r-tel" placeholder="264-XXX-XXXX"></div>
           <div class="fg"><label class="fl">Email <span style="color:var(--red)">*</span></label><input type="email" class="fi" id="r-email" placeholder="contacto@..." required></div>
         </div>
-        <div class="fg"><label class="fl">Sitio web o Instagram</label><input type="text" class="fi" id="r-web" placeholder="www.mipagina.com o @instagram"></div>
+        <div class="fg"><label class="fl">Página web, Instagram o Facebook</label><input type="text" class="fi" id="r-web" placeholder="www.mipagina.com, @instagram o facebook.com/..."></div>
       </div>
     </div>
 
@@ -634,12 +634,20 @@ nav{position:sticky;top:0;z-index:300;background:#fff;border-bottom:2px solid va
           <input type="text" class="fi" id="r-hor" placeholder="Ej: Lunes a viernes 8 a 18hs. Sábados 8 a 13hs.">
           <div class="fhint">Sé específico. El usuario necesita saber cuándo puede ser atendido.</div>
         </div>
-        <div class="fg">
+        <div class="fg" id="fg-urg-clinica">
           <label class="fl">¿Atención de urgencias? *</label>
           <div class="rdo-g" id="rg-urg">
             <div class="rdo" onclick="selR(this,'rg-urg','Sí, guardia 24hs')">Sí, guardia 24hs</div>
             <div class="rdo" onclick="selR(this,'rg-urg','Sí, en horario de atención')">Sí, en horario</div>
             <div class="rdo" onclick="selR(this,'rg-urg','No')">No</div>
+          </div>
+        </div>
+        <div class="fg" id="fg-urg-residencia" style="display:none">
+          <label class="fl">¿Cuenta con personal de asistencia las 24 horas? *</label>
+          <div class="rdo-g" id="rg-urg-res">
+            <div class="rdo" onclick="selR(this,'rg-urg-res','Sí, enfermería 24hs');rdos['rg-urg']='Sí, guardia 24hs'">Sí, enfermería 24hs</div>
+            <div class="rdo" onclick="selR(this,'rg-urg-res','Sí, con guardia médica');rdos['rg-urg']='Sí, guardia 24hs'">Sí, con guardia médica</div>
+            <div class="rdo" onclick="selR(this,'rg-urg-res','Solo en horario');rdos['rg-urg']='Sí, en horario de atención'">Solo en horario</div>
           </div>
         </div>
         <div class="fg" id="fg-disp" style="display:none">
@@ -807,7 +815,7 @@ const SERVS={
   204:[{id:'i1',n:'Guardia médica 12hs',d:'Médico clínico presente.',pr:85000,dur:'12 hs',i:'👨‍⚕️'},{id:'i2',n:'Guardia médica 24hs',d:'Continua, día o noche.',pr:150000,dur:'24 hs',i:'🌙'},{id:'i3',n:'Coordinación internación',d:'Médico + enfermería + kinesio. Integral.',pr:0,dur:'A convenir',i:'🏥'}],
 };
 const HINTS={
-  residencia:'📄 Requerido: N° habilitación del Ministerio de Salud de San Juan, certificado de bomberos y habilitación municipal.',
+  residencia:'📄 Requerido: N° habilitación del Ministerio de Salud de San Juan, certificado de bomberos y habilitación municipal. También podés adjuntar el número al momento del registro.',
   clinica:'📄 Requerido: N° habilitación provincial y CUIT del establecimiento.',
   profesional:'📄 Requerido: matrícula provincial activa.',
   farmacia:'📄 Requerido: habilitación ANMAT y matrícula del director técnico.',
@@ -815,7 +823,7 @@ const HINTS={
   oxigeno:'📄 Requerido: autorización ANMAT (DROG o DISP).',
 };
 const CAMPOS={
-  residencia:{t:'Características de la residencia',c:[{l:'Capacidad (número de camas)',id:'r-cap',ph:'Ej: 20 camas'},{l:'Modalidades de estadía disponibles',id:'r-mod',ph:'Ej: Permanente, Semipermanente, Respiro familiar'},{l:'Servicios de salud incluidos',id:'r-srv',ph:'Ej: Kinesiología, Psicología, Enfermería 24hs'},{l:'Infraestructura y comodidades',id:'r-inf',ph:'Ej: habitaciones individuales, jardín, sala de actividades'}]},
+  residencia:{t:'Información de la residencia',c:[{l:'Capacidad total de residentes',id:'r-cap',ph:'Ej: 12 residentes'},{l:'Modalidad de estadía',id:'r-mod',ph:'Permanente / Temporal / Ambas'},{l:'Tipo de residentes que reciben',id:'r-tip',ph:'Ej: Autoválidos, Semidependientes, Dependientes, Deterioro cognitivo'},{l:'Equipo profesional',id:'r-equ',ph:'Ej: Médico, Enfermería, Psicología, Nutrición, Kinesiología'},{l:'Servicios incluidos',id:'r-srv',ph:'Ej: Alimentación, Medicación, Higiene, Lavandería, Actividades recreativas'},{l:'Infraestructura y comodidades',id:'r-inf',ph:'Ej: Habitaciones individuales/compartidas, WiFi, TV, Espacios verdes, A/C'},{l:'Horarios de visita familiar',id:'r-vis',ph:'Ej: Todos los días 10-12hs y 16-19hs'},{l:'¿Reciben residentes de otros departamentos o provincias?',id:'r-zona',ph:'Sí / No'}]},
   clinica:{t:'Especialidades médicas',c:[{l:'Especialidades disponibles',id:'r-esp',ph:'Ej: Traumatología, Cardiología, Pediatría, Ginecología'},{l:'¿Tienen internación?',id:'r-int',ph:'Sí, hasta 30 camas. / No, solo consultorios.'},{l:'Equipamiento especial',id:'r-eq',ph:'Ej: UCI, cirugía, laboratorio propio, radiología'}]},
   profesional:{t:'Especialidad y formación',c:[{l:'Especialidad / Título',id:'r-esp',ph:'Ej: Médico clínico, Kinesióloga, Enfermero profesional'},{l:'Servicios que ofrecés',id:'r-ps',ph:'Ej: Consulta domiciliaria, control de crónicos, curaciones...'},{l:'Zona de cobertura',id:'r-zn',ph:'Ej: Capital y Rawson. Todo Gran San Juan.'},{l:'Equipamiento disponible',id:'r-pe',ph:'Ej: tensiómetro, glucómetro, oxímetro, set de curaciones'}]},
   farmacia:{t:'Servicios de la farmacia',c:[{l:'¿Hacen preparados magistrales?',id:'r-mag',ph:'Sí / No'},{l:'¿Ponen inyecciones?',id:'r-iny',ph:'Sí / No'},{l:'Turno: días de turno completo',id:'r-tur',ph:'Ej: Turno los lunes y jueves 24hs'},{l:'Zona de cobertura del delivery',id:'r-zdl',ph:'Ej: Capital y Rawson'}]},
@@ -1269,6 +1277,14 @@ function adaptF(){
   const isRes=tipo==='residencia';
   document.getElementById('fg-disp').style.display=isRes?'block':'none';
   document.getElementById('fg-del').style.display=['farmacia','insumos','oxigeno'].includes(tipo)?'block':'none';
+  // Show/hide urgencias variants
+  if(document.getElementById('fg-urg-clinica')){
+    document.getElementById('fg-urg-clinica').style.display=isRes?'none':'block';
+    document.getElementById('fg-urg-residencia').style.display=isRes?'block':'none';
+  }
+  // Hide zona for residencias (replaced by r-zona field in specific section)
+  const zonaFg=document.getElementById('r-z')?.closest('.fg');
+  if(zonaFg) zonaFg.style.display=isRes?'none':'block';
 }
 // ═══════════════════════════════════════
 // EMAILJS CONFIG
