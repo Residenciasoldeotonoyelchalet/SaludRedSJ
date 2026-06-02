@@ -1060,7 +1060,7 @@ function rS(data){
     if(p.tipo==='residencia')btn=`<button class="btn-p navy" onclick="openC('residencia',${p.id})">Solicitar entrevista</button>`;
     else if(p.tipo==='clinica')btn=`<button class="btn-p navy" onclick="openC('clinica',${p.id})">Pedir turno</button>`;
     else if(p.tipo==='profesional'&&!full)btn=`<button class="btn-p pur" onclick="openC('profesional',${p.id})">Consultar</button>`;
-    const mainPhoto=p.fotos&&p.fotos.length?`<img class="sc-photo-main" src="${p.fotos[0]}" alt="${p.nombre}" onclick="openLB(${p.id},0)" onerror="this.style.display='none'">`:'';
+    const mainPhoto='';
     const thumbs=p.fotos&&p.fotos.length>1?`<div class="sc-photos">${p.fotos.slice(1,6).map((f,fi)=>`<img class="sc-photo" src="${f}" alt="Foto ${fi+2}" onclick="openLB(${p.id},${fi+1})" onerror="this.parentElement&&this.parentElement.classList.contains('sc-photos')?this.style.display='none':this.style.visibility='hidden'">`).join('')}</div>`:'';
     return `<div class="scard${isPrem?' dest':''}" style="animation-delay:${i*0.04}s">
       ${mainPhoto}
