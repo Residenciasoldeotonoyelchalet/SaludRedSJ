@@ -1199,8 +1199,8 @@ async function enviarC(){
     obra_social:     os||'No indicada',
     horario_pref:    h||'No indicado',
     motivo:          m||'No indicado',
-    servicio:        serv?`${serv.n} · ${serv.dur}${serv.pr>0?' · $'+serv.pr.toLocaleString('es-AR'):''}':'No especificado',
-    wsp_link:        `https://wa.me/549${ctxC.tel.replace(/\D/g,'')}?text=${encodeURIComponent(`Hola, recibí una consulta de ${n} (${t}) desde SaludRed. ${m||''}`)}`
+    servicio:        serv?(serv.n+' · '+serv.dur+(serv.pr>0?' · $'+serv.pr.toLocaleString('es-AR'):'')):'No especificado',
+    wsp_link:        'https://wa.me/549'+ctxC.tel.replace(/\D/g,'')+'?text='+encodeURIComponent('Hola, recibí una consulta de '+n+' ('+t+') desde SaludRed. '+(m||''))
   };
 
   // Usar template de contacto — template_contacto_prov
@@ -1208,7 +1208,7 @@ async function enviarC(){
   // TODO: cuando cada proveedor tenga email, enviar directo a ellos
   try{
     await emailjs.send(EJS.serviceId,'template_4kcynb9',{
-      nombre: `[CONTACTO para ${ctxC.nombre}]`,
+      nombre: '[CONTACTO para '+ctxC.nombre+']',
       tipo: modoLabel,
       depto: '',
       telefono: t,
@@ -1220,16 +1220,16 @@ async function enviarC(){
       horario: h||'—',
       urgencias: '—',
       disponibilidad: '—',
-      descripcion: `USUARIO: ${n} (${t})\nDirección: ${d||'—'}\nObra social: ${os||'—'}\nHorario preferido: ${h||'—'}\nMotivo: ${m||'—'}${serv?'\nServicio: '+serv.n:''}`,
+      descripcion: 'USUARIO: '+n+' ('+t+')\nDirección: '+(d||'—')+'\nObra social: '+(os||'—')+'\nHorario preferido: '+(h||'—')+'\nMotivo: '+(m||'—')+(serv?'\nServicio: '+serv.n:''),
       precio: '—',
       zona: '—',
-      esp_campos: `PARA REENVIAR A: ${ctxC.nombre}`,
+      esp_campos: 'PARA REENVIAR A: '+ctxC.nombre,
       fecha: new Date().toLocaleDateString('es-AR'),
       id_solicitud: String(Date.now()),
     });
     btn.textContent='Enviar solicitud →';btn.disabled=false;
     closeM();
-    alert(`✅ Tu solicitud fue enviada a ${ctxC.nombre}. Te contactan a la brevedad al teléfono que indicaste.`);
+    alert('✅ Tu solicitud fue enviada a '+ctxC.nombre+'. Te contactan a la brevedad al teléfono que indicaste.');
   }catch(err){
     console.error(err);
     btn.textContent='Enviar solicitud →';btn.disabled=false;
@@ -1243,7 +1243,7 @@ function selP(p){
   document.querySelectorAll('.plan-c').forEach(el=>{el.classList.remove('sel','sel-gold');});
   document.getElementById('pc-'+p).classList.add(p==='premium'?'sel-gold':'sel');
 }
-function selR(el,grp,val){document.querySelectorAll(`#${grp} .rdo`).forEach(b=>b.classList.remove('sel'));el.classList.add('sel');rdos[grp]=val;}
+function selR(el,grp,val){document.querySelectorAll('#'+grp+' .rdo').forEach(b=>b.classList.remove('sel'));el.classList.add('sel');rdos[grp]=val;}
 function adaptF(){
   const tipo=document.getElementById('rt').value;
   const hint=document.getElementById('tipo-hint'),sec=document.getElementById('sec-esp');
@@ -1252,7 +1252,7 @@ function adaptF(){
   const cfg=CAMPOS[tipo];
   if(cfg){
     document.getElementById('sec-esp-t').textContent=cfg.t;
-    document.getElementById('sec-esp-b').innerHTML=cfg.c.map(c=>`<div class="fg"><label class="fl">${c.l}</label><input type="text" class="fi" id="${c.id}" placeholder="${c.ph}"></div>`).join('');
+    document.getElementById('sec-esp-b').innerHTML=cfg.c.map(function(cf){return '<div class="fg"><label class="fl">'+cf.l+'</label><input type="text" class="fi" id="'+cf.id+'" placeholder="'+cf.ph+'"></div>';}).join('');
     sec.style.display='block';
   }else sec.style.display='none';
   const isRes=tipo==='residencia';
@@ -1332,7 +1332,7 @@ async function submitReg(){
   if(cfg){
     espCampos=cfg.c.map(c=>{
       const el=document.getElementById(c.id);
-      return el?`${c.l}: ${el.value.trim()||'—'}`:'';
+      return el?(c.l+': '+(el.value.trim()||'\u2014')):'';
     }).filter(Boolean).join('\n');
   }
 
@@ -1393,40 +1393,14 @@ function rAdm(){
   const pEl=document.getElementById('adm-pend');
   pEl.innerHTML=pending.length?pending.map(e=>{
     const t=T[e.tipo]||{ico:'?',bg:'#eee',l:'?'};
-    return `
-    <div class="adm-card" id="acard-${e.id}">
-      <div class="adm-ico" style="background:${t.bg}">${t.ico}</div>
-      <div class="adm-info">
-        <div class="adm-n">${e.nombre}</div>
-        <div class="adm-m">${t.l} · ${e.dept} · ${e.tel} · ${e.email||'sin email'} · Plan: ${PL[e.plan]?.l} · ${e.fecha}</div>
-        <div class="adm-m" style="margin-top:2px">Hab: ${e.hab||'—'} · CUIT: ${e.cuit||'—'} · Urgencias: ${e.urgencias||'—'}</div>
-        ${e.obras?.length?`<div class="adm-m">OS: ${e.obras.join(', ')}</div>`:''}
-        ${e.desc?`<div class="adm-m" style="margin-top:3px;font-style:italic">"${e.desc.substring(0,120)}${e.desc.length>120?'...':''}"</div>`:''}
-      </div>
-      <div class="adm-acts">
-        <button class="ab ab-ok" onclick="apro(${e.id})" id="btn-apro-${e.id}">✓ Aprobar</button>
-        <button class="ab ab-rej" onclick="rech(${e.id})">✗ Rechazar</button>
-      </div>
-    </div>`;
+    return '<div class="adm-card" id="acard-'+e.id+'"><div class="adm-ico" style="background:'+t.bg+'">'+t.ico+'</div><div class="adm-info"><div class="adm-n">'+e.nombre+'</div><div class="adm-m">'+t.l+' · '+e.dept+' · '+e.tel+' · '+(e.email||'sin email')+' · Plan: '+(PL[e.plan]?.l||'?')+' · '+e.fecha+'</div><div class="adm-m">Hab: '+(e.hab||'—')+' · CUIT: '+(e.cuit||'—')+' · Urgencias: '+(e.urgencias||'—')+'</div>'+(e.obras?.length?'<div class="adm-m">OS: '+e.obras.join(', ')+'</div>':'')+(e.desc?'<div class="adm-m" style="font-style:italic">"'+e.desc.substring(0,120)+(e.desc.length>120?'...':'')+'"</div>':'')+'</div><div class="adm-acts"><button class="ab ab-ok" onclick="apro('+e.id+')" id="btn-apro-'+e.id+'">✓ Aprobar</button><button class="ab ab-rej" onclick="rech('+e.id+')">✗ Rechazar</button></div></div>';
   }).join(''):'<div class="empty-msg">Sin solicitudes pendientes.</div>';
 
   const aEl=document.getElementById('adm-act');
   aEl.innerHTML=a.map(e=>{
     const t=T[e.tipo]||{ico:'?',bg:'#eee',l:'?'};
     const pl=PL[e.plan];
-    return `
-    <div class="adm-card">
-      <div class="adm-ico" style="background:${t.bg}">${t.ico}</div>
-      <div class="adm-info">
-        <div class="adm-n">${e.nombre}</div>
-        <div class="adm-m">${t.l} · ${e.dept} · ${e.email||'sin email'} · Plan: ${pl?.l||'—'}${e.trial_hasta?` · <span style="color:var(--gold);font-weight:700">⏳ Prueba hasta ${e.trial_hasta}</span>`:''}</div>
-      </div>
-      <span class="plan-tag" style="background:${e.plan==='premium'?'var(--gold-l)':'var(--teal-l)'};color:${e.plan==='premium'?'var(--gold)':'var(--teal)'};border-color:${e.plan==='premium'?'rgba(154,111,26,0.25)':'rgba(13,107,94,0.2)'}">${pl.l}</span>
-      <div class="adm-acts">
-        ${e.plan!=='premium'?`<button class="ab ab-up" onclick="upP(${e.id})">↑ Premium</button>`:''}
-        <button class="ab ab-del" onclick="eli(${e.id})">Eliminar</button>
-      </div>
-    </div>`;
+    return '<div class="adm-card"><div class="adm-ico" style="background:'+t.bg+'">'+t.ico+'</div><div class="adm-info"><div class="adm-n">'+e.nombre+'</div><div class="adm-m">'+t.l+' · '+e.dept+' · '+(e.email||'sin email')+' · Plan: '+(pl?.l||'—')+(e.trial_hasta?' · <span style="color:var(--gold);font-weight:700">⏳ Prueba hasta '+e.trial_hasta+'</span>':'')+'</div></div><span class="plan-tag" style="background:'+(e.plan==='premium'?'var(--gold-l)':'var(--teal-l)')+';color:'+(e.plan==='premium'?'var(--gold)':'var(--teal)')+';border-color:'+(e.plan==='premium'?'rgba(154,111,26,0.25)':'rgba(13,107,94,0.2)')+'">'+pl.l+'</span><div class="adm-acts">'+(e.plan!=='premium'?'<button class="ab ab-up" onclick="upP('+e.id+')">↑ Premium</button>':'')+'<button class="ab ab-del" onclick="eli('+e.id+')">Eliminar</button></div></div>';
   }).join('');
 }
 
@@ -1473,7 +1447,7 @@ async function apro(id){
       await emailjs.send(EJS.serviceId, EJS.tplAprobac, paramsAprobac);
     }catch(err){
       console.error('Error enviando aprobación:', err);
-      alert(`✅ Perfil aprobado. No se pudo enviar el mail automático — escribile vos a: ${e.email}`);
+      alert('✅ Perfil aprobado. No se pudo enviar el mail automático. Escribile vos a: '+e.email);
     }
   }
 
@@ -1483,7 +1457,7 @@ async function apro(id){
 async function rechazarConMail(id){
   const e=pending.find(x=>x.id===id);
   if(!e)return;
-  if(!confirm(`¿Rechazar la solicitud de "${e.nombre}"?`))return;
+  if(!confirm('¿Rechazar la solicitud de "'+e.nombre+'"?'))return;
   pending=pending.filter(x=>x.id!==id);
   save();rAdm();
 }
@@ -1494,7 +1468,7 @@ function upP(id){const e=db.find(x=>x.id===id);if(e){e.plan='premium';save();rAd
 function mAgr(){
   const n=document.getElementById('m-n').value.trim();if(!n){alert('Ingresá el nombre.');return;}
   db.push({id:Date.now(),tipo:document.getElementById('m-t').value,nombre:n,dept:document.getElementById('m-d').value,tel:document.getElementById('m-tel').value.trim().replace(/\D/g,''),desc:document.getElementById('m-desc').value.trim(),plan:document.getElementById('m-pl').value,status:'active',delivery:'Sí, con costo de envío',urgencias:'No especificado',obras:[],email:''});
-  save();['m-n','m-tel','m-desc'].forEach(i=>document.getElementById(i).value='');rAdm();updH();alert(`✅ "${n}" agregado.`);
+  save();['m-n','m-tel','m-desc'].forEach(i=>document.getElementById(i).value='');rAdm();updH();alert('✅ "'+n+'" agregado.');
 }
 </script>
 </body>
