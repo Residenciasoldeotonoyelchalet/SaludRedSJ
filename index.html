@@ -946,6 +946,8 @@ let ctxC={};
 
 document.addEventListener('DOMContentLoaded',()=>{
   initEJS();
+  // Also init directly in case DOMContentLoaded already fired
+  try{if(window.emailjs)emailjs.init({publicKey:EJS.publicKey});}catch(e){}
   updH();
   document.getElementById('si-s').addEventListener('keydown',e=>{if(e.key==='Enter')doS();});
   document.getElementById('si-p').addEventListener('keydown',e=>{if(e.key==='Enter')doP();});
@@ -1326,7 +1328,9 @@ const MP = {
 };
 
 function initEJS(){
-  if(window.emailjs) emailjs.init(EJS.publicKey);
+  try{
+    if(window.emailjs){emailjs.init({publicKey:EJS.publicKey});}
+  }catch(e){console.warn("EmailJS:",e);}
 }
 
 // ═══════════════════════════════════════
