@@ -28,9 +28,63 @@
     "addressCountry": "AR"
   }
 }
+
+// LIGHTBOX
+var lbProvId=null,lbIdx=0;
+function openLB(provId,idx){
+  var p=db.find(function(x){return x.id===provId;});
+  if(!p||!p.fotos)return;
+  lbProvId=provId;lbIdx=idx;
+  document.getElementById('lb-img').src=p.fotos[idx];
+  document.getElementById('lb-ov').classList.add('on');
+  document.body.style.overflow='hidden';
+}
+function closeLB(){
+  document.getElementById('lb-ov').classList.remove('on');
+  document.body.style.overflow='';
+}
+function lbNav(dir){
+  var p=db.find(function(x){return x.id===lbProvId;});
+  if(!p||!p.fotos)return;
+  lbIdx=(lbIdx+dir+p.fotos.length)%p.fotos.length;
+  document.getElementById('lb-img').src=p.fotos[lbIdx];
+}
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape')closeLB();
+  if(e.key==='ArrowLeft')lbNav(-1);
+  if(e.key==='ArrowRight')lbNav(1);
+});
+
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+// LIGHTBOX
+var lbProvId=null,lbIdx=0;
+function openLB(provId,idx){
+  var p=db.find(function(x){return x.id===provId;});
+  if(!p||!p.fotos)return;
+  lbProvId=provId;lbIdx=idx;
+  document.getElementById('lb-img').src=p.fotos[idx];
+  document.getElementById('lb-ov').classList.add('on');
+  document.body.style.overflow='hidden';
+}
+function closeLB(){
+  document.getElementById('lb-ov').classList.remove('on');
+  document.body.style.overflow='';
+}
+function lbNav(dir){
+  var p=db.find(function(x){return x.id===lbProvId;});
+  if(!p||!p.fotos)return;
+  lbIdx=(lbIdx+dir+p.fotos.length)%p.fotos.length;
+  document.getElementById('lb-img').src=p.fotos[lbIdx];
+}
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape')closeLB();
+  if(e.key==='ArrowLeft')lbNav(-1);
+  if(e.key==='ArrowRight')lbNav(1);
+});
+
+</script>
 <style>
 :root{
   --bg:#F7F8FA;--white:#FFF;--ink:#111827;--ink2:#374151;--muted:#6B7280;
@@ -345,6 +399,22 @@ nav{position:sticky;top:0;z-index:300;background:#fff;border-bottom:2px solid va
   .sr-hbtn{width:100%;}
   .sr-top-right{display:none;}
 }
+
+
+/* FOTOS RESIDENCIA */
+.sc-photos{display:flex;gap:6px;overflow-x:auto;padding:10px 16px;border-bottom:1px solid var(--border);scrollbar-width:none;}
+.sc-photos::-webkit-scrollbar{display:none;}
+.sc-photo{width:160px;height:110px;object-fit:cover;flex-shrink:0;cursor:pointer;transition:opacity .15s;}
+.sc-photo:hover{opacity:.85;}
+.sc-photo-main{width:100%;height:220px;object-fit:cover;border-bottom:1px solid var(--border);cursor:pointer;}
+/* LIGHTBOX */
+.lb-ov{position:fixed;inset:0;z-index:900;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;}
+.lb-ov.on{display:flex;}
+.lb-img{max-width:90vw;max-height:90vh;object-fit:contain;}
+.lb-close{position:absolute;top:16px;right:20px;background:none;border:none;color:white;font-size:2rem;cursor:pointer;}
+.lb-prev,.lb-next{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.15);border:none;color:white;font-size:2rem;cursor:pointer;padding:10px 16px;transition:background .15s;}
+.lb-prev{left:10px;}.lb-next{right:10px;}
+.lb-prev:hover,.lb-next:hover{background:rgba(255,255,255,.3);}
 
 </style>
 </head>
@@ -836,87 +906,36 @@ let pending=JSON.parse(localStorage.getItem('sr9_pend')||'[]');
 let cart={};
 if(!db.length){
   db=[
-    {id:11,tipo:'residencia',nombre:'Residencia El Olivo',dept:'Capital',dir:'Av. I. de la Rosa 1400',tel:'2644201111',
-     horario:'Permanente — visitas coordinadas previamente. Lun a Dom 10-12hs y 16-19hs.',urgencias:'Sí, guardia 24hs',disponibilidad:'Disponible — hay lugares',
-     obras:['PAMI','OSDE','IPOS','Particular'],capacidad:'28 camas',
-     modalidades:'Permanente, Semipermanente, Respiro familiar',
-     servicios:'Kinesiología, Psicología, Gerontología, Enfermería 24hs, Estimulación cognitiva, Terapia ocupacional',
-     precio:'Desde $280.000/mes. Consultar por plan y modalidad.',
-     desc:'Residencia geriátrica con 15 años de trayectoria. Equipo médico permanente, actividades recreativas diarias, espacios verdes. Habitaciones individuales y dobles con baño privado.',
+    {id:11,tipo:'residencia',nombre:'Residencia El Chalet',dept:'Santa Lucía',dir:'Hipólito Yrigoyen 1856 Este, Santa Lucía',tel:'2655057363',
+     horario:'Consultar horarios.',urgencias:'Sí, enfermería 24hs',disponibilidad:'Disponible — hay lugares',
+     obras:[],osOtras:'Solo particular',
+     capacidad:'12 residentes',
+     modalidades:'Permanente',
+     tipoResidentes:'Autoválidos',
+     equipo:'Enfermería 24hs, Médico clínico, Nutricionista, Psicología',
+     servicios:'Asistencia geriátrica 24hs, Alimentación completa con menú adaptado, Higiene y confort personal, Lavandería, Administración de medicación, Control de signos vitales, Seguimiento médico semanal, Área protegida, Cámaras de seguridad, App de visitas, Actividades recreativas y terapéuticas',
+     infraestructura:'Habitaciones compartidas, Aire acondicionado, Calefacción, WiFi, TV, Espacios verdes, Accesibilidad para movilidad reducida, Mascota',
+     visitas:'Lunes a lunes, mañana y tarde',
+     otrosDepts:'Consultar',
+     precio:'Desde $1.600.000/mes. Consultar presupuesto actualizado.',
+     desc:'Residencia geriátrica para adultos mayores autoválidos, dirigida por sus propios dueños con participación activa en cada aspecto del cuidado. Más de 15 años de trayectoria en el cuidado integral del adulto mayor. Ambiente cálido, familiar y de puertas abiertas, con visitas todos los días. Contamos con equipo interdisciplinario completo y tecnología para que las familias estén conectadas con sus seres queridos.',
+     fotos:["https://lh3.googleusercontent.com/d/1ks6Zu7b7suYcpO9Nu7-9f0gejtmiqXSF", "https://lh3.googleusercontent.com/d/1-dO51CAI97WSPoP46-XDoUDGOr4nOKtl", "https://lh3.googleusercontent.com/d/18P0pLrLnV78_rRVI1erPvjbLUPSsQHnb", "https://lh3.googleusercontent.com/d/1AyzV4cAb7fbx-w6oNvdqR7tbKC9aW9Cl", "https://lh3.googleusercontent.com/d/1grtZmaGJ7MZn6SkMHANDw5j9Pvqqy1ex", "https://lh3.googleusercontent.com/d/1o7Zm2pYcmSlknsgBjsEBO59EnB_FbBtM", "https://lh3.googleusercontent.com/d/1Yz2WOT3mlvBZIq-orkt-SnkGyDRE0xhk", "https://lh3.googleusercontent.com/d/1c4gZXuwQVbdV5aT8FbFDqG_-o3ud5Rad", "https://lh3.googleusercontent.com/d/10c5KMw3bvn42otBDO4k8Gf_TYugN7Qn4", "https://lh3.googleusercontent.com/d/10hqDxvk9Rx09RrGCxEJT9y9nDHSTdh-3", "https://lh3.googleusercontent.com/d/1hRoqp69vrHEWFLZWw-hotr7cLuEi03wt", "https://lh3.googleusercontent.com/d/1smFIBtVPUH-EBdCFSnNnjjpfxJ06Z6Tc"],
      plan:'premium',status:'active'},
-    {id:12,tipo:'residencia',nombre:'Hogar San Francisco',dept:'Rawson',dir:'Salta 890, Rawson',tel:'2644422233',
-     horario:'24 horas. Visitas: Lun-Vie 10-12hs y 15-18hs.',urgencias:'Sí, guardia 24hs',disponibilidad:'Lista de espera',
-     obras:['PAMI','Particular'],capacidad:'20 camas',
-     modalidades:'Permanente, Semipermanente',
-     servicios:'Alzheimer, Demencia senil, Cuidados paliativos, Enfermería 24hs, Psicología',
-     precio:'Desde $260.000/mes.',
-     desc:'Especializado en Alzheimer y deterioro cognitivo. Entorno seguro diseñado para pacientes con demencia. Personal especializado en psicogeriatría.',
-     plan:'estandar',status:'active'},
-    {id:13,tipo:'residencia',nombre:'Residencia Villa del Sol',dept:'Rivadavia',dir:'Las Heras 560, Rivadavia',tel:'2644431234',
-     horario:'24hs. Visitas Sáb y Dom 10-12hs y 15-19hs.',urgencias:'Sí, en horario de atención',disponibilidad:'Disponible — hay lugares',
-     obras:['PAMI','OSDE','Particular'],capacidad:'16 camas',
-     modalidades:'Permanente, Respiro familiar (por días o semanas)',
-     servicios:'Semivida, Terapia ocupacional, Psicología',
-     precio:'Consultar.',
-     desc:'Residencia familiar con atención personalizada. Jardín amplio, comedor común. Cocina propia con menú saludable y adaptado.',
-     plan:'estandar',status:'active'},
-    {id:21,tipo:'clinica',nombre:'Clínica San Martín',dept:'Rivadavia',dir:'Tucumán 580, Rivadavia',tel:'2644441000',
-     horario:'Guardia 24hs. Consultorios Lun-Vie 8-20hs, Sáb 8-13hs.',urgencias:'Sí, guardia 24hs',
-     obras:['OSDE','Swiss Medical','IPOS','PAMI','Particular'],
-     especialidades:'Traumatología, Cardiología, Cirugía general, Pediatría, Ginecología, Neurología, Clínica médica',
-     desc:'Clínica privada con guardia permanente y unidad coronaria. Más de 30 años en San Juan.',
+    {id:12,tipo:'residencia',nombre:'Residencia Sol de Otoño',dept:'Capital',dir:'Ezpeleta 95 Oeste, San Juan',tel:'2645057363',
+     horario:'Lunes a lunes, mañana y tarde.',urgencias:'Sí, enfermería 24hs',disponibilidad:'Disponible — hay lugares',
+     obras:[],osOtras:'Solo particular',
+     capacidad:'12 residentes',
+     modalidades:'Permanente',
+     tipoResidentes:'Patologías polivalentes — Semidependientes y Dependientes',
+     equipo:'Enfermería 24hs, Médico clínico, Nutricionista, Psicología',
+     servicios:'Asistencia geriátrica 24hs, Alimentación completa con menú adaptado, Higiene y confort personal, Lavandería, Administración de medicación, Control de signos vitales, Seguimiento médico semanal, Área protegida, Actividades recreativas y terapéuticas',
+     infraestructura:'Habitaciones compartidas, Aire acondicionado, Calefacción, WiFi, TV, Espacios verdes, Accesibilidad para movilidad reducida',
+     visitas:'Lunes a lunes, mañana y tarde',
+     otrosDepts:'Consultar',
+     precio:'Desde $1.600.000/mes. Consultar presupuesto actualizado.',
+     desc:'Residencia geriátrica especializada en patologías polivalentes para adultos mayores semidependientes y dependientes. Atención personalizada e integral con equipo interdisciplinario completo. Ambiente cálido y familiar donde el bienestar emocional y la conexión con la familia son parte fundamental de la vida cotidiana.',
+     fotos:["https://lh3.googleusercontent.com/d/1khyjdyEKjDVJhro5u6eRMxb3dkRvGk88", "https://lh3.googleusercontent.com/d/1avlFv2gqun4QaGzCJNi1UAFHtRrO0o9c", "https://lh3.googleusercontent.com/d/1rGDp5_nY6Kk3ySArK8XE8LEynMeaa73p", "https://lh3.googleusercontent.com/d/1BeKAEFhHG_HvwDoJ4djHOv6bgViw2cZT", "https://lh3.googleusercontent.com/d/1bidfPvLj_AUULz1Ike8jRC6bYpExU0Ru", "https://lh3.googleusercontent.com/d/1ECZF8nJBXey04Ujo5oSvoJynGvWewl6p", "https://lh3.googleusercontent.com/d/1YfrzpvSXjT5ibSIQEcIjWBnQId9T__WZ", "https://lh3.googleusercontent.com/d/1GfGad4KSqN4ftbXO9AKJRHWNLTg_m9gt", "https://lh3.googleusercontent.com/d/15FpMUxeBsVKtSgu10c1Q5ygfbs7bIcdR", "https://lh3.googleusercontent.com/d/1rO-WvqBPPfFsn_54bq3Aq2RHOVdWrIQr", "https://lh3.googleusercontent.com/d/1figf-YsFhYgYXsNbGoR8dL-lew-ioHpX", "https://lh3.googleusercontent.com/d/1Y79ognXUVl9wwDLw2g4IY7bhE5C60K1t"],
      plan:'premium',status:'active'},
-    {id:22,tipo:'clinica',nombre:'Sanatorio Los Andes',dept:'Capital',dir:'Gral. Acha 1280, Capital',tel:'2644210000',
-     horario:'Guardia 24hs.',urgencias:'Sí, guardia 24hs',
-     obras:['OSDE','PAMI','IPOS','Particular'],
-     especialidades:'Cirugía general, Maternidad, UCI, Pediatría, Oncología, Clínica médica',
-     desc:'Sanatorio de alta complejidad. Internación, cirugía programada y urgencias. Unidad de cuidados intensivos.',
-     plan:'estandar',status:'active'},
-    {id:23,tipo:'clinica',nombre:'Centro Médico Rivadavia',dept:'Rivadavia',dir:'Tucumán 1100, Rivadavia',tel:'2644449900',
-     horario:'Lun-Sáb 8-20hs.',urgencias:'Sí, en horario de atención',
-     obras:['OSDE','IPOS','Swiss Medical','Particular'],
-     especialidades:'Clínica médica, Cardiología, Dermatología, Traumatología, Ecografías, Radiografías',
-     desc:'Centro ambulatorio. Especialidades médicas y diagnóstico por imagen. Sin internación.',
-     plan:'estandar',status:'active'},
-    {id:201,tipo:'profesional',nombre:'Dr. Marcelo Fuentes — Clínica Médica',dept:'Capital',dir:'A domicilio',tel:'2644230044',
-     horario:'Lunes, Miércoles y Viernes 9-17hs.',urgencias:'Sí, en horario de atención',
-     obras:['PAMI','OSDE','Swiss Medical'],zona:'Capital y Rawson',
-     especialidad:'Médico clínico',matricula:'4821',
-     desc:'Médico clínico con 20 años de experiencia. Consultas domiciliarias, controles de crónicos y urgencias en horario.',
-     plan:'premium',status:'active'},
-    {id:202,tipo:'profesional',nombre:'Lic. Carla Romero — Kinesiología',dept:'Capital',dir:'A domicilio',tel:'2644551122',
-     horario:'Lunes a Viernes 8-18hs.',urgencias:'No',
-     obras:['PAMI','OSDE','IPOS'],zona:'Capital, Rivadavia, Chimbas',
-     especialidad:'Kinesióloga',matricula:'K-1204',
-     desc:'Especializada en adultos mayores. Rehabilitación motora, respiratoria y post-quirúrgica a domicilio.',
-     plan:'estandar',status:'active'},
-    {id:203,tipo:'profesional',nombre:'Enf. Roberto Díaz — Enfermería',dept:'Rawson',dir:'A domicilio',tel:'2644883300',
-     horario:'Lunes a Sábados 7-22hs.',urgencias:'Sí, en horario de atención',
-     obras:['PAMI','Particular'],zona:'Capital, Rawson, Santa Lucía',
-     especialidad:'Enfermero profesional',matricula:'E-3341',
-     desc:'Curaciones, inyectables, colocación de sondas, control de signos, guardias domiciliarias.',
-     plan:'estandar',status:'active'},
-    {id:204,tipo:'profesional',nombre:'InternaSJ — Internaciones Domiciliarias',dept:'Capital',dir:'Coordinación central',tel:'2644100200',
-     horario:'Coordinación 24hs.',urgencias:'Sí, guardia 24hs',
-     obras:['PAMI','OSDE','IPOS','Swiss Medical','Particular'],zona:'Toda la provincia',
-     especialidad:'Internación domiciliaria integral',matricula:'Hab. MS-224',
-     desc:'Coordinamos equipo completo: médico clínico, enfermería, kinesiología y equipos. Atención continua para pacientes que requieren internación en casa.',
-     plan:'premium',status:'active'},
-    {id:101,tipo:'farmacia',nombre:'Farmacia del Sol',dept:'Rawson',dir:'Av. Rawson 1200',tel:'2644428888',
-     horario:'Lun-Sáb 8-21hs. Turno Lunes y Jueves (24hs).',urgencias:'Sí, en horario de atención',
-     obras:['PAMI','IPOS','OSDE'],zona:'Capital y Rawson',
-     desc:'Farmacia de barrio con delivery en el día. Turno los Lunes y Jueves. Preparados magistrales.',
-     plan:'premium',status:'active',delivery:'Sí, con costo de envío'},
-    {id:102,tipo:'insumos',nombre:'OrthoMed San Juan',dept:'Capital',dir:'Mendoza 892',tel:'2644310044',
-     horario:'Lun-Vie 9-18hs. Sáb 9-13hs.',urgencias:'No',
-     obras:['PAMI','OSDE'],zona:'Toda la provincia',
-     desc:'Insumos médicos y ortopédicos. Venta y alquiler. Asesores especializados en cada producto.',
-     plan:'estandar',status:'active',delivery:'Sí, con costo de envío'},
-    {id:103,tipo:'oxigeno',nombre:'OxiSan — Oxígeno Domiciliario',dept:'Capital',dir:'Rioja 456',tel:'2644580001',
-     horario:'Lun-Sáb 8-20hs. Urgencias 24hs.',urgencias:'Sí, guardia 24hs',
-     obras:['PAMI','OSDE','Particular'],zona:'Toda la provincia',
-     desc:'Proveedor autorizado ANMAT. Oxígeno medicinal, concentradores, CPAP y nebulizadores. Entrega urgente 24hs.',
-     plan:'premium',status:'active',delivery:'Sí, gratis en zona'},
   ];
   localStorage.setItem('sr9_db',JSON.stringify(db));
 }
@@ -1018,9 +1037,11 @@ function rS(data){
       if(p.tipo==='residencia')fields=`
         <div class="sc-field"><div class="sfl">Disponibilidad</div><div class="sfv ${p.disponibilidad?.includes('Disponible')?'ok':''}">${p.disponibilidad||'—'}</div></div>
         <div class="sc-field"><div class="sfl">Capacidad</div><div class="sfv">${p.capacidad||'—'}</div></div>
-        <div class="sc-field"><div class="sfl">Modalidades</div><div class="sfv">${p.modalidades||'—'}</div></div>
-        <div class="sc-field"><div class="sfl">Urgencias / Guardia</div><div class="sfv ${p.urgencias?.includes('Sí')?'ok':''}">${p.urgencias||'—'}</div></div>
-        <div class="sc-field"><div class="sfl">Horario de visitas</div><div class="sfv">${p.horario||'—'}</div></div>
+        <div class="sc-field"><div class="sfl">Tipo de residentes</div><div class="sfv">${p.tipoResidentes||'—'}</div></div>
+        <div class="sc-field"><div class="sfl">Modalidad</div><div class="sfv">${p.modalidades||'—'}</div></div>
+        <div class="sc-field"><div class="sfl">Asistencia</div><div class="sfv ok">${p.urgencias||'—'}</div></div>
+        <div class="sc-field"><div class="sfl">Equipo profesional</div><div class="sfv">${p.equipo||'—'}</div></div>
+        <div class="sc-field"><div class="sfl">Visitas familiares</div><div class="sfv ok">${p.visitas||p.horario||'—'}</div></div>
         <div class="sc-field"><div class="sfl">Precio orientativo</div><div class="sfv">${p.precio||'Consultar'}</div></div>`;
       else if(p.tipo==='clinica')fields=`
         <div class="sc-field"><div class="sfl">Guardia / Urgencias</div><div class="sfv ${p.urgencias?.includes('Sí')?'ok':''}">${p.urgencias||'—'}</div></div>
@@ -1040,9 +1061,13 @@ function rS(data){
     if(p.tipo==='residencia')btn=`<button class="btn-p navy" onclick="openC('residencia',${p.id})">Solicitar entrevista</button>`;
     else if(p.tipo==='clinica')btn=`<button class="btn-p navy" onclick="openC('clinica',${p.id})">Pedir turno</button>`;
     else if(p.tipo==='profesional'&&!full)btn=`<button class="btn-p pur" onclick="openC('profesional',${p.id})">Consultar</button>`;
+    const mainPhoto=p.fotos&&p.fotos.length?`<img class="sc-photo-main" src="${p.fotos[0]}" alt="${p.nombre}" onclick="openLB(${p.id},0)" onerror="this.style.display='none'">`:'';
+    const thumbs=p.fotos&&p.fotos.length>1?`<div class="sc-photos">${p.fotos.slice(1,6).map((f,fi)=>`<img class="sc-photo" src="${f}" alt="Foto ${fi+2}" onclick="openLB(${p.id},${fi+1})" onerror="this.style.display='none'">`).join('')}</div>`:'';
     return `<div class="scard${isPrem?' dest':''}" style="animation-delay:${i*0.04}s">
+      ${mainPhoto}
       <div class="sc-hd"><div class="sc-ico" style="background:${t.bg}">${t.ico}</div><div class="sc-titles"><div class="sc-name">${p.nombre}</div><div class="sc-sub">${t.l} · ${p.dept}</div><div class="sc-badges">${isPrem?'<span class="badge b-dest">✦ Destacado</span>':''}<span class="badge b-ok">✓ Habilitado</span>${p.tipo==='profesional'?'<span class="badge b-pur">A domicilio</span>':''}${p.urgencias?.includes('24hs')?'<span class="badge b-red">🚨 24hs</span>':''}</div></div></div>
       ${full&&p.desc?`<div class="sc-desc">${p.desc}</div>`:''}
+      ${thumbs}
       ${fields?`<div class="sc-fields">${fields}</div>`:''}
       ${osp}${esp}${srv}${servsTgl}
       <div class="sc-foot">${btn||p.tipo==='profesional'&&full?`${btn}`:`<button class="btn-p navy" onclick="openC('general',${p.id})">Consultar →</button>`}</div>
@@ -1497,6 +1522,42 @@ function mAgr(){
   db.push({id:Date.now(),tipo:document.getElementById('m-t').value,nombre:n,dept:document.getElementById('m-d').value,tel:document.getElementById('m-tel').value.trim().replace(/\D/g,''),desc:document.getElementById('m-desc').value.trim(),plan:document.getElementById('m-pl').value,status:'active',delivery:'Sí, con costo de envío',urgencias:'No especificado',obras:[],email:''});
   save();['m-n','m-tel','m-desc'].forEach(i=>document.getElementById(i).value='');rAdm();updH();alert('✅ "'+n+'" agregado.');
 }
+
+// LIGHTBOX
+var lbProvId=null,lbIdx=0;
+function openLB(provId,idx){
+  var p=db.find(function(x){return x.id===provId;});
+  if(!p||!p.fotos)return;
+  lbProvId=provId;lbIdx=idx;
+  document.getElementById('lb-img').src=p.fotos[idx];
+  document.getElementById('lb-ov').classList.add('on');
+  document.body.style.overflow='hidden';
+}
+function closeLB(){
+  document.getElementById('lb-ov').classList.remove('on');
+  document.body.style.overflow='';
+}
+function lbNav(dir){
+  var p=db.find(function(x){return x.id===lbProvId;});
+  if(!p||!p.fotos)return;
+  lbIdx=(lbIdx+dir+p.fotos.length)%p.fotos.length;
+  document.getElementById('lb-img').src=p.fotos[lbIdx];
+}
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape')closeLB();
+  if(e.key==='ArrowLeft')lbNav(-1);
+  if(e.key==='ArrowRight')lbNav(1);
+});
+
 </script>
+
+<!-- LIGHTBOX -->
+<div class="lb-ov" id="lb-ov" onclick="if(event.target===this)closeLB()">
+  <button class="lb-close" onclick="closeLB()">✕</button>
+  <button class="lb-prev" onclick="lbNav(-1)">❮</button>
+  <img class="lb-img" id="lb-img" src="" alt="">
+  <button class="lb-next" onclick="lbNav(1)">❯</button>
+</div>
+
 </body>
 </html>
