@@ -404,9 +404,9 @@ nav{position:sticky;top:0;z-index:300;background:#fff;border-bottom:2px solid va
 /* FOTOS RESIDENCIA */
 .sc-photos{display:flex;gap:6px;overflow-x:auto;padding:10px 16px;border-bottom:1px solid var(--border);scrollbar-width:none;}
 .sc-photos::-webkit-scrollbar{display:none;}
-.sc-photo{width:160px;height:110px;object-fit:cover;flex-shrink:0;cursor:pointer;transition:opacity .15s;}
+.sc-photo{width:140px;height:94px;object-fit:cover;object-position:center;flex-shrink:0;cursor:pointer;transition:opacity .15s;border-radius:2px;}
 .sc-photo:hover{opacity:.85;}
-.sc-photo-main{width:100%;height:220px;object-fit:cover;border-bottom:1px solid var(--border);cursor:pointer;}
+.sc-photo-main{width:100%;height:160px;object-fit:cover;object-position:center center;border-bottom:1px solid var(--border);cursor:pointer;display:block;}
 /* LIGHTBOX */
 .lb-ov{position:fixed;inset:0;z-index:900;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;}
 .lb-ov.on{display:flex;}
@@ -1061,7 +1061,7 @@ function rS(data){
     else if(p.tipo==='clinica')btn=`<button class="btn-p navy" onclick="openC('clinica',${p.id})">Pedir turno</button>`;
     else if(p.tipo==='profesional'&&!full)btn=`<button class="btn-p pur" onclick="openC('profesional',${p.id})">Consultar</button>`;
     const mainPhoto=p.fotos&&p.fotos.length?`<img class="sc-photo-main" src="${p.fotos[0]}" alt="${p.nombre}" onclick="openLB(${p.id},0)" onerror="this.style.display='none'">`:'';
-    const thumbs=p.fotos&&p.fotos.length>1?`<div class="sc-photos">${p.fotos.slice(1,6).map((f,fi)=>`<img class="sc-photo" src="${f}" alt="Foto ${fi+2}" onclick="openLB(${p.id},${fi+1})" onerror="this.style.display='none'">`).join('')}</div>`:'';
+    const thumbs=p.fotos&&p.fotos.length>1?`<div class="sc-photos">${p.fotos.slice(1,6).map((f,fi)=>`<img class="sc-photo" src="${f}" alt="Foto ${fi+2}" onclick="openLB(${p.id},${fi+1})" onerror="this.parentElement&&this.parentElement.classList.contains('sc-photos')?this.style.display='none':this.style.visibility='hidden'">`).join('')}</div>`:'';
     return `<div class="scard${isPrem?' dest':''}" style="animation-delay:${i*0.04}s">
       ${mainPhoto}
       <div class="sc-hd"><div class="sc-ico" style="background:${t.bg}">${t.ico}</div><div class="sc-titles"><div class="sc-name">${p.nombre}</div><div class="sc-sub">${t.l} · ${p.dept}</div><div class="sc-badges">${isPrem?'<span class="badge b-dest">✦ Destacado</span>':''}<span class="badge b-ok">✓ Habilitado</span>${p.tipo==='profesional'?'<span class="badge b-pur">A domicilio</span>':''}${p.urgencias?.includes('24hs')?'<span class="badge b-red">🚨 24hs</span>':''}</div></div></div>
