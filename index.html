@@ -608,35 +608,34 @@ html, body { width: 100%; overflow-x: hidden; }
 <!-- REGISTRO -->
 <div id="view-registro" class="view">
   <div class="reg-hdr">
-    <h2>Registrá tu establecimiento</h2>
-    <p>Completá todo el formulario. Tu perfil se publica con la información visible — el usuario no tiene que preguntar lo básico.</p>
+    <h2 id="reg-hdr-title">Registrá tu servicio en SaludRed</h2>
+    <p>Completá el formulario. Tu perfil se revisa y se publica con toda la información visible.</p>
   </div>
   <div class="reg-body">
 
     <!-- PRUEBA BANNER -->
-    <div style="background:var(--teal);color:white;padding:14px 16px;margin-bottom:16px;display:flex;align-items:center;gap:12px;">
+    <div style="background:var(--teal);color:white;padding:14px 16px;margin-bottom:20px;display:flex;align-items:center;gap:12px;">
       <div style="font-size:1.6rem;flex-shrink:0">🎁</div>
       <div>
         <div style="font-family:'Libre Baskerville',serif;font-weight:700;font-size:1rem;margin-bottom:2px">15 días de prueba gratis</div>
-        <div style="font-size:12px;opacity:0.85">Tu perfil aparece publicado durante 15 días sin costo. Si querés seguir, elegís un plan. Si no, se da de baja automáticamente.</div>
+        <div style="font-size:13px;opacity:0.85">Tu perfil aparece publicado durante 15 días sin costo. Si querés seguir, elegís un plan.</div>
       </div>
     </div>
 
+    <!-- PLAN -->
     <div class="fsec-box">
       <div class="fsec-hd"><span class="fsec-title">Elegí tu plan — empieza después de los 15 días de prueba</span></div>
       <div class="fsec-body">
-        <div class="plan-grid" style="grid-template-columns:1fr 1fr;">
+        <div class="plan-grid">
           <div class="plan-c sel" id="pc-estandar" onclick="selP('estandar')" style="position:relative">
             <div class="plan-pop">MÁS ELEGIDO</div>
             <div class="plan-name">Estándar</div>
             <div class="plan-pr">$30.000 <small>/mes</small></div>
             <div class="plan-desc">Perfil completo, visible en búsquedas.</div>
             <div class="plan-fs">
-              <div class="pf"><span class="y">✓</span> 15 días gratis para empezar</div>
-              <div class="pf"><span class="y">✓</span> Perfil completo con toda la info</div>
-              <div class="pf"><span class="y">✓</span> Obras sociales visibles</div>
-              <div class="pf"><span class="y">✓</span> Horarios, urgencias y servicios</div>
-              <div class="pf"><span class="y">✓</span> Botón de contacto directo</div>
+              <div class="pf"><span class="y">✓</span> 15 días gratis</div>
+              <div class="pf"><span class="y">✓</span> Perfil completo</div>
+              <div class="pf"><span class="y">✓</span> Botón de contacto</div>
             </div>
           </div>
           <div class="plan-c" id="pc-premium" onclick="selP('premium')">
@@ -644,42 +643,60 @@ html, body { width: 100%; overflow-x: hidden; }
             <div class="plan-pr">$50.000 <small>/mes</small></div>
             <div class="plan-desc">Primero en todos los resultados.</div>
             <div class="plan-fs">
-              <div class="pf"><span class="y">✓</span> 15 días gratis para empezar</div>
-              <div class="pf"><span class="y">✓</span> Todo lo del plan Estándar</div>
-              <div class="pf"><span class="y">✓</span> Primero en búsquedas y filtros</div>
+              <div class="pf"><span class="y">✓</span> 15 días gratis</div>
+              <div class="pf"><span class="y">✓</span> Todo lo del Estándar</div>
               <div class="pf"><span class="y">✓</span> Badge dorado "Destacado"</div>
-              <div class="pf"><span class="y">✓</span> Soporte prioritario</div>
             </div>
           </div>
         </div>
-        <div style="font-size:11px;color:var(--ink2);margin-top:8px;text-align:center">Los 15 días de prueba empiezan desde que aprobamos tu habilitación. Sin tarjeta requerida para comenzar.</div>
       </div>
     </div>
 
+    <!-- TIPO -->
     <div class="fsec-box">
-      <div class="fsec-hd"><span class="fsec-title">Tipo de establecimiento</span><span class="fsec-req">* obligatorio</span></div>
+      <div class="fsec-hd"><span class="fsec-title">¿Qué tipo de servicio ofrecés?</span><span class="fsec-req">* obligatorio</span></div>
       <div class="fsec-body">
         <div class="fg">
-          <label class="fl">¿Qué tipo es? *</label>
+          <label class="fl">Categoría *</label>
           <select class="fs" id="rt" onchange="adaptF()">
             <option value="">— Seleccioná —</option>
-            <option value="residencia">🏡 Residencia geriátrica</option>
-            <option value="clinica">🏥 Clínica / Sanatorio</option>
-            <option value="profesional">🩺 Profesional a domicilio</option>
-            <option value="farmacia">💊 Farmacia / Droguería</option>
-            <option value="insumos">🦽 Insumos médicos / Ortopedia</option>
-            <option value="oxigeno">🫁 Oxígeno y equipos médicos</option>
+            <optgroup label="Profesionales">
+              <option value="medico">👨‍⚕️ Médico / Especialista</option>
+              <option value="enfermeria">💉 Enfermería</option>
+              <option value="kinesiologia">🏃 Kinesiología</option>
+              <option value="psicologia">🧠 Psicología</option>
+              <option value="fonoaudiologia">🗣️ Fonoaudiología</option>
+              <option value="terapia_ocupacional">🖐️ Terapia Ocupacional</option>
+              <option value="laboratorio">🔬 Laboratorio / Bioquímica</option>
+              <option value="cuidador">🤝 Cuidador/a domiciliario/a</option>
+              <option value="nutricion">🥗 Nutrición</option>
+              <option value="otro_prof">➕ Otro profesional</option>
+            </optgroup>
+            <optgroup label="Establecimientos">
+              <option value="residencia">🏡 Residencia geriátrica</option>
+              <option value="clinica">🏥 Clínica / Sanatorio</option>
+              <option value="farmacia">💊 Farmacia / Droguería</option>
+              <option value="insumos">🦽 Insumos médicos / Ortopedia</option>
+              <option value="oxigeno">🫁 Oxígeno y equipos médicos</option>
+              <option value="otro_estab">➕ Otro establecimiento</option>
+            </optgroup>
           </select>
         </div>
         <div id="tipo-hint" style="display:none" class="doc-note"></div>
       </div>
     </div>
 
+    <!-- DATOS GENERALES (siempre visibles) -->
     <div class="fsec-box">
-      <div class="fsec-hd"><span class="fsec-title">Identificación</span><span class="fsec-req">* obligatorio</span></div>
+      <div class="fsec-hd"><span class="fsec-title">Datos generales</span><span class="fsec-req">* obligatorio</span></div>
       <div class="fsec-body">
-        <div class="fg"><label class="fl">Nombre completo del establecimiento / Profesional *</label><input type="text" class="fi" id="r-n" placeholder="Nombre como aparece en la habilitación"></div>
+        <div class="fg"><label class="fl">Nombre completo / Razón social *</label><input type="text" class="fi" id="r-n" placeholder="Como aparece en la habilitación o matrícula"></div>
         <div class="frow">
+          <div class="fg"><label class="fl">Teléfono *</label><input type="text" class="fi" id="r-tel" placeholder="264-XXX-XXXX"></div>
+          <div class="fg"><label class="fl">WhatsApp</label><input type="text" class="fi" id="r-wsp" placeholder="264-XXX-XXXX"></div>
+        </div>
+        <div class="frow">
+          <div class="fg"><label class="fl">Email *</label><input type="email" class="fi" id="r-email" placeholder="contacto@..."></div>
           <div class="fg"><label class="fl">Departamento *</label>
             <select class="fs" id="r-d">
               <option value="">—</option>
@@ -689,80 +706,53 @@ html, body { width: 100%; overflow-x: hidden; }
               <option>Angaco</option><option>San Martín</option>
             </select>
           </div>
-          <div class="fg"><label class="fl">CUIT *</label><input type="text" class="fi" id="r-cuit" placeholder="20-XXXXXXXX-X"></div>
         </div>
-        <div class="fg"><label class="fl">Dirección</label><input type="text" class="fi" id="r-dir" placeholder="Calle, número, barrio"></div>
-        <div class="fg"><label class="fl">N° Habilitación / Matrícula *</label><input type="text" class="fi" id="r-hab" placeholder="Número oficial del Ministerio, ANMAT o Colegio"></div>
+        <div class="fg"><label class="fl">Dirección *</label><input type="text" class="fi" id="r-dir" placeholder="Calle, número, barrio"></div>
+        <div class="fg">
+          <label class="fl">Link de Google Maps *</label>
+          <input type="url" class="fi" id="r-maps" placeholder="https://maps.google.com/...">
+          <div class="fhint">Obligatorio. Abrí Google Maps, buscá tu dirección, clic en "Compartir" y copiá el link.</div>
+        </div>
+        <div class="fg"><label class="fl">Sitio web</label><input type="text" class="fi" id="r-web" placeholder="www.mipagina.com (opcional)"></div>
+        <div class="fg"><label class="fl">Redes sociales</label><input type="text" class="fi" id="r-redes" placeholder="@instagram, facebook.com/... (opcional)"></div>
+        <div class="fg">
+          <label class="fl">Descripción general *</label>
+          <textarea class="fta" id="r-desc" style="min-height:100px" placeholder="Contá quién sos, qué ofrecés y qué te diferencia. Cuanto más específico, mejor."></textarea>
+        </div>
       </div>
     </div>
 
+    <!-- IDENTIFICACIÓN -->
     <div class="fsec-box">
-      <div class="fsec-hd"><span class="fsec-title">Contacto</span></div>
+      <div class="fsec-hd"><span class="fsec-title">Identificación y habilitación</span><span class="fsec-req">* obligatorio</span></div>
       <div class="fsec-body">
         <div class="frow">
-          <div class="fg"><label class="fl">WhatsApp / Teléfono *</label><input type="text" class="fi" id="r-tel" placeholder="264-XXX-XXXX"></div>
-          <div class="fg"><label class="fl">Email <span style="color:var(--red)">*</span></label><input type="email" class="fi" id="r-email" placeholder="contacto@..." required></div>
+          <div class="fg"><label class="fl">CUIT *</label><input type="text" class="fi" id="r-cuit" placeholder="20-XXXXXXXX-X"></div>
+          <div class="fg"><label class="fl">N° Matrícula / Habilitación *</label><input type="text" class="fi" id="r-hab" placeholder="Número oficial"></div>
         </div>
-        <div class="fg"><label class="fl">Página web, Instagram o Facebook</label><input type="text" class="fi" id="r-web" placeholder="www.mipagina.com, @instagram o facebook.com/..."></div>
+        <div id="tipo-hint2" style="display:none" class="doc-note"></div>
       </div>
     </div>
 
-    <div class="fsec-box">
-      <div class="fsec-hd"><span class="fsec-title">Horarios y disponibilidad</span><span class="fsec-req">* obligatorio</span></div>
-      <div class="fsec-body">
-        <div class="fg">
-          <label class="fl">Días y horarios de atención *</label>
-          <input type="text" class="fi" id="r-hor" placeholder="Ej: Lunes a viernes 8 a 18hs. Sábados 8 a 13hs.">
-          <div class="fhint">Sé específico. El usuario necesita saber cuándo puede ser atendido.</div>
-        </div>
-        <div class="fg" id="fg-urg-clinica">
-          <label class="fl">¿Atención de urgencias? *</label>
-          <div class="rdo-g" id="rg-urg">
-            <div class="rdo" onclick="selR(this,'rg-urg','Sí, guardia 24hs')">Sí, guardia 24hs</div>
-            <div class="rdo" onclick="selR(this,'rg-urg','Sí, en horario de atención')">Sí, en horario</div>
-            <div class="rdo" onclick="selR(this,'rg-urg','No')">No</div>
-          </div>
-        </div>
-        <div class="fg" id="fg-urg-residencia" style="display:none">
-          <label class="fl">¿Cuenta con personal de asistencia las 24 horas? *</label>
-          <div class="rdo-g" id="rg-urg-res">
-            <div class="rdo" onclick="selR(this,'rg-urg-res','Sí, enfermería 24hs');rdos['rg-urg']='Sí, guardia 24hs'">Sí, enfermería 24hs</div>
-            <div class="rdo" onclick="selR(this,'rg-urg-res','Sí, con guardia médica');rdos['rg-urg']='Sí, guardia 24hs'">Sí, con guardia médica</div>
-            <div class="rdo" onclick="selR(this,'rg-urg-res','Solo en horario');rdos['rg-urg']='Sí, en horario de atención'">Solo en horario</div>
-          </div>
-        </div>
-        <div class="fg" id="fg-disp" style="display:none">
-          <label class="fl">Disponibilidad actual *</label>
-          <div class="rdo-g" id="rg-disp">
-            <div class="rdo" onclick="selR(this,'rg-disp','Disponible — hay lugares')">Disponible</div>
-            <div class="rdo" onclick="selR(this,'rg-disp','Lista de espera')">Lista de espera</div>
-            <div class="rdo" onclick="selR(this,'rg-disp','Sin disponibilidad')">Sin disponibilidad</div>
-          </div>
-          <div class="fhint">Podés actualizar esto cuando cambie.</div>
-        </div>
-        <div class="fg" id="fg-del" style="display:none">
-          <label class="fl">¿Hacen delivery / visitas a domicilio?</label>
-          <div class="rdo-g" id="rg-del">
-            <div class="rdo" onclick="selR(this,'rg-del','Sí, con costo de envío')">Sí, con costo</div>
-            <div class="rdo" onclick="selR(this,'rg-del','Sí, gratis en zona')">Sí, gratis en zona</div>
-            <div class="rdo" onclick="selR(this,'rg-del','No')">No</div>
-          </div>
-        </div>
-      </div>
+    <!-- SECCIÓN ESPECÍFICA POR TIPO -->
+    <div class="fsec-box" id="sec-esp" style="display:none">
+      <div class="fsec-hd"><span class="fsec-title" id="sec-esp-t">Información específica</span></div>
+      <div class="fsec-body" id="sec-esp-b"></div>
     </div>
 
+    <!-- OBRAS SOCIALES -->
     <div class="fsec-box">
       <div class="fsec-hd"><span class="fsec-title">Obras sociales y coberturas</span><span class="fsec-req">* obligatorio</span></div>
       <div class="fsec-body">
         <div class="fg">
-          <label class="fl">¿Aceptan obras sociales? *</label>
+          <label class="fl">¿Aceptás obras sociales? *</label>
           <div class="rdo-g" id="rg-os">
             <div class="rdo" onclick="selR(this,'rg-os','Sí');document.getElementById('os-lista').style.display='block'">Sí</div>
             <div class="rdo" onclick="selR(this,'rg-os','Solo particular');document.getElementById('os-lista').style.display='none'">Solo particular</div>
           </div>
         </div>
-        <div id="os-lista">
-          <label class="fl" style="margin-bottom:4px">¿Cuáles? (marcá todas las que apliquen)</label>
+        <div id="os-lista" style="display:none">
+          <label class="fl" style="margin-bottom:4px">¿Cuáles?</label>
           <div class="cbx-grid">
             <label class="cbx"><input type="checkbox" name="os" value="PAMI"> PAMI</label>
             <label class="cbx"><input type="checkbox" name="os" value="IPOS"> IPOS</label>
@@ -775,31 +765,57 @@ html, body { width: 100%; overflow-x: hidden; }
             <label class="cbx"><input type="checkbox" name="os" value="UPCN"> UPCN</label>
             <label class="cbx"><input type="checkbox" name="os" value="ATSA"> ATSA</label>
           </div>
-          <div class="fg" style="margin-top:8px"><label class="fl">Otras</label><input type="text" class="fi" id="r-os-o" placeholder="Otras obras sociales que aceptan, separadas por coma"></div>
+          <div class="fg" style="margin-top:8px"><label class="fl">Otras</label><input type="text" class="fi" id="r-os-o" placeholder="Otras obras sociales, separadas por coma"></div>
         </div>
       </div>
     </div>
 
-    <div class="fsec-box" id="sec-esp" style="display:none">
-      <div class="fsec-hd"><span class="fsec-title" id="sec-esp-t">Servicios específicos</span></div>
-      <div class="fsec-body" id="sec-esp-b"></div>
-    </div>
-
+    <!-- HORARIOS -->
     <div class="fsec-box">
-      <div class="fsec-hd"><span class="fsec-title">Descripción y precios</span></div>
+      <div class="fsec-hd"><span class="fsec-title">Horarios y disponibilidad</span><span class="fsec-req">* obligatorio</span></div>
       <div class="fsec-body">
         <div class="fg">
-          <label class="fl">Descripción *</label>
-          <textarea class="fta" id="r-desc" placeholder="Describí qué ofrecen, qué los diferencia, tipo de atención. Cuanto más específico, mejor para el usuario que está buscando."></textarea>
+          <label class="fl">Días y horarios de atención *</label>
+          <input type="text" class="fi" id="r-hor" placeholder="Ej: Lunes a viernes 8-18hs. Sábados 8-13hs.">
         </div>
+        <div class="fg" id="fg-disp" style="display:none">
+          <label class="fl">Disponibilidad actual</label>
+          <div class="rdo-g" id="rg-disp">
+            <div class="rdo" onclick="selR(this,'rg-disp','Disponible — hay lugares')">Disponible</div>
+            <div class="rdo" onclick="selR(this,'rg-disp','Lista de espera')">Lista de espera</div>
+            <div class="rdo" onclick="selR(this,'rg-disp','Sin disponibilidad')">Sin disponibilidad</div>
+          </div>
+        </div>
+        <div class="fg" id="fg-del" style="display:none">
+          <label class="fl">¿Hacen delivery / visitas a domicilio?</label>
+          <div class="rdo-g" id="rg-del">
+            <div class="rdo" onclick="selR(this,'rg-del','Sí, con costo de envío')">Sí, con costo</div>
+            <div class="rdo" onclick="selR(this,'rg-del','Sí, gratis en zona')">Sí, gratis en zona</div>
+            <div class="rdo" onclick="selR(this,'rg-del','No')">No</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRECIO -->
+    <div class="fsec-box">
+      <div class="fsec-hd"><span class="fsec-title">Precio orientativo</span></div>
+      <div class="fsec-body">
         <div class="fg">
-          <label class="fl">Rango de precios orientativo</label>
-          <input type="text" class="fi" id="r-pr" placeholder="Ej: Residencia permanente desde $280.000/mes. Consultar por plan.">
+          <input type="text" class="fi" id="r-pr" placeholder="Ej: Consulta desde $15.000. Sesión $12.000. Residencia desde $1.600.000/mes.">
           <div class="fhint">No es obligatorio pero ayuda a filtrar consultas que no corresponden.</div>
         </div>
-        <div class="fg">
-          <label class="fl">Zona de cobertura</label>
-          <input type="text" class="fi" id="r-z" placeholder="Ej: Capital y Rawson. O: toda la provincia.">
+      </div>
+    </div>
+
+    <!-- FOTOS -->
+    <div class="fsec-box">
+      <div class="fsec-hd"><span class="fsec-title">Fotos</span></div>
+      <div class="fsec-body">
+        <div class="doc-note">
+          📸 Si querés que tu perfil tenga fotos, enviálas por email a <strong>saludredsj@gmail.com</strong> con asunto <strong>"Fotos - [tu nombre]"</strong>.<br>
+          Podés enviar fotos de instalaciones, habitaciones, espacios comunes, equipo profesional o logo.<br>
+          <em>Resolución mínima recomendada: 800x600px.</em>
         </div>
       </div>
     </div>
@@ -1343,26 +1359,291 @@ function selP(p){
 function selR(el,grp,val){document.querySelectorAll('#'+grp+' .rdo').forEach(b=>b.classList.remove('sel'));el.classList.add('sel');rdos[grp]=val;}
 function adaptF(){
   const tipo=document.getElementById('rt').value;
-  const hint=document.getElementById('tipo-hint'),sec=document.getElementById('sec-esp');
+  const hint=document.getElementById('tipo-hint');
+  const hint2=document.getElementById('tipo-hint2');
+  const sec=document.getElementById('sec-esp');
+  const isRes=tipo==='residencia';
+  const isEstab=['residencia','clinica','farmacia','insumos','oxigeno','otro_estab'].includes(tipo);
+  const isProf=['medico','enfermeria','kinesiologia','psicologia','fonoaudiologia','terapia_ocupacional','laboratorio','cuidador','nutricion','otro_prof'].includes(tipo);
+
   if(!tipo){hint.style.display='none';sec.style.display='none';return;}
-  hint.textContent=HINTS[tipo];hint.style.display='block';
-  const cfg=CAMPOS[tipo];
+
+  // Habilitacion hints
+  const hints={
+    medico:'📄 Requerido: matrícula provincial activa del Colegio Médico de San Juan.',
+    enfermeria:'📄 Requerido: matrícula provincial de enfermería.',
+    kinesiologia:'📄 Requerido: matrícula provincial del Colegio de Kinesiólogos de San Juan.',
+    psicologia:'📄 Requerido: matrícula provincial del Colegio de Psicólogos de San Juan.',
+    fonoaudiologia:'📄 Requerido: matrícula provincial de fonoaudiología.',
+    terapia_ocupacional:'📄 Requerido: matrícula provincial de terapia ocupacional.',
+    laboratorio:'📄 Requerido: habilitación ANMAT y matrícula del bioquímico director.',
+    cuidador:'📄 Requerido: certificado de capacitación en cuidados domiciliarios.',
+    nutricion:'📄 Requerido: matrícula provincial de nutrición.',
+    otro_prof:'📄 Requerido: matrícula o habilitación profesional correspondiente.',
+    residencia:'📄 Requerido: N° habilitación del Ministerio de Salud de San Juan, certificado de bomberos y habilitación municipal.',
+    clinica:'📄 Requerido: N° habilitación provincial y CUIT del establecimiento.',
+    farmacia:'📄 Requerido: habilitación ANMAT y matrícula del director técnico.',
+    insumos:'📄 Requerido: CUIT activo y actividad comercial habilitada.',
+    oxigeno:'📄 Requerido: autorización ANMAT (DROG o DISP).',
+    otro_estab:'📄 Requerido: habilitación correspondiente al tipo de establecimiento.',
+  };
+  hint.textContent=hints[tipo]||'';
+  hint.style.display=hints[tipo]?'block':'none';
+  hint2.textContent=hints[tipo]||'';
+  hint2.style.display=hints[tipo]?'block':'none';
+
+  // Specific fields per type
+  const esp={
+    medico:{t:'Especialidad médica',html:`
+      <div class="fg"><label class="fl">Especialidad principal *</label>
+      <div class="cbx-grid">
+        <label class="cbx"><input type="checkbox" name="esp" value="Clínica médica"> Clínica médica</label>
+        <label class="cbx"><input type="checkbox" name="esp" value="Cardiología"> Cardiología</label>
+        <label class="cbx"><input type="checkbox" name="esp" value="Neurología"> Neurología</label>
+        <label class="cbx"><input type="checkbox" name="esp" value="Geriatría"> Geriatría</label>
+        <label class="cbx"><input type="checkbox" name="esp" value="Pediatría"> Pediatría</label>
+        <label class="cbx"><input type="checkbox" name="esp" value="Traumatología"> Traumatología</label>
+        <label class="cbx"><input type="checkbox" name="esp" value="Psiquiatría"> Psiquiatría</label>
+        <label class="cbx"><input type="checkbox" name="esp" value="Dermatología"> Dermatología</label>
+        <label class="cbx"><input type="checkbox" name="esp" value="Endocrinología"> Endocrinología</label>
+        <label class="cbx"><input type="checkbox" name="esp" value="Medicina familiar"> Medicina familiar</label>
+        <label class="cbx"><input type="checkbox" name="esp" value="Otra"> Otra (especificar)</label>
+      </div></div>
+      <div class="fg"><label class="fl">Subespecialidad (opcional)</label><input type="text" class="fi" id="r-subesp" placeholder="Ej: Cardiología intervencionista"></div>
+      <div class="fg"><label class="fl">Modalidad de atención</label>
+      <div class="cbx-grid">
+        <label class="cbx"><input type="checkbox" name="mod" value="Consultorio"> Consultorio</label>
+        <label class="cbx"><input type="checkbox" name="mod" value="Domicilio"> Domicilio</label>
+        <label class="cbx"><input type="checkbox" name="mod" value="Telemedicina"> Telemedicina</label>
+      </div></div>
+      <div class="fg"><label class="fl">Zona de cobertura</label><input type="text" class="fi" id="r-zona" placeholder="Ej: Capital y Rawson"></div>
+    `},
+    enfermeria:{t:'Servicios de enfermería',html:`
+      <div class="fg"><label class="fl">¿Qué servicios realizás?</label>
+      <div class="cbx-grid">
+        <label class="cbx"><input type="checkbox" name="srv" value="Curación de escaras"> Curación de escaras</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Inyectables"> Aplicación de inyectables</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Sueros"> Colocación de sueros</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Signos vitales"> Control de signos vitales</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Medicación"> Administración de medicación</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Domiciliaria"> Atención domiciliaria</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Cuidados paliativos"> Cuidados paliativos</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Geriátrica"> Enfermería geriátrica</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Postoperatoria"> Enfermería postoperatoria</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Acompañamiento"> Acompañamiento hospitalario</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Otros"> Otros (especificar)</label>
+      </div></div>
+      <div class="fg"><label class="fl">Zona de cobertura *</label><input type="text" class="fi" id="r-zona" placeholder="Ej: Capital, Rawson, Santa Lucía"></div>
+    `},
+    kinesiologia:{t:'Especialidades de kinesiología',html:`
+      <div class="fg"><label class="fl">¿Qué especialidades realizás?</label>
+      <div class="cbx-grid">
+        <label class="cbx"><input type="checkbox" name="srv" value="Respiratoria"> Kinesiología respiratoria</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Motora"> Kinesiología motora</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Rehab neurológica"> Rehabilitación neurológica</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Rehab traumatológica"> Rehabilitación traumatológica</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Rehab deportiva"> Rehabilitación deportiva</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Rehab geriátrica"> Rehabilitación geriátrica</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Rehab postquirúrgica"> Rehabilitación postquirúrgica</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Drenaje linfático"> Drenaje linfático</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Domiciliaria"> Atención domiciliaria</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Otros"> Otros (especificar)</label>
+      </div></div>
+      <div class="fg"><label class="fl">Zona de cobertura *</label><input type="text" class="fi" id="r-zona" placeholder="Ej: Capital y Rawson"></div>
+    `},
+    psicologia:{t:'Modalidad de atención en psicología',html:`
+      <div class="fg"><label class="fl">¿Qué modalidades ofrecés?</label>
+      <div class="cbx-grid">
+        <label class="cbx"><input type="checkbox" name="srv" value="Individual"> Terapia individual</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Pareja"> Terapia de pareja</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Familiar"> Terapia familiar</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Infantil"> Terapia infantil</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Adolescente"> Terapia adolescente</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Adultos mayores"> Adultos mayores</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Online"> Atención online</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Presencial"> Atención presencial</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Otros"> Otros (especificar)</label>
+      </div></div>
+    `},
+    fonoaudiologia:{t:'Servicios de fonoaudiología',html:`
+      <div class="fg"><label class="fl">¿Qué servicios ofrecés?</label>
+      <div class="cbx-grid">
+        <label class="cbx"><input type="checkbox" name="srv" value="Lenguaje"> Rehabilitación del lenguaje</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Deglución"> Trastornos de la deglución</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Neurológica"> Rehabilitación neurológica</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Estimulación"> Estimulación temprana</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Domiciliaria"> Atención domiciliaria</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Otros"> Otros (especificar)</label>
+      </div></div>
+      <div class="fg"><label class="fl">Zona de cobertura</label><input type="text" class="fi" id="r-zona" placeholder="Ej: Capital y Rawson"></div>
+    `},
+    terapia_ocupacional:{t:'Servicios de terapia ocupacional',html:`
+      <div class="fg"><label class="fl">¿Qué servicios ofrecés?</label>
+      <div class="cbx-grid">
+        <label class="cbx"><input type="checkbox" name="srv" value="Neurológica"> Rehabilitación neurológica</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Adultos mayores"> Adultos mayores</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Adaptación"> Adaptación funcional</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Domiciliaria"> Atención domiciliaria</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Cognitiva"> Estimulación cognitiva</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Otros"> Otros (especificar)</label>
+      </div></div>
+      <div class="fg"><label class="fl">Zona de cobertura</label><input type="text" class="fi" id="r-zona" placeholder="Ej: Capital y Rawson"></div>
+    `},
+    laboratorio:{t:'Servicios del laboratorio',html:`
+      <div class="fg"><label class="fl">¿Qué servicios ofrecés?</label>
+      <div class="cbx-grid">
+        <label class="cbx"><input type="checkbox" name="srv" value="Extracción domicilio"> Extracción a domicilio</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Análisis clínicos"> Análisis clínicos</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Rutina"> Análisis de rutina</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Hormonales"> Estudios hormonales</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Bacteriológicos"> Estudios bacteriológicos</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Especializados"> Estudios especializados</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Ocupacionales"> Análisis ocupacionales</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Otros"> Otros (especificar)</label>
+      </div></div>
+      <div class="fg"><label class="fl">¿Entregás resultados online?</label>
+      <div class="rdo-g" id="rg-online">
+        <div class="rdo" onclick="selR(this,'rg-online','Sí')">Sí</div>
+        <div class="rdo" onclick="selR(this,'rg-online','No')">No</div>
+      </div></div>
+    `},
+    cuidador:{t:'Servicios de cuidado domiciliario',html:`
+      <div class="fg"><label class="fl">¿Qué servicios ofrecés?</label>
+      <div class="cbx-grid">
+        <label class="cbx"><input type="checkbox" name="srv" value="Acompañamiento"> Acompañamiento diurno</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Nocturno"> Acompañamiento nocturno</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="24hs"> Cuidado 24hs</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Higiene"> Higiene personal</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Medicación"> Administración de medicación</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Traslados"> Traslados médicos</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Otros"> Otros (especificar)</label>
+      </div></div>
+      <div class="fg"><label class="fl">Zona de cobertura *</label><input type="text" class="fi" id="r-zona" placeholder="Ej: Capital y Rawson"></div>
+    `},
+    nutricion:{t:'Servicios de nutrición',html:`
+      <div class="fg"><label class="fl">¿Qué modalidades ofrecés?</label>
+      <div class="cbx-grid">
+        <label class="cbx"><input type="checkbox" name="srv" value="Consulta"> Consulta nutricional</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Domicilio"> Atención a domicilio</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Online"> Atención online</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Geriátrica"> Nutrición geriátrica</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Clínica"> Nutrición clínica</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Otros"> Otros (especificar)</label>
+      </div></div>
+    `},
+    residencia:{t:'Información de la residencia',html:`
+      <div class="fg"><label class="fl">Tipo de residencia *</label>
+      <div class="cbx-grid">
+        <label class="cbx"><input type="checkbox" name="tipores" value="Permanente"> Permanente</label>
+        <label class="cbx"><input type="checkbox" name="tipores" value="Temporal"> Temporal</label>
+        <label class="cbx"><input type="checkbox" name="tipores" value="Centro de día"> Centro de día</label>
+        <label class="cbx"><input type="checkbox" name="tipores" value="Hogar con asistencia parcial"> Hogar con asistencia parcial</label>
+        <label class="cbx"><input type="checkbox" name="tipores" value="Otros"> Otros</label>
+      </div></div>
+      <div class="fg"><label class="fl">Tipo de residentes que reciben *</label>
+      <div class="cbx-grid">
+        <label class="cbx"><input type="checkbox" name="tipopac" value="Autoválidos"> Autoválidos</label>
+        <label class="cbx"><input type="checkbox" name="tipopac" value="Semidependientes"> Semidependientes</label>
+        <label class="cbx"><input type="checkbox" name="tipopac" value="Dependientes"> Dependientes</label>
+        <label class="cbx"><input type="checkbox" name="tipopac" value="Deterioro cognitivo"> Deterioro cognitivo</label>
+        <label class="cbx"><input type="checkbox" name="tipopac" value="Patologías polivalentes"> Patologías polivalentes</label>
+        <label class="cbx"><input type="checkbox" name="tipopac" value="Todos"> Todos</label>
+      </div></div>
+      <div class="frow">
+        <div class="fg"><label class="fl">Capacidad total *</label><input type="number" class="fi" id="r-cap" placeholder="Ej: 12"></div>
+        <div class="fg"><label class="fl">N° de habitaciones</label><input type="number" class="fi" id="r-hab2" placeholder="Ej: 8"></div>
+      </div>
+      <div class="fg"><label class="fl">Servicios incluidos</label>
+      <div class="cbx-grid">
+        <label class="cbx"><input type="checkbox" name="srv" value="Enfermería 24hs"> Enfermería 24hs</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Médico de cabecera"> Médico de cabecera</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Kinesiología"> Kinesiología</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Nutrición"> Nutrición</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Terapia ocupacional"> Terapia ocupacional</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Psicología"> Psicología</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Actividades recreativas"> Actividades recreativas</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Lavandería"> Lavandería</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Cocina propia"> Cocina propia</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Habitaciones compartidas"> Habitaciones compartidas</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Habitaciones privadas"> Habitaciones privadas</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Cuidados paliativos"> Cuidados paliativos</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Otros"> Otros</label>
+      </div></div>
+      <div class="fg"><label class="fl">Horario de visitas familiares *</label><input type="text" class="fi" id="r-visitas" placeholder="Ej: Todos los días 10-12hs y 16-19hs"></div>
+      <div class="fg"><label class="fl">¿Reciben residentes de otros departamentos?</label>
+      <div class="rdo-g" id="rg-otrodept">
+        <div class="rdo" onclick="selR(this,'rg-otrodept','Sí')">Sí</div>
+        <div class="rdo" onclick="selR(this,'rg-otrodept','No')">No</div>
+      </div></div>
+    `},
+    clinica:{t:'Información de la clínica / sanatorio',html:`
+      <div class="fg"><label class="fl">Especialidades médicas disponibles *</label><input type="text" class="fi" id="r-esp2" placeholder="Ej: Traumatología, Cardiología, Pediatría, Ginecología"></div>
+      <div class="fg"><label class="fl">¿Tienen guardia permanente?</label>
+      <div class="rdo-g" id="rg-guardia">
+        <div class="rdo" onclick="selR(this,'rg-guardia','Sí, 24hs')">Sí, 24hs</div>
+        <div class="rdo" onclick="selR(this,'rg-guardia','Solo en horario')">Solo en horario</div>
+        <div class="rdo" onclick="selR(this,'rg-guardia','No')">No</div>
+      </div></div>
+      <div class="fg"><label class="fl">¿Tienen internación?</label><input type="text" class="fi" id="r-intern" placeholder="Sí, hasta N camas / No, solo consultorios"></div>
+      <div class="fg"><label class="fl">Equipamiento y servicios especiales</label><input type="text" class="fi" id="r-equip" placeholder="Ej: UCI, quirófano, laboratorio, ecografía, rayos X"></div>
+    `},
+    farmacia:{t:'Servicios de la farmacia',html:`
+      <div class="fg"><label class="fl">¿Qué servicios ofrecés?</label>
+      <div class="cbx-grid">
+        <label class="cbx"><input type="checkbox" name="srv" value="Magistrales"> Preparados magistrales</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Inyecciones"> Aplicación de inyecciones</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Turno guardia"> Turno de guardia</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Delivery"> Delivery</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Insumos"> Venta de insumos médicos</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Otros"> Otros</label>
+      </div></div>
+      <div class="fg"><label class="fl">Zona de cobertura del delivery</label><input type="text" class="fi" id="r-zona" placeholder="Ej: Capital y Rawson"></div>
+      <div class="fg"><label class="fl">Días de turno</label><input type="text" class="fi" id="r-turno" placeholder="Ej: Turno los lunes y jueves 24hs"></div>
+    `},
+    insumos:{t:'Catálogo y servicios',html:`
+      <div class="fg"><label class="fl">Productos principales</label><textarea class="fta" id="r-prod" placeholder="Ej: Sillas de ruedas, andadores, camas ortopédicas, colchones antiescaras, pañales adulto"></textarea></div>
+      <div class="fg"><label class="fl">¿Alquilan equipos?</label>
+      <div class="rdo-g" id="rg-alq">
+        <div class="rdo" onclick="selR(this,'rg-alq','Sí, alquilamos y vendemos')">Sí, alquilan y venden</div>
+        <div class="rdo" onclick="selR(this,'rg-alq','Solo vendemos')">Solo venden</div>
+      </div></div>
+      <div class="fg"><label class="fl">Zona de cobertura del delivery</label><input type="text" class="fi" id="r-zona" placeholder="Ej: Toda la provincia"></div>
+    `},
+    oxigeno:{t:'Equipos y servicios',html:`
+      <div class="fg"><label class="fl">Equipos disponibles</label>
+      <div class="cbx-grid">
+        <label class="cbx"><input type="checkbox" name="srv" value="Oxígeno medicinal"> Oxígeno medicinal</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Concentrador"> Concentrador de O₂</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="CPAP"> CPAP</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="BiPAP"> BiPAP</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Nebulizador"> Nebulizador</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Otros"> Otros</label>
+      </div></div>
+      <div class="fg"><label class="fl">¿Realizan instalación y mantenimiento?</label>
+      <div class="rdo-g" id="rg-inst">
+        <div class="rdo" onclick="selR(this,'rg-inst','Sí, incluido')">Sí, incluido</div>
+        <div class="rdo" onclick="selR(this,'rg-inst','Sí, con costo adicional')">Sí, con costo</div>
+        <div class="rdo" onclick="selR(this,'rg-inst','No')">No</div>
+      </div></div>
+      <div class="fg"><label class="fl">¿Tienen urgencias 24hs?</label>
+      <div class="rdo-g" id="rg-urg24">
+        <div class="rdo" onclick="selR(this,'rg-urg24','Sí, 24hs')">Sí, 24hs</div>
+        <div class="rdo" onclick="selR(this,'rg-urg24','No')">No</div>
+      </div></div>
+    `},
+  };
+
+  const cfg=esp[tipo];
   if(cfg){
     document.getElementById('sec-esp-t').textContent=cfg.t;
-    document.getElementById('sec-esp-b').innerHTML=cfg.c.map(function(cf){return '<div class="fg"><label class="fl">'+cf.l+'</label><input type="text" class="fi" id="'+cf.id+'" placeholder="'+cf.ph+'"></div>';}).join('');
+    document.getElementById('sec-esp-b').innerHTML=cfg.html;
     sec.style.display='block';
-  }else sec.style.display='none';
-  const isRes=tipo==='residencia';
+  } else {
+    sec.style.display='none';
+  }
+
   document.getElementById('fg-disp').style.display=isRes?'block':'none';
   document.getElementById('fg-del').style.display=['farmacia','insumos','oxigeno'].includes(tipo)?'block':'none';
-  // Show/hide urgencias variants
-  if(document.getElementById('fg-urg-clinica')){
-    document.getElementById('fg-urg-clinica').style.display=isRes?'none':'block';
-    document.getElementById('fg-urg-residencia').style.display=isRes?'block':'none';
-  }
-  // Hide zona for residencias (replaced by r-zona field in specific section)
-  const zonaFg=document.getElementById('r-z')?.closest('.fg');
-  if(zonaFg) zonaFg.style.display=isRes?'none':'block';
 }
 // ═══════════════════════════════════════
 // EMAILJS CONFIG
