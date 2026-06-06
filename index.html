@@ -1469,6 +1469,1569 @@ let pending=JSON.parse(localStorage.getItem('sr9_pend')||'[]');
 let cart={};
 if(!db.length){
   db=[
+    // ── RESIDENCIAS REALES ──
+    {id:11,tipo:'residencia',nombre:'Residencia El Chalet',dept:'Santa Lucía',dir:'Hipólito Yrigoyen 1856 Este, Santa Lucía',tel:'2655057363',
+     horario:'Consultar horarios.',urgencias:'Sí, enfermería 24hs',disponibilidad:'Disponible — hay lugares',
+     obras:[],osOtras:'Solo particular',capacidad:'12 residentes',modalidades:'Permanente',
+     tipoResidentes:'Autoválidos',equipo:'Enfermería 24hs, Médico clínico, Nutricionista, Psicología',
+     servicios:'Asistencia geriátrica 24hs, Alimentación completa, Higiene y confort, Lavandería, Medicación, Signos vitales, Actividades recreativas',
+     infraestructura:'Habitaciones compartidas, A/C, Calefacción, WiFi, TV, Espacios verdes, Accesibilidad, Mascota',
+     visitas:'Lunes a lunes, mañana y tarde',precio:'Desde $1.600.000/mes. Consultar.',
+     desc:'Residencia geriátrica para adultos mayores autoválidos, dirigida por sus propios dueños desde 2019. Ambiente cálido y familiar, equipo interdisciplinario completo y tecnología para que las familias estén conectadas.',
+     fotos:['https://lh3.googleusercontent.com/d/18P0pLrLnV78_rRVI1erPvjbLUPSsQHnb', 'https://lh3.googleusercontent.com/d/1-dO51CAI97WSPoP46-XDoUDGOr4nOKtl', 'https://lh3.googleusercontent.com/d/1smFIBtVPUH-EBdCFSnNnjjpfxJ06Z6Tc', 'https://lh3.googleusercontent.com/d/1o7Zm2pYcmSlknsgBjsEBO59EnB_FbBtM', 'https://lh3.googleusercontent.com/d/1Yz2WOT3mlvBZIq-orkt-SnkGyDRE0xhk', 'https://lh3.googleusercontent.com/d/1iyBf3MFijpI9wDl4vXrSdWkj_SULX9dW', 'https://lh3.googleusercontent.com/d/1Eqou9Ui3a53kEfkvLxDp4vCEnCtn-Lxd', 'https://lh3.googleusercontent.com/d/10N2kLJ6SJzXp2VfAWSQ3ED8bML9Wyofe', 'https://lh3.googleusercontent.com/d/111pTFF2Dxc7t3ILmd1TOJgmjqq6Z_Ibd', 'https://lh3.googleusercontent.com/d/1QYqAapKAK9gnNsdKBWVKHKmck4_t9unG', 'https://lh3.googleusercontent.com/d/1oQQj2AwP2eRGlfBp5hQK_lwOepO-OL5L', 'https://lh3.googleusercontent.com/d/1Im0cT7We6KmuXUEMwVVOaRKGJKMG8NoD', 'https://lh3.googleusercontent.com/d/1RTYt8Od5HXh0DwPyP8NKmLAw2NPTW4We', 'https://lh3.googleusercontent.com/d/10hqDxvk9Rx09RrGCxEJT9y9nDHSTdh-3', 'https://lh3.googleusercontent.com/d/10c5KMw3bvn42otBDO4k8Gf_TYugN7Qn4'],
+     plan:'premium',status:'active'},
+    {id:12,tipo:'residencia',nombre:'Residencia Sol de Otoño',dept:'Rawson',dir:'Ezpeleta 95 Oeste, Rawson',tel:'2645057363',
+     horario:'Lunes a lunes, mañana y tarde.',urgencias:'Sí, enfermería 24hs',disponibilidad:'Disponible — hay lugares',
+     obras:[],osOtras:'Solo particular',capacidad:'18 residentes',modalidades:'Permanente',
+     tipoResidentes:'Patologías polivalentes — Semidependientes y Dependientes',
+     equipo:'Enfermería 24hs, Médico clínico, Nutricionista, Psicología',
+     servicios:'Asistencia geriátrica 24hs, Alimentación adaptada, Higiene y confort, Lavandería, Medicación, Signos vitales, Actividades recreativas',
+     infraestructura:'Habitaciones compartidas, A/C, Calefacción, WiFi, TV, Espacios verdes, Accesibilidad',
+     visitas:'Lunes a lunes, mañana y tarde',precio:'Desde $1.600.000/mes. Consultar.',
+     desc:'Residencia geriátrica especializada en patologías polivalentes. Atención personalizada con equipo interdisciplinario. Ambiente cálido donde el vínculo familiar es parte fundamental de la vida cotidiana.',
+     fotos:['https://lh3.googleusercontent.com/d/1khyjdyEKjDVJhro5u6eRMxb3dkRvGk88', 'https://lh3.googleusercontent.com/d/1ECZF8nJBXey04Ujo5oSvoJynGvWewl6p', 'https://lh3.googleusercontent.com/d/1YfrzpvSXjT5ibSIQEcIjWBnQId9T__WZ', 'https://lh3.googleusercontent.com/d/1rGDp5_nY6Kk3ySArK8XE8LEynMeaa73p', 'https://lh3.googleusercontent.com/d/1avlFv2gqun4QaGzCJNi1UAFHtRrO0o9c', 'https://lh3.googleusercontent.com/d/1rO-WvqBPPfFsn_54bq3Aq2RHOVdWrIQr', 'https://lh3.googleusercontent.com/d/1figf-YsFhYgYXsNbGoR8dL-lew-ioHpX', 'https://lh3.googleusercontent.com/d/1BeKAEFhHG_HvwDoJ4djHOv6bgViw2cZT', 'https://lh3.googleusercontent.com/d/1bidfPvLj_AUULz1Ike8jRC6bYpExU0Ru', 'https://lh3.googleusercontent.com/d/1FxEo_CvK3YAw7GeieoMcesp2eyPP7NKS', 'https://lh3.googleusercontent.com/d/19XCeuc9ngwZRUO3xhNswnu6S44efSEe3', 'https://lh3.googleusercontent.com/d/1hkjhDVIGmOR5fRawhOsyZFAW5jMzzhqB', 'https://lh3.googleusercontent.com/d/1GfGad4KSqN4ftbXO9AKJRHWNLTg_m9gt', 'https://lh3.googleusercontent.com/d/1-jLAYuUimBSFtTaNFb4l8Zj0IcH2Ldbi', 'https://lh3.googleusercontent.com/d/1mGhvCv0xxmrQrBYBwaAR5K7FZty7-b8C', 'https://lh3.googleusercontent.com/d/1Byr2wqPpQoPmdWdzXGUORKO74q_uLsiu', 'https://lh3.googleusercontent.com/d/1wEMSKWx6pkkkgsnLs1Vw9vA28SOsGVWW', 'https://lh3.googleusercontent.com/d/18M-gRj4XnlsCyBLCoIHVOCMK-n4ScaeO', 'https://lh3.googleusercontent.com/d/1rKkEPz_Ag6apsMttFxdxAIfyl9IGXEQr', 'https://lh3.googleusercontent.com/d/1vy6NXyBuXj6sYIOQN8sQaDil1d74jaid', 'https://lh3.googleusercontent.com/d/1NH8D82E8oYmhu8t7UmSXX5b67Qpyfgzt'],
+     plan:'premium',status:'active'},
+
+    // ── CLÍNICAS ──
+    {id:21,tipo:'clinica',nombre:'Clínica San Martín',dept:'Rivadavia',dir:'Tucumán 580, Rivadavia',tel:'2644441000',
+     horario:'Guardia 24hs. Consultorios Lun-Vie 8-20hs, Sáb 8-13hs.',urgencias:'Sí, guardia 24hs',
+     obras:['OSDE','Swiss Medical','IPOS','PAMI','Particular'],
+     especialidades:'Traumatología, Cardiología, Cirugía general, Pediatría, Ginecología, Neurología, Clínica médica',
+     desc:'Clínica privada con guardia permanente y unidad coronaria. Más de 30 años en San Juan. Laboratorio propio, radiología y ecografía.',
+     plan:'premium',status:'active'},
+    {id:22,tipo:'clinica',nombre:'Centro Médico Rivadavia',dept:'Rivadavia',dir:'Tucumán 1100, Rivadavia',tel:'2644449900',
+     horario:'Lun-Sáb 8-20hs.',urgencias:'Sí, en horario de atención',
+     obras:['OSDE','IPOS','Swiss Medical','Particular'],
+     especialidades:'Clínica médica, Cardiología, Dermatología, Traumatología, Ecografías, Radiografías',
+     desc:'Centro ambulatorio con especialidades médicas y diagnóstico por imagen. Sin internación.',
+     plan:'estandar',status:'active'},
+
+    // ── PROFESIONALES A DOMICILIO ──
+    {id:201,tipo:'profesional',nombre:'Dr. Marcelo Fuentes — Clínica Médica',dept:'Capital',dir:'A domicilio',tel:'2644230044',
+     horario:'Lunes, Miércoles y Viernes 9-17hs.',urgencias:'Sí, en horario de atención',
+     obras:['PAMI','OSDE','Swiss Medical'],zona:'Capital y Rawson',
+     especialidad:'Médico clínico',matricula:'4821',
+     desc:'Médico clínico con 20 años de experiencia. Consultas domiciliarias, controles de crónicos y urgencias en horario.',
+     plan:'premium',status:'active'},
+    {id:202,tipo:'profesional',nombre:'Lic. Carla Romero — Kinesiología',dept:'Capital',dir:'A domicilio',tel:'2644551122',
+     horario:'Lunes a Viernes 8-18hs.',urgencias:'No',
+     obras:['PAMI','OSDE','IPOS'],zona:'Capital, Rivadavia, Chimbas',
+     especialidad:'Kinesióloga',matricula:'K-1204',
+     desc:'Especializada en adultos mayores. Rehabilitación motora, respiratoria y post-quirúrgica a domicilio.',
+     plan:'estandar',status:'active'},
+    {id:203,tipo:'profesional',nombre:'Enf. Roberto Díaz — Enfermería Domiciliaria',dept:'Rawson',dir:'A domicilio',tel:'2644883300',
+     horario:'Lunes a Sábados 7-22hs.',urgencias:'Sí, en horario de atención',
+     obras:['PAMI','Particular'],zona:'Capital, Rawson, Santa Lucía',
+     especialidad:'Enfermero profesional',matricula:'E-3341',
+     desc:'Curaciones, inyectables, colocación de sondas, control de signos vitales y guardias domiciliarias.',
+     plan:'estandar',status:'active'},
+    {id:204,tipo:'profesional',nombre:'InternaSJ — Internaciones Domiciliarias',dept:'Capital',dir:'Coordinación central',tel:'2644100200',
+     horario:'Coordinación 24hs.',urgencias:'Sí, guardia 24hs',
+     obras:['PAMI','OSDE','IPOS','Swiss Medical','Particular'],zona:'Toda la provincia',
+     especialidad:'Internación domiciliaria integral',matricula:'Hab. MS-224',
+     desc:'Equipo completo: médico clínico, enfermería, kinesiología y equipos. Atención continua para pacientes que requieren internación en casa.',
+     plan:'premium',status:'active'},
+    {id:205,tipo:'profesional',nombre:'Dra. Silvina Morales — Geriatría',dept:'Capital',dir:'A domicilio',tel:'2644312233',
+     horario:'Martes, Jueves y Sábados 9-16hs.',urgencias:'No',
+     obras:['PAMI','IPOS','Particular'],zona:'Capital y Chimbas',
+     especialidad:'Geriatra',matricula:'6102',
+     desc:'Especialista en adultos mayores. Evaluación geriátrica integral, seguimiento de pacientes crónicos y orientación familiar.',
+     plan:'estandar',status:'active'},
+
+    // ── FARMACIAS ──
+    {id:101,tipo:'farmacia',nombre:'Farmacia Del Pueblo',dept:'Capital',dir:'Av. José I. de la Roza 890, Capital',tel:'2644211122',
+     horario:'Lun-Sáb 8-21hs. Turno Martes y Viernes 24hs.',urgencias:'Sí, en horario',
+     obras:['PAMI','IPOS','OSDE'],zona:'Capital',
+     desc:'Farmacia de barrio con delivery en el día en Capital. Turno los Martes y Viernes. Preparados magistrales.',
+     plan:'premium',status:'active',delivery:'Sí, con costo de envío'},
+    {id:102,tipo:'farmacia',nombre:'Farmacia Central Rawson',dept:'Rawson',dir:'Av. Rawson 1200, Rawson',tel:'2644428888',
+     horario:'Lun-Sáb 8-21hs. Turno Lunes y Jueves 24hs.',urgencias:'Sí, en horario',
+     obras:['PAMI','IPOS','OSDE'],zona:'Rawson y Capital',
+     desc:'Farmacia con delivery en zona Rawson y Capital. Preparados magistrales y aplicación de inyecciones.',
+     plan:'estandar',status:'active',delivery:'Sí, con costo de envío'},
+
+    // ── INSUMOS ──
+    {id:103,tipo:'insumos',nombre:'OrthoMed San Juan',dept:'Capital',dir:'Mendoza 892, Capital',tel:'2644310044',
+     horario:'Lun-Vie 9-18hs. Sáb 9-13hs.',urgencias:'No',
+     obras:['PAMI','OSDE'],zona:'Toda la provincia',
+     desc:'Insumos médicos y ortopédicos. Venta y alquiler. Sillas de ruedas, andadores, camas ortopédicas, colchones antiescaras, pañales adulto.',
+     plan:'estandar',status:'active',delivery:'Sí, con costo de envío'},
+
+    // ── OXÍGENO ──
+    {id:104,tipo:'oxigeno',nombre:'OxiSan — Oxígeno Domiciliario',dept:'Capital',dir:'Rioja 456, Capital',tel:'2644580001',
+     horario:'Lun-Sáb 8-20hs. Urgencias 24hs.',urgencias:'Sí, guardia 24hs',
+     obras:['PAMI','OSDE','Particular'],zona:'Toda la provincia',
+     desc:'Proveedor autorizado ANMAT. Oxígeno medicinal, concentradores, CPAP y nebulizadores. Entrega urgente 24hs en toda la provincia.',
+     plan:'premium',status:'active',delivery:'Sí, gratis en zona'},
+  ];
+}="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SaludRed — Residencias geriátricas, clínicas y médicos en San Juan, Argentina</title>
+<meta name="description" content="Encontrá residencias geriátricas, clínicas, médicos a domicilio, farmacias e insumos médicos en San Juan, Argentina. Información completa: horarios, obras sociales, precios y disponibilidad.">
+<meta name="keywords" content="residencias geriatricas san juan, geriatrico san juan argentina, clinicas san juan, medicos domicilio san juan, kinesiologo san juan, enfermero domicilio san juan, farmacias san juan, insumos medicos san juan, oxigeno domiciliario san juan, PAMI san juan, traumatologo san juan, cardiologo san juan, geriatra san juan, cuidados paliativos san juan">
+<meta name="robots" content="index, follow">
+<meta name="geo.region" content="AR-J">
+<meta name="geo.placename" content="San Juan, Argentina">
+<meta property="og:title" content="SaludRed — Red de salud de San Juan, Argentina">
+<meta property="og:description" content="Residencias geriátricas, clínicas, médicos a domicilio y productos de salud en San Juan. Toda la información antes de contactar.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://saludred.com.ar">
+<meta property="og:locale" content="es_AR">
+<link rel="canonical" href="https://saludred.com.ar">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "SaludRed",
+  "url": "https://saludred.com.ar",
+  "description": "Directorio de salud de San Juan, Argentina. Residencias geriátricas, clínicas, médicos a domicilio, farmacias e insumos médicos.",
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "San Juan",
+    "addressCountry": "AR"
+  }
+}
+
+// LIGHTBOX
+var lbProvId=null,lbIdx=0;
+function openLB(provId,idx){
+  var p=db.find(function(x){return x.id===provId;});
+  if(!p||!p.fotos)return;
+  lbProvId=provId;lbIdx=idx;
+  document.getElementById('lb-img').src=p.fotos[idx];
+  document.getElementById('lb-ov').classList.add('on');
+  document.body.style.overflow='hidden';
+}
+function closeLB(){
+  document.getElementById('lb-ov').classList.remove('on');
+  document.body.style.overflow='';
+}
+function lbNav(dir){
+  var p=db.find(function(x){return x.id===lbProvId;});
+  if(!p||!p.fotos)return;
+  lbIdx=(lbIdx+dir+p.fotos.length)%p.fotos.length;
+  document.getElementById('lb-img').src=p.fotos[lbIdx];
+}
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape')closeLB();
+  if(e.key==='ArrowLeft')lbNav(-1);
+  if(e.key==='ArrowRight')lbNav(1);
+});
+
+
+var regPlanProf='estandar', regPlanEstab='estandar';
+
+function selPP(p){
+  regPlanProf=p;
+  document.querySelectorAll('[id^="pcp-"]').forEach(el=>el.classList.remove('sel','sel-gold'));
+  document.getElementById('pcp-'+p).classList.add(p==='premium'?'sel-gold':'sel');
+}
+function selPE(p){
+  regPlanEstab=p;
+  document.querySelectorAll('[id^="pce-"]').forEach(el=>el.classList.remove('sel','sel-gold'));
+  document.getElementById('pce-'+p).classList.add(p==='premium'?'sel-gold':'sel');
+}
+
+function adaptProfEsp(){
+  var esp=document.getElementById('pp-esp').value;
+  var otraDiv=document.getElementById('pp-otra-esp');
+  otraDiv.style.display=esp==='Otra'?'block':'none';
+  var secSrv=document.getElementById('pp-sec-srv');
+  var srvBody=document.getElementById('pp-srv-body');
+  var srvTit=document.getElementById('pp-srv-titulo');
+  var srv={
+    'Kinesiología':{t:'Especialidades',html:'<div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pp-srv" value="Respiratoria"> Respiratoria</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Motora"> Motora</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Neurológica"> Neurológica</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Traumatológica"> Traumatológica</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Geriátrica"> Geriátrica</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Postquirúrgica"> Postquirúrgica</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Domiciliaria"> Domiciliaria</label></div>'},
+    'Enfermería':{t:'Servicios',html:'<div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pp-srv" value="Curación escaras"> Curación de escaras</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Inyectables"> Inyectables</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Sueros"> Sueros IV</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Signos vitales"> Signos vitales</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Medicación"> Medicación</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Geriátrica"> Geriátrica</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Cuidados paliativos"> Cuidados paliativos</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Acompañamiento"> Acompañamiento hospitalario</label></div>'},
+    'Psicología':{t:'Modalidades',html:'<div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pp-srv" value="Individual"> Individual</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Pareja"> Pareja</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Familiar"> Familiar</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Infantil"> Infantil</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Adolescente"> Adolescente</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Adultos mayores"> Adultos mayores</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Online"> Online</label></div>'},
+    'Fonoaudiología':{t:'Servicios',html:'<div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pp-srv" value="Lenguaje"> Lenguaje</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Deglución"> Deglución</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Neurológica"> Neurológica</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Estimulación temprana"> Estimulación temprana</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Domiciliaria"> Domiciliaria</label></div>'},
+    'Terapia Ocupacional':{t:'Servicios',html:'<div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pp-srv" value="Neurológica"> Neurológica</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Adultos mayores"> Adultos mayores</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Adaptación funcional"> Adaptación funcional</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Cognitiva"> Estimulación cognitiva</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Domiciliaria"> Domiciliaria</label></div>'},
+    'Laboratorio/Bioquímica':{t:'Servicios',html:'<div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pp-srv" value="Extracción domicilio"> Extracción domicilio</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Análisis clínicos"> Análisis clínicos</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Hormonales"> Hormonales</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Bacteriológicos"> Bacteriológicos</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Ocupacionales"> Ocupacionales</label></div>'},
+    'Cuidador domiciliario':{t:'Servicios',html:'<div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pp-srv" value="Diurno"> Acompañamiento diurno</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Nocturno"> Nocturno</label><label class="cbx"><input type="checkbox" name="pp-srv" value="24hs"> 24hs</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Higiene"> Higiene personal</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Traslados"> Traslados</label></div>'},
+  };
+  if(srv[esp]){
+    srvTit.textContent=srv[esp].t;
+    srvBody.innerHTML=srv[esp].html;
+    secSrv.style.display='block';
+  } else {
+    secSrv.style.display='none';
+  }
+}
+
+function adaptEstabTipo(){
+  var tipo=document.getElementById('pe-tipo').value;
+  var hint=document.getElementById('pe-tipo-hint');
+  var sec=document.getElementById('pe-sec-esp');
+  var body=document.getElementById('pe-esp-body');
+  var tit=document.getElementById('pe-esp-titulo');
+  var hints={
+    residencia:'📄 Requerido: N° habilitación del Ministerio de Salud de San Juan, certificado de bomberos y habilitación municipal.',
+    clinica:'📄 Requerido: N° habilitación provincial y CUIT del establecimiento.',
+    farmacia:'📄 Requerido: habilitación ANMAT y matrícula del director técnico.',
+    insumos:'📄 Requerido: CUIT activo y actividad comercial habilitada.',
+    oxigeno:'📄 Requerido: autorización ANMAT (DROG o DISP).',
+  };
+  hint.textContent=hints[tipo]||'';
+  hint.style.display=hints[tipo]?'block':'none';
+  var esp={
+    residencia:{t:'Información de la residencia',html:'<div class="fg"><label class="fl">Tipo de residencia</label><div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pe-tipores" value="Permanente"> Permanente</label><label class="cbx"><input type="checkbox" name="pe-tipores" value="Temporal"> Temporal</label><label class="cbx"><input type="checkbox" name="pe-tipores" value="Centro de día"> Centro de día</label></div></div><div class="fg"><label class="fl">Tipo de residentes</label><div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Autoválidos"> Autoválidos</label><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Semidependientes"> Semidependientes</label><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Dependientes"> Dependientes</label><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Deterioro cognitivo"> Deterioro cognitivo</label><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Patologías polivalentes"> Patologías polivalentes</label></div></div><div class="frow"><div class="fg"><label class="fl">Capacidad total *</label><input type="number" class="fi" id="pe-cap" placeholder="Ej: 12"></div><div class="fg"><label class="fl">N° de habitaciones</label><input type="number" class="fi" id="pe-hab2" placeholder="Ej: 8"></div></div><div class="fg"><label class="fl">Servicios incluidos</label><div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pe-srv" value="Enfermería 24hs"> Enfermería 24hs</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Médico de cabecera"> Médico de cabecera</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Kinesiología"> Kinesiología</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Nutrición"> Nutrición</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Psicología"> Psicología</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Terapia ocupacional"> Terapia ocupacional</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Actividades recreativas"> Actividades recreativas</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Lavandería"> Lavandería</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Cuidados paliativos"> Cuidados paliativos</label></div></div><div class="fg"><label class="fl">Horario de visitas familiares *</label><input type="text" class="fi" id="pe-visitas" placeholder="Ej: Todos los días 10-12hs y 16-19hs"></div>'},
+    clinica:{t:'Información de la clínica',html:(function(){
+      var h='';
+      h+='<div class="fg"><label class="fl">Especialidades disponibles *</label>';
+      h+='<input type="text" class="fi" id="pe-esp2" placeholder="Ej: Traumatología, Cardiología, Pediatría"></div>';
+      h+='<div class="fg"><label class="fl">¿Tienen guardia 24hs?</label>';
+      h+='<div class="rdo-g" id="rg-pe-guardia">';
+      h+='<div class="rdo" onclick="selR(this,\'rg-pe-guardia\',\'Sí\')">Sí</div>';
+      h+='<div class="rdo" onclick="selR(this,\'rg-pe-guardia\',\'No\')">No</div>';
+      h+='</div></div>';
+      h+='<div class="fg"><label class="fl">¿Tienen internación?</label>';
+      h+='<input type="text" class="fi" id="pe-intern" placeholder="Sí, N camas / No, solo consultorios"></div>';
+      return h;
+    })()},
+    farmacia:{t:'Servicios de la farmacia',html:'<div class="fg"><label class="fl">Servicios</label><div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pe-srv" value="Magistrales"> Magistrales</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Inyecciones"> Inyecciones</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Turno guardia"> Turno guardia</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Delivery"> Delivery</label></div></div><div class="fg"><label class="fl">Zona de delivery</label><input type="text" class="fi" id="pe-zona" placeholder="Ej: Capital y Rawson"></div>'},
+    insumos:{t:'Catálogo',html:(function(){
+      var h='';
+      h+='<div class="fg"><label class="fl">Productos principales</label>';
+      h+='<textarea class="fta" id="pe-prod" placeholder="Ej: Sillas de ruedas, andadores, camas, pañales"></textarea></div>';
+      h+='<div class="fg"><label class="fl">¿Alquilan?</label>';
+      h+='<div class="rdo-g" id="rg-pe-alq">';
+      h+='<div class="rdo" onclick="selR(this,\'rg-pe-alq\',\'Sí\')">Sí, alquilan y venden</div>';
+      h+='<div class="rdo" onclick="selR(this,\'rg-pe-alq\',\'Solo venden\')">Solo venden</div>';
+      h+='</div></div>';
+      return h;
+    })()},
+    oxigeno:{t:'Equipos',html:(function(){
+      var h='';
+      h+='<div class="fg"><label class="fl">Equipos disponibles</label>';
+      h+='<div class="cbx-grid">';
+      h+='<label class="cbx"><input type="checkbox" name="pe-srv" value="Oxígeno medicinal"> Oxígeno medicinal</label>';
+      h+='<label class="cbx"><input type="checkbox" name="pe-srv" value="Concentrador"> Concentrador</label>';
+      h+='<label class="cbx"><input type="checkbox" name="pe-srv" value="CPAP"> CPAP</label>';
+      h+='<label class="cbx"><input type="checkbox" name="pe-srv" value="BiPAP"> BiPAP</label>';
+      h+='<label class="cbx"><input type="checkbox" name="pe-srv" value="Nebulizador"> Nebulizador</label>';
+      h+='</div></div>';
+      h+='<div class="fg"><label class="fl">¿Urgencias 24hs?</label>';
+      h+='<div class="rdo-g" id="rg-pe-urg">';
+      h+='<div class="rdo" onclick="selR(this,\'rg-pe-urg\',\'Sí\')">Sí</div>';
+      h+='<div class="rdo" onclick="selR(this,\'rg-pe-urg\',\'No\')">No</div>';
+      h+='</div></div>';
+      return h;
+    })()},
+  };
+  if(esp[tipo]){
+    tit.textContent=esp[tipo].t;
+    body.innerHTML=esp[tipo].html;
+    sec.style.display='block';
+  } else {
+    sec.style.display=tipo==='otro'?'none':'none';
+  }
+}
+
+async function submitRegProf(){
+  var n=document.getElementById('pp-nombre').value.trim();
+  var esp=document.getElementById('pp-esp').value;
+  var mat=document.getElementById('pp-matricula').value.trim();
+  var tel=document.getElementById('pp-tel').value.trim();
+  var email=document.getElementById('pp-email').value.trim();
+  if(!n||!esp||!mat||!tel||!email){alert('Completá los campos obligatorios (*).');return;}
+  var depts=Array.from(document.querySelectorAll('input[name="pp-dept"]:checked')).map(function(x){return x.value;});
+  if(!depts.length){alert('Seleccioná al menos un departamento donde atendés.');return;}
+  var os=Array.from(document.querySelectorAll('input[name="pp-os"]:checked')).map(function(x){return x.value;});
+  var srv=Array.from(document.querySelectorAll('input[name="pp-srv"]:checked')).map(function(x){return x.value;});
+  var btn=document.querySelector('#view-reg-prof .btn-submit');
+  btn.textContent='Enviando...';btn.disabled=true;
+  var params={
+    nombre:n, tipo:'Profesional - '+esp, depto:depts.join(', '),
+    telefono:tel, email_prov:email, cuit:'—',
+    habilitacion:mat, plan:regPlanProf,
+    obras:os.length?os.join(', '):'Solo particular',
+    horario:document.getElementById('pp-horario').value.trim()||'—',
+    urgencias:'—', disponibilidad:'—',
+    descripcion:document.getElementById('pp-desc').value.trim()||'—',
+    precio:document.getElementById('pp-precio').value.trim()||'—',
+    zona:depts.join(', '),
+    esp_campos:'Servicios: '+(srv.length?srv.join(', '):'—'),
+    fecha:new Date().toLocaleDateString('es-AR'),
+    id_solicitud:String(Date.now()),
+  };
+  try{
+    await emailjs.send(EJS.serviceId,EJS.tplAdmin,params);
+    btn.textContent='Enviar solicitud →';btn.disabled=false;
+    document.getElementById('reg-ok-prof-email').textContent=email;
+    document.getElementById('reg-ok-prof').classList.add('on');
+    document.getElementById('reg-ok-prof').scrollIntoView({behavior:'smooth'});
+  }catch(err){
+    console.error(err);
+    btn.textContent='Enviar solicitud →';btn.disabled=false;
+    alert('Error al enviar. Escribinos directamente a saludredsj@gmail.com');
+  }
+}
+
+async function submitRegEstab(){
+  var n=document.getElementById('pe-nombre').value.trim();
+  var tipo=document.getElementById('pe-tipo').value;
+  var tel=document.getElementById('pe-tel').value.trim();
+  var email=document.getElementById('pe-email').value.trim();
+  var hab=document.getElementById('pe-hab').value.trim();
+  var dept=document.getElementById('pe-dept').value;
+  if(!n||!tipo||!tel||!email||!hab||!dept){alert('Completá los campos obligatorios (*).');return;}
+  var os=Array.from(document.querySelectorAll('input[name="pe-os"]:checked')).map(function(x){return x.value;});
+  var srv=Array.from(document.querySelectorAll('input[name="pe-srv"]:checked')).map(function(x){return x.value;});
+  var btn=document.querySelector('#view-reg-estab .btn-submit');
+  btn.textContent='Enviando...';btn.disabled=true;
+  var espCampos=srv.length?'Servicios: '+srv.join(', '):'';
+  var cap=document.getElementById('pe-cap');
+  if(cap&&cap.value) espCampos+=' | Capacidad: '+cap.value;
+  var vis=document.getElementById('pe-visitas');
+  if(vis&&vis.value) espCampos+=' | Visitas: '+vis.value;
+  var params={
+    nombre:n, tipo:T[tipo]?T[tipo].l:tipo, depto:dept,
+    telefono:tel, email_prov:email,
+    cuit:document.getElementById('pe-cuit').value.trim()||'—',
+    habilitacion:hab, plan:regPlanEstab,
+    obras:os.length?os.join(', '):'Solo particular',
+    horario:document.getElementById('pe-horario').value.trim()||'—',
+    urgencias:'—', disponibilidad:'—',
+    descripcion:document.getElementById('pe-desc').value.trim()||'—',
+    precio:document.getElementById('pe-precio').value.trim()||'—',
+    zona:dept,
+    esp_campos:espCampos||'—',
+    fecha:new Date().toLocaleDateString('es-AR'),
+    id_solicitud:String(Date.now()),
+  };
+  try{
+    await emailjs.send(EJS.serviceId,EJS.tplAdmin,params);
+    btn.textContent='Enviar solicitud →';btn.disabled=false;
+    document.getElementById('reg-ok-estab-email').textContent=email;
+    document.getElementById('reg-ok-estab').classList.add('on');
+    document.getElementById('reg-ok-estab').scrollIntoView({behavior:'smooth'});
+  }catch(err){
+    console.error(err);
+    btn.textContent='Enviar solicitud →';btn.disabled=false;
+    alert('Error al enviar. Escribinos directamente a saludredsj@gmail.com');
+  }
+}
+
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+// LIGHTBOX
+var lbProvId=null,lbIdx=0;
+function openLB(provId,idx){
+  var p=db.find(function(x){return x.id===provId;});
+  if(!p||!p.fotos)return;
+  lbProvId=provId;lbIdx=idx;
+  document.getElementById('lb-img').src=p.fotos[idx];
+  document.getElementById('lb-ov').classList.add('on');
+  document.body.style.overflow='hidden';
+}
+function closeLB(){
+  document.getElementById('lb-ov').classList.remove('on');
+  document.body.style.overflow='';
+}
+function lbNav(dir){
+  var p=db.find(function(x){return x.id===lbProvId;});
+  if(!p||!p.fotos)return;
+  lbIdx=(lbIdx+dir+p.fotos.length)%p.fotos.length;
+  document.getElementById('lb-img').src=p.fotos[lbIdx];
+}
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape')closeLB();
+  if(e.key==='ArrowLeft')lbNav(-1);
+  if(e.key==='ArrowRight')lbNav(1);
+});
+
+
+var regPlanProf='estandar', regPlanEstab='estandar';
+
+function selPP(p){
+  regPlanProf=p;
+  document.querySelectorAll('[id^="pcp-"]').forEach(el=>el.classList.remove('sel','sel-gold'));
+  document.getElementById('pcp-'+p).classList.add(p==='premium'?'sel-gold':'sel');
+}
+function selPE(p){
+  regPlanEstab=p;
+  document.querySelectorAll('[id^="pce-"]').forEach(el=>el.classList.remove('sel','sel-gold'));
+  document.getElementById('pce-'+p).classList.add(p==='premium'?'sel-gold':'sel');
+}
+
+function adaptProfEsp(){
+  var esp=document.getElementById('pp-esp').value;
+  var otraDiv=document.getElementById('pp-otra-esp');
+  otraDiv.style.display=esp==='Otra'?'block':'none';
+  var secSrv=document.getElementById('pp-sec-srv');
+  var srvBody=document.getElementById('pp-srv-body');
+  var srvTit=document.getElementById('pp-srv-titulo');
+  var srv={
+    'Kinesiología':{t:'Especialidades',html:'<div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pp-srv" value="Respiratoria"> Respiratoria</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Motora"> Motora</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Neurológica"> Neurológica</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Traumatológica"> Traumatológica</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Geriátrica"> Geriátrica</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Postquirúrgica"> Postquirúrgica</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Domiciliaria"> Domiciliaria</label></div>'},
+    'Enfermería':{t:'Servicios',html:'<div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pp-srv" value="Curación escaras"> Curación de escaras</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Inyectables"> Inyectables</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Sueros"> Sueros IV</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Signos vitales"> Signos vitales</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Medicación"> Medicación</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Geriátrica"> Geriátrica</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Cuidados paliativos"> Cuidados paliativos</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Acompañamiento"> Acompañamiento hospitalario</label></div>'},
+    'Psicología':{t:'Modalidades',html:'<div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pp-srv" value="Individual"> Individual</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Pareja"> Pareja</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Familiar"> Familiar</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Infantil"> Infantil</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Adolescente"> Adolescente</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Adultos mayores"> Adultos mayores</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Online"> Online</label></div>'},
+    'Fonoaudiología':{t:'Servicios',html:'<div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pp-srv" value="Lenguaje"> Lenguaje</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Deglución"> Deglución</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Neurológica"> Neurológica</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Estimulación temprana"> Estimulación temprana</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Domiciliaria"> Domiciliaria</label></div>'},
+    'Terapia Ocupacional':{t:'Servicios',html:'<div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pp-srv" value="Neurológica"> Neurológica</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Adultos mayores"> Adultos mayores</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Adaptación funcional"> Adaptación funcional</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Cognitiva"> Estimulación cognitiva</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Domiciliaria"> Domiciliaria</label></div>'},
+    'Laboratorio/Bioquímica':{t:'Servicios',html:'<div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pp-srv" value="Extracción domicilio"> Extracción domicilio</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Análisis clínicos"> Análisis clínicos</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Hormonales"> Hormonales</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Bacteriológicos"> Bacteriológicos</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Ocupacionales"> Ocupacionales</label></div>'},
+    'Cuidador domiciliario':{t:'Servicios',html:'<div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pp-srv" value="Diurno"> Acompañamiento diurno</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Nocturno"> Nocturno</label><label class="cbx"><input type="checkbox" name="pp-srv" value="24hs"> 24hs</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Higiene"> Higiene personal</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Traslados"> Traslados</label></div>'},
+  };
+  if(srv[esp]){
+    srvTit.textContent=srv[esp].t;
+    srvBody.innerHTML=srv[esp].html;
+    secSrv.style.display='block';
+  } else {
+    secSrv.style.display='none';
+  }
+}
+
+function adaptEstabTipo(){
+  var tipo=document.getElementById('pe-tipo').value;
+  var hint=document.getElementById('pe-tipo-hint');
+  var sec=document.getElementById('pe-sec-esp');
+  var body=document.getElementById('pe-esp-body');
+  var tit=document.getElementById('pe-esp-titulo');
+  var hints={
+    residencia:'📄 Requerido: N° habilitación del Ministerio de Salud de San Juan, certificado de bomberos y habilitación municipal.',
+    clinica:'📄 Requerido: N° habilitación provincial y CUIT del establecimiento.',
+    farmacia:'📄 Requerido: habilitación ANMAT y matrícula del director técnico.',
+    insumos:'📄 Requerido: CUIT activo y actividad comercial habilitada.',
+    oxigeno:'📄 Requerido: autorización ANMAT (DROG o DISP).',
+  };
+  hint.textContent=hints[tipo]||'';
+  hint.style.display=hints[tipo]?'block':'none';
+  var esp={
+    residencia:{t:'Información de la residencia',html:'<div class="fg"><label class="fl">Tipo de residencia</label><div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pe-tipores" value="Permanente"> Permanente</label><label class="cbx"><input type="checkbox" name="pe-tipores" value="Temporal"> Temporal</label><label class="cbx"><input type="checkbox" name="pe-tipores" value="Centro de día"> Centro de día</label></div></div><div class="fg"><label class="fl">Tipo de residentes</label><div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Autoválidos"> Autoválidos</label><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Semidependientes"> Semidependientes</label><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Dependientes"> Dependientes</label><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Deterioro cognitivo"> Deterioro cognitivo</label><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Patologías polivalentes"> Patologías polivalentes</label></div></div><div class="frow"><div class="fg"><label class="fl">Capacidad total *</label><input type="number" class="fi" id="pe-cap" placeholder="Ej: 12"></div><div class="fg"><label class="fl">N° de habitaciones</label><input type="number" class="fi" id="pe-hab2" placeholder="Ej: 8"></div></div><div class="fg"><label class="fl">Servicios incluidos</label><div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pe-srv" value="Enfermería 24hs"> Enfermería 24hs</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Médico de cabecera"> Médico de cabecera</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Kinesiología"> Kinesiología</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Nutrición"> Nutrición</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Psicología"> Psicología</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Terapia ocupacional"> Terapia ocupacional</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Actividades recreativas"> Actividades recreativas</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Lavandería"> Lavandería</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Cuidados paliativos"> Cuidados paliativos</label></div></div><div class="fg"><label class="fl">Horario de visitas familiares *</label><input type="text" class="fi" id="pe-visitas" placeholder="Ej: Todos los días 10-12hs y 16-19hs"></div>'},
+    clinica:{t:'Información de la clínica',html:(function(){
+      var h='';
+      h+='<div class="fg"><label class="fl">Especialidades disponibles *</label>';
+      h+='<input type="text" class="fi" id="pe-esp2" placeholder="Ej: Traumatología, Cardiología, Pediatría"></div>';
+      h+='<div class="fg"><label class="fl">¿Tienen guardia 24hs?</label>';
+      h+='<div class="rdo-g" id="rg-pe-guardia">';
+      h+='<div class="rdo" onclick="selR(this,\'rg-pe-guardia\',\'Sí\')">Sí</div>';
+      h+='<div class="rdo" onclick="selR(this,\'rg-pe-guardia\',\'No\')">No</div>';
+      h+='</div></div>';
+      h+='<div class="fg"><label class="fl">¿Tienen internación?</label>';
+      h+='<input type="text" class="fi" id="pe-intern" placeholder="Sí, N camas / No, solo consultorios"></div>';
+      return h;
+    })()},
+    
+    farmacia:{t:'Servicios de la farmacia',html:'<div class="fg"><label class="fl">Servicios</label><div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pe-srv" value="Magistrales"> Magistrales</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Inyecciones"> Inyecciones</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Turno guardia"> Turno guardia</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Delivery"> Delivery</label></div></div><div class="fg"><label class="fl">Zona de delivery</label><input type="text" class="fi" id="pe-zona" placeholder="Ej: Capital y Rawson"></div>'},
+    insumos:{t:'Catálogo',html:(function(){
+      var h='';
+      h+='<div class="fg"><label class="fl">Productos principales</label>';
+      h+='<textarea class="fta" id="pe-prod" placeholder="Ej: Sillas de ruedas, andadores, camas, pañales"></textarea></div>';
+      h+='<div class="fg"><label class="fl">¿Alquilan?</label>';
+      h+='<div class="rdo-g" id="rg-pe-alq">';
+      h+='<div class="rdo" onclick="selR(this,\'rg-pe-alq\',\'Sí\')">Sí, alquilan y venden</div>';
+      h+='<div class="rdo" onclick="selR(this,\'rg-pe-alq\',\'Solo venden\')">Solo venden</div>';
+      h+='</div></div>';
+      return h;
+    })()},
+    oxigeno:{t:'Equipos',html:(function(){
+      var h='';
+      h+='<div class="fg"><label class="fl">Equipos disponibles</label>';
+      h+='<div class="cbx-grid">';
+      h+='<label class="cbx"><input type="checkbox" name="pe-srv" value="Oxígeno medicinal"> Oxígeno medicinal</label>';
+      h+='<label class="cbx"><input type="checkbox" name="pe-srv" value="Concentrador"> Concentrador</label>';
+      h+='<label class="cbx"><input type="checkbox" name="pe-srv" value="CPAP"> CPAP</label>';
+      h+='<label class="cbx"><input type="checkbox" name="pe-srv" value="BiPAP"> BiPAP</label>';
+      h+='<label class="cbx"><input type="checkbox" name="pe-srv" value="Nebulizador"> Nebulizador</label>';
+      h+='</div></div>';
+      h+='<div class="fg"><label class="fl">¿Urgencias 24hs?</label>';
+      h+='<div class="rdo-g" id="rg-pe-urg">';
+      h+='<div class="rdo" onclick="selR(this,\'rg-pe-urg\',\'Sí\')">Sí</div>';
+      h+='<div class="rdo" onclick="selR(this,\'rg-pe-urg\',\'No\')">No</div>';
+      h+='</div></div>';
+      return h;
+    })()},
+  };
+  if(esp[tipo]){
+    tit.textContent=esp[tipo].t;
+    body.innerHTML=esp[tipo].html;
+    sec.style.display='block';
+  } else {
+    sec.style.display=tipo==='otro'?'none':'none';
+  }
+}
+
+async function submitRegProf(){
+  var n=document.getElementById('pp-nombre').value.trim();
+  var esp=document.getElementById('pp-esp').value;
+  var mat=document.getElementById('pp-matricula').value.trim();
+  var tel=document.getElementById('pp-tel').value.trim();
+  var email=document.getElementById('pp-email').value.trim();
+  if(!n||!esp||!mat||!tel||!email){alert('Completá los campos obligatorios (*).');return;}
+  var depts=Array.from(document.querySelectorAll('input[name="pp-dept"]:checked')).map(function(x){return x.value;});
+  if(!depts.length){alert('Seleccioná al menos un departamento donde atendés.');return;}
+  var os=Array.from(document.querySelectorAll('input[name="pp-os"]:checked')).map(function(x){return x.value;});
+  var srv=Array.from(document.querySelectorAll('input[name="pp-srv"]:checked')).map(function(x){return x.value;});
+  var btn=document.querySelector('#view-reg-prof .btn-submit');
+  btn.textContent='Enviando...';btn.disabled=true;
+  var params={
+    nombre:n, tipo:'Profesional - '+esp, depto:depts.join(', '),
+    telefono:tel, email_prov:email, cuit:'—',
+    habilitacion:mat, plan:regPlanProf,
+    obras:os.length?os.join(', '):'Solo particular',
+    horario:document.getElementById('pp-horario').value.trim()||'—',
+    urgencias:'—', disponibilidad:'—',
+    descripcion:document.getElementById('pp-desc').value.trim()||'—',
+    precio:document.getElementById('pp-precio').value.trim()||'—',
+    zona:depts.join(', '),
+    esp_campos:'Servicios: '+(srv.length?srv.join(', '):'—'),
+    fecha:new Date().toLocaleDateString('es-AR'),
+    id_solicitud:String(Date.now()),
+  };
+  try{
+    await emailjs.send(EJS.serviceId,EJS.tplAdmin,params);
+    btn.textContent='Enviar solicitud →';btn.disabled=false;
+    document.getElementById('reg-ok-prof-email').textContent=email;
+    document.getElementById('reg-ok-prof').classList.add('on');
+    document.getElementById('reg-ok-prof').scrollIntoView({behavior:'smooth'});
+  }catch(err){
+    console.error(err);
+    btn.textContent='Enviar solicitud →';btn.disabled=false;
+    alert('Error al enviar. Escribinos directamente a saludredsj@gmail.com');
+  }
+}
+
+async function submitRegEstab(){
+  var n=document.getElementById('pe-nombre').value.trim();
+  var tipo=document.getElementById('pe-tipo').value;
+  var tel=document.getElementById('pe-tel').value.trim();
+  var email=document.getElementById('pe-email').value.trim();
+  var hab=document.getElementById('pe-hab').value.trim();
+  var dept=document.getElementById('pe-dept').value;
+  if(!n||!tipo||!tel||!email||!hab||!dept){alert('Completá los campos obligatorios (*).');return;}
+  var os=Array.from(document.querySelectorAll('input[name="pe-os"]:checked')).map(function(x){return x.value;});
+  var srv=Array.from(document.querySelectorAll('input[name="pe-srv"]:checked')).map(function(x){return x.value;});
+  var btn=document.querySelector('#view-reg-estab .btn-submit');
+  btn.textContent='Enviando...';btn.disabled=true;
+  var espCampos=srv.length?'Servicios: '+srv.join(', '):'';
+  var cap=document.getElementById('pe-cap');
+  if(cap&&cap.value) espCampos+=' | Capacidad: '+cap.value;
+  var vis=document.getElementById('pe-visitas');
+  if(vis&&vis.value) espCampos+=' | Visitas: '+vis.value;
+  var params={
+    nombre:n, tipo:T[tipo]?T[tipo].l:tipo, depto:dept,
+    telefono:tel, email_prov:email,
+    cuit:document.getElementById('pe-cuit').value.trim()||'—',
+    habilitacion:hab, plan:regPlanEstab,
+    obras:os.length?os.join(', '):'Solo particular',
+    horario:document.getElementById('pe-horario').value.trim()||'—',
+    urgencias:'—', disponibilidad:'—',
+    descripcion:document.getElementById('pe-desc').value.trim()||'—',
+    precio:document.getElementById('pe-precio').value.trim()||'—',
+    zona:dept,
+    esp_campos:espCampos||'—',
+    fecha:new Date().toLocaleDateString('es-AR'),
+    id_solicitud:String(Date.now()),
+  };
+  try{
+    await emailjs.send(EJS.serviceId,EJS.tplAdmin,params);
+    btn.textContent='Enviar solicitud →';btn.disabled=false;
+    document.getElementById('reg-ok-estab-email').textContent=email;
+    document.getElementById('reg-ok-estab').classList.add('on');
+    document.getElementById('reg-ok-estab').scrollIntoView({behavior:'smooth'});
+  }catch(err){
+    console.error(err);
+    btn.textContent='Enviar solicitud →';btn.disabled=false;
+    alert('Error al enviar. Escribinos directamente a saludredsj@gmail.com');
+  }
+}
+
+</script>
+<style>
+:root{
+  --bg:#F7F8FA;--white:#FFF;--ink:#111827;--ink2:#374151;--muted:#6B7280;
+  --border:#E5E7EB;--border2:#D1D5DB;
+  --teal:#0D7A6B;--teal-l:#E6F4F1;--teal-m:#0F8A79;--teal-d:#096358;
+  --red:#DC2626;--red-l:#FEF2F2;--gold:#B45309;--gold-l:#FEF3C7;--navy:#1E3A5F;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;overflow-x:hidden;width:100%;}
+body{font-family:'Source Sans 3',sans-serif;background:var(--bg);color:var(--ink);font-size:17px;line-height:1.6;overflow-x:hidden;width:100%;max-width:100%;}
+.view{display:none;}.view.active{display:block;width:100%;overflow-x:hidden;}
+.topbar{display:none;}
+nav{position:sticky;top:0;z-index:300;background:#fff;border-bottom:2px solid var(--border);display:flex;align-items:center;height:60px;padding:0 20px;gap:14px;width:100%;box-sizing:border-box;}
+#view-home.active ~ nav{display:none!important;} #view-home{margin-top:0;}
+.nav-brand{display:flex;align-items:center;gap:8px;cursor:pointer;flex-shrink:0;border-right:1px solid var(--border);padding-right:16px;}
+.nav-mark{width:32px;height:32px;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:700;}
+.nav-name{font-family:'Libre Baskerville',serif;font-weight:700;font-size:1rem;color:var(--ink);line-height:1;}
+.nav-name small{display:block;font-size:10px;font-weight:400;color:var(--muted);font-style:italic;margin-top:1px;}
+.nav-links{display:flex;align-items:center;gap:2px;}
+.nlink{padding:8px 14px;font-size:15px;font-weight:600;color:var(--ink2);background:none;border:none;cursor:pointer;font-family:'Source Sans 3',sans-serif;transition:all .15s;}
+.nlink:hover{color:var(--teal);}
+.nav-right{margin-left:auto;display:flex;align-items:center;gap:10px;}
+.btn-reg{background:var(--teal);color:#fff;padding:8px 16px;border:none;cursor:pointer;font-family:'Source Sans 3',sans-serif;font-size:14px;font-weight:700;}
+.btn-reg:hover{background:var(--teal-m);}
+.cart-btn{display:flex;align-items:center;gap:6px;padding:7px 14px;border:1.5px solid var(--border2);background:none;cursor:pointer;font-size:15px;font-family:'Source Sans 3',sans-serif;color:var(--ink2);font-weight:600;transition:all .15s;}
+.cart-btn:hover{border-color:var(--teal);color:var(--teal);}
+.cart-ct{background:var(--red);color:#fff;width:18px;height:18px;border-radius:50%;font-size:10px;font-weight:700;display:none;align-items:center;justify-content:center;}
+.cart-ct.on{display:flex;}
+.nadm{background:none;border:none;color:var(--border2);font-size:11px;cursor:pointer;font-family:'Source Sans 3',sans-serif;}
+.sr-bar{background:var(--teal);position:sticky;top:0;z-index:300;width:100%;box-sizing:border-box;}
+.sr-top{display:flex;align-items:center;padding:16px 20px;gap:12px;flex-wrap:wrap;width:100%;box-sizing:border-box;}
+.sr-logo{font-family:'Libre Baskerville',serif;font-weight:700;font-size:2.2rem;color:#fff;cursor:pointer;line-height:1;}
+.sr-logo small{display:block;font-family:'Source Sans 3',sans-serif;font-size:13px;font-weight:400;opacity:.8;font-style:normal;margin-top:2px;}
+.sr-top-right{margin-left:auto;}
+.sr-top-adm{background:none;border:none;color:rgba(255,255,255,.4);font-size:13px;cursor:pointer;font-family:'Source Sans 3',sans-serif;}
+.sr-search-area{padding:0 20px 20px;box-sizing:border-box;width:100%;}
+.sr-search{display:flex;width:100%;}
+.sr-search input{flex:1;border:none;outline:none;padding:17px 20px;font-family:'Source Sans 3',sans-serif;font-size:18px;color:var(--ink);}
+.sr-search input::placeholder{color:#9CA3AF;}
+.sr-search button{background:var(--teal-d);color:#fff;border:none;padding:17px 30px;font-size:17px;font-weight:700;cursor:pointer;font-family:'Source Sans 3',sans-serif;white-space:nowrap;}
+.sr-search button:hover{background:#074D42;}
+.sr-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;max-width:100%;}
+.sr-tag{background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.35);padding:6px 14px;font-size:14px;cursor:pointer;font-family:'Source Sans 3',sans-serif;transition:all .15s;}
+.sr-tag:hover{background:rgba(255,255,255,.3);}
+.sr-hero{background:#fff;padding:30px 20px 26px;border-bottom:1px solid var(--border);box-sizing:border-box;width:100%;}
+.sr-hero h1{font-family:'Libre Baskerville',serif;font-size:clamp(1.5rem,4vw,2.2rem);font-weight:700;color:var(--ink);margin-bottom:8px;line-height:1.2;}
+.sr-hero p{font-size:17px;color:var(--ink2);margin-bottom:20px;max-width:580px;line-height:1.6;}
+.sr-hero-btns{display:flex;gap:10px;flex-wrap:wrap;}
+.sr-hbtn{padding:14px 22px;font-family:'Source Sans 3',sans-serif;font-size:17px;font-weight:700;cursor:pointer;border:2px solid var(--border2);background:#fff;color:var(--ink);transition:all .15s;display:flex;align-items:center;gap:8px;}
+.sr-hbtn:hover{border-color:var(--teal);color:var(--teal);background:var(--teal-l);}
+.sr-cats{background:var(--bg);padding:28px 20px;border-bottom:1px solid var(--border);box-sizing:border-box;width:100%;}
+.sr-cats-tit{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
+.sr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:860px;}
+@media(max-width:560px){.sr-grid{grid-template-columns:repeat(2,1fr);}}
+.sr-cat{display:flex;flex-direction:column;align-items:center;gap:10px;padding:24px 14px 20px;border:2px solid var(--border);background:#fff;cursor:pointer;transition:all .18s;text-align:center;}
+.sr-cat:hover{border-color:var(--teal);background:var(--teal-l);transform:translateY(-2px);}
+.sr-ico{font-size:2.6rem;line-height:1;}
+.sr-cn{font-size:17px;font-weight:700;color:var(--ink);}
+.sr-prov-strip{background:#fff;border-top:1px solid var(--border);padding:24px 20px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;width:100%;box-sizing:border-box;}
+.sr-prov-strip-t{font-size:17px;font-weight:600;color:var(--ink2);}
+.sr-prov-strip-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
+.sr-prov-strip-btns button{background:#fff;color:var(--teal);border:2px solid var(--teal);padding:12px 28px;font-family:'Source Sans 3',sans-serif;font-size:16px;font-weight:700;cursor:pointer;transition:all .15s;}
+.sr-prov-strip-btns button:hover{background:var(--teal);color:#fff;}
+.sec-hdr{background:#fff;border-bottom:2px solid var(--ink);padding:14px 22px 0;}
+.sec-nav{display:flex;align-items:center;gap:6px;}
+.sec-back{font-size:14px;color:var(--muted);cursor:pointer;background:none;border:none;font-family:'Source Sans 3',sans-serif;}
+.sec-back:hover{color:var(--teal);}
+.sec-slash{color:var(--border2);}
+.sec-crumb{font-size:14px;font-weight:700;color:var(--ink);}
+.sec-title-row{display:flex;align-items:baseline;gap:14px;padding:10px 0;}
+.sec-title{font-family:'Libre Baskerville',serif;font-size:1.6rem;font-weight:700;color:var(--ink);}
+.sec-cnt{font-size:14px;color:var(--muted);}
+.search-strip{background:var(--ink);padding:11px 22px;display:flex;gap:8px;}
+.sf{flex:1;display:flex;align-items:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);}
+.sf input{flex:1;background:none;border:none;outline:none;padding:10px 14px;font-family:'Source Sans 3',sans-serif;font-size:16px;color:#fff;}
+.sf input::placeholder{color:rgba(255,255,255,.35);}
+.sf span{padding:0 10px;color:rgba(255,255,255,.3);}
+.sbtn{background:var(--teal);color:#fff;border:none;cursor:pointer;padding:0 20px;font-family:'Source Sans 3',sans-serif;font-size:15px;font-weight:700;white-space:nowrap;}
+.sbtn:hover{background:var(--teal-m);}
+.schips{padding:7px 22px;background:var(--ink);display:flex;gap:6px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.06);}
+.chip{font-size:13px;padding:5px 12px;border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.6);cursor:pointer;background:none;font-family:'Source Sans 3',sans-serif;transition:all .15s;}
+.chip:hover{color:#fff;border-color:rgba(255,255,255,.5);}
+.ftabs{background:#fff;padding:0 22px;display:flex;border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none;}
+.ftabs::-webkit-scrollbar{display:none;}
+.ftab{padding:11px 16px;font-size:15px;font-weight:600;color:var(--muted);cursor:pointer;white-space:nowrap;border:none;background:none;border-bottom:3px solid transparent;font-family:'Source Sans 3',sans-serif;transition:all .15s;}
+.ftab:hover{color:var(--ink);}
+.ftab.on{color:var(--teal);border-bottom-color:var(--teal);}
+.dbar{padding:7px 22px;background:var(--bg);display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--border);}
+.dbar::-webkit-scrollbar{display:none;}
+.dtab{font-size:14px;padding:6px 14px;border:1.5px solid var(--border);color:var(--ink2);cursor:pointer;white-space:nowrap;background:#fff;font-family:'Source Sans 3',sans-serif;transition:all .15s;}
+.dtab:hover,.dtab.on{background:var(--teal);color:#fff;border-color:var(--teal);}
+.ai-res{margin:10px 22px;padding:10px 14px;background:var(--teal-l);border-left:3px solid var(--teal);font-size:14px;color:var(--ink2);display:none;}
+.ai-res.on{display:block;}
+.ai-res strong{font-weight:700;color:var(--teal);font-size:11px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:3px;}
+.thinking{display:none;align-items:center;gap:8px;padding:8px 22px;font-size:14px;color:var(--muted);}
+.thinking.on{display:flex;}
+.dots{display:flex;gap:3px;}
+.dots span{width:5px;height:5px;background:var(--teal);border-radius:50%;animation:dp 1.2s infinite;}
+.dots span:nth-child(2){animation-delay:.2s;}.dots span:nth-child(3){animation-delay:.4s;}
+@keyframes dp{0%,80%,100%{transform:scale(.6);opacity:.3}40%{transform:scale(1);opacity:1}}
+.rmeta{padding:6px 22px 2px;font-size:13px;color:var(--muted);font-style:italic;}
+.clist{padding:0 22px 80px;}
+.scard{background:#fff;border:1px solid var(--border);border-left:4px solid var(--border2);margin-bottom:12px;transition:border-color .15s;animation:fi .25s ease both;}
+.scard:hover{border-left-color:var(--teal);}
+.scard.dest{border-left-color:var(--gold);}
+@keyframes fi{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.sc-hd{padding:14px 16px;display:flex;align-items:flex-start;gap:12px;border-bottom:1px solid var(--border);}
+.sc-ico{width:42px;height:42px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.4rem;}
+.sc-titles{flex:1;min-width:0;}
+.sc-name{font-family:'Libre Baskerville',serif;font-size:1.05rem;font-weight:700;color:var(--ink);margin-bottom:2px;}
+.sc-sub{font-size:14px;color:var(--muted);}
+.sc-badges{display:flex;gap:4px;flex-wrap:wrap;margin-top:5px;}
+.badge{font-size:11px;font-weight:700;letter-spacing:.04em;padding:3px 7px;border:1px solid;}
+.b-ok{background:var(--teal-l);color:var(--teal);border-color:rgba(13,122,107,.2);}
+.b-dest{background:var(--gold-l);color:var(--gold);border-color:rgba(180,83,9,.25);}
+.b-navy{background:#EEF3FF;color:var(--navy);border-color:rgba(30,58,95,.18);}
+.b-pur{background:#F2EEFF;color:#5B21B6;border-color:rgba(91,33,182,.18);}
+.b-red{background:var(--red-l);color:var(--red);border-color:rgba(220,38,38,.18);}
+.sc-desc{padding:12px 16px;font-size:15px;color:var(--ink2);border-bottom:1px solid var(--border);line-height:1.6;}
+.sc-fields{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));}
+.sc-field{padding:10px 12px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);}
+.sfl{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;}
+.sfv{font-size:15px;color:var(--ink);line-height:1.4;}
+.sfv.ok{color:var(--teal);font-weight:600;}
+.sc-pills{padding:8px 16px;display:flex;flex-wrap:wrap;gap:5px;border-bottom:1px solid var(--border);}
+.pill{font-size:13px;padding:3px 9px;background:var(--bg);border:1px solid var(--border);color:var(--ink);}
+.pill-teal{background:var(--teal-l);border-color:rgba(13,122,107,.2);color:var(--teal);}
+.sc-toggle{padding:9px 16px;display:flex;align-items:center;justify-content:space-between;font-size:12px;font-weight:700;color:var(--teal);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border-bottom:1px solid var(--border);background:var(--bg);transition:background .15s;}
+.sc-toggle:hover{background:var(--teal-l);}
+.sc-expand{display:none;border-bottom:1px solid var(--border);}
+.sc-expand.open{display:block;}
+.sg{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));}
+.si{padding:12px 16px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);transition:background .15s;}
+.si:hover{background:var(--teal-l);}
+.si-n{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:2px;}
+.si-d{font-size:13px;color:var(--muted);margin-bottom:6px;line-height:1.4;}
+.si-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:7px;}
+.si-pr{font-family:'Libre Baskerville',serif;font-size:15px;font-weight:700;color:var(--ink);}
+.si-dur{font-size:11px;color:var(--muted);background:var(--bg);padding:2px 6px;}
+.si-btn{width:100%;padding:8px;border:none;cursor:pointer;font-family:'Source Sans 3',sans-serif;font-size:13px;font-weight:700;transition:background .15s;}
+.si-btn.pur{background:#5B21B6;color:#fff;}.si-btn.pur:hover{background:#4C1D95;}
+.si-btn.teal{background:var(--teal);color:#fff;}.si-btn.teal:hover{background:var(--teal-m);}
+.si-btn.navy{background:var(--navy);color:#fff;}
+.sc-foot{padding:10px 16px;display:flex;align-items:center;gap:8px;}
+.btn-p{background:var(--teal);color:#fff;border:none;cursor:pointer;padding:11px 20px;font-family:'Source Sans 3',sans-serif;font-size:15px;font-weight:700;transition:background .15s;flex:1;}
+.btn-p:hover{background:var(--teal-m);}
+.btn-p.navy{background:var(--navy);}.btn-p.navy:hover{background:#162E4D;}
+.btn-p.pur{background:#5B21B6;}.btn-p.pur:hover{background:#4C1D95;}
+.btn-s{background:#fff;color:var(--ink2);border:1.5px solid var(--border);cursor:pointer;padding:10px 14px;font-family:'Source Sans 3',sans-serif;font-size:15px;transition:all .15s;}
+.btn-s:hover{border-color:var(--teal);color:var(--teal);}
+.pcard{background:#fff;border:1px solid var(--border);border-left:4px solid var(--border2);margin-bottom:12px;animation:fi .25s ease both;transition:border-color .15s;}
+.pcard:hover{border-left-color:var(--teal-m);}
+.pcard.dest{border-left-color:var(--gold);}
+.pc-toggle{padding:9px 16px;display:flex;align-items:center;justify-content:space-between;font-size:12px;font-weight:700;color:var(--teal-m);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;background:var(--bg);border-top:1px solid var(--border);transition:background .15s;}
+.pc-toggle:hover{background:var(--teal-l);}
+.pc-cat{display:none;}
+.pc-cat.open{display:block;}
+.ptable{width:100%;border-collapse:collapse;}
+.ptable tr{border-bottom:1px solid var(--border);}
+.ptable tr:last-child{border-bottom:none;}
+.ptable tr:hover{background:var(--teal-l);}
+.ptable td{padding:10px 16px;font-size:15px;}
+.pt-ico{width:36px;font-size:1.2rem;text-align:center;}
+.pt-name{font-weight:700;color:var(--ink);}
+.pt-desc{font-size:13px;color:var(--muted);margin-top:1px;}
+.pt-pr{text-align:right;white-space:nowrap;font-family:'Libre Baskerville',serif;font-weight:700;font-size:15px;color:var(--ink);width:110px;}
+.pt-add{width:90px;text-align:right;}
+.btn-add{background:var(--teal);color:#fff;border:none;padding:6px 10px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Source Sans 3',sans-serif;transition:background .15s;}
+.btn-add:hover{background:var(--teal-m);}
+.btn-add.added{background:var(--bg);color:var(--teal);border:1.5px solid var(--teal);}
+.nores{display:none;text-align:center;padding:48px 20px;}
+.nores.on{display:block;}
+.nores strong{font-family:'Libre Baskerville',serif;display:block;margin-bottom:4px;font-size:1.1rem;}
+.nores p{font-size:15px;color:var(--muted);}
+.cart-hdr{background:var(--teal);border-bottom:2px solid var(--ink);padding:16px 22px;}
+.cart-hdr h2{font-family:'Libre Baskerville',serif;font-size:1.5rem;font-weight:700;color:#fff;}
+.cart-hdr p{font-size:15px;color:rgba(255,255,255,.85);margin-top:3px;}
+.cart-body{padding:16px 22px 80px;max-width:680px;}
+.cgrp{background:#fff;border:1px solid var(--border);margin-bottom:12px;}
+.cg-hd{padding:11px 16px;background:var(--ink);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;font-size:16px;font-weight:700;color:#fff;}
+.cg-row{display:flex;align-items:center;padding:10px 16px;border-bottom:1px solid var(--border);gap:10px;}
+.cg-row:last-child{border-bottom:none;}
+.cr-info{flex:1;}
+.cr-n{font-size:16px;font-weight:700;color:var(--ink);}
+.cr-pr{font-size:13px;color:var(--muted);}
+.cr-qty{display:flex;align-items:center;gap:6px;}
+.qb{width:30px;height:30px;border:2px solid var(--border);background:#fff;cursor:pointer;font-size:16px;font-weight:700;color:var(--ink);display:flex;align-items:center;justify-content:center;transition:all .15s;}
+.qb:hover{border-color:var(--teal);color:var(--teal);}
+.qn{width:28px;text-align:center;font-size:16px;font-weight:700;}
+.cr-tot{font-family:'Libre Baskerville',serif;font-weight:700;font-size:16px;min-width:85px;text-align:right;color:var(--teal);}
+.cg-sub{padding:9px 16px;display:flex;justify-content:space-between;font-size:15px;color:var(--ink);border-top:1px solid var(--border);background:var(--teal-l);}
+.cg-sub strong{font-family:'Libre Baskerville',serif;}
+.co-box{background:#fff;border:1px solid var(--border);padding:16px;margin-bottom:12px;}
+.co-title{font-family:'Libre Baskerville',serif;font-weight:700;font-size:15px;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border);}
+.fg{margin-bottom:14px;}
+.fl{display:block;font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.fi,.fta,.fs{width:100%;background:#fff;border:1.5px solid var(--border2);padding:10px 12px;font-family:'Source Sans 3',sans-serif;font-size:16px;color:var(--ink);outline:none;transition:border-color .15s;}
+.fi:focus,.fta:focus,.fs:focus{border-color:var(--teal);}
+.fta{min-height:65px;resize:vertical;}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.total-box{background:var(--ink);padding:14px 16px;margin-bottom:12px;}
+.tr{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:15px;}
+.tr:last-child{border-bottom:none;padding-top:10px;}
+.tr span{color:rgba(255,255,255,.55);}
+.tr strong{color:#fff;}
+.tr.big strong{font-family:'Libre Baskerville',serif;font-size:1.3rem;}
+.btn-confirm{width:100%;background:var(--teal);color:#fff;border:none;padding:14px;font-family:'Libre Baskerville',serif;font-size:16px;font-weight:700;cursor:pointer;transition:background .15s;margin-bottom:8px;}
+.btn-confirm:hover{background:var(--teal-m);}
+.sv{text-align:center;padding:48px 20px;display:none;}
+.sv.on{display:block;}
+.sv h3{font-family:'Libre Baskerville',serif;font-size:1.4rem;font-weight:700;margin-bottom:8px;}
+.sv p{font-size:15px;color:var(--muted);max-width:360px;margin:0 auto 18px;}
+.or{background:#fff;border:1px solid var(--border);padding:12px 14px;margin-bottom:8px;display:flex;align-items:center;gap:10px;text-align:left;}
+.or-n{flex:1;font-size:15px;font-weight:700;color:var(--ink);}
+.or-s{font-size:13px;color:var(--muted);margin-top:1px;}
+.btn-wsp{background:#25D366;color:#fff;border:none;padding:8px 14px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Source Sans 3',sans-serif;white-space:nowrap;}
+.reg-hdr{background:var(--ink);padding:30px 22px 26px;}
+.reg-hdr h2{font-family:'Libre Baskerville',serif;font-size:clamp(1.3rem,4vw,1.9rem);color:#fff;font-weight:700;margin-bottom:6px;}
+.reg-hdr p{font-size:15px;color:rgba(255,255,255,.6);max-width:480px;}
+.reg-body{max-width:680px;margin:0 auto;padding:20px 22px;}
+.plan-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;}
+.plan-c{border:2px solid var(--border);padding:14px;cursor:pointer;transition:all .15s;background:#fff;position:relative;}
+.plan-c:hover{border-color:var(--teal);}
+.plan-c.sel{border-color:var(--teal);background:var(--teal-l);}
+.plan-c.sel-gold{border-color:var(--gold);background:var(--gold-l);}
+.plan-pop{position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--teal);color:#fff;font-size:9px;font-weight:700;letter-spacing:.07em;padding:2px 10px;white-space:nowrap;}
+.plan-name{font-family:'Libre Baskerville',serif;font-weight:700;font-size:1rem;margin-bottom:2px;}
+.plan-pr{font-size:1.2rem;font-weight:700;font-family:'Libre Baskerville',serif;color:var(--ink);}
+.plan-pr small{font-size:12px;font-weight:400;color:var(--muted);font-family:'Source Sans 3',sans-serif;}
+.plan-desc{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.4;}
+.plan-fs{margin-top:8px;display:flex;flex-direction:column;gap:4px;}
+.pf{font-size:12px;display:flex;gap:5px;color:var(--ink2);}
+.pf .y{color:var(--teal);font-weight:700;}.pf .n{color:var(--border2);}
+.fsec-box{border:1px solid var(--border);margin-bottom:14px;background:#fff;}
+.fsec-hd{padding:10px 14px;background:var(--bg);border-bottom:1px solid var(--border);display:flex;align-items:center;}
+.fsec-title{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);}
+.fsec-req{font-size:10px;color:var(--red);margin-left:auto;}
+.fsec-body{padding:14px;}
+.fhint{font-size:12px;color:var(--muted);margin-top:4px;}
+.frow3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+@media(max-width:500px){.frow3{grid-template-columns:1fr;}}
+.cbx-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:4px;margin-top:4px;}
+.cbx{display:flex;align-items:center;gap:7px;padding:7px 8px;cursor:pointer;font-size:15px;color:var(--ink);border:1px solid transparent;transition:all .15s;}
+.cbx:hover{background:var(--teal-l);}
+.cbx input{width:16px;height:16px;cursor:pointer;accent-color:var(--teal);}
+.rdo-g{display:flex;gap:8px;flex-wrap:wrap;margin-top:5px;}
+.rdo{display:flex;align-items:center;gap:5px;padding:9px 16px;border:1.5px solid var(--border);cursor:pointer;font-size:15px;background:#fff;transition:all .15s;}
+.rdo:hover{border-color:var(--teal);}
+.rdo.sel{background:var(--teal);color:#fff;border-color:var(--teal);}
+.doc-note{background:var(--red-l);border-left:3px solid var(--red);padding:8px 12px;font-size:13px;color:var(--ink);margin-bottom:12px;line-height:1.5;}
+.btn-submit{width:100%;background:var(--teal);color:#fff;border:none;padding:14px;font-family:'Libre Baskerville',serif;font-size:16px;font-weight:700;cursor:pointer;transition:background .15s;}
+.btn-submit:hover{background:var(--teal-m);}
+.reg-ok{display:none;background:var(--teal-l);border:2px solid var(--teal);padding:22px;text-align:center;margin-top:14px;}
+.reg-ok.on{display:block;}
+.reg-ok h3{font-family:'Libre Baskerville',serif;font-size:1.1rem;color:var(--teal);margin-bottom:5px;}
+.reg-ok p{font-size:15px;color:var(--ink);}
+.adm-hdr{background:var(--ink);padding:12px 22px;display:flex;align-items:center;gap:10px;}
+.adm-hdr h2{font-family:'Libre Baskerville',serif;font-size:1rem;color:#fff;}
+.adm-hdr .sp{flex:1;}
+.adm-exit{background:none;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.6);padding:5px 10px;font-size:12px;cursor:pointer;font-family:'Source Sans 3',sans-serif;}
+.kpi-g{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-bottom:1px solid var(--border);}
+@media(max-width:440px){.kpi-g{grid-template-columns:repeat(2,1fr);}}
+.kpi{background:#fff;padding:14px;text-align:center;}
+.kpi-n{font-family:'Libre Baskerville',serif;font-size:1.8rem;font-weight:700;color:var(--ink);}
+.kpi-l{font-size:11px;color:var(--muted);margin-top:2px;letter-spacing:.04em;}
+.adm-body{padding:16px 22px 80px;}
+.adm-s{margin-bottom:24px;}
+.adm-st{font-family:'Libre Baskerville',serif;font-weight:700;font-size:.9rem;padding-bottom:6px;border-bottom:2px solid var(--ink);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.adm-card{background:#fff;border:1px solid var(--border);padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.adm-ico{width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;background:var(--bg);}
+.adm-info{flex:1;min-width:0;}
+.adm-n{font-size:15px;font-weight:700;color:var(--ink);}
+.adm-m{font-size:12px;color:var(--muted);margin-top:1px;}
+.adm-acts{display:flex;gap:5px;}
+.ab{border:none;padding:5px 10px;font-size:11px;font-weight:700;cursor:pointer;font-family:'Source Sans 3',sans-serif;}
+.ab-ok{background:var(--teal);color:#fff;}.ab-ok:hover{background:var(--teal-m);}
+.ab-del{background:#FEE2E2;color:var(--red);}
+.ab-up{background:var(--gold-l);color:var(--gold);border:1px solid rgba(180,83,9,.25);}
+.ab-rej{background:var(--bg);color:var(--muted);border:1px solid var(--border);}
+.plan-tag{font-size:10px;font-weight:700;padding:2px 7px;border:1px solid;flex-shrink:0;}
+.empty-msg{font-size:15px;color:var(--muted);padding:8px 0;}
+.overlay{position:fixed;inset:0;z-index:500;background:rgba(17,24,39,.7);display:none;align-items:center;justify-content:center;padding:16px;}
+.overlay.on{display:flex;}
+.modal{background:#fff;width:100%;max-width:420px;max-height:90vh;overflow-y:auto;position:relative;border-top:4px solid var(--teal);}
+.modal.pur{border-top-color:#5B21B6;}
+.modal.navy{border-top-color:var(--navy);}
+.modal-hdr{padding:16px 18px 12px;border-bottom:1px solid var(--border);}
+.modal-hdr h3{font-family:'Libre Baskerville',serif;font-size:1.1rem;font-weight:700;}
+.modal-hdr p{font-size:13px;color:var(--muted);margin-top:2px;}
+.modal-x{position:absolute;top:12px;right:14px;background:none;border:none;font-size:1rem;cursor:pointer;color:var(--muted);}
+.modal-prov{margin:12px 18px;padding:10px 12px;background:var(--bg);border:1px solid var(--border);display:flex;align-items:center;gap:10px;}
+.mp-ico{font-size:1.2rem;flex-shrink:0;}
+.mp-n{font-size:15px;font-weight:700;color:var(--ink);}
+.mp-t{font-size:12px;color:var(--muted);margin-top:1px;}
+.modal-serv{margin:0 18px 12px;padding:8px 12px;background:var(--teal-l);border-left:3px solid var(--teal);}
+.modal-serv.pur{background:#F2EEFF;border-left-color:#5B21B6;}
+.ms-n{font-size:15px;font-weight:700;color:var(--ink);}
+.ms-m{font-size:12px;color:var(--muted);margin-top:2px;}
+.modal-body{padding:0 18px 16px;}
+.modal-btn{width:100%;background:var(--teal);color:#fff;border:none;padding:12px;font-family:'Libre Baskerville',serif;font-size:15px;font-weight:700;cursor:pointer;transition:background .15s;margin-top:6px;}
+.modal-btn:hover{background:var(--teal-m);}
+.modal-btn.navy{background:var(--navy);}
+.modal-btn.pur{background:#5B21B6;}
+.modal-hint{font-size:11px;color:var(--muted);text-align:center;margin-top:6px;}
+
+/* OVERFLOW FIX */
+.view.active > *{max-width:100%;box-sizing:border-box;}
+.sr-bar,.sr-hero,.sr-cats,.sr-prov-strip{width:100%;box-sizing:border-box;}
+@media(max-width:640px){
+  .sr-prov-strip{flex-direction:column;align-items:flex-start;}
+  .sr-hero-btns{flex-direction:column;}
+  .sr-hbtn{width:100%;}
+  .sr-top-right{display:none;}
+}
+
+
+/* FOTOS RESIDENCIA */
+.sc-photos{display:flex;gap:6px;overflow-x:auto;padding:10px 16px;border-bottom:1px solid var(--border);scrollbar-width:none;}
+.sc-photos::-webkit-scrollbar{display:none;}
+.sc-photo{width:140px;height:94px;object-fit:cover;object-position:center;flex-shrink:0;cursor:pointer;transition:opacity .15s;border-radius:2px;}
+.sc-photo:hover{opacity:.85;}
+.sc-photo-main{width:100%;height:160px;object-fit:cover;object-position:center center;border-bottom:1px solid var(--border);cursor:pointer;display:block;}
+/* LIGHTBOX */
+.lb-ov{position:fixed;inset:0;z-index:900;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;}
+.lb-ov.on{display:flex;}
+.lb-img{max-width:90vw;max-height:90vh;object-fit:contain;}
+.lb-close{position:absolute;top:16px;right:20px;background:none;border:none;color:white;font-size:2rem;cursor:pointer;}
+.lb-prev,.lb-next{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.15);border:none;color:white;font-size:2rem;cursor:pointer;padding:10px 16px;transition:background .15s;}
+.lb-prev{left:10px;}.lb-next{right:10px;}
+.lb-prev:hover,.lb-next:hover{background:rgba(255,255,255,.3);}
+
+
+/* GLOBAL WIDTH FIX */
+* { box-sizing: border-box; }
+html, body { width: 100%; overflow-x: hidden; }
+.view.active { width: 100%; overflow-x: hidden; }
+.sr-bar, .sr-hero, .sr-cats, .sr-prov-strip, nav { 
+  width: 100% !important; 
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-brand" onclick="gv('home')">
+    <div class="nav-mark">✚</div>
+    <div class="nav-name">SaludRed <small>San Juan · Argentina</small></div>
+  </div>
+  <div class="nav-links">
+    <button class="nlink" onclick="gv('servicios')">Buscar servicios</button>
+    <button class="nlink" onclick="gv('productos')">Productos</button>
+    <button class="nlink" onclick="gv('reg-estab')">Publicar servicio</button>
+  </div>
+  <div class="nav-right">
+    <button class="cart-btn" onclick="gv('carrito')">📋 Mis consultas <span class="cart-ct" id="cct">0</span></button>
+    <button class="nadm" onclick="openAdm()">⚙</button>
+  </div>
+</nav>
+
+<!-- HOME -->
+<div id="view-home" class="view active">
+  <div class="sr-bar">
+    <div class="sr-top">
+      <div class="sr-logo">SaludRed<small>San Juan · Argentina</small></div>
+      <div class="sr-top-right">
+        <button class="sr-top-adm" onclick="openAdm()">⚙</button>
+      </div>
+    </div>
+    <div class="sr-search-area">
+      <div class="sr-search">
+        <input type="text" id="hs-input" placeholder="Buscá: geriátrico, médico, kinesiólogo, farmacia..." onkeydown="if(event.key==='Enter')hsSearch()">
+        <button onclick="hsSearch()">Buscar</button>
+      </div>
+      <div class="sr-tags">
+        <button class="sr-tag" onclick="hsSearch2('residencia PAMI')">Residencia PAMI</button>
+        <button class="sr-tag" onclick="hsSearch2('guardia 24hs')">Guardia 24hs</button>
+        <button class="sr-tag" onclick="hsSearch2('médico domicilio')">Médico a domicilio</button>
+        <button class="sr-tag" onclick="hsSearch2('kinesiología')">Kinesiología</button>
+        <button class="sr-tag" onclick="hsSearch2('oxígeno')">Oxígeno</button>
+      </div>
+    </div>
+  </div>
+  <div class="sr-hero">
+    <h1>Encontrá servicios y productos de salud en San Juan</h1>
+    <p>Residencias geriátricas, clínicas, médicos a domicilio, farmacias, insumos y más.</p>
+    <div class="sr-hero-btns">
+      <button class="sr-hbtn" onclick="hsSearch2('médico kinesiólogo enfermero')">🩺 Buscar Profesionales</button>
+      <button class="sr-hbtn" onclick="hsSearch2('residencia clínica')">🏥 Buscar Establecimientos</button>
+      <button class="sr-hbtn" onclick="gv('productos')">💊 Buscar Productos</button>
+    </div>
+  </div>
+  <div class="sr-cats">
+    <div class="sr-cats-tit">Categorías</div>
+    <div class="sr-grid">
+      <div class="sr-cat" onclick="hsSearch2('residencia geriátrica')"><span class="sr-ico">🏡</span><span class="sr-cn">Residencias geriátricas</span></div>
+      <div class="sr-cat" onclick="hsSearch2('clínica sanatorio')"><span class="sr-ico">🏥</span><span class="sr-cn">Clínicas y sanatorios</span></div>
+      <div class="sr-cat" onclick="hsSearch2('médico domicilio')"><span class="sr-ico">🩺</span><span class="sr-cn">Profesionales a domicilio</span></div>
+      <div class="sr-cat" onclick="gv('productos')"><span class="sr-ico">💊</span><span class="sr-cn">Farmacias</span></div>
+      <div class="sr-cat" onclick="gv('productos')"><span class="sr-ico">🦽</span><span class="sr-cn">Insumos médicos</span></div>
+      <div class="sr-cat" onclick="gv('productos')"><span class="sr-ico">🫁</span><span class="sr-cn">Oxígeno domiciliario</span></div>
+    </div>
+  </div>
+  <div class="sr-prov-strip">
+    <div class="sr-prov-strip-t">¿Sos profesional o tenés un establecimiento de salud?</div>
+    <div class="sr-prov-strip-btns">
+      <button onclick="gv('reg-prof')">👨‍⚕️ Soy profesional</button>
+      <button onclick="gv('reg-estab')">🏥 Tengo un establecimiento</button>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICIOS -->
+<div id="view-servicios" class="view">
+  <div class="sec-hdr">
+    <div class="sec-nav"><button class="sec-back" onclick="gv('home')">← Inicio</button><span class="sec-slash">/</span><span class="sec-crumb">Servicios de salud</span></div>
+    <div class="sec-title-row"><h2 class="sec-title">Servicios de salud</h2><span class="sec-cnt" id="scnt-s"></span></div>
+  </div>
+  <div class="search-strip">
+    <div class="sf"><span>🔍</span><input type="text" id="si-s" placeholder="Ej: residencia alzheimer, traumatología, kinesio PAMI..."></div>
+    <button class="sbtn" onclick="doS()">Buscar</button>
+  </div>
+  <div class="schips">
+    <button class="chip" onclick="qsS('residencia PAMI')">Residencia PAMI</button>
+    <button class="chip" onclick="qsS('guardia 24hs')">Guardia 24hs</button>
+    <button class="chip" onclick="qsS('kinesiología domicilio')">Kinesio</button>
+    <button class="chip" onclick="qsS('internación domiciliaria')">Internación domiciliaria</button>
+    <button class="chip" onclick="qsS('enfermería guardia')">Guardia enfermería</button>
+  </div>
+  <div class="ftabs" id="fts">
+    <button class="ftab on" onclick="ftS('todos',this)">Todos</button>
+    <button class="ftab" onclick="ftS('residencia',this)">🏡 Residencias</button>
+    <button class="ftab" onclick="ftS('clinica',this)">🏥 Clínicas</button>
+    <button class="ftab" onclick="ftS('profesional',this)">🩺 Profesionales a domicilio</button>
+  </div>
+  <div class="dbar" id="dbs">
+    <button class="dtab on" onclick="fdS('todos',this)">Todos</button>
+    <button class="dtab" onclick="fdS('Capital',this)">Capital</button>
+    <button class="dtab" onclick="fdS('Rawson',this)">Rawson</button>
+    <button class="dtab" onclick="fdS('Rivadavia',this)">Rivadavia</button>
+    <button class="dtab" onclick="fdS('Chimbas',this)">Chimbas</button>
+    <button class="dtab" onclick="fdS('Pocito',this)">Pocito</button>
+    <button class="dtab" onclick="fdS('Santa Lucía',this)">Santa Lucía</button>
+  </div>
+  <div id="ais" class="ai-res"></div>
+  <div id="tks" class="thinking"><div class="dots"><span></span><span></span><span></span></div> Buscando...</div>
+  <div class="rmeta" id="rms"></div>
+  <div class="clist" id="slist"></div>
+  <div id="nors" class="nores"><strong>Sin resultados</strong><p>Probá con otros términos o cambiá el filtro.</p></div>
+</div>
+
+<!-- PRODUCTOS -->
+<div id="view-productos" class="view">
+  <div class="sec-hdr">
+    <div class="sec-nav"><button class="sec-back" onclick="gv('home')">← Inicio</button><span class="sec-slash">/</span><span class="sec-crumb">Productos a domicilio</span></div>
+    <div class="sec-title-row"><h2 class="sec-title">Productos a domicilio</h2><span class="sec-cnt" id="scnt-p"></span></div>
+  </div>
+  <div class="search-strip">
+    <div class="sf"><span>🔍</span><input type="text" id="si-p" placeholder="Ej: pañales adulto, silla de ruedas, oxígeno medicinal..."></div>
+    <button class="sbtn" onclick="doP()">Buscar</button>
+  </div>
+  <div class="schips">
+    <button class="chip" onclick="qsP('pañales adulto')">Pañales</button>
+    <button class="chip" onclick="qsP('silla de ruedas')">Silla de ruedas</button>
+    <button class="chip" onclick="qsP('colchón antiescaras')">Antiescaras</button>
+    <button class="chip" onclick="qsP('oxígeno domiciliario')">Oxígeno</button>
+    <button class="chip" onclick="qsP('nebulizador')">Nebulizador</button>
+  </div>
+  <div class="ftabs" id="ftp">
+    <button class="ftab on" onclick="ftP('todos',this)">Todos</button>
+    <button class="ftab" onclick="ftP('farmacia',this)">💊 Farmacias</button>
+    <button class="ftab" onclick="ftP('insumos',this)">🦽 Insumos</button>
+    <button class="ftab" onclick="ftP('oxigeno',this)">🫁 Oxígeno</button>
+  </div>
+  <div class="dbar" id="dbp">
+    <button class="dtab on" onclick="fdP('todos',this)">Todos</button>
+    <button class="dtab" onclick="fdP('Capital',this)">Capital</button>
+    <button class="dtab" onclick="fdP('Rawson',this)">Rawson</button>
+    <button class="dtab" onclick="fdP('Rivadavia',this)">Rivadavia</button>
+  </div>
+  <div id="aip" class="ai-res"></div>
+  <div id="tkp" class="thinking"><div class="dots"><span></span><span></span><span></span></div> Buscando...</div>
+  <div class="rmeta" id="rmp"></div>
+  <div class="clist" id="plist"></div>
+  <div id="norp" class="nores"><strong>Sin resultados</strong><p>Probá con otros términos.</p></div>
+</div>
+
+<!-- CARRITO -->
+<div id="view-carrito" class="view">
+  <div class="cart-hdr"><h2>Mi pedido</h2><p>Cada proveedor gestiona su entrega y te confirma por WhatsApp.</p></div>
+  <div class="cart-body">
+    <div id="cart-empty" style="text-align:center;padding:50px 20px;display:none">
+      <div style="font-size:2.4rem;margin-bottom:9px">🛒</div>
+      <strong style="font-family:'Libre Baskerville',serif">No tenés consultas ni pedidos</strong>
+      <p style="font-size:13px;color:var(--ink2);margin:6px 0 14px">Explorá los proveedores de productos.</p>
+      <button class="btn-p" onclick="gv('productos')" style="max-width:220px">Ver productos →</button>
+    </div>
+    <div id="cart-content">
+      <div id="cgrps"></div>
+      <div class="co-box">
+        <div class="co-title">Datos de entrega</div>
+        <div class="frow"><div class="fg"><label class="fl">Nombre *</label><input type="text" class="fi" id="co-n" placeholder="Nombre completo"></div><div class="fg"><label class="fl">Teléfono *</label><input type="text" class="fi" id="co-t" placeholder="264-XXX-XXXX"></div></div>
+        <div class="fg"><label class="fl">Dirección de entrega *</label><input type="text" class="fi" id="co-d" placeholder="Calle, número, barrio, departamento"></div>
+        <div class="fg"><label class="fl">Notas</label><textarea class="fta" id="co-nt" placeholder="Horario preferido, instrucciones especiales..."></textarea></div>
+      </div>
+      <div class="total-box" id="tbox"></div>
+      <button class="btn-confirm" id="btn-cc" onclick="confirmar()">Enviar pedidos por WhatsApp →</button>
+      <button style="width:100%;background:none;border:1px solid var(--border);padding:9px;cursor:pointer;font-family:'Source Sans 3',sans-serif;font-size:13px" onclick="gv('productos')">← Seguir comprando</button>
+      <div class="sv" id="sv">
+        <div style="font-size:2.8rem;margin-bottom:12px">✅</div>
+        <h3>¡Pedidos enviados!</h3>
+        <p id="sv-lead"></p>
+        <div id="sv-orders" style="max-width:380px;margin:0 auto 18px;text-align:left"></div>
+        <button class="btn-p" onclick="finComp()" style="max-width:280px">Volver al inicio →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- REGISTRO -->
+<div id="view-registro" class="view">
+  <!-- Se reemplaza dinámicamente por regProf o regEstab según el botón -->
+</div>
+
+<!-- REGISTRO PROFESIONAL -->
+<div id="view-reg-prof" class="view">
+  <div class="reg-hdr">
+    <h2>Registrarme como profesional</h2>
+    <p>Completá el formulario. Revisamos tus datos y publicamos tu perfil en 24-48hs.</p>
+  </div>
+  <div class="reg-body">
+    <div style="background:var(--teal);color:white;padding:14px 16px;margin-bottom:20px;display:flex;align-items:center;gap:12px;">
+      <div style="font-size:1.6rem">🎁</div>
+      <div><div style="font-family:'Libre Baskerville',serif;font-weight:700;font-size:1rem;margin-bottom:2px">15 días de prueba gratis</div>
+      <div style="font-size:13px;opacity:0.85">Sin costo. Si querés continuar, elegís un plan después.</div></div>
+    </div>
+
+    <!-- PLAN -->
+    <div class="fsec-box">
+      <div class="fsec-hd"><span class="fsec-title">Plan</span></div>
+      <div class="fsec-body">
+        <div class="plan-grid">
+          <div class="plan-c sel" id="pcp-estandar" onclick="selPP('estandar')" style="position:relative">
+            <div class="plan-pop">MÁS ELEGIDO</div>
+            <div class="plan-name">Estándar</div>
+            <div class="plan-pr">$30.000 <small>/mes</small></div>
+            <div class="plan-fs">
+              <div class="pf"><span class="y">✓</span> 15 días gratis</div>
+              <div class="pf"><span class="y">✓</span> Perfil completo</div>
+              <div class="pf"><span class="y">✓</span> Botón de contacto</div>
+            </div>
+          </div>
+          <div class="plan-c" id="pcp-premium" onclick="selPP('premium')">
+            <div class="plan-name">Premium ✦</div>
+            <div class="plan-pr">$50.000 <small>/mes</small></div>
+            <div class="plan-fs">
+              <div class="pf"><span class="y">✓</span> 15 días gratis</div>
+              <div class="pf"><span class="y">✓</span> Primero en búsquedas</div>
+              <div class="pf"><span class="y">✓</span> Badge dorado</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DATOS -->
+    <div class="fsec-box">
+      <div class="fsec-hd"><span class="fsec-title">Datos personales y profesionales</span><span class="fsec-req">* obligatorio</span></div>
+      <div class="fsec-body">
+        <div class="fg"><label class="fl">Nombre y apellido *</label><input type="text" class="fi" id="pp-nombre" placeholder="Como figura en la matrícula"></div>
+        <div class="fg">
+          <label class="fl">Especialidad *</label>
+          <select class="fs" id="pp-esp" onchange="adaptProfEsp()">
+            <option value="">— Seleccioná —</option>
+            <option value="Médico clínico">Médico clínico</option>
+            <option value="Cardiología">Cardiología</option>
+            <option value="Neurología">Neurología</option>
+            <option value="Geriatría">Geriatría</option>
+            <option value="Traumatología">Traumatología</option>
+            <option value="Pediatría">Pediatría</option>
+            <option value="Psiquiatría">Psiquiatría</option>
+            <option value="Dermatología">Dermatología</option>
+            <option value="Endocrinología">Endocrinología</option>
+            <option value="Medicina familiar">Medicina familiar</option>
+            <option value="Kinesiología">Kinesiología</option>
+            <option value="Enfermería">Enfermería</option>
+            <option value="Psicología">Psicología</option>
+            <option value="Fonoaudiología">Fonoaudiología</option>
+            <option value="Terapia Ocupacional">Terapia Ocupacional</option>
+            <option value="Nutrición">Nutrición</option>
+            <option value="Laboratorio/Bioquímica">Laboratorio / Bioquímica</option>
+            <option value="Cuidador domiciliario">Cuidador/a domiciliario/a</option>
+            <option value="Otra">Otra especialidad</option>
+          </select>
+        </div>
+        <div class="fg" id="pp-otra-esp" style="display:none">
+          <label class="fl">Especificá tu especialidad *</label>
+          <input type="text" class="fi" id="pp-otra-esp-txt" placeholder="Ej: Odontología, Podología...">
+        </div>
+        <div class="fg"><label class="fl">N° de matrícula provincial *</label><input type="text" class="fi" id="pp-matricula" placeholder="Número de matrícula del Colegio correspondiente"></div>
+        <div class="frow">
+          <div class="fg"><label class="fl">Teléfono *</label><input type="text" class="fi" id="pp-tel" placeholder="264-XXX-XXXX"></div>
+          <div class="fg"><label class="fl">WhatsApp</label><input type="text" class="fi" id="pp-wsp" placeholder="264-XXX-XXXX"></div>
+        </div>
+        <div class="fg"><label class="fl">Email *</label><input type="email" class="fi" id="pp-email" placeholder="tu@email.com"></div>
+        <div class="fg"><label class="fl">Sitio web</label><input type="text" class="fi" id="pp-web" placeholder="www.mipagina.com (opcional)"></div>
+      </div>
+    </div>
+
+    <!-- COBERTURA -->
+    <div class="fsec-box">
+      <div class="fsec-hd"><span class="fsec-title">Departamentos donde atendés</span><span class="fsec-req">* al menos uno</span></div>
+      <div class="fsec-body">
+        <div class="cbx-grid">
+          <label class="cbx"><input type="checkbox" name="pp-dept" value="Capital"> Capital</label>
+          <label class="cbx"><input type="checkbox" name="pp-dept" value="Rawson"> Rawson</label>
+          <label class="cbx"><input type="checkbox" name="pp-dept" value="Rivadavia"> Rivadavia</label>
+          <label class="cbx"><input type="checkbox" name="pp-dept" value="Chimbas"> Chimbas</label>
+          <label class="cbx"><input type="checkbox" name="pp-dept" value="Pocito"> Pocito</label>
+          <label class="cbx"><input type="checkbox" name="pp-dept" value="Santa Lucía"> Santa Lucía</label>
+          <label class="cbx"><input type="checkbox" name="pp-dept" value="Caucete"> Caucete</label>
+          <label class="cbx"><input type="checkbox" name="pp-dept" value="Zonda"> Zonda</label>
+          <label class="cbx"><input type="checkbox" name="pp-dept" value="Toda la provincia"> Toda la provincia</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- SERVICIOS ESPECÍFICOS -->
+    <div class="fsec-box" id="pp-sec-srv" style="display:none">
+      <div class="fsec-hd"><span class="fsec-title" id="pp-srv-titulo">Servicios</span></div>
+      <div class="fsec-body" id="pp-srv-body"></div>
+    </div>
+
+    <!-- OBRAS SOCIALES -->
+    <div class="fsec-box">
+      <div class="fsec-hd"><span class="fsec-title">Obras sociales</span><span class="fsec-req">* obligatorio</span></div>
+      <div class="fsec-body">
+        <div class="fg">
+          <div class="rdo-g" id="rg-pp-os">
+            <div class="rdo" onclick="selR(this,'rg-pp-os','Sí');document.getElementById('pp-os-lista').style.display='block'">Acepto obras sociales</div>
+            <div class="rdo" onclick="selR(this,'rg-pp-os','No');document.getElementById('pp-os-lista').style.display='none'">Solo particular</div>
+          </div>
+        </div>
+        <div id="pp-os-lista" style="display:none">
+          <div class="cbx-grid" style="margin-top:10px">
+            <label class="cbx"><input type="checkbox" name="pp-os" value="PAMI"> PAMI</label>
+            <label class="cbx"><input type="checkbox" name="pp-os" value="IPOS"> IPOS</label>
+            <label class="cbx"><input type="checkbox" name="pp-os" value="OSDE"> OSDE</label>
+            <label class="cbx"><input type="checkbox" name="pp-os" value="Swiss Medical"> Swiss Medical</label>
+            <label class="cbx"><input type="checkbox" name="pp-os" value="Galeno"> Galeno</label>
+            <label class="cbx"><input type="checkbox" name="pp-os" value="Medifé"> Medifé</label>
+            <label class="cbx"><input type="checkbox" name="pp-os" value="Sancor Salud"> Sancor Salud</label>
+            <label class="cbx"><input type="checkbox" name="pp-os" value="OSPAT"> OSPAT</label>
+          </div>
+          <div class="fg" style="margin-top:8px"><label class="fl">Otras</label><input type="text" class="fi" id="pp-os-otras" placeholder="Otras obras sociales, separadas por coma"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HORARIOS -->
+    <div class="fsec-box">
+      <div class="fsec-hd"><span class="fsec-title">Horarios de atención</span><span class="fsec-req">* obligatorio</span></div>
+      <div class="fsec-body">
+        <div class="fg"><input type="text" class="fi" id="pp-horario" placeholder="Ej: Lunes a viernes 8-18hs. Sábados 8-13hs."></div>
+      </div>
+    </div>
+
+    <!-- DESCRIPCIÓN -->
+    <div class="fsec-box">
+      <div class="fsec-hd"><span class="fsec-title">Descripción</span></div>
+      <div class="fsec-body">
+        <div class="fg"><textarea class="fta" id="pp-desc" style="min-height:90px" placeholder="Contá quién sos, tu experiencia y qué te diferencia. Cuanto más específico, mejor."></textarea></div>
+        <div class="fg"><label class="fl">Precio orientativo</label><input type="text" class="fi" id="pp-precio" placeholder="Ej: Consulta desde $15.000"></div>
+      </div>
+    </div>
+
+    <!-- FOTOS -->
+    <div class="fsec-box">
+      <div class="fsec-hd"><span class="fsec-title">Fotos</span></div>
+      <div class="fsec-body">
+        <div class="doc-note">📸 Enviá tus fotos a <strong>saludredsj@gmail.com</strong> con asunto <strong>"Fotos - [tu nombre]"</strong>. Podés enviar foto de perfil, consultorio o logo.</div>
+      </div>
+    </div>
+
+    <button class="btn-submit" onclick="submitRegProf()">Enviar solicitud →</button>
+    <div class="reg-ok" id="reg-ok-prof">
+      <h3>✅ Solicitud enviada</h3>
+      <p>Revisamos tus datos en 24-48hs y te avisamos a <strong id="reg-ok-prof-email"></strong>.</p>
+    </div>
+  </div>
+</div>
+
+<!-- REGISTRO ESTABLECIMIENTO -->
+<div id="view-reg-estab" class="view">
+  <div class="reg-hdr">
+    <h2>Registrar mi establecimiento</h2>
+    <p>Completá el formulario. Revisamos tu habilitación y publicamos tu perfil en 24-48hs.</p>
+  </div>
+  <div class="reg-body">
+    <div style="background:var(--teal);color:white;padding:14px 16px;margin-bottom:20px;display:flex;align-items:center;gap:12px;">
+      <div style="font-size:1.6rem">🎁</div>
+      <div><div style="font-family:'Libre Baskerville',serif;font-weight:700;font-size:1rem;margin-bottom:2px">15 días de prueba gratis</div>
+      <div style="font-size:13px;opacity:0.85">Sin costo. Si querés continuar, elegís un plan después.</div></div>
+    </div>
+
+    <!-- PLAN -->
+    <div class="fsec-box">
+      <div class="fsec-hd"><span class="fsec-title">Plan</span></div>
+      <div class="fsec-body">
+        <div class="plan-grid">
+          <div class="plan-c sel" id="pce-estandar" onclick="selPE('estandar')" style="position:relative">
+            <div class="plan-pop">MÁS ELEGIDO</div>
+            <div class="plan-name">Estándar</div>
+            <div class="plan-pr">$30.000 <small>/mes</small></div>
+            <div class="plan-fs">
+              <div class="pf"><span class="y">✓</span> 15 días gratis</div>
+              <div class="pf"><span class="y">✓</span> Perfil completo</div>
+              <div class="pf"><span class="y">✓</span> Botón de contacto</div>
+            </div>
+          </div>
+          <div class="plan-c" id="pce-premium" onclick="selPE('premium')">
+            <div class="plan-name">Premium ✦</div>
+            <div class="plan-pr">$50.000 <small>/mes</small></div>
+            <div class="plan-fs">
+              <div class="pf"><span class="y">✓</span> 15 días gratis</div>
+              <div class="pf"><span class="y">✓</span> Primero en búsquedas</div>
+              <div class="pf"><span class="y">✓</span> Badge dorado</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TIPO -->
+    <div class="fsec-box">
+      <div class="fsec-hd"><span class="fsec-title">Tipo de establecimiento</span><span class="fsec-req">* obligatorio</span></div>
+      <div class="fsec-body">
+        <div class="fg">
+          <select class="fs" id="pe-tipo" onchange="adaptEstabTipo()">
+            <option value="">— Seleccioná —</option>
+            <option value="residencia">🏡 Residencia geriátrica</option>
+            <option value="clinica">🏥 Clínica / Sanatorio</option>
+            <option value="farmacia">💊 Farmacia / Droguería</option>
+            <option value="insumos">🦽 Insumos médicos / Ortopedia</option>
+            <option value="oxigeno">🫁 Oxígeno y equipos médicos</option>
+            <option value="otro">➕ Otro</option>
+          </select>
+        </div>
+        <div id="pe-tipo-hint" class="doc-note" style="display:none"></div>
+      </div>
+    </div>
+
+    <!-- DATOS GENERALES -->
+    <div class="fsec-box">
+      <div class="fsec-hd"><span class="fsec-title">Datos del establecimiento</span><span class="fsec-req">* obligatorio</span></div>
+      <div class="fsec-body">
+        <div class="fg"><label class="fl">Nombre / Razón social *</label><input type="text" class="fi" id="pe-nombre" placeholder="Nombre como figura en la habilitación"></div>
+        <div class="frow">
+          <div class="fg"><label class="fl">Teléfono *</label><input type="text" class="fi" id="pe-tel" placeholder="264-XXX-XXXX"></div>
+          <div class="fg"><label class="fl">WhatsApp</label><input type="text" class="fi" id="pe-wsp" placeholder="264-XXX-XXXX"></div>
+        </div>
+        <div class="fg"><label class="fl">Email *</label><input type="email" class="fi" id="pe-email" placeholder="contacto@..."></div>
+        <div class="frow">
+          <div class="fg"><label class="fl">Departamento *</label>
+            <select class="fs" id="pe-dept">
+              <option value="">—</option>
+              <option>Capital</option><option>Rawson</option><option>Rivadavia</option>
+              <option>Chimbas</option><option>Pocito</option><option>Santa Lucía</option>
+              <option>Caucete</option><option>Zonda</option><option>Ullum</option>
+              <option>Angaco</option><option>San Martín</option>
+            </select>
+          </div>
+          <div class="fg"><label class="fl">CUIT *</label><input type="text" class="fi" id="pe-cuit" placeholder="20-XXXXXXXX-X"></div>
+        </div>
+        <div class="fg"><label class="fl">Dirección *</label><input type="text" class="fi" id="pe-dir" placeholder="Calle, número, barrio"></div>
+        <div class="fg">
+          <label class="fl">¿El establecimiento está habilitado para funcionar? *</label>
+          <div class="rdo-g" id="rg-pe-habilitado">
+            <div class="rdo" onclick="selR(this,'rg-pe-habilitado','Sí')">Sí</div>
+            <div class="rdo" onclick="selR(this,'rg-pe-habilitado','En trámite')">En trámite</div>
+          </div>
+        </div>
+        <div class="fg"><label class="fl">N° Habilitación / Matrícula *</label><input type="text" class="fi" id="pe-hab" placeholder="Número oficial de habilitación"></div>
+        <div class="fg"><label class="fl">Sitio web</label><input type="text" class="fi" id="pe-web" placeholder="www.mipagina.com (opcional)"></div>
+      </div>
+    </div>
+
+    <!-- SECCIÓN ESPECÍFICA -->
+    <div class="fsec-box" id="pe-sec-esp" style="display:none">
+      <div class="fsec-hd"><span class="fsec-title" id="pe-esp-titulo">Información específica</span></div>
+      <div class="fsec-body" id="pe-esp-body"></div>
+    </div>
+
+    <!-- OBRAS SOCIALES -->
+    <div class="fsec-box">
+      <div class="fsec-hd"><span class="fsec-title">Obras sociales</span><span class="fsec-req">* obligatorio</span></div>
+      <div class="fsec-body">
+        <div class="rdo-g" id="rg-pe-os">
+          <div class="rdo" onclick="selR(this,'rg-pe-os','Sí');document.getElementById('pe-os-lista').style.display='block'">Acepto obras sociales</div>
+          <div class="rdo" onclick="selR(this,'rg-pe-os','No');document.getElementById('pe-os-lista').style.display='none'">Solo particular</div>
+        </div>
+        <div id="pe-os-lista" style="display:none">
+          <div class="cbx-grid" style="margin-top:10px">
+            <label class="cbx"><input type="checkbox" name="pe-os" value="PAMI"> PAMI</label>
+            <label class="cbx"><input type="checkbox" name="pe-os" value="IPOS"> IPOS</label>
+            <label class="cbx"><input type="checkbox" name="pe-os" value="OSDE"> OSDE</label>
+            <label class="cbx"><input type="checkbox" name="pe-os" value="Swiss Medical"> Swiss Medical</label>
+            <label class="cbx"><input type="checkbox" name="pe-os" value="Galeno"> Galeno</label>
+            <label class="cbx"><input type="checkbox" name="pe-os" value="Medifé"> Medifé</label>
+            <label class="cbx"><input type="checkbox" name="pe-os" value="OSPAT"> OSPAT</label>
+            <label class="cbx"><input type="checkbox" name="pe-os" value="UPCN"> UPCN</label>
+          </div>
+          <div class="fg" style="margin-top:8px"><label class="fl">Otras</label><input type="text" class="fi" id="pe-os-otras" placeholder="Otras obras sociales, separadas por coma"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HORARIOS -->
+    <div class="fsec-box">
+      <div class="fsec-hd"><span class="fsec-title">Horarios de atención</span><span class="fsec-req">* obligatorio</span></div>
+      <div class="fsec-body">
+        <div class="fg"><input type="text" class="fi" id="pe-horario" placeholder="Ej: Lunes a viernes 8-18hs. Sábados 8-13hs."></div>
+      </div>
+    </div>
+
+    <!-- DESCRIPCIÓN Y PRECIO -->
+    <div class="fsec-box">
+      <div class="fsec-hd"><span class="fsec-title">Descripción y precio</span></div>
+      <div class="fsec-body">
+        <div class="fg"><textarea class="fta" id="pe-desc" style="min-height:90px" placeholder="Describí tu establecimiento, qué ofrecés y qué lo diferencia."></textarea></div>
+        <div class="fg"><label class="fl">Precio orientativo</label><input type="text" class="fi" id="pe-precio" placeholder="Ej: Residencia desde $1.600.000/mes. Consultar."></div>
+      </div>
+    </div>
+
+    <!-- FOTOS -->
+    <div class="fsec-box">
+      <div class="fsec-hd"><span class="fsec-title">Fotos</span></div>
+      <div class="fsec-body">
+        <div class="doc-note">📸 Enviá tus fotos a <strong>saludredsj@gmail.com</strong> con asunto <strong>"Fotos - [nombre del establecimiento]"</strong>. Instalaciones, habitaciones, espacios comunes y logo.</div>
+      </div>
+    </div>
+
+    <button class="btn-submit" onclick="submitRegEstab()">Enviar solicitud →</button>
+    <div class="reg-ok" id="reg-ok-estab">
+      <h3>✅ Solicitud enviada</h3>
+      <p>Revisamos tu habilitación en 24-48hs y te avisamos a <strong id="reg-ok-estab-email"></strong>.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN -->
+<div id="view-admin" class="view">
+  <div class="adm-hdr"><h2>Panel de administración · SaludRed SJ</h2><div class="sp"></div><button class="adm-exit" onclick="gv('home')">← Salir</button></div>
+  <div class="kpi-g">
+    <div class="kpi"><div class="kpi-n" id="k-a">0</div><div class="kpi-l">Activos</div></div>
+    <div class="kpi"><div class="kpi-n" id="k-p">0</div><div class="kpi-l">Pendientes</div></div>
+    <div class="kpi"><div class="kpi-n" id="k-pr">0</div><div class="kpi-l">Premium</div></div>
+    <div class="kpi"><div class="kpi-n" id="k-m">$0</div><div class="kpi-l">MRR estimado</div></div>
+  </div>
+  <div class="adm-body">
+    <div class="adm-s">
+      <div class="adm-st">Solicitudes pendientes <span id="pb" style="font-size:10px;background:#FEE2E2;color:#B82C1A;padding:2px 6px;border:1px solid rgba(184,44,26,0.2)">0</span></div>
+      <div id="adm-pend"></div>
+    </div>
+    <div class="adm-s">
+      <div class="adm-st">Directorio activo</div>
+      <div id="adm-act"></div>
+    </div>
+    <div class="adm-s">
+      <div class="adm-st">Carga manual</div>
+      <div style="background:var(--white);border:1px solid var(--border);padding:14px">
+        <div class="fg"><label class="fl">Tipo</label><select class="fs" id="m-t"><option value="residencia">🏡 Residencia</option><option value="clinica">🏥 Clínica</option><option value="profesional">🩺 Profesional</option><option value="farmacia">💊 Farmacia</option><option value="insumos">🦽 Insumos</option><option value="oxigeno">🫁 Oxígeno</option></select></div>
+        <div class="frow"><div class="fg"><label class="fl">Nombre *</label><input type="text" class="fi" id="m-n" placeholder="Nombre"></div><div class="fg"><label class="fl">Departamento</label><select class="fs" id="m-d"><option>Capital</option><option>Rawson</option><option>Rivadavia</option><option>Chimbas</option><option>Pocito</option></select></div></div>
+        <div class="frow"><div class="fg"><label class="fl">Teléfono</label><input type="text" class="fi" id="m-tel" placeholder="264-XXX-XXXX"></div><div class="fg"><label class="fl">Plan</label><select class="fs" id="m-pl"><option value="gratis">Gratis</option><option value="estandar" selected>Estándar</option><option value="premium">Premium</option></select></div></div>
+        <div class="fg"><label class="fl">Descripción</label><input type="text" class="fi" id="m-desc" placeholder="Breve descripción"></div>
+        <button class="btn-p" onclick="mAgr()" style="margin-top:4px">Agregar →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL CONTACTO -->
+<div class="overlay" id="mc-ov">
+  <div class="modal" id="mc-inner">
+    <button class="modal-x" onclick="closeM()">✕</button>
+    <div class="modal-hdr"><h3 id="mc-t">Solicitar turno</h3><p id="mc-s"></p></div>
+    <div class="modal-prov" id="mc-prov"><span class="mp-ico" id="mc-ico"></span><div><div class="mp-n" id="mc-n2"></div><div class="mp-t" id="mc-tp"></div></div></div>
+    <div class="modal-serv" id="mc-serv" style="display:none"><div class="ms-n" id="mc-sn"></div><div class="ms-m" id="mc-sm"></div></div>
+    <div class="modal-body">
+      <div class="fg"><label class="fl" id="mc-ln">Tu nombre *</label><input type="text" class="fi" id="mc-n" placeholder="Nombre completo"></div>
+      <div class="fg"><label class="fl">Teléfono *</label><input type="text" class="fi" id="mc-tel" placeholder="264-XXX-XXXX"></div>
+      <div class="fg"><label class="fl" id="mc-ld">Dirección</label><input type="text" class="fi" id="mc-d" placeholder="Calle, número, barrio"></div>
+      <div class="fg"><label class="fl" id="mc-los">Obra social / Particular</label><input type="text" class="fi" id="mc-os" placeholder="Ej: PAMI, OSDE, Particular..."></div>
+      <div class="fg"><label class="fl" id="mc-lh">Día y horario preferido</label><input type="text" class="fi" id="mc-h" placeholder="Ej: Martes por la mañana"></div>
+      <div class="fg"><label class="fl" id="mc-lm">Descripción / Motivo</label><textarea class="fta" id="mc-m" style="min-height:50px" placeholder="Contá qué necesitás..."></textarea></div>
+      <button class="modal-btn" id="mc-btn" onclick="enviarC()">Enviar por WhatsApp →</button>
+      <p class="modal-hint">El establecimiento te contacta directamente al teléfono que indicaste</p>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN LOGIN -->
+<div class="overlay" id="adm-ov">
+  <div class="modal" style="max-width:290px">
+    <button class="modal-x" onclick="document.getElementById('adm-ov').classList.remove('on')">✕</button>
+    <div class="modal-hdr"><h3>Acceso admin</h3><p>Demo: <strong>admin123</strong></p></div>
+    <div class="modal-body" style="padding-top:11px">
+      <div class="fg"><label class="fl">Contraseña</label><input type="password" class="fi" id="ap" onkeydown="if(event.key==='Enter')chkA()"></div>
+      <button class="modal-btn" onclick="chkA()">Ingresar →</button>
+    </div>
+  </div>
+</div>
+<script>
+const T={
+  residencia:{ico:'🏡',bg:'#E8F4F2',l:'Residencia geriátrica',sec:'s'},
+  clinica:{ico:'🏥',bg:'#EEF3FF',l:'Clínica / Sanatorio',sec:'s'},
+  profesional:{ico:'🩺',bg:'#F2EEFF',l:'Profesional a domicilio',sec:'s'},
+  farmacia:{ico:'💊',bg:'#FDF0E8',l:'Farmacia / Droguería',sec:'p'},
+  insumos:{ico:'🦽',bg:'#F0F4FF',l:'Insumos / Ortopedia',sec:'p'},
+  oxigeno:{ico:'🫁',bg:'#E6F7FF',l:'Oxígeno / Equipos',sec:'p'},
+};
+const PL={estandar:{l:'Estándar',p:30000},premium:{l:'Premium',p:50000}};
+const CATS={
+  101:[{id:'f1',n:'Pañales adulto M (x30)',d:'Alta absorción.',pr:8500,i:'📦'},{id:'f2',n:'Pañales adulto G (x30)',d:'Talle grande.',pr:9200,i:'📦'},{id:'f3',n:'Ibuprofeno 400mg x20',d:'Analgésico.',pr:2800,i:'💊'},{id:'f4',n:'Omeprazol 20mg x14',d:'Antiácido.',pr:1900,i:'💊'},{id:'f5',n:'Suero fisiológico 1L',d:'Estéril.',pr:1200,i:'💉'},{id:'f6',n:'Alcohol en gel 500ml',d:'70°.',pr:950,i:'🧴'}],
+  102:[{id:'o1',n:'Silla de ruedas plegable',d:'Acero, 46cm asiento.',pr:95000,i:'🦽'},{id:'o2',n:'Andador con ruedas',d:'Aluminio con frenos.',pr:38000,i:'🦯'},{id:'o3',n:'Colchón antiescaras',d:'Alternating pressure.',pr:62000,i:'🛏️'},{id:'o4',n:'Cama ortopédica manual',d:'Con barandas.',pr:185000,i:'🛏️'},{id:'o5',n:'Muletas axilares (par)',d:'Aluminio regulables.',pr:14000,i:'🦯'},{id:'o6',n:'Kit curación',d:'Gasas, vendas, agua ox.',pr:3200,i:'🩹'}],
+  103:[{id:'x1',n:'Oxígeno medicinal 10m³',d:'Con regulador.',pr:28000,i:'🫁'},{id:'x2',n:'Concentrador O₂ alquiler/mes',d:'5 litros/min.',pr:35000,i:'⚙️'},{id:'x3',n:'Nebulizador compresor',d:'Con accesorios.',pr:22000,i:'🌬️'},{id:'x4',n:'CPAP básico + máscara',d:'Presión fija.',pr:120000,i:'😷'},{id:'x5',n:'Pulsioxímetro digital',d:'SpO2 y pulso.',pr:8500,i:'🩺'}],
+};
+const SERVS={
+  201:[{id:'m1',n:'Consulta médica domiciliaria',d:'Evaluación completa. Recetas incluidas.',pr:18000,dur:'45 min',i:'🩺'},{id:'m2',n:'Control paciente crónico',d:'HTA, diabetes, EPOC.',pr:14000,dur:'30 min',i:'📋'},{id:'m3',n:'Urgencia domiciliaria',d:'Atención urgente en horario pactado.',pr:25000,dur:'Variable',i:'🚨'}],
+  202:[{id:'k1',n:'Sesión de kinesiología',d:'Movilizaciones y ejercicios terapéuticos.',pr:12000,dur:'45 min',i:'🏃'},{id:'k2',n:'Plan semanal 3 sesiones',d:'Seguimiento personalizado.',pr:32000,dur:'3/sem',i:'📅'},{id:'k3',n:'Rehab. post-ACV',d:'Protocolo específico.',pr:15000,dur:'60 min',i:'🧠'},{id:'k4',n:'Kinesio respiratoria',d:'Drenaje postural, expansión pulmonar.',pr:13000,dur:'40 min',i:'🫁'}],
+  203:[{id:'e1',n:'Control signos vitales',d:'Presión, glucemia, saturación.',pr:8000,dur:'30 min',i:'🩺'},{id:'e2',n:'Curación heridas/úlceras',d:'Limpieza y vendaje especializado.',pr:10000,dur:'40 min',i:'🩹'},{id:'e3',n:'Inyectable / suero IV',d:'Medicación según prescripción.',pr:12000,dur:'Variable',i:'💉'},{id:'e4',n:'Guardia domiciliaria 8hs',d:'Día o noche.',pr:45000,dur:'8 hs',i:'🏠'}],
+  204:[{id:'i1',n:'Guardia médica 12hs',d:'Médico clínico presente.',pr:85000,dur:'12 hs',i:'👨‍⚕️'},{id:'i2',n:'Guardia médica 24hs',d:'Continua, día o noche.',pr:150000,dur:'24 hs',i:'🌙'},{id:'i3',n:'Coordinación internación',d:'Médico + enfermería + kinesio. Integral.',pr:0,dur:'A convenir',i:'🏥'}],
+};
+const HINTS={
+  residencia:'📄 Requerido: N° habilitación del Ministerio de Salud de San Juan, certificado de bomberos y habilitación municipal. También podés adjuntar el número al momento del registro.',
+  clinica:'📄 Requerido: N° habilitación provincial y CUIT del establecimiento.',
+  profesional:'📄 Requerido: matrícula provincial activa.',
+  farmacia:'📄 Requerido: habilitación ANMAT y matrícula del director técnico.',
+  insumos:'📄 Requerido: CUIT activo y actividad comercial habilitada.',
+  oxigeno:'📄 Requerido: autorización ANMAT (DROG o DISP).',
+};
+const CAMPOS={
+  residencia:{t:'Información de la residencia',c:[
+    {l:'Capacidad total de residentes',id:'r-cap',ph:'Ej: 12 residentes'},
+    {l:'Modalidad de estadía',id:'r-mod',ph:'Permanente / Temporal / Ambas'},
+    {l:'Tipo de residentes que reciben',id:'r-tip',ph:'Ej: Autoválidos, Semidependientes, Dependientes, Deterioro cognitivo'},
+    {l:'Equipo profesional',id:'r-equ',ph:'Ej: Médico clínico, Enfermería 24hs, Psicología, Nutrición, Kinesiología'},
+    {l:'Servicios incluidos',id:'r-srv',ph:'Ej: Alimentación, Medicación, Higiene, Lavandería, Actividades recreativas'},
+    {l:'Infraestructura y comodidades',id:'r-inf',ph:'Ej: Habitaciones individuales/compartidas, WiFi, TV, Espacios verdes, A/C'},
+    {l:'Horarios de visita familiar',id:'r-vis',ph:'Ej: Todos los días 10-12hs y 16-19hs'},
+    {l:'¿Reciben residentes de otros departamentos?',id:'r-zona',ph:'Sí / No — indicar de dónde'}
+  ]},
+  clinica:{t:'Datos de la clínica / sanatorio',c:[
+    {l:'Especialidades médicas disponibles',id:'r-esp',ph:'Ej: Traumatología, Cardiología, Pediatría, Ginecología, Clínica médica'},
+    {l:'¿Tienen guardia permanente?',id:'r-guard',ph:'Sí, 24hs / Solo en horario / No'},
+    {l:'¿Tienen internación?',id:'r-int',ph:'Sí, hasta N camas / No, solo consultorios'},
+    {l:'Equipamiento y servicios especiales',id:'r-eq',ph:'Ej: UCI, quirófano, laboratorio, ecografía, rayos X'},
+    {l:'Obras sociales y prepagas principales',id:'r-os2',ph:'Ej: OSDE, Swiss Medical, PAMI, IPOS, Galeno'},
+    {l:'Modalidad de atención',id:'r-mod',ph:'Ej: Con turno previo / Guardia espontánea / Ambas'}
+  ]},
+  profesional:{t:'Datos profesionales',c:[
+    {l:'Especialidad o título',id:'r-esp',ph:'Ej: Médico clínico, Kinesióloga, Enfermero/a, Psicólogo/a'},
+    {l:'Matrícula provincial',id:'r-mat',ph:'Número de matrícula del Colegio correspondiente'},
+    {l:'Años de experiencia',id:'r-exp',ph:'Ej: 10 años'},
+    {l:'Servicios que ofrecés',id:'r-ps',ph:'Ej: Consulta domiciliaria, control de crónicos, rehabilitación, curaciones'},
+    {l:'Zona de cobertura',id:'r-zn',ph:'Ej: Capital y Rawson. Todo Gran San Juan.'},
+    {l:'Equipamiento con el que trabajás',id:'r-pe',ph:'Ej: Tensiómetro, glucómetro, oxímetro, electro, set de curaciones'}
+  ]},
+  farmacia:{t:'Servicios de la farmacia',c:[
+    {l:'¿Realizan preparados magistrales?',id:'r-mag',ph:'Sí / No'},
+    {l:'¿Aplican inyecciones?',id:'r-iny',ph:'Sí / No'},
+    {l:'¿Tienen turno de guardia?',id:'r-tur',ph:'Ej: Turno los lunes y jueves 24hs'},
+    {l:'¿Hacen delivery?',id:'r-del2',ph:'Sí, en zona / No'},
+    {l:'Zona de cobertura del delivery',id:'r-zdl',ph:'Ej: Capital y Rawson'},
+    {l:'¿Venden insumos médicos o pañales?',id:'r-ins',ph:'Sí / No — detallar qué'}
+  ]},
+  insumos:{t:'Catálogo y servicios',c:[
+    {l:'Productos principales',id:'r-prod',ph:'Ej: Sillas de ruedas, andadores, camas ortopédicas, colchones antiescaras, pañales'},
+    {l:'¿Alquilan equipos?',id:'r-alq',ph:'Sí, alquilamos y vendemos / Solo vendemos'},
+    {l:'¿Tienen servicio técnico o reparaciones?',id:'r-tec',ph:'Sí / No'},
+    {l:'¿Trabajan con obras sociales para cobertura?',id:'r-os3',ph:'Sí — indicar cuáles / No'},
+    {l:'Zona de cobertura del delivery',id:'r-zdl',ph:'Ej: Toda la provincia'}
+  ]},
+  oxigeno:{t:'Equipos y servicios',c:[
+    {l:'Equipos disponibles',id:'r-oeq',ph:'Ej: Oxígeno medicinal, concentradores, CPAP, BiPAP, nebulizadores'},
+    {l:'¿Realizan instalación y mantenimiento?',id:'r-om',ph:'Sí, incluido / Sí, con costo adicional / No'},
+    {l:'¿Tienen servicio de urgencias?',id:'r-oug',ph:'Sí, 24hs / No — tiempo de respuesta en zona'},
+    {l:'¿Trabajan con obras sociales?',id:'r-oos',ph:'Sí — indicar cuáles / Solo particular'}
+  ]},
+};
+
+let db=[];
+let pending=JSON.parse(localStorage.getItem('sr9_pend')||'[]');
+let cart={};
+if(!db.length){
+  db=[
     {id:11,tipo:'residencia',nombre:'Residencia El Chalet',dept:'Santa Lucía',dir:'Hipólito Yrigoyen 1856 Este, Santa Lucía',tel:'2655057363',
      horario:'Consultar horarios.',urgencias:'Sí, enfermería 24hs',disponibilidad:'Disponible — hay lugares',
      obras:[],osOtras:'Solo particular',
@@ -2144,7 +3707,7 @@ function adaptF(){
 // EMAILJS CONFIG
 // ═══════════════════════════════════════
 const EJS = {
-  serviceId:  'service_p4jbc64',
+  serviceId:  'service_saludred',
   tplAdmin:   'template_4kcynb9',   // llega a saludredsj@gmail.com
   tplAprobac: 'template_hne9tl9',   // llega al proveedor
   publicKey:  'BPgtHGORe-lFFH5Ol',
