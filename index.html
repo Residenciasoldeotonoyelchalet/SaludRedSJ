@@ -55,6 +55,161 @@ document.addEventListener('keydown',function(e){
   if(e.key==='ArrowRight')lbNav(1);
 });
 
+
+var regPlanProf='estandar', regPlanEstab='estandar';
+
+function selPP(p){
+  regPlanProf=p;
+  document.querySelectorAll('[id^="pcp-"]').forEach(el=>el.classList.remove('sel','sel-gold'));
+  document.getElementById('pcp-'+p).classList.add(p==='premium'?'sel-gold':'sel');
+}
+function selPE(p){
+  regPlanEstab=p;
+  document.querySelectorAll('[id^="pce-"]').forEach(el=>el.classList.remove('sel','sel-gold'));
+  document.getElementById('pce-'+p).classList.add(p==='premium'?'sel-gold':'sel');
+}
+
+function adaptProfEsp(){
+  var esp=document.getElementById('pp-esp').value;
+  var otraDiv=document.getElementById('pp-otra-esp');
+  otraDiv.style.display=esp==='Otra'?'block':'none';
+  var secSrv=document.getElementById('pp-sec-srv');
+  var srvBody=document.getElementById('pp-srv-body');
+  var srvTit=document.getElementById('pp-srv-titulo');
+  var srv={
+    'Kinesiología':{t:'Especialidades',html:'<div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pp-srv" value="Respiratoria"> Respiratoria</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Motora"> Motora</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Neurológica"> Neurológica</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Traumatológica"> Traumatológica</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Geriátrica"> Geriátrica</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Postquirúrgica"> Postquirúrgica</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Domiciliaria"> Domiciliaria</label></div>'},
+    'Enfermería':{t:'Servicios',html:'<div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pp-srv" value="Curación escaras"> Curación de escaras</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Inyectables"> Inyectables</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Sueros"> Sueros IV</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Signos vitales"> Signos vitales</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Medicación"> Medicación</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Geriátrica"> Geriátrica</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Cuidados paliativos"> Cuidados paliativos</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Acompañamiento"> Acompañamiento hospitalario</label></div>'},
+    'Psicología':{t:'Modalidades',html:'<div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pp-srv" value="Individual"> Individual</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Pareja"> Pareja</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Familiar"> Familiar</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Infantil"> Infantil</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Adolescente"> Adolescente</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Adultos mayores"> Adultos mayores</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Online"> Online</label></div>'},
+    'Fonoaudiología':{t:'Servicios',html:'<div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pp-srv" value="Lenguaje"> Lenguaje</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Deglución"> Deglución</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Neurológica"> Neurológica</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Estimulación temprana"> Estimulación temprana</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Domiciliaria"> Domiciliaria</label></div>'},
+    'Terapia Ocupacional':{t:'Servicios',html:'<div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pp-srv" value="Neurológica"> Neurológica</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Adultos mayores"> Adultos mayores</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Adaptación funcional"> Adaptación funcional</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Cognitiva"> Estimulación cognitiva</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Domiciliaria"> Domiciliaria</label></div>'},
+    'Laboratorio/Bioquímica':{t:'Servicios',html:'<div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pp-srv" value="Extracción domicilio"> Extracción domicilio</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Análisis clínicos"> Análisis clínicos</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Hormonales"> Hormonales</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Bacteriológicos"> Bacteriológicos</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Ocupacionales"> Ocupacionales</label></div>'},
+    'Cuidador domiciliario':{t:'Servicios',html:'<div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pp-srv" value="Diurno"> Acompañamiento diurno</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Nocturno"> Nocturno</label><label class="cbx"><input type="checkbox" name="pp-srv" value="24hs"> 24hs</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Higiene"> Higiene personal</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Traslados"> Traslados</label></div>'},
+  };
+  if(srv[esp]){
+    srvTit.textContent=srv[esp].t;
+    srvBody.innerHTML=srv[esp].html;
+    secSrv.style.display='block';
+  } else {
+    secSrv.style.display='none';
+  }
+}
+
+function adaptEstabTipo(){
+  var tipo=document.getElementById('pe-tipo').value;
+  var hint=document.getElementById('pe-tipo-hint');
+  var sec=document.getElementById('pe-sec-esp');
+  var body=document.getElementById('pe-esp-body');
+  var tit=document.getElementById('pe-esp-titulo');
+  var hints={
+    residencia:'📄 Requerido: N° habilitación del Ministerio de Salud de San Juan, certificado de bomberos y habilitación municipal.',
+    clinica:'📄 Requerido: N° habilitación provincial y CUIT del establecimiento.',
+    farmacia:'📄 Requerido: habilitación ANMAT y matrícula del director técnico.',
+    insumos:'📄 Requerido: CUIT activo y actividad comercial habilitada.',
+    oxigeno:'📄 Requerido: autorización ANMAT (DROG o DISP).',
+  };
+  hint.textContent=hints[tipo]||'';
+  hint.style.display=hints[tipo]?'block':'none';
+  var esp={
+    residencia:{t:'Información de la residencia',html:'<div class="fg"><label class="fl">Tipo de residencia</label><div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pe-tipores" value="Permanente"> Permanente</label><label class="cbx"><input type="checkbox" name="pe-tipores" value="Temporal"> Temporal</label><label class="cbx"><input type="checkbox" name="pe-tipores" value="Centro de día"> Centro de día</label></div></div><div class="fg"><label class="fl">Tipo de residentes</label><div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Autoválidos"> Autoválidos</label><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Semidependientes"> Semidependientes</label><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Dependientes"> Dependientes</label><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Deterioro cognitivo"> Deterioro cognitivo</label><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Patologías polivalentes"> Patologías polivalentes</label></div></div><div class="frow"><div class="fg"><label class="fl">Capacidad total *</label><input type="number" class="fi" id="pe-cap" placeholder="Ej: 12"></div><div class="fg"><label class="fl">N° de habitaciones</label><input type="number" class="fi" id="pe-hab2" placeholder="Ej: 8"></div></div><div class="fg"><label class="fl">Servicios incluidos</label><div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pe-srv" value="Enfermería 24hs"> Enfermería 24hs</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Médico de cabecera"> Médico de cabecera</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Kinesiología"> Kinesiología</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Nutrición"> Nutrición</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Psicología"> Psicología</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Terapia ocupacional"> Terapia ocupacional</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Actividades recreativas"> Actividades recreativas</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Lavandería"> Lavandería</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Cuidados paliativos"> Cuidados paliativos</label></div></div><div class="fg"><label class="fl">Horario de visitas familiares *</label><input type="text" class="fi" id="pe-visitas" placeholder="Ej: Todos los días 10-12hs y 16-19hs"></div>'},
+    clinica:{t:'Información de la clínica',html:'<div class="fg"><label class="fl">Especialidades disponibles *</label><input type="text" class="fi" id="pe-esp2" placeholder="Ej: Traumatología, Cardiología, Pediatría"></div><div class="fg"><label class="fl">¿Tienen guardia 24hs?</label><div class="rdo-g" id="rg-pe-guardia"><div class="rdo" onclick="selR(this,'rg-pe-guardia','Sí')">Sí</div><div class="rdo" onclick="selR(this,'rg-pe-guardia','No')">No</div></div></div><div class="fg"><label class="fl">¿Tienen internación?</label><input type="text" class="fi" id="pe-intern" placeholder="Sí, N camas / No, solo consultorios"></div>'},
+    farmacia:{t:'Servicios de la farmacia',html:'<div class="fg"><label class="fl">Servicios</label><div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pe-srv" value="Magistrales"> Magistrales</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Inyecciones"> Inyecciones</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Turno guardia"> Turno guardia</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Delivery"> Delivery</label></div></div><div class="fg"><label class="fl">Zona de delivery</label><input type="text" class="fi" id="pe-zona" placeholder="Ej: Capital y Rawson"></div>'},
+    insumos:{t:'Catálogo',html:'<div class="fg"><label class="fl">Productos principales</label><textarea class="fta" id="pe-prod" placeholder="Ej: Sillas de ruedas, andadores, camas, pañales"></textarea></div><div class="fg"><label class="fl">¿Alquilan?</label><div class="rdo-g" id="rg-pe-alq"><div class="rdo" onclick="selR(this,'rg-pe-alq','Sí')">Sí, alquilan y venden</div><div class="rdo" onclick="selR(this,'rg-pe-alq','Solo venden')">Solo venden</div></div></div>'},
+    oxigeno:{t:'Equipos',html:'<div class="fg"><label class="fl">Equipos disponibles</label><div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pe-srv" value="Oxígeno medicinal"> Oxígeno medicinal</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Concentrador"> Concentrador</label><label class="cbx"><input type="checkbox" name="pe-srv" value="CPAP"> CPAP</label><label class="cbx"><input type="checkbox" name="pe-srv" value="BiPAP"> BiPAP</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Nebulizador"> Nebulizador</label></div></div><div class="fg"><label class="fl">¿Urgencias 24hs?</label><div class="rdo-g" id="rg-pe-urg"><div class="rdo" onclick="selR(this,'rg-pe-urg','Sí')">Sí</div><div class="rdo" onclick="selR(this,'rg-pe-urg','No')">No</div></div></div>'},
+  };
+  if(esp[tipo]){
+    tit.textContent=esp[tipo].t;
+    body.innerHTML=esp[tipo].html;
+    sec.style.display='block';
+  } else {
+    sec.style.display=tipo==='otro'?'none':'none';
+  }
+}
+
+async function submitRegProf(){
+  var n=document.getElementById('pp-nombre').value.trim();
+  var esp=document.getElementById('pp-esp').value;
+  var mat=document.getElementById('pp-matricula').value.trim();
+  var tel=document.getElementById('pp-tel').value.trim();
+  var email=document.getElementById('pp-email').value.trim();
+  if(!n||!esp||!mat||!tel||!email){alert('Completá los campos obligatorios (*).');return;}
+  var depts=Array.from(document.querySelectorAll('input[name="pp-dept"]:checked')).map(function(x){return x.value;});
+  if(!depts.length){alert('Seleccioná al menos un departamento donde atendés.');return;}
+  var os=Array.from(document.querySelectorAll('input[name="pp-os"]:checked')).map(function(x){return x.value;});
+  var srv=Array.from(document.querySelectorAll('input[name="pp-srv"]:checked')).map(function(x){return x.value;});
+  var btn=document.querySelector('#view-reg-prof .btn-submit');
+  btn.textContent='Enviando...';btn.disabled=true;
+  var params={
+    nombre:n, tipo:'Profesional - '+esp, depto:depts.join(', '),
+    telefono:tel, email_prov:email, cuit:'—',
+    habilitacion:mat, plan:regPlanProf,
+    obras:os.length?os.join(', '):'Solo particular',
+    horario:document.getElementById('pp-horario').value.trim()||'—',
+    urgencias:'—', disponibilidad:'—',
+    descripcion:document.getElementById('pp-desc').value.trim()||'—',
+    precio:document.getElementById('pp-precio').value.trim()||'—',
+    zona:depts.join(', '),
+    esp_campos:'Servicios: '+(srv.length?srv.join(', '):'—'),
+    fecha:new Date().toLocaleDateString('es-AR'),
+    id_solicitud:String(Date.now()),
+  };
+  try{
+    await emailjs.send(EJS.serviceId,EJS.tplAdmin,params);
+    btn.textContent='Enviar solicitud →';btn.disabled=false;
+    document.getElementById('reg-ok-prof-email').textContent=email;
+    document.getElementById('reg-ok-prof').classList.add('on');
+    document.getElementById('reg-ok-prof').scrollIntoView({behavior:'smooth'});
+  }catch(err){
+    console.error(err);
+    btn.textContent='Enviar solicitud →';btn.disabled=false;
+    alert('Error al enviar. Escribinos directamente a saludredsj@gmail.com');
+  }
+}
+
+async function submitRegEstab(){
+  var n=document.getElementById('pe-nombre').value.trim();
+  var tipo=document.getElementById('pe-tipo').value;
+  var tel=document.getElementById('pe-tel').value.trim();
+  var email=document.getElementById('pe-email').value.trim();
+  var hab=document.getElementById('pe-hab').value.trim();
+  var dept=document.getElementById('pe-dept').value;
+  if(!n||!tipo||!tel||!email||!hab||!dept){alert('Completá los campos obligatorios (*).');return;}
+  var os=Array.from(document.querySelectorAll('input[name="pe-os"]:checked')).map(function(x){return x.value;});
+  var srv=Array.from(document.querySelectorAll('input[name="pe-srv"]:checked')).map(function(x){return x.value;});
+  var btn=document.querySelector('#view-reg-estab .btn-submit');
+  btn.textContent='Enviando...';btn.disabled=true;
+  var espCampos=srv.length?'Servicios: '+srv.join(', '):'';
+  var cap=document.getElementById('pe-cap');
+  if(cap&&cap.value) espCampos+=' | Capacidad: '+cap.value;
+  var vis=document.getElementById('pe-visitas');
+  if(vis&&vis.value) espCampos+=' | Visitas: '+vis.value;
+  var params={
+    nombre:n, tipo:T[tipo]?T[tipo].l:tipo, depto:dept,
+    telefono:tel, email_prov:email,
+    cuit:document.getElementById('pe-cuit').value.trim()||'—',
+    habilitacion:hab, plan:regPlanEstab,
+    obras:os.length?os.join(', '):'Solo particular',
+    horario:document.getElementById('pe-horario').value.trim()||'—',
+    urgencias:'—', disponibilidad:'—',
+    descripcion:document.getElementById('pe-desc').value.trim()||'—',
+    precio:document.getElementById('pe-precio').value.trim()||'—',
+    zona:dept,
+    esp_campos:espCampos||'—',
+    fecha:new Date().toLocaleDateString('es-AR'),
+    id_solicitud:String(Date.now()),
+  };
+  try{
+    await emailjs.send(EJS.serviceId,EJS.tplAdmin,params);
+    btn.textContent='Enviar solicitud →';btn.disabled=false;
+    document.getElementById('reg-ok-estab-email').textContent=email;
+    document.getElementById('reg-ok-estab').classList.add('on');
+    document.getElementById('reg-ok-estab').scrollIntoView({behavior:'smooth'});
+  }catch(err){
+    console.error(err);
+    btn.textContent='Enviar solicitud →';btn.disabled=false;
+    alert('Error al enviar. Escribinos directamente a saludredsj@gmail.com');
+  }
+}
+
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
@@ -83,6 +238,161 @@ document.addEventListener('keydown',function(e){
   if(e.key==='ArrowLeft')lbNav(-1);
   if(e.key==='ArrowRight')lbNav(1);
 });
+
+
+var regPlanProf='estandar', regPlanEstab='estandar';
+
+function selPP(p){
+  regPlanProf=p;
+  document.querySelectorAll('[id^="pcp-"]').forEach(el=>el.classList.remove('sel','sel-gold'));
+  document.getElementById('pcp-'+p).classList.add(p==='premium'?'sel-gold':'sel');
+}
+function selPE(p){
+  regPlanEstab=p;
+  document.querySelectorAll('[id^="pce-"]').forEach(el=>el.classList.remove('sel','sel-gold'));
+  document.getElementById('pce-'+p).classList.add(p==='premium'?'sel-gold':'sel');
+}
+
+function adaptProfEsp(){
+  var esp=document.getElementById('pp-esp').value;
+  var otraDiv=document.getElementById('pp-otra-esp');
+  otraDiv.style.display=esp==='Otra'?'block':'none';
+  var secSrv=document.getElementById('pp-sec-srv');
+  var srvBody=document.getElementById('pp-srv-body');
+  var srvTit=document.getElementById('pp-srv-titulo');
+  var srv={
+    'Kinesiología':{t:'Especialidades',html:'<div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pp-srv" value="Respiratoria"> Respiratoria</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Motora"> Motora</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Neurológica"> Neurológica</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Traumatológica"> Traumatológica</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Geriátrica"> Geriátrica</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Postquirúrgica"> Postquirúrgica</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Domiciliaria"> Domiciliaria</label></div>'},
+    'Enfermería':{t:'Servicios',html:'<div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pp-srv" value="Curación escaras"> Curación de escaras</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Inyectables"> Inyectables</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Sueros"> Sueros IV</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Signos vitales"> Signos vitales</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Medicación"> Medicación</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Geriátrica"> Geriátrica</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Cuidados paliativos"> Cuidados paliativos</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Acompañamiento"> Acompañamiento hospitalario</label></div>'},
+    'Psicología':{t:'Modalidades',html:'<div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pp-srv" value="Individual"> Individual</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Pareja"> Pareja</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Familiar"> Familiar</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Infantil"> Infantil</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Adolescente"> Adolescente</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Adultos mayores"> Adultos mayores</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Online"> Online</label></div>'},
+    'Fonoaudiología':{t:'Servicios',html:'<div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pp-srv" value="Lenguaje"> Lenguaje</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Deglución"> Deglución</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Neurológica"> Neurológica</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Estimulación temprana"> Estimulación temprana</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Domiciliaria"> Domiciliaria</label></div>'},
+    'Terapia Ocupacional':{t:'Servicios',html:'<div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pp-srv" value="Neurológica"> Neurológica</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Adultos mayores"> Adultos mayores</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Adaptación funcional"> Adaptación funcional</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Cognitiva"> Estimulación cognitiva</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Domiciliaria"> Domiciliaria</label></div>'},
+    'Laboratorio/Bioquímica':{t:'Servicios',html:'<div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pp-srv" value="Extracción domicilio"> Extracción domicilio</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Análisis clínicos"> Análisis clínicos</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Hormonales"> Hormonales</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Bacteriológicos"> Bacteriológicos</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Ocupacionales"> Ocupacionales</label></div>'},
+    'Cuidador domiciliario':{t:'Servicios',html:'<div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pp-srv" value="Diurno"> Acompañamiento diurno</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Nocturno"> Nocturno</label><label class="cbx"><input type="checkbox" name="pp-srv" value="24hs"> 24hs</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Higiene"> Higiene personal</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Traslados"> Traslados</label></div>'},
+  };
+  if(srv[esp]){
+    srvTit.textContent=srv[esp].t;
+    srvBody.innerHTML=srv[esp].html;
+    secSrv.style.display='block';
+  } else {
+    secSrv.style.display='none';
+  }
+}
+
+function adaptEstabTipo(){
+  var tipo=document.getElementById('pe-tipo').value;
+  var hint=document.getElementById('pe-tipo-hint');
+  var sec=document.getElementById('pe-sec-esp');
+  var body=document.getElementById('pe-esp-body');
+  var tit=document.getElementById('pe-esp-titulo');
+  var hints={
+    residencia:'📄 Requerido: N° habilitación del Ministerio de Salud de San Juan, certificado de bomberos y habilitación municipal.',
+    clinica:'📄 Requerido: N° habilitación provincial y CUIT del establecimiento.',
+    farmacia:'📄 Requerido: habilitación ANMAT y matrícula del director técnico.',
+    insumos:'📄 Requerido: CUIT activo y actividad comercial habilitada.',
+    oxigeno:'📄 Requerido: autorización ANMAT (DROG o DISP).',
+  };
+  hint.textContent=hints[tipo]||'';
+  hint.style.display=hints[tipo]?'block':'none';
+  var esp={
+    residencia:{t:'Información de la residencia',html:'<div class="fg"><label class="fl">Tipo de residencia</label><div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pe-tipores" value="Permanente"> Permanente</label><label class="cbx"><input type="checkbox" name="pe-tipores" value="Temporal"> Temporal</label><label class="cbx"><input type="checkbox" name="pe-tipores" value="Centro de día"> Centro de día</label></div></div><div class="fg"><label class="fl">Tipo de residentes</label><div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Autoválidos"> Autoválidos</label><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Semidependientes"> Semidependientes</label><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Dependientes"> Dependientes</label><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Deterioro cognitivo"> Deterioro cognitivo</label><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Patologías polivalentes"> Patologías polivalentes</label></div></div><div class="frow"><div class="fg"><label class="fl">Capacidad total *</label><input type="number" class="fi" id="pe-cap" placeholder="Ej: 12"></div><div class="fg"><label class="fl">N° de habitaciones</label><input type="number" class="fi" id="pe-hab2" placeholder="Ej: 8"></div></div><div class="fg"><label class="fl">Servicios incluidos</label><div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pe-srv" value="Enfermería 24hs"> Enfermería 24hs</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Médico de cabecera"> Médico de cabecera</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Kinesiología"> Kinesiología</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Nutrición"> Nutrición</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Psicología"> Psicología</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Terapia ocupacional"> Terapia ocupacional</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Actividades recreativas"> Actividades recreativas</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Lavandería"> Lavandería</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Cuidados paliativos"> Cuidados paliativos</label></div></div><div class="fg"><label class="fl">Horario de visitas familiares *</label><input type="text" class="fi" id="pe-visitas" placeholder="Ej: Todos los días 10-12hs y 16-19hs"></div>'},
+    clinica:{t:'Información de la clínica',html:'<div class="fg"><label class="fl">Especialidades disponibles *</label><input type="text" class="fi" id="pe-esp2" placeholder="Ej: Traumatología, Cardiología, Pediatría"></div><div class="fg"><label class="fl">¿Tienen guardia 24hs?</label><div class="rdo-g" id="rg-pe-guardia"><div class="rdo" onclick="selR(this,'rg-pe-guardia','Sí')">Sí</div><div class="rdo" onclick="selR(this,'rg-pe-guardia','No')">No</div></div></div><div class="fg"><label class="fl">¿Tienen internación?</label><input type="text" class="fi" id="pe-intern" placeholder="Sí, N camas / No, solo consultorios"></div>'},
+    farmacia:{t:'Servicios de la farmacia',html:'<div class="fg"><label class="fl">Servicios</label><div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pe-srv" value="Magistrales"> Magistrales</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Inyecciones"> Inyecciones</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Turno guardia"> Turno guardia</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Delivery"> Delivery</label></div></div><div class="fg"><label class="fl">Zona de delivery</label><input type="text" class="fi" id="pe-zona" placeholder="Ej: Capital y Rawson"></div>'},
+    insumos:{t:'Catálogo',html:'<div class="fg"><label class="fl">Productos principales</label><textarea class="fta" id="pe-prod" placeholder="Ej: Sillas de ruedas, andadores, camas, pañales"></textarea></div><div class="fg"><label class="fl">¿Alquilan?</label><div class="rdo-g" id="rg-pe-alq"><div class="rdo" onclick="selR(this,'rg-pe-alq','Sí')">Sí, alquilan y venden</div><div class="rdo" onclick="selR(this,'rg-pe-alq','Solo venden')">Solo venden</div></div></div>'},
+    oxigeno:{t:'Equipos',html:'<div class="fg"><label class="fl">Equipos disponibles</label><div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pe-srv" value="Oxígeno medicinal"> Oxígeno medicinal</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Concentrador"> Concentrador</label><label class="cbx"><input type="checkbox" name="pe-srv" value="CPAP"> CPAP</label><label class="cbx"><input type="checkbox" name="pe-srv" value="BiPAP"> BiPAP</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Nebulizador"> Nebulizador</label></div></div><div class="fg"><label class="fl">¿Urgencias 24hs?</label><div class="rdo-g" id="rg-pe-urg"><div class="rdo" onclick="selR(this,'rg-pe-urg','Sí')">Sí</div><div class="rdo" onclick="selR(this,'rg-pe-urg','No')">No</div></div></div>'},
+  };
+  if(esp[tipo]){
+    tit.textContent=esp[tipo].t;
+    body.innerHTML=esp[tipo].html;
+    sec.style.display='block';
+  } else {
+    sec.style.display=tipo==='otro'?'none':'none';
+  }
+}
+
+async function submitRegProf(){
+  var n=document.getElementById('pp-nombre').value.trim();
+  var esp=document.getElementById('pp-esp').value;
+  var mat=document.getElementById('pp-matricula').value.trim();
+  var tel=document.getElementById('pp-tel').value.trim();
+  var email=document.getElementById('pp-email').value.trim();
+  if(!n||!esp||!mat||!tel||!email){alert('Completá los campos obligatorios (*).');return;}
+  var depts=Array.from(document.querySelectorAll('input[name="pp-dept"]:checked')).map(function(x){return x.value;});
+  if(!depts.length){alert('Seleccioná al menos un departamento donde atendés.');return;}
+  var os=Array.from(document.querySelectorAll('input[name="pp-os"]:checked')).map(function(x){return x.value;});
+  var srv=Array.from(document.querySelectorAll('input[name="pp-srv"]:checked')).map(function(x){return x.value;});
+  var btn=document.querySelector('#view-reg-prof .btn-submit');
+  btn.textContent='Enviando...';btn.disabled=true;
+  var params={
+    nombre:n, tipo:'Profesional - '+esp, depto:depts.join(', '),
+    telefono:tel, email_prov:email, cuit:'—',
+    habilitacion:mat, plan:regPlanProf,
+    obras:os.length?os.join(', '):'Solo particular',
+    horario:document.getElementById('pp-horario').value.trim()||'—',
+    urgencias:'—', disponibilidad:'—',
+    descripcion:document.getElementById('pp-desc').value.trim()||'—',
+    precio:document.getElementById('pp-precio').value.trim()||'—',
+    zona:depts.join(', '),
+    esp_campos:'Servicios: '+(srv.length?srv.join(', '):'—'),
+    fecha:new Date().toLocaleDateString('es-AR'),
+    id_solicitud:String(Date.now()),
+  };
+  try{
+    await emailjs.send(EJS.serviceId,EJS.tplAdmin,params);
+    btn.textContent='Enviar solicitud →';btn.disabled=false;
+    document.getElementById('reg-ok-prof-email').textContent=email;
+    document.getElementById('reg-ok-prof').classList.add('on');
+    document.getElementById('reg-ok-prof').scrollIntoView({behavior:'smooth'});
+  }catch(err){
+    console.error(err);
+    btn.textContent='Enviar solicitud →';btn.disabled=false;
+    alert('Error al enviar. Escribinos directamente a saludredsj@gmail.com');
+  }
+}
+
+async function submitRegEstab(){
+  var n=document.getElementById('pe-nombre').value.trim();
+  var tipo=document.getElementById('pe-tipo').value;
+  var tel=document.getElementById('pe-tel').value.trim();
+  var email=document.getElementById('pe-email').value.trim();
+  var hab=document.getElementById('pe-hab').value.trim();
+  var dept=document.getElementById('pe-dept').value;
+  if(!n||!tipo||!tel||!email||!hab||!dept){alert('Completá los campos obligatorios (*).');return;}
+  var os=Array.from(document.querySelectorAll('input[name="pe-os"]:checked')).map(function(x){return x.value;});
+  var srv=Array.from(document.querySelectorAll('input[name="pe-srv"]:checked')).map(function(x){return x.value;});
+  var btn=document.querySelector('#view-reg-estab .btn-submit');
+  btn.textContent='Enviando...';btn.disabled=true;
+  var espCampos=srv.length?'Servicios: '+srv.join(', '):'';
+  var cap=document.getElementById('pe-cap');
+  if(cap&&cap.value) espCampos+=' | Capacidad: '+cap.value;
+  var vis=document.getElementById('pe-visitas');
+  if(vis&&vis.value) espCampos+=' | Visitas: '+vis.value;
+  var params={
+    nombre:n, tipo:T[tipo]?T[tipo].l:tipo, depto:dept,
+    telefono:tel, email_prov:email,
+    cuit:document.getElementById('pe-cuit').value.trim()||'—',
+    habilitacion:hab, plan:regPlanEstab,
+    obras:os.length?os.join(', '):'Solo particular',
+    horario:document.getElementById('pe-horario').value.trim()||'—',
+    urgencias:'—', disponibilidad:'—',
+    descripcion:document.getElementById('pe-desc').value.trim()||'—',
+    precio:document.getElementById('pe-precio').value.trim()||'—',
+    zona:dept,
+    esp_campos:espCampos||'—',
+    fecha:new Date().toLocaleDateString('es-AR'),
+    id_solicitud:String(Date.now()),
+  };
+  try{
+    await emailjs.send(EJS.serviceId,EJS.tplAdmin,params);
+    btn.textContent='Enviar solicitud →';btn.disabled=false;
+    document.getElementById('reg-ok-estab-email').textContent=email;
+    document.getElementById('reg-ok-estab').classList.add('on');
+    document.getElementById('reg-ok-estab').scrollIntoView({behavior:'smooth'});
+  }catch(err){
+    console.error(err);
+    btn.textContent='Enviar solicitud →';btn.disabled=false;
+    alert('Error al enviar. Escribinos directamente a saludredsj@gmail.com');
+  }
+}
 
 </script>
 <style>
@@ -438,7 +748,7 @@ html, body { width: 100%; overflow-x: hidden; }
   <div class="nav-links">
     <button class="nlink" onclick="gv('servicios')">Buscar servicios</button>
     <button class="nlink" onclick="gv('productos')">Productos</button>
-    <button class="nlink" onclick="gv('registro')">Publicar servicio</button>
+    <button class="nlink" onclick="gv('reg-estab')">Publicar servicio</button>
   </div>
   <div class="nav-right">
     <button class="cart-btn" onclick="gv('carrito')">📋 Mis consultas <span class="cart-ct" id="cct">0</span></button>
@@ -492,8 +802,8 @@ html, body { width: 100%; overflow-x: hidden; }
   <div class="sr-prov-strip">
     <div class="sr-prov-strip-t">¿Sos profesional o tenés un establecimiento de salud?</div>
     <div class="sr-prov-strip-btns">
-      <button onclick="gv('registro')">👨‍⚕️ Soy profesional</button>
-      <button onclick="gv('registro')">🏥 Tengo un establecimiento</button>
+      <button onclick="gv('reg-prof')">👨‍⚕️ Soy profesional</button>
+      <button onclick="gv('reg-estab')">🏥 Tengo un establecimiento</button>
     </div>
   </div>
 </div>
@@ -607,45 +917,212 @@ html, body { width: 100%; overflow-x: hidden; }
 
 <!-- REGISTRO -->
 <div id="view-registro" class="view">
+  <!-- Se reemplaza dinámicamente por regProf o regEstab según el botón -->
+</div>
+
+<!-- REGISTRO PROFESIONAL -->
+<div id="view-reg-prof" class="view">
   <div class="reg-hdr">
-    <h2 id="reg-hdr-title">Registrá tu servicio en SaludRed</h2>
-    <p>Completá el formulario. Tu perfil se revisa y se publica con toda la información visible.</p>
+    <h2>Registrarme como profesional</h2>
+    <p>Completá el formulario. Revisamos tus datos y publicamos tu perfil en 24-48hs.</p>
   </div>
   <div class="reg-body">
-
-    <!-- PRUEBA BANNER -->
     <div style="background:var(--teal);color:white;padding:14px 16px;margin-bottom:20px;display:flex;align-items:center;gap:12px;">
-      <div style="font-size:1.6rem;flex-shrink:0">🎁</div>
-      <div>
-        <div style="font-family:'Libre Baskerville',serif;font-weight:700;font-size:1rem;margin-bottom:2px">15 días de prueba gratis</div>
-        <div style="font-size:13px;opacity:0.85">Tu perfil aparece publicado durante 15 días sin costo. Si querés seguir, elegís un plan.</div>
-      </div>
+      <div style="font-size:1.6rem">🎁</div>
+      <div><div style="font-family:'Libre Baskerville',serif;font-weight:700;font-size:1rem;margin-bottom:2px">15 días de prueba gratis</div>
+      <div style="font-size:13px;opacity:0.85">Sin costo. Si querés continuar, elegís un plan después.</div></div>
     </div>
 
     <!-- PLAN -->
     <div class="fsec-box">
-      <div class="fsec-hd"><span class="fsec-title">Elegí tu plan — empieza después de los 15 días de prueba</span></div>
+      <div class="fsec-hd"><span class="fsec-title">Plan</span></div>
       <div class="fsec-body">
         <div class="plan-grid">
-          <div class="plan-c sel" id="pc-estandar" onclick="selP('estandar')" style="position:relative">
+          <div class="plan-c sel" id="pcp-estandar" onclick="selPP('estandar')" style="position:relative">
             <div class="plan-pop">MÁS ELEGIDO</div>
             <div class="plan-name">Estándar</div>
             <div class="plan-pr">$30.000 <small>/mes</small></div>
-            <div class="plan-desc">Perfil completo, visible en búsquedas.</div>
             <div class="plan-fs">
               <div class="pf"><span class="y">✓</span> 15 días gratis</div>
               <div class="pf"><span class="y">✓</span> Perfil completo</div>
               <div class="pf"><span class="y">✓</span> Botón de contacto</div>
             </div>
           </div>
-          <div class="plan-c" id="pc-premium" onclick="selP('premium')">
+          <div class="plan-c" id="pcp-premium" onclick="selPP('premium')">
             <div class="plan-name">Premium ✦</div>
             <div class="plan-pr">$50.000 <small>/mes</small></div>
-            <div class="plan-desc">Primero en todos los resultados.</div>
             <div class="plan-fs">
               <div class="pf"><span class="y">✓</span> 15 días gratis</div>
-              <div class="pf"><span class="y">✓</span> Todo lo del Estándar</div>
-              <div class="pf"><span class="y">✓</span> Badge dorado "Destacado"</div>
+              <div class="pf"><span class="y">✓</span> Primero en búsquedas</div>
+              <div class="pf"><span class="y">✓</span> Badge dorado</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DATOS -->
+    <div class="fsec-box">
+      <div class="fsec-hd"><span class="fsec-title">Datos personales y profesionales</span><span class="fsec-req">* obligatorio</span></div>
+      <div class="fsec-body">
+        <div class="fg"><label class="fl">Nombre y apellido *</label><input type="text" class="fi" id="pp-nombre" placeholder="Como figura en la matrícula"></div>
+        <div class="fg">
+          <label class="fl">Especialidad *</label>
+          <select class="fs" id="pp-esp" onchange="adaptProfEsp()">
+            <option value="">— Seleccioná —</option>
+            <option value="Médico clínico">Médico clínico</option>
+            <option value="Cardiología">Cardiología</option>
+            <option value="Neurología">Neurología</option>
+            <option value="Geriatría">Geriatría</option>
+            <option value="Traumatología">Traumatología</option>
+            <option value="Pediatría">Pediatría</option>
+            <option value="Psiquiatría">Psiquiatría</option>
+            <option value="Dermatología">Dermatología</option>
+            <option value="Endocrinología">Endocrinología</option>
+            <option value="Medicina familiar">Medicina familiar</option>
+            <option value="Kinesiología">Kinesiología</option>
+            <option value="Enfermería">Enfermería</option>
+            <option value="Psicología">Psicología</option>
+            <option value="Fonoaudiología">Fonoaudiología</option>
+            <option value="Terapia Ocupacional">Terapia Ocupacional</option>
+            <option value="Nutrición">Nutrición</option>
+            <option value="Laboratorio/Bioquímica">Laboratorio / Bioquímica</option>
+            <option value="Cuidador domiciliario">Cuidador/a domiciliario/a</option>
+            <option value="Otra">Otra especialidad</option>
+          </select>
+        </div>
+        <div class="fg" id="pp-otra-esp" style="display:none">
+          <label class="fl">Especificá tu especialidad *</label>
+          <input type="text" class="fi" id="pp-otra-esp-txt" placeholder="Ej: Odontología, Podología...">
+        </div>
+        <div class="fg"><label class="fl">N° de matrícula provincial *</label><input type="text" class="fi" id="pp-matricula" placeholder="Número de matrícula del Colegio correspondiente"></div>
+        <div class="frow">
+          <div class="fg"><label class="fl">Teléfono *</label><input type="text" class="fi" id="pp-tel" placeholder="264-XXX-XXXX"></div>
+          <div class="fg"><label class="fl">WhatsApp</label><input type="text" class="fi" id="pp-wsp" placeholder="264-XXX-XXXX"></div>
+        </div>
+        <div class="fg"><label class="fl">Email *</label><input type="email" class="fi" id="pp-email" placeholder="tu@email.com"></div>
+        <div class="fg"><label class="fl">Sitio web</label><input type="text" class="fi" id="pp-web" placeholder="www.mipagina.com (opcional)"></div>
+      </div>
+    </div>
+
+    <!-- COBERTURA -->
+    <div class="fsec-box">
+      <div class="fsec-hd"><span class="fsec-title">Departamentos donde atendés</span><span class="fsec-req">* al menos uno</span></div>
+      <div class="fsec-body">
+        <div class="cbx-grid">
+          <label class="cbx"><input type="checkbox" name="pp-dept" value="Capital"> Capital</label>
+          <label class="cbx"><input type="checkbox" name="pp-dept" value="Rawson"> Rawson</label>
+          <label class="cbx"><input type="checkbox" name="pp-dept" value="Rivadavia"> Rivadavia</label>
+          <label class="cbx"><input type="checkbox" name="pp-dept" value="Chimbas"> Chimbas</label>
+          <label class="cbx"><input type="checkbox" name="pp-dept" value="Pocito"> Pocito</label>
+          <label class="cbx"><input type="checkbox" name="pp-dept" value="Santa Lucía"> Santa Lucía</label>
+          <label class="cbx"><input type="checkbox" name="pp-dept" value="Caucete"> Caucete</label>
+          <label class="cbx"><input type="checkbox" name="pp-dept" value="Zonda"> Zonda</label>
+          <label class="cbx"><input type="checkbox" name="pp-dept" value="Toda la provincia"> Toda la provincia</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- SERVICIOS ESPECÍFICOS -->
+    <div class="fsec-box" id="pp-sec-srv" style="display:none">
+      <div class="fsec-hd"><span class="fsec-title" id="pp-srv-titulo">Servicios</span></div>
+      <div class="fsec-body" id="pp-srv-body"></div>
+    </div>
+
+    <!-- OBRAS SOCIALES -->
+    <div class="fsec-box">
+      <div class="fsec-hd"><span class="fsec-title">Obras sociales</span><span class="fsec-req">* obligatorio</span></div>
+      <div class="fsec-body">
+        <div class="fg">
+          <div class="rdo-g" id="rg-pp-os">
+            <div class="rdo" onclick="selR(this,'rg-pp-os','Sí');document.getElementById('pp-os-lista').style.display='block'">Acepto obras sociales</div>
+            <div class="rdo" onclick="selR(this,'rg-pp-os','No');document.getElementById('pp-os-lista').style.display='none'">Solo particular</div>
+          </div>
+        </div>
+        <div id="pp-os-lista" style="display:none">
+          <div class="cbx-grid" style="margin-top:10px">
+            <label class="cbx"><input type="checkbox" name="pp-os" value="PAMI"> PAMI</label>
+            <label class="cbx"><input type="checkbox" name="pp-os" value="IPOS"> IPOS</label>
+            <label class="cbx"><input type="checkbox" name="pp-os" value="OSDE"> OSDE</label>
+            <label class="cbx"><input type="checkbox" name="pp-os" value="Swiss Medical"> Swiss Medical</label>
+            <label class="cbx"><input type="checkbox" name="pp-os" value="Galeno"> Galeno</label>
+            <label class="cbx"><input type="checkbox" name="pp-os" value="Medifé"> Medifé</label>
+            <label class="cbx"><input type="checkbox" name="pp-os" value="Sancor Salud"> Sancor Salud</label>
+            <label class="cbx"><input type="checkbox" name="pp-os" value="OSPAT"> OSPAT</label>
+          </div>
+          <div class="fg" style="margin-top:8px"><label class="fl">Otras</label><input type="text" class="fi" id="pp-os-otras" placeholder="Otras obras sociales, separadas por coma"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HORARIOS -->
+    <div class="fsec-box">
+      <div class="fsec-hd"><span class="fsec-title">Horarios de atención</span><span class="fsec-req">* obligatorio</span></div>
+      <div class="fsec-body">
+        <div class="fg"><input type="text" class="fi" id="pp-horario" placeholder="Ej: Lunes a viernes 8-18hs. Sábados 8-13hs."></div>
+      </div>
+    </div>
+
+    <!-- DESCRIPCIÓN -->
+    <div class="fsec-box">
+      <div class="fsec-hd"><span class="fsec-title">Descripción</span></div>
+      <div class="fsec-body">
+        <div class="fg"><textarea class="fta" id="pp-desc" style="min-height:90px" placeholder="Contá quién sos, tu experiencia y qué te diferencia. Cuanto más específico, mejor."></textarea></div>
+        <div class="fg"><label class="fl">Precio orientativo</label><input type="text" class="fi" id="pp-precio" placeholder="Ej: Consulta desde $15.000"></div>
+      </div>
+    </div>
+
+    <!-- FOTOS -->
+    <div class="fsec-box">
+      <div class="fsec-hd"><span class="fsec-title">Fotos</span></div>
+      <div class="fsec-body">
+        <div class="doc-note">📸 Enviá tus fotos a <strong>saludredsj@gmail.com</strong> con asunto <strong>"Fotos - [tu nombre]"</strong>. Podés enviar foto de perfil, consultorio o logo.</div>
+      </div>
+    </div>
+
+    <button class="btn-submit" onclick="submitRegProf()">Enviar solicitud →</button>
+    <div class="reg-ok" id="reg-ok-prof">
+      <h3>✅ Solicitud enviada</h3>
+      <p>Revisamos tus datos en 24-48hs y te avisamos a <strong id="reg-ok-prof-email"></strong>.</p>
+    </div>
+  </div>
+</div>
+
+<!-- REGISTRO ESTABLECIMIENTO -->
+<div id="view-reg-estab" class="view">
+  <div class="reg-hdr">
+    <h2>Registrar mi establecimiento</h2>
+    <p>Completá el formulario. Revisamos tu habilitación y publicamos tu perfil en 24-48hs.</p>
+  </div>
+  <div class="reg-body">
+    <div style="background:var(--teal);color:white;padding:14px 16px;margin-bottom:20px;display:flex;align-items:center;gap:12px;">
+      <div style="font-size:1.6rem">🎁</div>
+      <div><div style="font-family:'Libre Baskerville',serif;font-weight:700;font-size:1rem;margin-bottom:2px">15 días de prueba gratis</div>
+      <div style="font-size:13px;opacity:0.85">Sin costo. Si querés continuar, elegís un plan después.</div></div>
+    </div>
+
+    <!-- PLAN -->
+    <div class="fsec-box">
+      <div class="fsec-hd"><span class="fsec-title">Plan</span></div>
+      <div class="fsec-body">
+        <div class="plan-grid">
+          <div class="plan-c sel" id="pce-estandar" onclick="selPE('estandar')" style="position:relative">
+            <div class="plan-pop">MÁS ELEGIDO</div>
+            <div class="plan-name">Estándar</div>
+            <div class="plan-pr">$30.000 <small>/mes</small></div>
+            <div class="plan-fs">
+              <div class="pf"><span class="y">✓</span> 15 días gratis</div>
+              <div class="pf"><span class="y">✓</span> Perfil completo</div>
+              <div class="pf"><span class="y">✓</span> Botón de contacto</div>
+            </div>
+          </div>
+          <div class="plan-c" id="pce-premium" onclick="selPE('premium')">
+            <div class="plan-name">Premium ✦</div>
+            <div class="plan-pr">$50.000 <small>/mes</small></div>
+            <div class="plan-fs">
+              <div class="pf"><span class="y">✓</span> 15 días gratis</div>
+              <div class="pf"><span class="y">✓</span> Primero en búsquedas</div>
+              <div class="pf"><span class="y">✓</span> Badge dorado</div>
             </div>
           </div>
         </div>
@@ -654,51 +1131,36 @@ html, body { width: 100%; overflow-x: hidden; }
 
     <!-- TIPO -->
     <div class="fsec-box">
-      <div class="fsec-hd"><span class="fsec-title">¿Qué tipo de servicio ofrecés?</span><span class="fsec-req">* obligatorio</span></div>
+      <div class="fsec-hd"><span class="fsec-title">Tipo de establecimiento</span><span class="fsec-req">* obligatorio</span></div>
       <div class="fsec-body">
         <div class="fg">
-          <label class="fl">Categoría *</label>
-          <select class="fs" id="rt" onchange="adaptF()">
+          <select class="fs" id="pe-tipo" onchange="adaptEstabTipo()">
             <option value="">— Seleccioná —</option>
-            <optgroup label="Profesionales">
-              <option value="medico">👨‍⚕️ Médico / Especialista</option>
-              <option value="enfermeria">💉 Enfermería</option>
-              <option value="kinesiologia">🏃 Kinesiología</option>
-              <option value="psicologia">🧠 Psicología</option>
-              <option value="fonoaudiologia">🗣️ Fonoaudiología</option>
-              <option value="terapia_ocupacional">🖐️ Terapia Ocupacional</option>
-              <option value="laboratorio">🔬 Laboratorio / Bioquímica</option>
-              <option value="cuidador">🤝 Cuidador/a domiciliario/a</option>
-              <option value="nutricion">🥗 Nutrición</option>
-              <option value="otro_prof">➕ Otro profesional</option>
-            </optgroup>
-            <optgroup label="Establecimientos">
-              <option value="residencia">🏡 Residencia geriátrica</option>
-              <option value="clinica">🏥 Clínica / Sanatorio</option>
-              <option value="farmacia">💊 Farmacia / Droguería</option>
-              <option value="insumos">🦽 Insumos médicos / Ortopedia</option>
-              <option value="oxigeno">🫁 Oxígeno y equipos médicos</option>
-              <option value="otro_estab">➕ Otro establecimiento</option>
-            </optgroup>
+            <option value="residencia">🏡 Residencia geriátrica</option>
+            <option value="clinica">🏥 Clínica / Sanatorio</option>
+            <option value="farmacia">💊 Farmacia / Droguería</option>
+            <option value="insumos">🦽 Insumos médicos / Ortopedia</option>
+            <option value="oxigeno">🫁 Oxígeno y equipos médicos</option>
+            <option value="otro">➕ Otro</option>
           </select>
         </div>
-        <div id="tipo-hint" style="display:none" class="doc-note"></div>
+        <div id="pe-tipo-hint" class="doc-note" style="display:none"></div>
       </div>
     </div>
 
-    <!-- DATOS GENERALES (siempre visibles) -->
+    <!-- DATOS GENERALES -->
     <div class="fsec-box">
-      <div class="fsec-hd"><span class="fsec-title">Datos generales</span><span class="fsec-req">* obligatorio</span></div>
+      <div class="fsec-hd"><span class="fsec-title">Datos del establecimiento</span><span class="fsec-req">* obligatorio</span></div>
       <div class="fsec-body">
-        <div class="fg"><label class="fl">Nombre completo / Razón social *</label><input type="text" class="fi" id="r-n" placeholder="Como aparece en la habilitación o matrícula"></div>
+        <div class="fg"><label class="fl">Nombre / Razón social *</label><input type="text" class="fi" id="pe-nombre" placeholder="Nombre como figura en la habilitación"></div>
         <div class="frow">
-          <div class="fg"><label class="fl">Teléfono *</label><input type="text" class="fi" id="r-tel" placeholder="264-XXX-XXXX"></div>
-          <div class="fg"><label class="fl">WhatsApp</label><input type="text" class="fi" id="r-wsp" placeholder="264-XXX-XXXX"></div>
+          <div class="fg"><label class="fl">Teléfono *</label><input type="text" class="fi" id="pe-tel" placeholder="264-XXX-XXXX"></div>
+          <div class="fg"><label class="fl">WhatsApp</label><input type="text" class="fi" id="pe-wsp" placeholder="264-XXX-XXXX"></div>
         </div>
+        <div class="fg"><label class="fl">Email *</label><input type="email" class="fi" id="pe-email" placeholder="contacto@..."></div>
         <div class="frow">
-          <div class="fg"><label class="fl">Email *</label><input type="email" class="fi" id="r-email" placeholder="contacto@..."></div>
           <div class="fg"><label class="fl">Departamento *</label>
-            <select class="fs" id="r-d">
+            <select class="fs" id="pe-dept">
               <option value="">—</option>
               <option>Capital</option><option>Rawson</option><option>Rivadavia</option>
               <option>Chimbas</option><option>Pocito</option><option>Santa Lucía</option>
@@ -706,105 +1168,65 @@ html, body { width: 100%; overflow-x: hidden; }
               <option>Angaco</option><option>San Martín</option>
             </select>
           </div>
+          <div class="fg"><label class="fl">CUIT *</label><input type="text" class="fi" id="pe-cuit" placeholder="20-XXXXXXXX-X"></div>
         </div>
-        <div class="fg"><label class="fl">Dirección *</label><input type="text" class="fi" id="r-dir" placeholder="Calle, número, barrio"></div>
+        <div class="fg"><label class="fl">Dirección *</label><input type="text" class="fi" id="pe-dir" placeholder="Calle, número, barrio"></div>
         <div class="fg">
-          <label class="fl">Link de Google Maps *</label>
-          <input type="url" class="fi" id="r-maps" placeholder="https://maps.google.com/...">
-          <div class="fhint">Obligatorio. Abrí Google Maps, buscá tu dirección, clic en "Compartir" y copiá el link.</div>
+          <label class="fl">¿El establecimiento está habilitado para funcionar? *</label>
+          <div class="rdo-g" id="rg-pe-habilitado">
+            <div class="rdo" onclick="selR(this,'rg-pe-habilitado','Sí')">Sí</div>
+            <div class="rdo" onclick="selR(this,'rg-pe-habilitado','En trámite')">En trámite</div>
+          </div>
         </div>
-        <div class="fg"><label class="fl">Sitio web</label><input type="text" class="fi" id="r-web" placeholder="www.mipagina.com (opcional)"></div>
-        <div class="fg"><label class="fl">Redes sociales</label><input type="text" class="fi" id="r-redes" placeholder="@instagram, facebook.com/... (opcional)"></div>
-        <div class="fg">
-          <label class="fl">Descripción general *</label>
-          <textarea class="fta" id="r-desc" style="min-height:100px" placeholder="Contá quién sos, qué ofrecés y qué te diferencia. Cuanto más específico, mejor."></textarea>
-        </div>
+        <div class="fg"><label class="fl">N° Habilitación / Matrícula *</label><input type="text" class="fi" id="pe-hab" placeholder="Número oficial de habilitación"></div>
+        <div class="fg"><label class="fl">Sitio web</label><input type="text" class="fi" id="pe-web" placeholder="www.mipagina.com (opcional)"></div>
       </div>
     </div>
 
-    <!-- IDENTIFICACIÓN -->
-    <div class="fsec-box">
-      <div class="fsec-hd"><span class="fsec-title">Identificación y habilitación</span><span class="fsec-req">* obligatorio</span></div>
-      <div class="fsec-body">
-        <div class="frow">
-          <div class="fg"><label class="fl">CUIT *</label><input type="text" class="fi" id="r-cuit" placeholder="20-XXXXXXXX-X"></div>
-          <div class="fg"><label class="fl">N° Matrícula / Habilitación *</label><input type="text" class="fi" id="r-hab" placeholder="Número oficial"></div>
-        </div>
-        <div id="tipo-hint2" style="display:none" class="doc-note"></div>
-      </div>
-    </div>
-
-    <!-- SECCIÓN ESPECÍFICA POR TIPO -->
-    <div class="fsec-box" id="sec-esp" style="display:none">
-      <div class="fsec-hd"><span class="fsec-title" id="sec-esp-t">Información específica</span></div>
-      <div class="fsec-body" id="sec-esp-b"></div>
+    <!-- SECCIÓN ESPECÍFICA -->
+    <div class="fsec-box" id="pe-sec-esp" style="display:none">
+      <div class="fsec-hd"><span class="fsec-title" id="pe-esp-titulo">Información específica</span></div>
+      <div class="fsec-body" id="pe-esp-body"></div>
     </div>
 
     <!-- OBRAS SOCIALES -->
     <div class="fsec-box">
-      <div class="fsec-hd"><span class="fsec-title">Obras sociales y coberturas</span><span class="fsec-req">* obligatorio</span></div>
+      <div class="fsec-hd"><span class="fsec-title">Obras sociales</span><span class="fsec-req">* obligatorio</span></div>
       <div class="fsec-body">
-        <div class="fg">
-          <label class="fl">¿Aceptás obras sociales? *</label>
-          <div class="rdo-g" id="rg-os">
-            <div class="rdo" onclick="selR(this,'rg-os','Sí');document.getElementById('os-lista').style.display='block'">Sí</div>
-            <div class="rdo" onclick="selR(this,'rg-os','Solo particular');document.getElementById('os-lista').style.display='none'">Solo particular</div>
-          </div>
+        <div class="rdo-g" id="rg-pe-os">
+          <div class="rdo" onclick="selR(this,'rg-pe-os','Sí');document.getElementById('pe-os-lista').style.display='block'">Acepto obras sociales</div>
+          <div class="rdo" onclick="selR(this,'rg-pe-os','No');document.getElementById('pe-os-lista').style.display='none'">Solo particular</div>
         </div>
-        <div id="os-lista" style="display:none">
-          <label class="fl" style="margin-bottom:4px">¿Cuáles?</label>
-          <div class="cbx-grid">
-            <label class="cbx"><input type="checkbox" name="os" value="PAMI"> PAMI</label>
-            <label class="cbx"><input type="checkbox" name="os" value="IPOS"> IPOS</label>
-            <label class="cbx"><input type="checkbox" name="os" value="OSDE"> OSDE</label>
-            <label class="cbx"><input type="checkbox" name="os" value="Swiss Medical"> Swiss Medical</label>
-            <label class="cbx"><input type="checkbox" name="os" value="Galeno"> Galeno</label>
-            <label class="cbx"><input type="checkbox" name="os" value="Medifé"> Medifé</label>
-            <label class="cbx"><input type="checkbox" name="os" value="Sancor Salud"> Sancor Salud</label>
-            <label class="cbx"><input type="checkbox" name="os" value="OSPAT"> OSPAT</label>
-            <label class="cbx"><input type="checkbox" name="os" value="UPCN"> UPCN</label>
-            <label class="cbx"><input type="checkbox" name="os" value="ATSA"> ATSA</label>
+        <div id="pe-os-lista" style="display:none">
+          <div class="cbx-grid" style="margin-top:10px">
+            <label class="cbx"><input type="checkbox" name="pe-os" value="PAMI"> PAMI</label>
+            <label class="cbx"><input type="checkbox" name="pe-os" value="IPOS"> IPOS</label>
+            <label class="cbx"><input type="checkbox" name="pe-os" value="OSDE"> OSDE</label>
+            <label class="cbx"><input type="checkbox" name="pe-os" value="Swiss Medical"> Swiss Medical</label>
+            <label class="cbx"><input type="checkbox" name="pe-os" value="Galeno"> Galeno</label>
+            <label class="cbx"><input type="checkbox" name="pe-os" value="Medifé"> Medifé</label>
+            <label class="cbx"><input type="checkbox" name="pe-os" value="OSPAT"> OSPAT</label>
+            <label class="cbx"><input type="checkbox" name="pe-os" value="UPCN"> UPCN</label>
           </div>
-          <div class="fg" style="margin-top:8px"><label class="fl">Otras</label><input type="text" class="fi" id="r-os-o" placeholder="Otras obras sociales, separadas por coma"></div>
+          <div class="fg" style="margin-top:8px"><label class="fl">Otras</label><input type="text" class="fi" id="pe-os-otras" placeholder="Otras obras sociales, separadas por coma"></div>
         </div>
       </div>
     </div>
 
     <!-- HORARIOS -->
     <div class="fsec-box">
-      <div class="fsec-hd"><span class="fsec-title">Horarios y disponibilidad</span><span class="fsec-req">* obligatorio</span></div>
+      <div class="fsec-hd"><span class="fsec-title">Horarios de atención</span><span class="fsec-req">* obligatorio</span></div>
       <div class="fsec-body">
-        <div class="fg">
-          <label class="fl">Días y horarios de atención *</label>
-          <input type="text" class="fi" id="r-hor" placeholder="Ej: Lunes a viernes 8-18hs. Sábados 8-13hs.">
-        </div>
-        <div class="fg" id="fg-disp" style="display:none">
-          <label class="fl">Disponibilidad actual</label>
-          <div class="rdo-g" id="rg-disp">
-            <div class="rdo" onclick="selR(this,'rg-disp','Disponible — hay lugares')">Disponible</div>
-            <div class="rdo" onclick="selR(this,'rg-disp','Lista de espera')">Lista de espera</div>
-            <div class="rdo" onclick="selR(this,'rg-disp','Sin disponibilidad')">Sin disponibilidad</div>
-          </div>
-        </div>
-        <div class="fg" id="fg-del" style="display:none">
-          <label class="fl">¿Hacen delivery / visitas a domicilio?</label>
-          <div class="rdo-g" id="rg-del">
-            <div class="rdo" onclick="selR(this,'rg-del','Sí, con costo de envío')">Sí, con costo</div>
-            <div class="rdo" onclick="selR(this,'rg-del','Sí, gratis en zona')">Sí, gratis en zona</div>
-            <div class="rdo" onclick="selR(this,'rg-del','No')">No</div>
-          </div>
-        </div>
+        <div class="fg"><input type="text" class="fi" id="pe-horario" placeholder="Ej: Lunes a viernes 8-18hs. Sábados 8-13hs."></div>
       </div>
     </div>
 
-    <!-- PRECIO -->
+    <!-- DESCRIPCIÓN Y PRECIO -->
     <div class="fsec-box">
-      <div class="fsec-hd"><span class="fsec-title">Precio orientativo</span></div>
+      <div class="fsec-hd"><span class="fsec-title">Descripción y precio</span></div>
       <div class="fsec-body">
-        <div class="fg">
-          <input type="text" class="fi" id="r-pr" placeholder="Ej: Consulta desde $15.000. Sesión $12.000. Residencia desde $1.600.000/mes.">
-          <div class="fhint">No es obligatorio pero ayuda a filtrar consultas que no corresponden.</div>
-        </div>
+        <div class="fg"><textarea class="fta" id="pe-desc" style="min-height:90px" placeholder="Describí tu establecimiento, qué ofrecés y qué lo diferencia."></textarea></div>
+        <div class="fg"><label class="fl">Precio orientativo</label><input type="text" class="fi" id="pe-precio" placeholder="Ej: Residencia desde $1.600.000/mes. Consultar."></div>
       </div>
     </div>
 
@@ -812,18 +1234,14 @@ html, body { width: 100%; overflow-x: hidden; }
     <div class="fsec-box">
       <div class="fsec-hd"><span class="fsec-title">Fotos</span></div>
       <div class="fsec-body">
-        <div class="doc-note">
-          📸 Si querés que tu perfil tenga fotos, enviálas por email a <strong>saludredsj@gmail.com</strong> con asunto <strong>"Fotos - [tu nombre]"</strong>.<br>
-          Podés enviar fotos de instalaciones, habitaciones, espacios comunes, equipo profesional o logo.<br>
-          <em>Resolución mínima recomendada: 800x600px.</em>
-        </div>
+        <div class="doc-note">📸 Enviá tus fotos a <strong>saludredsj@gmail.com</strong> con asunto <strong>"Fotos - [nombre del establecimiento]"</strong>. Instalaciones, habitaciones, espacios comunes y logo.</div>
       </div>
     </div>
 
-    <button class="btn-submit" onclick="submitReg()">Enviar solicitud de registro →</button>
-    <div class="reg-ok" id="reg-ok">
+    <button class="btn-submit" onclick="submitRegEstab()">Enviar solicitud →</button>
+    <div class="reg-ok" id="reg-ok-estab">
       <h3>✅ Solicitud enviada</h3>
-      <p>Recibimos tu solicitud. Vamos a verificar tu habilitación y datos en 24–48hs. Si todo está en orden, activamos tu <strong>prueba gratuita de 15 días</strong> y te enviamos un mail a <strong id="reg-ok-email"></strong> con los pasos siguientes.</p>
+      <p>Revisamos tu habilitación en 24-48hs y te avisamos a <strong id="reg-ok-estab-email"></strong>.</p>
     </div>
   </div>
 </div>
@@ -1254,6 +1672,7 @@ function openC(mode,provId,servId,nombreOverride,telOverride){
     document.getElementById('mc-t').textContent='Solicitar entrevista';
     document.getElementById('mc-s').textContent='Coordinamos una visita para conocer las instalaciones y evaluar el ingreso.';
     document.getElementById('mc-ln').textContent='Tu nombre *';
+    document.getElementById('mc-ld').textContent='Dirección actual del familiar';
     document.getElementById('mc-los').textContent='Obra social del futuro residente';
     document.getElementById('mc-lh').textContent='Día y horario preferido para la visita';
     document.getElementById('mc-lm').textContent='Datos del familiar (edad, diagnóstico, movilidad, urgencia)';
@@ -1883,6 +2302,161 @@ document.addEventListener('keydown',function(e){
   if(e.key==='ArrowLeft')lbNav(-1);
   if(e.key==='ArrowRight')lbNav(1);
 });
+
+
+var regPlanProf='estandar', regPlanEstab='estandar';
+
+function selPP(p){
+  regPlanProf=p;
+  document.querySelectorAll('[id^="pcp-"]').forEach(el=>el.classList.remove('sel','sel-gold'));
+  document.getElementById('pcp-'+p).classList.add(p==='premium'?'sel-gold':'sel');
+}
+function selPE(p){
+  regPlanEstab=p;
+  document.querySelectorAll('[id^="pce-"]').forEach(el=>el.classList.remove('sel','sel-gold'));
+  document.getElementById('pce-'+p).classList.add(p==='premium'?'sel-gold':'sel');
+}
+
+function adaptProfEsp(){
+  var esp=document.getElementById('pp-esp').value;
+  var otraDiv=document.getElementById('pp-otra-esp');
+  otraDiv.style.display=esp==='Otra'?'block':'none';
+  var secSrv=document.getElementById('pp-sec-srv');
+  var srvBody=document.getElementById('pp-srv-body');
+  var srvTit=document.getElementById('pp-srv-titulo');
+  var srv={
+    'Kinesiología':{t:'Especialidades',html:'<div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pp-srv" value="Respiratoria"> Respiratoria</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Motora"> Motora</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Neurológica"> Neurológica</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Traumatológica"> Traumatológica</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Geriátrica"> Geriátrica</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Postquirúrgica"> Postquirúrgica</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Domiciliaria"> Domiciliaria</label></div>'},
+    'Enfermería':{t:'Servicios',html:'<div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pp-srv" value="Curación escaras"> Curación de escaras</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Inyectables"> Inyectables</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Sueros"> Sueros IV</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Signos vitales"> Signos vitales</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Medicación"> Medicación</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Geriátrica"> Geriátrica</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Cuidados paliativos"> Cuidados paliativos</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Acompañamiento"> Acompañamiento hospitalario</label></div>'},
+    'Psicología':{t:'Modalidades',html:'<div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pp-srv" value="Individual"> Individual</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Pareja"> Pareja</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Familiar"> Familiar</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Infantil"> Infantil</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Adolescente"> Adolescente</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Adultos mayores"> Adultos mayores</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Online"> Online</label></div>'},
+    'Fonoaudiología':{t:'Servicios',html:'<div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pp-srv" value="Lenguaje"> Lenguaje</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Deglución"> Deglución</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Neurológica"> Neurológica</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Estimulación temprana"> Estimulación temprana</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Domiciliaria"> Domiciliaria</label></div>'},
+    'Terapia Ocupacional':{t:'Servicios',html:'<div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pp-srv" value="Neurológica"> Neurológica</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Adultos mayores"> Adultos mayores</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Adaptación funcional"> Adaptación funcional</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Cognitiva"> Estimulación cognitiva</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Domiciliaria"> Domiciliaria</label></div>'},
+    'Laboratorio/Bioquímica':{t:'Servicios',html:'<div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pp-srv" value="Extracción domicilio"> Extracción domicilio</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Análisis clínicos"> Análisis clínicos</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Hormonales"> Hormonales</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Bacteriológicos"> Bacteriológicos</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Ocupacionales"> Ocupacionales</label></div>'},
+    'Cuidador domiciliario':{t:'Servicios',html:'<div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pp-srv" value="Diurno"> Acompañamiento diurno</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Nocturno"> Nocturno</label><label class="cbx"><input type="checkbox" name="pp-srv" value="24hs"> 24hs</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Higiene"> Higiene personal</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Traslados"> Traslados</label></div>'},
+  };
+  if(srv[esp]){
+    srvTit.textContent=srv[esp].t;
+    srvBody.innerHTML=srv[esp].html;
+    secSrv.style.display='block';
+  } else {
+    secSrv.style.display='none';
+  }
+}
+
+function adaptEstabTipo(){
+  var tipo=document.getElementById('pe-tipo').value;
+  var hint=document.getElementById('pe-tipo-hint');
+  var sec=document.getElementById('pe-sec-esp');
+  var body=document.getElementById('pe-esp-body');
+  var tit=document.getElementById('pe-esp-titulo');
+  var hints={
+    residencia:'📄 Requerido: N° habilitación del Ministerio de Salud de San Juan, certificado de bomberos y habilitación municipal.',
+    clinica:'📄 Requerido: N° habilitación provincial y CUIT del establecimiento.',
+    farmacia:'📄 Requerido: habilitación ANMAT y matrícula del director técnico.',
+    insumos:'📄 Requerido: CUIT activo y actividad comercial habilitada.',
+    oxigeno:'📄 Requerido: autorización ANMAT (DROG o DISP).',
+  };
+  hint.textContent=hints[tipo]||'';
+  hint.style.display=hints[tipo]?'block':'none';
+  var esp={
+    residencia:{t:'Información de la residencia',html:'<div class="fg"><label class="fl">Tipo de residencia</label><div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pe-tipores" value="Permanente"> Permanente</label><label class="cbx"><input type="checkbox" name="pe-tipores" value="Temporal"> Temporal</label><label class="cbx"><input type="checkbox" name="pe-tipores" value="Centro de día"> Centro de día</label></div></div><div class="fg"><label class="fl">Tipo de residentes</label><div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Autoválidos"> Autoválidos</label><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Semidependientes"> Semidependientes</label><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Dependientes"> Dependientes</label><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Deterioro cognitivo"> Deterioro cognitivo</label><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Patologías polivalentes"> Patologías polivalentes</label></div></div><div class="frow"><div class="fg"><label class="fl">Capacidad total *</label><input type="number" class="fi" id="pe-cap" placeholder="Ej: 12"></div><div class="fg"><label class="fl">N° de habitaciones</label><input type="number" class="fi" id="pe-hab2" placeholder="Ej: 8"></div></div><div class="fg"><label class="fl">Servicios incluidos</label><div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pe-srv" value="Enfermería 24hs"> Enfermería 24hs</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Médico de cabecera"> Médico de cabecera</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Kinesiología"> Kinesiología</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Nutrición"> Nutrición</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Psicología"> Psicología</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Terapia ocupacional"> Terapia ocupacional</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Actividades recreativas"> Actividades recreativas</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Lavandería"> Lavandería</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Cuidados paliativos"> Cuidados paliativos</label></div></div><div class="fg"><label class="fl">Horario de visitas familiares *</label><input type="text" class="fi" id="pe-visitas" placeholder="Ej: Todos los días 10-12hs y 16-19hs"></div>'},
+    clinica:{t:'Información de la clínica',html:'<div class="fg"><label class="fl">Especialidades disponibles *</label><input type="text" class="fi" id="pe-esp2" placeholder="Ej: Traumatología, Cardiología, Pediatría"></div><div class="fg"><label class="fl">¿Tienen guardia 24hs?</label><div class="rdo-g" id="rg-pe-guardia"><div class="rdo" onclick="selR(this,'rg-pe-guardia','Sí')">Sí</div><div class="rdo" onclick="selR(this,'rg-pe-guardia','No')">No</div></div></div><div class="fg"><label class="fl">¿Tienen internación?</label><input type="text" class="fi" id="pe-intern" placeholder="Sí, N camas / No, solo consultorios"></div>'},
+    farmacia:{t:'Servicios de la farmacia',html:'<div class="fg"><label class="fl">Servicios</label><div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pe-srv" value="Magistrales"> Magistrales</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Inyecciones"> Inyecciones</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Turno guardia"> Turno guardia</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Delivery"> Delivery</label></div></div><div class="fg"><label class="fl">Zona de delivery</label><input type="text" class="fi" id="pe-zona" placeholder="Ej: Capital y Rawson"></div>'},
+    insumos:{t:'Catálogo',html:'<div class="fg"><label class="fl">Productos principales</label><textarea class="fta" id="pe-prod" placeholder="Ej: Sillas de ruedas, andadores, camas, pañales"></textarea></div><div class="fg"><label class="fl">¿Alquilan?</label><div class="rdo-g" id="rg-pe-alq"><div class="rdo" onclick="selR(this,'rg-pe-alq','Sí')">Sí, alquilan y venden</div><div class="rdo" onclick="selR(this,'rg-pe-alq','Solo venden')">Solo venden</div></div></div>'},
+    oxigeno:{t:'Equipos',html:'<div class="fg"><label class="fl">Equipos disponibles</label><div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pe-srv" value="Oxígeno medicinal"> Oxígeno medicinal</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Concentrador"> Concentrador</label><label class="cbx"><input type="checkbox" name="pe-srv" value="CPAP"> CPAP</label><label class="cbx"><input type="checkbox" name="pe-srv" value="BiPAP"> BiPAP</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Nebulizador"> Nebulizador</label></div></div><div class="fg"><label class="fl">¿Urgencias 24hs?</label><div class="rdo-g" id="rg-pe-urg"><div class="rdo" onclick="selR(this,'rg-pe-urg','Sí')">Sí</div><div class="rdo" onclick="selR(this,'rg-pe-urg','No')">No</div></div></div>'},
+  };
+  if(esp[tipo]){
+    tit.textContent=esp[tipo].t;
+    body.innerHTML=esp[tipo].html;
+    sec.style.display='block';
+  } else {
+    sec.style.display=tipo==='otro'?'none':'none';
+  }
+}
+
+async function submitRegProf(){
+  var n=document.getElementById('pp-nombre').value.trim();
+  var esp=document.getElementById('pp-esp').value;
+  var mat=document.getElementById('pp-matricula').value.trim();
+  var tel=document.getElementById('pp-tel').value.trim();
+  var email=document.getElementById('pp-email').value.trim();
+  if(!n||!esp||!mat||!tel||!email){alert('Completá los campos obligatorios (*).');return;}
+  var depts=Array.from(document.querySelectorAll('input[name="pp-dept"]:checked')).map(function(x){return x.value;});
+  if(!depts.length){alert('Seleccioná al menos un departamento donde atendés.');return;}
+  var os=Array.from(document.querySelectorAll('input[name="pp-os"]:checked')).map(function(x){return x.value;});
+  var srv=Array.from(document.querySelectorAll('input[name="pp-srv"]:checked')).map(function(x){return x.value;});
+  var btn=document.querySelector('#view-reg-prof .btn-submit');
+  btn.textContent='Enviando...';btn.disabled=true;
+  var params={
+    nombre:n, tipo:'Profesional - '+esp, depto:depts.join(', '),
+    telefono:tel, email_prov:email, cuit:'—',
+    habilitacion:mat, plan:regPlanProf,
+    obras:os.length?os.join(', '):'Solo particular',
+    horario:document.getElementById('pp-horario').value.trim()||'—',
+    urgencias:'—', disponibilidad:'—',
+    descripcion:document.getElementById('pp-desc').value.trim()||'—',
+    precio:document.getElementById('pp-precio').value.trim()||'—',
+    zona:depts.join(', '),
+    esp_campos:'Servicios: '+(srv.length?srv.join(', '):'—'),
+    fecha:new Date().toLocaleDateString('es-AR'),
+    id_solicitud:String(Date.now()),
+  };
+  try{
+    await emailjs.send(EJS.serviceId,EJS.tplAdmin,params);
+    btn.textContent='Enviar solicitud →';btn.disabled=false;
+    document.getElementById('reg-ok-prof-email').textContent=email;
+    document.getElementById('reg-ok-prof').classList.add('on');
+    document.getElementById('reg-ok-prof').scrollIntoView({behavior:'smooth'});
+  }catch(err){
+    console.error(err);
+    btn.textContent='Enviar solicitud →';btn.disabled=false;
+    alert('Error al enviar. Escribinos directamente a saludredsj@gmail.com');
+  }
+}
+
+async function submitRegEstab(){
+  var n=document.getElementById('pe-nombre').value.trim();
+  var tipo=document.getElementById('pe-tipo').value;
+  var tel=document.getElementById('pe-tel').value.trim();
+  var email=document.getElementById('pe-email').value.trim();
+  var hab=document.getElementById('pe-hab').value.trim();
+  var dept=document.getElementById('pe-dept').value;
+  if(!n||!tipo||!tel||!email||!hab||!dept){alert('Completá los campos obligatorios (*).');return;}
+  var os=Array.from(document.querySelectorAll('input[name="pe-os"]:checked')).map(function(x){return x.value;});
+  var srv=Array.from(document.querySelectorAll('input[name="pe-srv"]:checked')).map(function(x){return x.value;});
+  var btn=document.querySelector('#view-reg-estab .btn-submit');
+  btn.textContent='Enviando...';btn.disabled=true;
+  var espCampos=srv.length?'Servicios: '+srv.join(', '):'';
+  var cap=document.getElementById('pe-cap');
+  if(cap&&cap.value) espCampos+=' | Capacidad: '+cap.value;
+  var vis=document.getElementById('pe-visitas');
+  if(vis&&vis.value) espCampos+=' | Visitas: '+vis.value;
+  var params={
+    nombre:n, tipo:T[tipo]?T[tipo].l:tipo, depto:dept,
+    telefono:tel, email_prov:email,
+    cuit:document.getElementById('pe-cuit').value.trim()||'—',
+    habilitacion:hab, plan:regPlanEstab,
+    obras:os.length?os.join(', '):'Solo particular',
+    horario:document.getElementById('pe-horario').value.trim()||'—',
+    urgencias:'—', disponibilidad:'—',
+    descripcion:document.getElementById('pe-desc').value.trim()||'—',
+    precio:document.getElementById('pe-precio').value.trim()||'—',
+    zona:dept,
+    esp_campos:espCampos||'—',
+    fecha:new Date().toLocaleDateString('es-AR'),
+    id_solicitud:String(Date.now()),
+  };
+  try{
+    await emailjs.send(EJS.serviceId,EJS.tplAdmin,params);
+    btn.textContent='Enviar solicitud →';btn.disabled=false;
+    document.getElementById('reg-ok-estab-email').textContent=email;
+    document.getElementById('reg-ok-estab').classList.add('on');
+    document.getElementById('reg-ok-estab').scrollIntoView({behavior:'smooth'});
+  }catch(err){
+    console.error(err);
+    btn.textContent='Enviar solicitud →';btn.disabled=false;
+    alert('Error al enviar. Escribinos directamente a saludredsj@gmail.com');
+  }
+}
 
 </script>
 
