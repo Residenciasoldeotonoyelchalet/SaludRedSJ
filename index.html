@@ -111,10 +111,48 @@ function adaptEstabTipo(){
   hint.style.display=hints[tipo]?'block':'none';
   var esp={
     residencia:{t:'Información de la residencia',html:'<div class="fg"><label class="fl">Tipo de residencia</label><div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pe-tipores" value="Permanente"> Permanente</label><label class="cbx"><input type="checkbox" name="pe-tipores" value="Temporal"> Temporal</label><label class="cbx"><input type="checkbox" name="pe-tipores" value="Centro de día"> Centro de día</label></div></div><div class="fg"><label class="fl">Tipo de residentes</label><div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Autoválidos"> Autoválidos</label><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Semidependientes"> Semidependientes</label><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Dependientes"> Dependientes</label><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Deterioro cognitivo"> Deterioro cognitivo</label><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Patologías polivalentes"> Patologías polivalentes</label></div></div><div class="frow"><div class="fg"><label class="fl">Capacidad total *</label><input type="number" class="fi" id="pe-cap" placeholder="Ej: 12"></div><div class="fg"><label class="fl">N° de habitaciones</label><input type="number" class="fi" id="pe-hab2" placeholder="Ej: 8"></div></div><div class="fg"><label class="fl">Servicios incluidos</label><div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pe-srv" value="Enfermería 24hs"> Enfermería 24hs</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Médico de cabecera"> Médico de cabecera</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Kinesiología"> Kinesiología</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Nutrición"> Nutrición</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Psicología"> Psicología</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Terapia ocupacional"> Terapia ocupacional</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Actividades recreativas"> Actividades recreativas</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Lavandería"> Lavandería</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Cuidados paliativos"> Cuidados paliativos</label></div></div><div class="fg"><label class="fl">Horario de visitas familiares *</label><input type="text" class="fi" id="pe-visitas" placeholder="Ej: Todos los días 10-12hs y 16-19hs"></div>'},
-    clinica:{t:'Información de la clínica',html:'<div class="fg"><label class="fl">Especialidades disponibles *</label><input type="text" class="fi" id="pe-esp2" placeholder="Ej: Traumatología, Cardiología, Pediatría"></div><div class="fg"><label class="fl">¿Tienen guardia 24hs?</label><div class="rdo-g" id="rg-pe-guardia"><div class="rdo" onclick="selR(this,'rg-pe-guardia','Sí')">Sí</div><div class="rdo" onclick="selR(this,'rg-pe-guardia','No')">No</div></div></div><div class="fg"><label class="fl">¿Tienen internación?</label><input type="text" class="fi" id="pe-intern" placeholder="Sí, N camas / No, solo consultorios"></div>'},
+    clinica:{t:'Información de la clínica',html:(function(){
+      var h='';
+      h+='<div class="fg"><label class="fl">Especialidades disponibles *</label>';
+      h+='<input type="text" class="fi" id="pe-esp2" placeholder="Ej: Traumatología, Cardiología, Pediatría"></div>';
+      h+='<div class="fg"><label class="fl">¿Tienen guardia 24hs?</label>';
+      h+='<div class="rdo-g" id="rg-pe-guardia">';
+      h+='<div class="rdo" onclick="selR(this,\'rg-pe-guardia\',\'Sí\')">Sí</div>';
+      h+='<div class="rdo" onclick="selR(this,\'rg-pe-guardia\',\'No\')">No</div>';
+      h+='</div></div>';
+      h+='<div class="fg"><label class="fl">¿Tienen internación?</label>';
+      h+='<input type="text" class="fi" id="pe-intern" placeholder="Sí, N camas / No, solo consultorios"></div>';
+      return h;
+    })()},
     farmacia:{t:'Servicios de la farmacia',html:'<div class="fg"><label class="fl">Servicios</label><div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pe-srv" value="Magistrales"> Magistrales</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Inyecciones"> Inyecciones</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Turno guardia"> Turno guardia</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Delivery"> Delivery</label></div></div><div class="fg"><label class="fl">Zona de delivery</label><input type="text" class="fi" id="pe-zona" placeholder="Ej: Capital y Rawson"></div>'},
-    insumos:{t:'Catálogo',html:'<div class="fg"><label class="fl">Productos principales</label><textarea class="fta" id="pe-prod" placeholder="Ej: Sillas de ruedas, andadores, camas, pañales"></textarea></div><div class="fg"><label class="fl">¿Alquilan?</label><div class="rdo-g" id="rg-pe-alq"><div class="rdo" onclick="selR(this,'rg-pe-alq','Sí')">Sí, alquilan y venden</div><div class="rdo" onclick="selR(this,'rg-pe-alq','Solo venden')">Solo venden</div></div></div>'},
-    oxigeno:{t:'Equipos',html:'<div class="fg"><label class="fl">Equipos disponibles</label><div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pe-srv" value="Oxígeno medicinal"> Oxígeno medicinal</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Concentrador"> Concentrador</label><label class="cbx"><input type="checkbox" name="pe-srv" value="CPAP"> CPAP</label><label class="cbx"><input type="checkbox" name="pe-srv" value="BiPAP"> BiPAP</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Nebulizador"> Nebulizador</label></div></div><div class="fg"><label class="fl">¿Urgencias 24hs?</label><div class="rdo-g" id="rg-pe-urg"><div class="rdo" onclick="selR(this,'rg-pe-urg','Sí')">Sí</div><div class="rdo" onclick="selR(this,'rg-pe-urg','No')">No</div></div></div>'},
+    insumos:{t:'Catálogo',html:(function(){
+      var h='';
+      h+='<div class="fg"><label class="fl">Productos principales</label>';
+      h+='<textarea class="fta" id="pe-prod" placeholder="Ej: Sillas de ruedas, andadores, camas, pañales"></textarea></div>';
+      h+='<div class="fg"><label class="fl">¿Alquilan?</label>';
+      h+='<div class="rdo-g" id="rg-pe-alq">';
+      h+='<div class="rdo" onclick="selR(this,\'rg-pe-alq\',\'Sí\')">Sí, alquilan y venden</div>';
+      h+='<div class="rdo" onclick="selR(this,\'rg-pe-alq\',\'Solo venden\')">Solo venden</div>';
+      h+='</div></div>';
+      return h;
+    })()},
+    oxigeno:{t:'Equipos',html:(function(){
+      var h='';
+      h+='<div class="fg"><label class="fl">Equipos disponibles</label>';
+      h+='<div class="cbx-grid">';
+      h+='<label class="cbx"><input type="checkbox" name="pe-srv" value="Oxígeno medicinal"> Oxígeno medicinal</label>';
+      h+='<label class="cbx"><input type="checkbox" name="pe-srv" value="Concentrador"> Concentrador</label>';
+      h+='<label class="cbx"><input type="checkbox" name="pe-srv" value="CPAP"> CPAP</label>';
+      h+='<label class="cbx"><input type="checkbox" name="pe-srv" value="BiPAP"> BiPAP</label>';
+      h+='<label class="cbx"><input type="checkbox" name="pe-srv" value="Nebulizador"> Nebulizador</label>';
+      h+='</div></div>';
+      h+='<div class="fg"><label class="fl">¿Urgencias 24hs?</label>';
+      h+='<div class="rdo-g" id="rg-pe-urg">';
+      h+='<div class="rdo" onclick="selR(this,\'rg-pe-urg\',\'Sí\')">Sí</div>';
+      h+='<div class="rdo" onclick="selR(this,\'rg-pe-urg\',\'No\')">No</div>';
+      h+='</div></div>';
+      return h;
+    })()},
   };
   if(esp[tipo]){
     tit.textContent=esp[tipo].t;
@@ -295,10 +333,49 @@ function adaptEstabTipo(){
   hint.style.display=hints[tipo]?'block':'none';
   var esp={
     residencia:{t:'Información de la residencia',html:'<div class="fg"><label class="fl">Tipo de residencia</label><div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pe-tipores" value="Permanente"> Permanente</label><label class="cbx"><input type="checkbox" name="pe-tipores" value="Temporal"> Temporal</label><label class="cbx"><input type="checkbox" name="pe-tipores" value="Centro de día"> Centro de día</label></div></div><div class="fg"><label class="fl">Tipo de residentes</label><div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Autoválidos"> Autoválidos</label><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Semidependientes"> Semidependientes</label><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Dependientes"> Dependientes</label><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Deterioro cognitivo"> Deterioro cognitivo</label><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Patologías polivalentes"> Patologías polivalentes</label></div></div><div class="frow"><div class="fg"><label class="fl">Capacidad total *</label><input type="number" class="fi" id="pe-cap" placeholder="Ej: 12"></div><div class="fg"><label class="fl">N° de habitaciones</label><input type="number" class="fi" id="pe-hab2" placeholder="Ej: 8"></div></div><div class="fg"><label class="fl">Servicios incluidos</label><div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pe-srv" value="Enfermería 24hs"> Enfermería 24hs</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Médico de cabecera"> Médico de cabecera</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Kinesiología"> Kinesiología</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Nutrición"> Nutrición</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Psicología"> Psicología</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Terapia ocupacional"> Terapia ocupacional</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Actividades recreativas"> Actividades recreativas</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Lavandería"> Lavandería</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Cuidados paliativos"> Cuidados paliativos</label></div></div><div class="fg"><label class="fl">Horario de visitas familiares *</label><input type="text" class="fi" id="pe-visitas" placeholder="Ej: Todos los días 10-12hs y 16-19hs"></div>'},
-    clinica:{t:'Información de la clínica',html:'<div class="fg"><label class="fl">Especialidades disponibles *</label><input type="text" class="fi" id="pe-esp2" placeholder="Ej: Traumatología, Cardiología, Pediatría"></div><div class="fg"><label class="fl">¿Tienen guardia 24hs?</label><div class="rdo-g" id="rg-pe-guardia"><div class="rdo" onclick="selR(this,'rg-pe-guardia','Sí')">Sí</div><div class="rdo" onclick="selR(this,'rg-pe-guardia','No')">No</div></div></div><div class="fg"><label class="fl">¿Tienen internación?</label><input type="text" class="fi" id="pe-intern" placeholder="Sí, N camas / No, solo consultorios"></div>'},
+    clinica:{t:'Información de la clínica',html:(function(){
+      var h='';
+      h+='<div class="fg"><label class="fl">Especialidades disponibles *</label>';
+      h+='<input type="text" class="fi" id="pe-esp2" placeholder="Ej: Traumatología, Cardiología, Pediatría"></div>';
+      h+='<div class="fg"><label class="fl">¿Tienen guardia 24hs?</label>';
+      h+='<div class="rdo-g" id="rg-pe-guardia">';
+      h+='<div class="rdo" onclick="selR(this,\'rg-pe-guardia\',\'Sí\')">Sí</div>';
+      h+='<div class="rdo" onclick="selR(this,\'rg-pe-guardia\',\'No\')">No</div>';
+      h+='</div></div>';
+      h+='<div class="fg"><label class="fl">¿Tienen internación?</label>';
+      h+='<input type="text" class="fi" id="pe-intern" placeholder="Sí, N camas / No, solo consultorios"></div>';
+      return h;
+    })()},
+    
     farmacia:{t:'Servicios de la farmacia',html:'<div class="fg"><label class="fl">Servicios</label><div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pe-srv" value="Magistrales"> Magistrales</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Inyecciones"> Inyecciones</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Turno guardia"> Turno guardia</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Delivery"> Delivery</label></div></div><div class="fg"><label class="fl">Zona de delivery</label><input type="text" class="fi" id="pe-zona" placeholder="Ej: Capital y Rawson"></div>'},
-    insumos:{t:'Catálogo',html:'<div class="fg"><label class="fl">Productos principales</label><textarea class="fta" id="pe-prod" placeholder="Ej: Sillas de ruedas, andadores, camas, pañales"></textarea></div><div class="fg"><label class="fl">¿Alquilan?</label><div class="rdo-g" id="rg-pe-alq"><div class="rdo" onclick="selR(this,'rg-pe-alq','Sí')">Sí, alquilan y venden</div><div class="rdo" onclick="selR(this,'rg-pe-alq','Solo venden')">Solo venden</div></div></div>'},
-    oxigeno:{t:'Equipos',html:'<div class="fg"><label class="fl">Equipos disponibles</label><div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pe-srv" value="Oxígeno medicinal"> Oxígeno medicinal</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Concentrador"> Concentrador</label><label class="cbx"><input type="checkbox" name="pe-srv" value="CPAP"> CPAP</label><label class="cbx"><input type="checkbox" name="pe-srv" value="BiPAP"> BiPAP</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Nebulizador"> Nebulizador</label></div></div><div class="fg"><label class="fl">¿Urgencias 24hs?</label><div class="rdo-g" id="rg-pe-urg"><div class="rdo" onclick="selR(this,'rg-pe-urg','Sí')">Sí</div><div class="rdo" onclick="selR(this,'rg-pe-urg','No')">No</div></div></div>'},
+    insumos:{t:'Catálogo',html:(function(){
+      var h='';
+      h+='<div class="fg"><label class="fl">Productos principales</label>';
+      h+='<textarea class="fta" id="pe-prod" placeholder="Ej: Sillas de ruedas, andadores, camas, pañales"></textarea></div>';
+      h+='<div class="fg"><label class="fl">¿Alquilan?</label>';
+      h+='<div class="rdo-g" id="rg-pe-alq">';
+      h+='<div class="rdo" onclick="selR(this,\'rg-pe-alq\',\'Sí\')">Sí, alquilan y venden</div>';
+      h+='<div class="rdo" onclick="selR(this,\'rg-pe-alq\',\'Solo venden\')">Solo venden</div>';
+      h+='</div></div>';
+      return h;
+    })()},
+    oxigeno:{t:'Equipos',html:(function(){
+      var h='';
+      h+='<div class="fg"><label class="fl">Equipos disponibles</label>';
+      h+='<div class="cbx-grid">';
+      h+='<label class="cbx"><input type="checkbox" name="pe-srv" value="Oxígeno medicinal"> Oxígeno medicinal</label>';
+      h+='<label class="cbx"><input type="checkbox" name="pe-srv" value="Concentrador"> Concentrador</label>';
+      h+='<label class="cbx"><input type="checkbox" name="pe-srv" value="CPAP"> CPAP</label>';
+      h+='<label class="cbx"><input type="checkbox" name="pe-srv" value="BiPAP"> BiPAP</label>';
+      h+='<label class="cbx"><input type="checkbox" name="pe-srv" value="Nebulizador"> Nebulizador</label>';
+      h+='</div></div>';
+      h+='<div class="fg"><label class="fl">¿Urgencias 24hs?</label>';
+      h+='<div class="rdo-g" id="rg-pe-urg">';
+      h+='<div class="rdo" onclick="selR(this,\'rg-pe-urg\',\'Sí\')">Sí</div>';
+      h+='<div class="rdo" onclick="selR(this,\'rg-pe-urg\',\'No\')">No</div>';
+      h+='</div></div>';
+      return h;
+    })()},
   };
   if(esp[tipo]){
     tit.textContent=esp[tipo].t;
@@ -2359,10 +2436,49 @@ function adaptEstabTipo(){
   hint.style.display=hints[tipo]?'block':'none';
   var esp={
     residencia:{t:'Información de la residencia',html:'<div class="fg"><label class="fl">Tipo de residencia</label><div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pe-tipores" value="Permanente"> Permanente</label><label class="cbx"><input type="checkbox" name="pe-tipores" value="Temporal"> Temporal</label><label class="cbx"><input type="checkbox" name="pe-tipores" value="Centro de día"> Centro de día</label></div></div><div class="fg"><label class="fl">Tipo de residentes</label><div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Autoválidos"> Autoválidos</label><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Semidependientes"> Semidependientes</label><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Dependientes"> Dependientes</label><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Deterioro cognitivo"> Deterioro cognitivo</label><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Patologías polivalentes"> Patologías polivalentes</label></div></div><div class="frow"><div class="fg"><label class="fl">Capacidad total *</label><input type="number" class="fi" id="pe-cap" placeholder="Ej: 12"></div><div class="fg"><label class="fl">N° de habitaciones</label><input type="number" class="fi" id="pe-hab2" placeholder="Ej: 8"></div></div><div class="fg"><label class="fl">Servicios incluidos</label><div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pe-srv" value="Enfermería 24hs"> Enfermería 24hs</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Médico de cabecera"> Médico de cabecera</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Kinesiología"> Kinesiología</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Nutrición"> Nutrición</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Psicología"> Psicología</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Terapia ocupacional"> Terapia ocupacional</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Actividades recreativas"> Actividades recreativas</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Lavandería"> Lavandería</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Cuidados paliativos"> Cuidados paliativos</label></div></div><div class="fg"><label class="fl">Horario de visitas familiares *</label><input type="text" class="fi" id="pe-visitas" placeholder="Ej: Todos los días 10-12hs y 16-19hs"></div>'},
-    clinica:{t:'Información de la clínica',html:'<div class="fg"><label class="fl">Especialidades disponibles *</label><input type="text" class="fi" id="pe-esp2" placeholder="Ej: Traumatología, Cardiología, Pediatría"></div><div class="fg"><label class="fl">¿Tienen guardia 24hs?</label><div class="rdo-g" id="rg-pe-guardia"><div class="rdo" onclick="selR(this,'rg-pe-guardia','Sí')">Sí</div><div class="rdo" onclick="selR(this,'rg-pe-guardia','No')">No</div></div></div><div class="fg"><label class="fl">¿Tienen internación?</label><input type="text" class="fi" id="pe-intern" placeholder="Sí, N camas / No, solo consultorios"></div>'},
+    clinica:{t:'Información de la clínica',html:(function(){
+      var h='';
+      h+='<div class="fg"><label class="fl">Especialidades disponibles *</label>';
+      h+='<input type="text" class="fi" id="pe-esp2" placeholder="Ej: Traumatología, Cardiología, Pediatría"></div>';
+      h+='<div class="fg"><label class="fl">¿Tienen guardia 24hs?</label>';
+      h+='<div class="rdo-g" id="rg-pe-guardia">';
+      h+='<div class="rdo" onclick="selR(this,\'rg-pe-guardia\',\'Sí\')">Sí</div>';
+      h+='<div class="rdo" onclick="selR(this,\'rg-pe-guardia\',\'No\')">No</div>';
+      h+='</div></div>';
+      h+='<div class="fg"><label class="fl">¿Tienen internación?</label>';
+      h+='<input type="text" class="fi" id="pe-intern" placeholder="Sí, N camas / No, solo consultorios"></div>';
+      return h;
+    })()},
+    
     farmacia:{t:'Servicios de la farmacia',html:'<div class="fg"><label class="fl">Servicios</label><div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pe-srv" value="Magistrales"> Magistrales</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Inyecciones"> Inyecciones</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Turno guardia"> Turno guardia</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Delivery"> Delivery</label></div></div><div class="fg"><label class="fl">Zona de delivery</label><input type="text" class="fi" id="pe-zona" placeholder="Ej: Capital y Rawson"></div>'},
-    insumos:{t:'Catálogo',html:'<div class="fg"><label class="fl">Productos principales</label><textarea class="fta" id="pe-prod" placeholder="Ej: Sillas de ruedas, andadores, camas, pañales"></textarea></div><div class="fg"><label class="fl">¿Alquilan?</label><div class="rdo-g" id="rg-pe-alq"><div class="rdo" onclick="selR(this,'rg-pe-alq','Sí')">Sí, alquilan y venden</div><div class="rdo" onclick="selR(this,'rg-pe-alq','Solo venden')">Solo venden</div></div></div>'},
-    oxigeno:{t:'Equipos',html:'<div class="fg"><label class="fl">Equipos disponibles</label><div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pe-srv" value="Oxígeno medicinal"> Oxígeno medicinal</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Concentrador"> Concentrador</label><label class="cbx"><input type="checkbox" name="pe-srv" value="CPAP"> CPAP</label><label class="cbx"><input type="checkbox" name="pe-srv" value="BiPAP"> BiPAP</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Nebulizador"> Nebulizador</label></div></div><div class="fg"><label class="fl">¿Urgencias 24hs?</label><div class="rdo-g" id="rg-pe-urg"><div class="rdo" onclick="selR(this,'rg-pe-urg','Sí')">Sí</div><div class="rdo" onclick="selR(this,'rg-pe-urg','No')">No</div></div></div>'},
+    insumos:{t:'Catálogo',html:(function(){
+      var h='';
+      h+='<div class="fg"><label class="fl">Productos principales</label>';
+      h+='<textarea class="fta" id="pe-prod" placeholder="Ej: Sillas de ruedas, andadores, camas, pañales"></textarea></div>';
+      h+='<div class="fg"><label class="fl">¿Alquilan?</label>';
+      h+='<div class="rdo-g" id="rg-pe-alq">';
+      h+='<div class="rdo" onclick="selR(this,\'rg-pe-alq\',\'Sí\')">Sí, alquilan y venden</div>';
+      h+='<div class="rdo" onclick="selR(this,\'rg-pe-alq\',\'Solo venden\')">Solo venden</div>';
+      h+='</div></div>';
+      return h;
+    })()},
+    oxigeno:{t:'Equipos',html:(function(){
+      var h='';
+      h+='<div class="fg"><label class="fl">Equipos disponibles</label>';
+      h+='<div class="cbx-grid">';
+      h+='<label class="cbx"><input type="checkbox" name="pe-srv" value="Oxígeno medicinal"> Oxígeno medicinal</label>';
+      h+='<label class="cbx"><input type="checkbox" name="pe-srv" value="Concentrador"> Concentrador</label>';
+      h+='<label class="cbx"><input type="checkbox" name="pe-srv" value="CPAP"> CPAP</label>';
+      h+='<label class="cbx"><input type="checkbox" name="pe-srv" value="BiPAP"> BiPAP</label>';
+      h+='<label class="cbx"><input type="checkbox" name="pe-srv" value="Nebulizador"> Nebulizador</label>';
+      h+='</div></div>';
+      h+='<div class="fg"><label class="fl">¿Urgencias 24hs?</label>';
+      h+='<div class="rdo-g" id="rg-pe-urg">';
+      h+='<div class="rdo" onclick="selR(this,\'rg-pe-urg\',\'Sí\')">Sí</div>';
+      h+='<div class="rdo" onclick="selR(this,\'rg-pe-urg\',\'No\')">No</div>';
+      h+='</div></div>';
+      return h;
+    })()},
   };
   if(esp[tipo]){
     tit.textContent=esp[tipo].t;
