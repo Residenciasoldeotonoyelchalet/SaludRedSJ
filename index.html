@@ -170,6 +170,8 @@ async function submitRegProf(){
   var tel=document.getElementById('pp-tel').value.trim();
   var email=document.getElementById('pp-email').value.trim();
   if(!n||!esp||!mat||!tel||!email){alert('Completá los campos obligatorios (*).');return;}
+  // Reinit emailjs just in case
+  try{emailjs.init({publicKey:EJS.publicKey});}catch(e){}
   var depts=Array.from(document.querySelectorAll('input[name="pp-dept"]:checked')).map(function(x){return x.value;});
   if(!depts.length){alert('Seleccioná al menos un departamento donde atendés.');return;}
   var os=Array.from(document.querySelectorAll('input[name="pp-os"]:checked')).map(function(x){return x.value;});
@@ -211,6 +213,8 @@ async function submitRegEstab(){
   var hab=document.getElementById('pe-hab').value.trim();
   var dept=document.getElementById('pe-dept').value;
   if(!n||!tipo||!tel||!email||!hab||!dept){alert('Completá los campos obligatorios (*).');return;}
+  // Reinit emailjs just in case
+  try{emailjs.init({publicKey:EJS.publicKey});}catch(e){}
   var os=Array.from(document.querySelectorAll('input[name="pe-os"]:checked')).map(function(x){return x.value;});
   var srv=Array.from(document.querySelectorAll('input[name="pe-srv"]:checked')).map(function(x){return x.value;});
   var btn=document.querySelector('#view-reg-estab .btn-submit');
@@ -393,6 +397,8 @@ async function submitRegProf(){
   var tel=document.getElementById('pp-tel').value.trim();
   var email=document.getElementById('pp-email').value.trim();
   if(!n||!esp||!mat||!tel||!email){alert('Completá los campos obligatorios (*).');return;}
+  // Reinit emailjs just in case
+  try{emailjs.init({publicKey:EJS.publicKey});}catch(e){}
   var depts=Array.from(document.querySelectorAll('input[name="pp-dept"]:checked')).map(function(x){return x.value;});
   if(!depts.length){alert('Seleccioná al menos un departamento donde atendés.');return;}
   var os=Array.from(document.querySelectorAll('input[name="pp-os"]:checked')).map(function(x){return x.value;});
@@ -434,6 +440,8 @@ async function submitRegEstab(){
   var hab=document.getElementById('pe-hab').value.trim();
   var dept=document.getElementById('pe-dept').value;
   if(!n||!tipo||!tel||!email||!hab||!dept){alert('Completá los campos obligatorios (*).');return;}
+  // Reinit emailjs just in case
+  try{emailjs.init({publicKey:EJS.publicKey});}catch(e){}
   var os=Array.from(document.querySelectorAll('input[name="pe-os"]:checked')).map(function(x){return x.value;});
   var srv=Array.from(document.querySelectorAll('input[name="pe-srv"]:checked')).map(function(x){return x.value;});
   var btn=document.querySelector('#view-reg-estab .btn-submit');
@@ -2210,8 +2218,13 @@ const MP = {
 
 function initEJS(){
   try{
-    if(window.emailjs){emailjs.init({publicKey:EJS.publicKey});}
-  }catch(e){console.warn("EmailJS:",e);}
+    if(window.emailjs){
+      emailjs.init({publicKey:EJS.publicKey});
+      console.log('EmailJS initialized with key:', EJS.publicKey);
+    } else {
+      console.warn('EmailJS not loaded yet');
+    }
+  }catch(e){console.warn("EmailJS init error:",e);}
 }
 
 // ═══════════════════════════════════════
@@ -2549,6 +2562,8 @@ async function submitRegProf(){
   var tel=document.getElementById('pp-tel').value.trim();
   var email=document.getElementById('pp-email').value.trim();
   if(!n||!esp||!mat||!tel||!email){alert('Completá los campos obligatorios (*).');return;}
+  // Reinit emailjs just in case
+  try{emailjs.init({publicKey:EJS.publicKey});}catch(e){}
   var depts=Array.from(document.querySelectorAll('input[name="pp-dept"]:checked')).map(function(x){return x.value;});
   if(!depts.length){alert('Seleccioná al menos un departamento donde atendés.');return;}
   var os=Array.from(document.querySelectorAll('input[name="pp-os"]:checked')).map(function(x){return x.value;});
@@ -2590,6 +2605,8 @@ async function submitRegEstab(){
   var hab=document.getElementById('pe-hab').value.trim();
   var dept=document.getElementById('pe-dept').value;
   if(!n||!tipo||!tel||!email||!hab||!dept){alert('Completá los campos obligatorios (*).');return;}
+  // Reinit emailjs just in case
+  try{emailjs.init({publicKey:EJS.publicKey});}catch(e){}
   var os=Array.from(document.querySelectorAll('input[name="pe-os"]:checked')).map(function(x){return x.value;});
   var srv=Array.from(document.querySelectorAll('input[name="pe-srv"]:checked')).map(function(x){return x.value;});
   var btn=document.querySelector('#view-reg-estab .btn-submit');
