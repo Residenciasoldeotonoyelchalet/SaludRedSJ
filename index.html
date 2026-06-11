@@ -199,9 +199,9 @@ async function submitRegProf(){
     document.getElementById('reg-ok-prof').classList.add('on');
     document.getElementById('reg-ok-prof').scrollIntoView({behavior:'smooth'});
   }catch(err){
-    console.error(err);
+    console.error('EmailJS error:', err);
     btn.textContent='Enviar solicitud →';btn.disabled=false;
-    alert('Error al enviar. Escribinos directamente a saludredsj@gmail.com');
+    alert('Error: ' + JSON.stringify(err));
   }
 }
 
@@ -246,9 +246,9 @@ async function submitRegEstab(){
     document.getElementById('reg-ok-estab').classList.add('on');
     document.getElementById('reg-ok-estab').scrollIntoView({behavior:'smooth'});
   }catch(err){
-    console.error(err);
+    console.error('EmailJS error:', err);
     btn.textContent='Enviar solicitud →';btn.disabled=false;
-    alert('Error al enviar. Escribinos directamente a saludredsj@gmail.com');
+    alert('Error: ' + JSON.stringify(err));
   }
 }
 
@@ -426,9 +426,9 @@ async function submitRegProf(){
     document.getElementById('reg-ok-prof').classList.add('on');
     document.getElementById('reg-ok-prof').scrollIntoView({behavior:'smooth'});
   }catch(err){
-    console.error(err);
+    console.error('EmailJS error:', err);
     btn.textContent='Enviar solicitud →';btn.disabled=false;
-    alert('Error al enviar. Escribinos directamente a saludredsj@gmail.com');
+    alert('Error: ' + JSON.stringify(err));
   }
 }
 
@@ -473,9 +473,9 @@ async function submitRegEstab(){
     document.getElementById('reg-ok-estab').classList.add('on');
     document.getElementById('reg-ok-estab').scrollIntoView({behavior:'smooth'});
   }catch(err){
-    console.error(err);
+    console.error('EmailJS error:', err);
     btn.textContent='Enviar solicitud →';btn.disabled=false;
-    alert('Error al enviar. Escribinos directamente a saludredsj@gmail.com');
+    alert('Error: ' + JSON.stringify(err));
   }
 }
 
@@ -2591,9 +2591,9 @@ async function submitRegProf(){
     document.getElementById('reg-ok-prof').classList.add('on');
     document.getElementById('reg-ok-prof').scrollIntoView({behavior:'smooth'});
   }catch(err){
-    console.error(err);
+    console.error('EmailJS error:', err);
     btn.textContent='Enviar solicitud →';btn.disabled=false;
-    alert('Error al enviar. Escribinos directamente a saludredsj@gmail.com');
+    alert('Error: ' + JSON.stringify(err));
   }
 }
 
@@ -2638,9 +2638,9 @@ async function submitRegEstab(){
     document.getElementById('reg-ok-estab').classList.add('on');
     document.getElementById('reg-ok-estab').scrollIntoView({behavior:'smooth'});
   }catch(err){
-    console.error(err);
+    console.error('EmailJS error:', err);
     btn.textContent='Enviar solicitud →';btn.disabled=false;
-    alert('Error al enviar. Escribinos directamente a saludredsj@gmail.com');
+    alert('Error: ' + JSON.stringify(err));
   }
 }
 
