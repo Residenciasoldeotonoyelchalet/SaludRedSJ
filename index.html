@@ -194,6 +194,22 @@ async function submitRegProf(){
   };
   try{
     await emailjs.send(EJS.serviceId,EJS.tplAdmin,params);
+    // Save to Supabase
+    try{
+      await supaFetch('solicitudes', 'POST', {
+        tipo: 'Profesional - '+esp,
+        nombre: n, dept: depts.join(', '), tel: tel, email: email,
+        cuit: '—', hab: mat, plan: regPlanProf,
+        obras: os.length?os.join(', '):'Solo particular',
+        horario: document.getElementById('pp-horario').value.trim()||'—',
+        desc_texto: document.getElementById('pp-desc').value.trim()||'—',
+        precio: document.getElementById('pp-precio').value.trim()||'—',
+        zona: depts.join(', '),
+        esp_campos: 'Servicios: '+(srv.length?srv.join(', '):'—'),
+        fecha: new Date().toLocaleDateString('es-AR'),
+        estado: 'pendiente'
+      });
+    }catch(e){console.warn('Supabase save error:', e);}
     btn.textContent='Enviar solicitud →';btn.disabled=false;
     document.getElementById('reg-ok-prof-email').textContent=email;
     document.getElementById('reg-ok-prof').classList.add('on');
@@ -241,6 +257,23 @@ async function submitRegEstab(){
   };
   try{
     await emailjs.send(EJS.serviceId,EJS.tplAdmin,params);
+    // Save to Supabase
+    try{
+      await supaFetch('solicitudes', 'POST', {
+        tipo: T[tipo]?T[tipo].l:tipo,
+        nombre: n, dept: dept, tel: tel, email: email,
+        cuit: document.getElementById('pe-cuit').value.trim()||'—',
+        hab: hab, plan: regPlanEstab,
+        obras: os.length?os.join(', '):'Solo particular',
+        horario: document.getElementById('pe-horario').value.trim()||'—',
+        desc_texto: document.getElementById('pe-desc').value.trim()||'—',
+        precio: document.getElementById('pe-precio').value.trim()||'—',
+        zona: dept,
+        esp_campos: espCampos||'—',
+        fecha: new Date().toLocaleDateString('es-AR'),
+        estado: 'pendiente'
+      });
+    }catch(e){console.warn('Supabase save error:', e);}
     btn.textContent='Enviar solicitud →';btn.disabled=false;
     document.getElementById('reg-ok-estab-email').textContent=email;
     document.getElementById('reg-ok-estab').classList.add('on');
@@ -421,6 +454,22 @@ async function submitRegProf(){
   };
   try{
     await emailjs.send(EJS.serviceId,EJS.tplAdmin,params);
+    // Save to Supabase
+    try{
+      await supaFetch('solicitudes', 'POST', {
+        tipo: 'Profesional - '+esp,
+        nombre: n, dept: depts.join(', '), tel: tel, email: email,
+        cuit: '—', hab: mat, plan: regPlanProf,
+        obras: os.length?os.join(', '):'Solo particular',
+        horario: document.getElementById('pp-horario').value.trim()||'—',
+        desc_texto: document.getElementById('pp-desc').value.trim()||'—',
+        precio: document.getElementById('pp-precio').value.trim()||'—',
+        zona: depts.join(', '),
+        esp_campos: 'Servicios: '+(srv.length?srv.join(', '):'—'),
+        fecha: new Date().toLocaleDateString('es-AR'),
+        estado: 'pendiente'
+      });
+    }catch(e){console.warn('Supabase save error:', e);}
     btn.textContent='Enviar solicitud →';btn.disabled=false;
     document.getElementById('reg-ok-prof-email').textContent=email;
     document.getElementById('reg-ok-prof').classList.add('on');
@@ -468,6 +517,23 @@ async function submitRegEstab(){
   };
   try{
     await emailjs.send(EJS.serviceId,EJS.tplAdmin,params);
+    // Save to Supabase
+    try{
+      await supaFetch('solicitudes', 'POST', {
+        tipo: T[tipo]?T[tipo].l:tipo,
+        nombre: n, dept: dept, tel: tel, email: email,
+        cuit: document.getElementById('pe-cuit').value.trim()||'—',
+        hab: hab, plan: regPlanEstab,
+        obras: os.length?os.join(', '):'Solo particular',
+        horario: document.getElementById('pe-horario').value.trim()||'—',
+        desc_texto: document.getElementById('pe-desc').value.trim()||'—',
+        precio: document.getElementById('pe-precio').value.trim()||'—',
+        zona: dept,
+        esp_campos: espCampos||'—',
+        fecha: new Date().toLocaleDateString('es-AR'),
+        estado: 'pendiente'
+      });
+    }catch(e){console.warn('Supabase save error:', e);}
     btn.textContent='Enviar solicitud →';btn.disabled=false;
     document.getElementById('reg-ok-estab-email').textContent=email;
     document.getElementById('reg-ok-estab').classList.add('on');
@@ -2216,6 +2282,32 @@ const MP = {
   premium:  'https://mpago.la/1ZUM431',   // $60.000/mes
 };
 
+// ═══════════════════════════════════════
+// SUPABASE CONFIG
+// ═══════════════════════════════════════
+const SUPA = {
+  url: 'https://gozindrtxchnrhlpxknh.supabase.co',
+  key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdvemluZHJ0eGNobnJobHB4a25oIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODExOTQxMzgsImV4cCI6MjA5Njc3MDEzOH0.5302LUDqg279Bacz3gpjlcDGpdr8keMP4Gqmm0vWH1Q',
+};
+
+async function supaFetch(path, method, body){
+  var res = await fetch(SUPA.url + '/rest/v1/' + path, {
+    method: method||'GET',
+    headers: {
+      'apikey': SUPA.key,
+      'Authorization': 'Bearer ' + SUPA.key,
+      'Content-Type': 'application/json',
+      'Prefer': method==='POST' ? 'return=representation' : ''
+    },
+    body: body ? JSON.stringify(body) : undefined
+  });
+  if(!res.ok){
+    var err = await res.text();
+    throw new Error(err);
+  }
+  return res.json();
+}
+
 function initEJS(){
   try{
     if(window.emailjs){
@@ -2331,6 +2423,34 @@ function openAdm(){document.getElementById('adm-ov').classList.add('on');setTime
 function chkA(){if(document.getElementById('ap').value==='SaludRed2026!'){document.getElementById('adm-ov').classList.remove('on');document.getElementById('ap').value='';gv('admin');}else alert('Contraseña incorrecta');}
 
 function rAdm(){
+  // Load pending from Supabase async then re-render
+  supaFetch('solicitudes?estado=eq.pendiente&order=created_at.desc').then(function(solics){
+    pending = solics.map(function(s){
+      return {
+        id: s.id,
+        tipo: Object.keys(T).find(function(k){return T[k]&&T[k].l===s.tipo;})||'profesional',
+        nombre: s.nombre, dept: s.dept, tel: s.tel, email: s.email,
+        cuit: s.cuit||'—', hab: s.hab||'—', plan: s.plan||'estandar',
+        obras: s.obras?s.obras.split(', '):[],
+        horario: s.horario||'—', urgencias: s.urgencias||'—',
+        disponibilidad: s.disponibilidad||'',
+        delivery: s.delivery||'',
+        desc: s.desc_texto||'—', precio: s.precio||'—',
+        zona: s.zona||'—', esp_campos: s.esp_campos||'—',
+        fecha: s.fecha||'—', status: 'pending',
+        _supaId: s.id
+      };
+    });
+    renderAdm();
+  }).catch(function(e){
+    console.warn('Supabase load error:', e);
+    renderAdm();
+  });
+  // Render is done in renderAdm() after supabase loads
+  renderAdm();
+}
+
+function renderAdm(){
   const a=db.filter(x=>x.status==='active');
   const mrr=a.reduce((s,x)=>s+(PL[x.plan]?.p||0),0);
   document.getElementById('k-a').textContent=a.length;
@@ -2372,6 +2492,10 @@ async function apro(id){
   db.push(e);
   pending=pending.filter(x=>x.id!==id);
   save();
+  // Update Supabase
+  if(e._supaId){
+    supaFetch('solicitudes?id=eq.'+e._supaId, 'PATCH', {estado:'aprobado'}).catch(function(err){console.warn('Supabase update error:', err);});
+  }
 
   // Mandar mail al proveedor si tiene email
   if(e.email){
@@ -2586,6 +2710,22 @@ async function submitRegProf(){
   };
   try{
     await emailjs.send(EJS.serviceId,EJS.tplAdmin,params);
+    // Save to Supabase
+    try{
+      await supaFetch('solicitudes', 'POST', {
+        tipo: 'Profesional - '+esp,
+        nombre: n, dept: depts.join(', '), tel: tel, email: email,
+        cuit: '—', hab: mat, plan: regPlanProf,
+        obras: os.length?os.join(', '):'Solo particular',
+        horario: document.getElementById('pp-horario').value.trim()||'—',
+        desc_texto: document.getElementById('pp-desc').value.trim()||'—',
+        precio: document.getElementById('pp-precio').value.trim()||'—',
+        zona: depts.join(', '),
+        esp_campos: 'Servicios: '+(srv.length?srv.join(', '):'—'),
+        fecha: new Date().toLocaleDateString('es-AR'),
+        estado: 'pendiente'
+      });
+    }catch(e){console.warn('Supabase save error:', e);}
     btn.textContent='Enviar solicitud →';btn.disabled=false;
     document.getElementById('reg-ok-prof-email').textContent=email;
     document.getElementById('reg-ok-prof').classList.add('on');
@@ -2633,6 +2773,23 @@ async function submitRegEstab(){
   };
   try{
     await emailjs.send(EJS.serviceId,EJS.tplAdmin,params);
+    // Save to Supabase
+    try{
+      await supaFetch('solicitudes', 'POST', {
+        tipo: T[tipo]?T[tipo].l:tipo,
+        nombre: n, dept: dept, tel: tel, email: email,
+        cuit: document.getElementById('pe-cuit').value.trim()||'—',
+        hab: hab, plan: regPlanEstab,
+        obras: os.length?os.join(', '):'Solo particular',
+        horario: document.getElementById('pe-horario').value.trim()||'—',
+        desc_texto: document.getElementById('pe-desc').value.trim()||'—',
+        precio: document.getElementById('pe-precio').value.trim()||'—',
+        zona: dept,
+        esp_campos: espCampos||'—',
+        fecha: new Date().toLocaleDateString('es-AR'),
+        estado: 'pendiente'
+      });
+    }catch(e){console.warn('Supabase save error:', e);}
     btn.textContent='Enviar solicitud →';btn.disabled=false;
     document.getElementById('reg-ok-estab-email').textContent=email;
     document.getElementById('reg-ok-estab').classList.add('on');
