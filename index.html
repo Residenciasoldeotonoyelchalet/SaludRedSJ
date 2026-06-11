@@ -1418,72 +1418,1422 @@ html, body { width: 100%; overflow-x: hidden; }
     <div class="adm-s">
       <div class="adm-st">Carga manual</div>
       <div style="background:var(--white);border:1px solid var(--border);padding:14px">
-        <div class="fg"><label class="fl">Tipo</label>
-          <select class="fs" id="m-t">
-            <option value="residencia">🏡 Residencia</option>
-            <option value="clinica">🏥 Clínica</option>
-            <option value="profesional">🩺 Profesional</option>
-            <option value="farmacia">💊 Farmacia</option>
-            <option value="insumos">🦽 Insumos</option>
-            <option value="oxigeno">🫁 Oxígeno</option>
-          </select></div>
-        <div class="frow">
-          <div class="fg"><label class="fl">Nombre *</label><input type="text" class="fi" id="m-n" placeholder="Nombre completo / razón social"></div>
-          <div class="fg"><label class="fl">Departamento</label>
-            <select class="fs" id="m-d">
-              <option value="Capital">Capital</option><option value="Rawson">Rawson</option>
-              <option value="Rivadavia">Rivadavia</option><option value="Chimbas">Chimbas</option>
-              <option value="Pocito">Pocito</option><option value="Santa Lucía">Santa Lucía</option>
-              <option value="Caucete">Caucete</option><option value="Zonda">Zonda</option>
-              <option value="Ullum">Ullum</option><option value="Angaco">Angaco</option>
-            </select>
-          </div>
-        </div>
-        <div class="frow">
-          <div class="fg"><label class="fl">Teléfono</label><input type="text" class="fi" id="m-tel" placeholder="264-XXX-XXXX"></div>
-          <div class="fg"><label class="fl">WhatsApp</label><input type="text" class="fi" id="m-wsp" placeholder="264-XXX-XXXX"></div>
-        </div>
-        <div class="frow">
-          <div class="fg"><label class="fl">Email</label><input type="email" class="fi" id="m-email" placeholder="contacto@..."></div>
-          <div class="fg"><label class="fl">Plan</label>
-            <select class="fs" id="m-pl">
-              <option value="estandar">Estándar</option>
-              <option value="premium">Premium</option>
-            </select>
-          </div>
-        </div>
-        <div class="frow">
-          <div class="fg"><label class="fl">Dirección</label><input type="text" class="fi" id="m-dir" placeholder="Calle, número, barrio"></div>
-          <div class="fg"><label class="fl">Matrícula / Habilitación</label><input type="text" class="fi" id="m-hab" placeholder="N° de matrícula o habilitación"></div>
-        </div>
-        <div class="frow">
-          <div class="fg"><label class="fl">Especialidad / Tipo de residentes</label><input type="text" class="fi" id="m-esp" placeholder="Ej: Médico clínico / Autoválidos y semidependientes"></div>
-          <div class="fg"><label class="fl">Capacidad</label><input type="text" class="fi" id="m-cap" placeholder="Ej: 12 residentes"></div>
-        </div>
-        <div class="frow">
-          <div class="fg"><label class="fl">Horarios</label><input type="text" class="fi" id="m-hor" placeholder="Ej: Lunes a viernes 8-18hs"></div>
-          <div class="fg"><label class="fl">¿Urgencias / Guardia?</label><input type="text" class="fi" id="m-urg" placeholder="Ej: Sí, enfermería 24hs"></div>
-        </div>
-        <div class="frow">
-          <div class="fg"><label class="fl">Obras sociales</label><input type="text" class="fi" id="m-os" placeholder="Ej: PAMI, OSDE, IPOS — o Solo particular"></div>
-          <div class="fg"><label class="fl">Disponibilidad</label>
-            <select class="fs" id="m-disp">
-              <option value="Disponible — hay lugares">Disponible</option>
-              <option value="Lista de espera">Lista de espera</option>
-              <option value="Sin disponibilidad">Sin disponibilidad</option>
-            </select>
-          </div>
-        </div>
-        <div class="fg"><label class="fl">Servicios incluidos / ofrecidos</label>
-          <input type="text" class="fi" id="m-srv" placeholder="Ej: Enfermería 24hs, Alimentación, Kinesiología, Actividades recreativas">
-        </div>
-        <div class="fg"><label class="fl">Zona de cobertura</label>
-          <input type="text" class="fi" id="m-zona" placeholder="Ej: Capital y Rawson / Toda la provincia">
-        </div>
-        <div class="fg"><label class="fl">Precio orientativo</label>
-          <input type="text" class="fi" id="m-pr" placeholder="Ej: Desde $1.600.000/mes. Consultar.">
-        </div>
-        <div class="fg"><label class="fl">Descripción</label>
-          <textarea class="fta" id="m-desc" style="min-height:80px" placeholder="Descripción del servicio..."></textarea>
-        </div>
-        
+        <div class="fg"><label class="fl">Tipo</label><select class="fs" id="m-t"><option value="residencia">🏡 Residencia</option><option value="clinica">🏥 Clínica</option><option value="profesional">🩺 Profesional</option><option value="farmacia">💊 Farmacia</option><option value="insumos">🦽 Insumos</option><option value="oxigeno">🫁 Oxígeno</option></select></div>
+        <div class="frow"><div class="fg"><label class="fl">Nombre *</label><input type="text" class="fi" id="m-n" placeholder="Nombre completo / razón social"></div><div class="fg"><label class="fl">Departamento</label><select class="fs" id="m-d"><option value="Capital">Capital</option><option value="Rawson">Rawson</option><option value="Rivadavia">Rivadavia</option><option value="Chimbas">Chimbas</option><option value="Pocito">Pocito</option><option value="Santa Lucía">Santa Lucía</option><option value="Caucete">Caucete</option><option value="Zonda">Zonda</option></select></div></div>
+        <div class="frow"><div class="fg"><label class="fl">Teléfono</label><input type="text" class="fi" id="m-tel" placeholder="264-XXX-XXXX"></div><div class="fg"><label class="fl">WhatsApp</label><input type="text" class="fi" id="m-wsp" placeholder="264-XXX-XXXX"></div></div>
+        <div class="frow"><div class="fg"><label class="fl">Email</label><input type="email" class="fi" id="m-email" placeholder="contacto@..."></div><div class="fg"><label class="fl">Plan</label><select class="fs" id="m-pl"><option value="estandar">Estándar</option><option value="premium">Premium</option></select></div></div>
+        <div class="frow"><div class="fg"><label class="fl">Especialidad / Tipo de residentes</label><input type="text" class="fi" id="m-esp" placeholder="Ej: Enfermera / Autoválidos"></div><div class="fg"><label class="fl">Matrícula / Habilitación</label><input type="text" class="fi" id="m-hab" placeholder="N° matrícula"></div></div>
+        <div class="frow"><div class="fg"><label class="fl">Horarios</label><input type="text" class="fi" id="m-hor" placeholder="Ej: Lunes a viernes 8-18hs"></div><div class="fg"><label class="fl">Urgencias / Guardia</label><input type="text" class="fi" id="m-urg" placeholder="Ej: Sí, 24hs"></div></div>
+        <div class="frow"><div class="fg"><label class="fl">Obras sociales</label><input type="text" class="fi" id="m-os" placeholder="Ej: PAMI, OSDE o Solo particular"></div><div class="fg"><label class="fl">Zona de cobertura</label><input type="text" class="fi" id="m-zona" placeholder="Ej: Capital y Rawson"></div></div>
+        <div class="fg"><label class="fl">Servicios</label><input type="text" class="fi" id="m-srv" placeholder="Ej: Inyectables, curaciones, signos vitales"></div>
+        <div class="fg"><label class="fl">Precio orientativo</label><input type="text" class="fi" id="m-pr" placeholder="Ej: Desde $5.000/hora"></div>
+        <div class="fg"><label class="fl">Descripción</label><textarea class="fta" id="m-desc" placeholder="Descripción del servicio..."></textarea></div>
+        ve descripción"></div>
+        <button class="btn-p" onclick="mAgr()" style="margin-top:4px">Agregar →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL CONTACTO -->
+<div class="overlay" id="mc-ov">
+  <div class="modal" id="mc-inner">
+    <button class="modal-x" onclick="closeM()">✕</button>
+    <div class="modal-hdr"><h3 id="mc-t">Solicitar turno</h3><p id="mc-s"></p></div>
+    <div class="modal-prov" id="mc-prov"><span class="mp-ico" id="mc-ico"></span><div><div class="mp-n" id="mc-n2"></div><div class="mp-t" id="mc-tp"></div></div></div>
+    <div class="modal-serv" id="mc-serv" style="display:none"><div class="ms-n" id="mc-sn"></div><div class="ms-m" id="mc-sm"></div></div>
+    <div class="modal-body">
+      <div class="fg"><label class="fl" id="mc-ln">Tu nombre *</label><input type="text" class="fi" id="mc-n" placeholder="Nombre completo"></div>
+      <div class="fg"><label class="fl">Teléfono *</label><input type="text" class="fi" id="mc-tel" placeholder="264-XXX-XXXX"></div>
+      <div class="fg"><label class="fl" id="mc-ld">Dirección</label><input type="text" class="fi" id="mc-d" placeholder="Calle, número, barrio"></div>
+      <div class="fg"><label class="fl" id="mc-los">Obra social / Particular</label><input type="text" class="fi" id="mc-os" placeholder="Ej: PAMI, OSDE, Particular..."></div>
+      <div class="fg"><label class="fl" id="mc-lh">Día y horario preferido</label><input type="text" class="fi" id="mc-h" placeholder="Ej: Martes por la mañana"></div>
+      <div class="fg"><label class="fl" id="mc-lm">Descripción / Motivo</label><textarea class="fta" id="mc-m" style="min-height:50px" placeholder="Contá qué necesitás..."></textarea></div>
+      <button class="modal-btn" id="mc-btn" onclick="enviarC()">Enviar por WhatsApp →</button>
+      <p class="modal-hint">El establecimiento te contacta directamente al teléfono que indicaste</p>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN LOGIN -->
+<div class="overlay" id="adm-ov">
+  <div class="modal" style="max-width:290px">
+    <button class="modal-x" onclick="document.getElementById('adm-ov').classList.remove('on')">✕</button>
+    <div class="modal-hdr"><h3>Acceso admin</h3></div>
+    <div class="modal-body" style="padding-top:11px">
+      <div class="fg"><label class="fl">Contraseña</label><input type="password" class="fi" id="ap" onkeydown="if(event.key==='Enter')chkA()"></div>
+      <button class="modal-btn" onclick="chkA()">Ingresar →</button>
+    </div>
+  </div>
+</div>
+<script>
+const T={
+  residencia:{ico:'🏡',bg:'#E8F4F2',l:'Residencia geriátrica',sec:'s'},
+  clinica:{ico:'🏥',bg:'#EEF3FF',l:'Clínica / Sanatorio',sec:'s'},
+  profesional:{ico:'🩺',bg:'#F2EEFF',l:'Profesional a domicilio',sec:'s'},
+  farmacia:{ico:'💊',bg:'#FDF0E8',l:'Farmacia / Droguería',sec:'p'},
+  insumos:{ico:'🦽',bg:'#F0F4FF',l:'Insumos / Ortopedia',sec:'p'},
+  oxigeno:{ico:'🫁',bg:'#E6F7FF',l:'Oxígeno / Equipos',sec:'p'},
+};
+const PL={estandar:{l:'Estándar',p:30000},premium:{l:'Premium',p:50000}};
+const CATS={
+  101:[{id:'f1',n:'Pañales adulto M (x30)',d:'Alta absorción.',pr:8500,i:'📦'},{id:'f2',n:'Pañales adulto G (x30)',d:'Talle grande.',pr:9200,i:'📦'},{id:'f3',n:'Ibuprofeno 400mg x20',d:'Analgésico.',pr:2800,i:'💊'},{id:'f4',n:'Omeprazol 20mg x14',d:'Antiácido.',pr:1900,i:'💊'},{id:'f5',n:'Suero fisiológico 1L',d:'Estéril.',pr:1200,i:'💉'},{id:'f6',n:'Alcohol en gel 500ml',d:'70°.',pr:950,i:'🧴'}],
+  102:[{id:'o1',n:'Silla de ruedas plegable',d:'Acero, 46cm asiento.',pr:95000,i:'🦽'},{id:'o2',n:'Andador con ruedas',d:'Aluminio con frenos.',pr:38000,i:'🦯'},{id:'o3',n:'Colchón antiescaras',d:'Alternating pressure.',pr:62000,i:'🛏️'},{id:'o4',n:'Cama ortopédica manual',d:'Con barandas.',pr:185000,i:'🛏️'},{id:'o5',n:'Muletas axilares (par)',d:'Aluminio regulables.',pr:14000,i:'🦯'},{id:'o6',n:'Kit curación',d:'Gasas, vendas, agua ox.',pr:3200,i:'🩹'}],
+  103:[{id:'x1',n:'Oxígeno medicinal 10m³',d:'Con regulador.',pr:28000,i:'🫁'},{id:'x2',n:'Concentrador O₂ alquiler/mes',d:'5 litros/min.',pr:35000,i:'⚙️'},{id:'x3',n:'Nebulizador compresor',d:'Con accesorios.',pr:22000,i:'🌬️'},{id:'x4',n:'CPAP básico + máscara',d:'Presión fija.',pr:120000,i:'😷'},{id:'x5',n:'Pulsioxímetro digital',d:'SpO2 y pulso.',pr:8500,i:'🩺'}],
+};
+const SERVS={
+  201:[{id:'m1',n:'Consulta médica domiciliaria',d:'Evaluación completa. Recetas incluidas.',pr:18000,dur:'45 min',i:'🩺'},{id:'m2',n:'Control paciente crónico',d:'HTA, diabetes, EPOC.',pr:14000,dur:'30 min',i:'📋'},{id:'m3',n:'Urgencia domiciliaria',d:'Atención urgente en horario pactado.',pr:25000,dur:'Variable',i:'🚨'}],
+  202:[{id:'k1',n:'Sesión de kinesiología',d:'Movilizaciones y ejercicios terapéuticos.',pr:12000,dur:'45 min',i:'🏃'},{id:'k2',n:'Plan semanal 3 sesiones',d:'Seguimiento personalizado.',pr:32000,dur:'3/sem',i:'📅'},{id:'k3',n:'Rehab. post-ACV',d:'Protocolo específico.',pr:15000,dur:'60 min',i:'🧠'},{id:'k4',n:'Kinesio respiratoria',d:'Drenaje postural, expansión pulmonar.',pr:13000,dur:'40 min',i:'🫁'}],
+  203:[{id:'e1',n:'Control signos vitales',d:'Presión, glucemia, saturación.',pr:8000,dur:'30 min',i:'🩺'},{id:'e2',n:'Curación heridas/úlceras',d:'Limpieza y vendaje especializado.',pr:10000,dur:'40 min',i:'🩹'},{id:'e3',n:'Inyectable / suero IV',d:'Medicación según prescripción.',pr:12000,dur:'Variable',i:'💉'},{id:'e4',n:'Guardia domiciliaria 8hs',d:'Día o noche.',pr:45000,dur:'8 hs',i:'🏠'}],
+  204:[{id:'i1',n:'Guardia médica 12hs',d:'Médico clínico presente.',pr:85000,dur:'12 hs',i:'👨‍⚕️'},{id:'i2',n:'Guardia médica 24hs',d:'Continua, día o noche.',pr:150000,dur:'24 hs',i:'🌙'},{id:'i3',n:'Coordinación internación',d:'Médico + enfermería + kinesio. Integral.',pr:0,dur:'A convenir',i:'🏥'}],
+};
+const HINTS={
+  residencia:'📄 Requerido: N° habilitación del Ministerio de Salud de San Juan, certificado de bomberos y habilitación municipal. También podés adjuntar el número al momento del registro.',
+  clinica:'📄 Requerido: N° habilitación provincial y CUIT del establecimiento.',
+  profesional:'📄 Requerido: matrícula provincial activa.',
+  farmacia:'📄 Requerido: habilitación ANMAT y matrícula del director técnico.',
+  insumos:'📄 Requerido: CUIT activo y actividad comercial habilitada.',
+  oxigeno:'📄 Requerido: autorización ANMAT (DROG o DISP).',
+};
+const CAMPOS={
+  residencia:{t:'Información de la residencia',c:[
+    {l:'Capacidad total de residentes',id:'r-cap',ph:'Ej: 12 residentes'},
+    {l:'Modalidad de estadía',id:'r-mod',ph:'Permanente / Temporal / Ambas'},
+    {l:'Tipo de residentes que reciben',id:'r-tip',ph:'Ej: Autoválidos, Semidependientes, Dependientes, Deterioro cognitivo'},
+    {l:'Equipo profesional',id:'r-equ',ph:'Ej: Médico clínico, Enfermería 24hs, Psicología, Nutrición, Kinesiología'},
+    {l:'Servicios incluidos',id:'r-srv',ph:'Ej: Alimentación, Medicación, Higiene, Lavandería, Actividades recreativas'},
+    {l:'Infraestructura y comodidades',id:'r-inf',ph:'Ej: Habitaciones individuales/compartidas, WiFi, TV, Espacios verdes, A/C'},
+    {l:'Horarios de visita familiar',id:'r-vis',ph:'Ej: Todos los días 10-12hs y 16-19hs'},
+    {l:'¿Reciben residentes de otros departamentos?',id:'r-zona',ph:'Sí / No — indicar de dónde'}
+  ]},
+  clinica:{t:'Datos de la clínica / sanatorio',c:[
+    {l:'Especialidades médicas disponibles',id:'r-esp',ph:'Ej: Traumatología, Cardiología, Pediatría, Ginecología, Clínica médica'},
+    {l:'¿Tienen guardia permanente?',id:'r-guard',ph:'Sí, 24hs / Solo en horario / No'},
+    {l:'¿Tienen internación?',id:'r-int',ph:'Sí, hasta N camas / No, solo consultorios'},
+    {l:'Equipamiento y servicios especiales',id:'r-eq',ph:'Ej: UCI, quirófano, laboratorio, ecografía, rayos X'},
+    {l:'Obras sociales y prepagas principales',id:'r-os2',ph:'Ej: OSDE, Swiss Medical, PAMI, IPOS, Galeno'},
+    {l:'Modalidad de atención',id:'r-mod',ph:'Ej: Con turno previo / Guardia espontánea / Ambas'}
+  ]},
+  profesional:{t:'Datos profesionales',c:[
+    {l:'Especialidad o título',id:'r-esp',ph:'Ej: Médico clínico, Kinesióloga, Enfermero/a, Psicólogo/a'},
+    {l:'Matrícula provincial',id:'r-mat',ph:'Número de matrícula del Colegio correspondiente'},
+    {l:'Años de experiencia',id:'r-exp',ph:'Ej: 10 años'},
+    {l:'Servicios que ofrecés',id:'r-ps',ph:'Ej: Consulta domiciliaria, control de crónicos, rehabilitación, curaciones'},
+    {l:'Zona de cobertura',id:'r-zn',ph:'Ej: Capital y Rawson. Todo Gran San Juan.'},
+    {l:'Equipamiento con el que trabajás',id:'r-pe',ph:'Ej: Tensiómetro, glucómetro, oxímetro, electro, set de curaciones'}
+  ]},
+  farmacia:{t:'Servicios de la farmacia',c:[
+    {l:'¿Realizan preparados magistrales?',id:'r-mag',ph:'Sí / No'},
+    {l:'¿Aplican inyecciones?',id:'r-iny',ph:'Sí / No'},
+    {l:'¿Tienen turno de guardia?',id:'r-tur',ph:'Ej: Turno los lunes y jueves 24hs'},
+    {l:'¿Hacen delivery?',id:'r-del2',ph:'Sí, en zona / No'},
+    {l:'Zona de cobertura del delivery',id:'r-zdl',ph:'Ej: Capital y Rawson'},
+    {l:'¿Venden insumos médicos o pañales?',id:'r-ins',ph:'Sí / No — detallar qué'}
+  ]},
+  insumos:{t:'Catálogo y servicios',c:[
+    {l:'Productos principales',id:'r-prod',ph:'Ej: Sillas de ruedas, andadores, camas ortopédicas, colchones antiescaras, pañales'},
+    {l:'¿Alquilan equipos?',id:'r-alq',ph:'Sí, alquilamos y vendemos / Solo vendemos'},
+    {l:'¿Tienen servicio técnico o reparaciones?',id:'r-tec',ph:'Sí / No'},
+    {l:'¿Trabajan con obras sociales para cobertura?',id:'r-os3',ph:'Sí — indicar cuáles / No'},
+    {l:'Zona de cobertura del delivery',id:'r-zdl',ph:'Ej: Toda la provincia'}
+  ]},
+  oxigeno:{t:'Equipos y servicios',c:[
+    {l:'Equipos disponibles',id:'r-oeq',ph:'Ej: Oxígeno medicinal, concentradores, CPAP, BiPAP, nebulizadores'},
+    {l:'¿Realizan instalación y mantenimiento?',id:'r-om',ph:'Sí, incluido / Sí, con costo adicional / No'},
+    {l:'¿Tienen servicio de urgencias?',id:'r-oug',ph:'Sí, 24hs / No — tiempo de respuesta en zona'},
+    {l:'¿Trabajan con obras sociales?',id:'r-oos',ph:'Sí — indicar cuáles / Solo particular'}
+  ]},
+};
+
+let db=[];
+let pending=JSON.parse(localStorage.getItem('sr9_pend')||'[]');
+let cart={};
+if(!db.length){
+  db=[
+    {id:11,tipo:'residencia',nombre:'Residencia El Chalet',dept:'Santa Lucía',dir:'Hipólito Yrigoyen 1856 Este, Santa Lucía',tel:'2655057363',
+     horario:'Consultar horarios.',urgencias:'Sí, enfermería 24hs',disponibilidad:'Disponible — hay lugares',
+     obras:[],osOtras:'Solo particular',capacidad:'12 residentes',modalidades:'Permanente',
+     tipoResidentes:'Autoválidos',equipo:'Enfermería 24hs, Médico clínico, Nutricionista, Psicología',
+     servicios:'Asistencia geriátrica 24hs, Alimentación completa, Higiene y confort, Lavandería, Medicación, Signos vitales, Actividades recreativas',
+     infraestructura:'Habitaciones compartidas, A/C, Calefacción, WiFi, TV, Espacios verdes, Accesibilidad, Mascota',
+     visitas:'Lunes a lunes, mañana y tarde',precio:'Desde $1.600.000/mes. Consultar.',
+     desc:'Residencia geriátrica para adultos mayores autoválidos, dirigida por sus propios dueños desde 2019. Ambiente cálido y familiar, equipo interdisciplinario completo.',
+     fotos:["https://lh3.googleusercontent.com/d/18P0pLrLnV78_rRVI1erPvjbLUPSsQHnb","https://lh3.googleusercontent.com/d/1-dO51CAI97WSPoP46-XDoUDGOr4nOKtl","https://lh3.googleusercontent.com/d/1smFIBtVPUH-EBdCFSnNnjjpfxJ06Z6Tc","https://lh3.googleusercontent.com/d/1o7Zm2pYcmSlknsgBjsEBO59EnB_FbBtM","https://lh3.googleusercontent.com/d/1Yz2WOT3mlvBZIq-orkt-SnkGyDRE0xhk","https://lh3.googleusercontent.com/d/1iyBf3MFijpI9wDl4vXrSdWkj_SULX9dW","https://lh3.googleusercontent.com/d/1Eqou9Ui3a53kEfkvLxDp4vCEnCtn-Lxd","https://lh3.googleusercontent.com/d/10N2kLJ6SJzXp2VfAWSQ3ED8bML9Wyofe","https://lh3.googleusercontent.com/d/111pTFF2Dxc7t3ILmd1TOJgmjqq6Z_Ibd","https://lh3.googleusercontent.com/d/1QYqAapKAK9gnNsdKBWVKHKmck4_t9unG","https://lh3.googleusercontent.com/d/1oQQj2AwP2eRGlfBp5hQK_lwOepO-OL5L","https://lh3.googleusercontent.com/d/1Im0cT7We6KmuXUEMwVVOaRKGJKMG8NoD","https://lh3.googleusercontent.com/d/1RTYt8Od5HXh0DwPyP8NKmLAw2NPTW4We","https://lh3.googleusercontent.com/d/10hqDxvk9Rx09RrGCxEJT9y9nDHSTdh-3","https://lh3.googleusercontent.com/d/10c5KMw3bvn42otBDO4k8Gf_TYugN7Qn4"],
+     plan:'premium',status:'active'},
+    {id:12,tipo:'residencia',nombre:'Residencia Sol de Otoño',dept:'Rawson',dir:'Ezpeleta 95 Oeste, Rawson',tel:'2645057363',
+     horario:'Lunes a lunes, mañana y tarde.',urgencias:'Sí, enfermería 24hs',disponibilidad:'Disponible — hay lugares',
+     obras:[],osOtras:'Solo particular',capacidad:'18 residentes',modalidades:'Permanente',
+     tipoResidentes:'Patologías polivalentes — Semidependientes y Dependientes',
+     equipo:'Enfermería 24hs, Médico clínico, Nutricionista, Psicología',
+     servicios:'Asistencia geriátrica 24hs, Alimentación adaptada, Higiene y confort, Lavandería, Medicación, Signos vitales, Actividades recreativas',
+     infraestructura:'Habitaciones compartidas, A/C, Calefacción, WiFi, TV, Espacios verdes, Accesibilidad',
+     visitas:'Lunes a lunes, mañana y tarde',precio:'Desde $1.600.000/mes. Consultar.',
+     desc:'Residencia geriátrica especializada en patologías polivalentes. Atención personalizada con equipo interdisciplinario. Ambiente cálido donde el vínculo familiar es parte fundamental.',
+     fotos:["https://lh3.googleusercontent.com/d/1khyjdyEKjDVJhro5u6eRMxb3dkRvGk88","https://lh3.googleusercontent.com/d/1ECZF8nJBXey04Ujo5oSvoJynGvWewl6p","https://lh3.googleusercontent.com/d/1YfrzpvSXjT5ibSIQEcIjWBnQId9T__WZ","https://lh3.googleusercontent.com/d/1rGDp5_nY6Kk3ySArK8XE8LEynMeaa73p","https://lh3.googleusercontent.com/d/1avlFv2gqun4QaGzCJNi1UAFHtRrO0o9c","https://lh3.googleusercontent.com/d/1rO-WvqBPPfFsn_54bq3Aq2RHOVdWrIQr","https://lh3.googleusercontent.com/d/1figf-YsFhYgYXsNbGoR8dL-lew-ioHpX","https://lh3.googleusercontent.com/d/1BeKAEFhHG_HvwDoJ4djHOv6bgViw2cZT","https://lh3.googleusercontent.com/d/1bidfPvLj_AUULz1Ike8jRC6bYpExU0Ru","https://lh3.googleusercontent.com/d/1FxEo_CvK3YAw7GeieoMcesp2eyPP7NKS","https://lh3.googleusercontent.com/d/19XCeuc9ngwZRUO3xhNswnu6S44efSEe3","https://lh3.googleusercontent.com/d/1hkjhDVIGmOR5fRawhOsyZFAW5jMzzhqB","https://lh3.googleusercontent.com/d/1GfGad4KSqN4ftbXO9AKJRHWNLTg_m9gt","https://lh3.googleusercontent.com/d/1-jLAYuUimBSFtTaNFb4l8Zj0IcH2Ldbi","https://lh3.googleusercontent.com/d/1mGhvCv0xxmrQrBYBwaAR5K7FZty7-b8C","https://lh3.googleusercontent.com/d/1Byr2wqPpQoPmdWdzXGUORKO74q_uLsiu","https://lh3.googleusercontent.com/d/1wEMSKWx6pkkkgsnLs1Vw9vA28SOsGVWW","https://lh3.googleusercontent.com/d/18M-gRj4XnlsCyBLCoIHVOCMK-n4ScaeO","https://lh3.googleusercontent.com/d/1rKkEPz_Ag6apsMttFxdxAIfyl9IGXEQr","https://lh3.googleusercontent.com/d/1vy6NXyBuXj6sYIOQN8sQaDil1d74jaid","https://lh3.googleusercontent.com/d/1NH8D82E8oYmhu8t7UmSXX5b67Qpyfgzt"],
+     plan:'premium',status:'active'},
+    {id:21,tipo:'clinica',nombre:'Clínica San Martín',dept:'Rivadavia',dir:'Tucumán 580, Rivadavia',tel:'2644441000',
+     horario:'Guardia 24hs. Consultorios Lun-Vie 8-20hs, Sáb 8-13hs.',urgencias:'Sí, guardia 24hs',
+     obras:['OSDE','Swiss Medical','IPOS','PAMI','Particular'],
+     especialidades:'Traumatología, Cardiología, Cirugía general, Pediatría, Ginecología, Neurología, Clínica médica',
+     desc:'Clínica privada con guardia permanente y unidad coronaria. Más de 30 años en San Juan.',
+     plan:'premium',status:'active'},
+    {id:22,tipo:'clinica',nombre:'Centro Médico Rivadavia',dept:'Rivadavia',dir:'Tucumán 1100, Rivadavia',tel:'2644449900',
+     horario:'Lun-Sáb 8-20hs.',urgencias:'Sí, en horario de atención',
+     obras:['OSDE','IPOS','Swiss Medical','Particular'],
+     especialidades:'Clínica médica, Cardiología, Dermatología, Traumatología, Ecografías, Radiografías',
+     desc:'Centro ambulatorio con especialidades médicas y diagnóstico por imagen.',
+     plan:'estandar',status:'active'},
+    {id:201,tipo:'profesional',nombre:'Dr. Marcelo Fuentes — Clínica Médica',dept:'Capital',dir:'A domicilio',tel:'2644230044',
+     horario:'Lunes, Miércoles y Viernes 9-17hs.',urgencias:'Sí, en horario de atención',
+     obras:['PAMI','OSDE','Swiss Medical'],zona:'Capital y Rawson',
+     especialidad:'Médico clínico',matricula:'4821',
+     desc:'Médico clínico con 20 años de experiencia. Consultas domiciliarias y controles de crónicos.',
+     plan:'premium',status:'active'},
+    {id:202,tipo:'profesional',nombre:'Lic. Carla Romero — Kinesiología',dept:'Capital',dir:'A domicilio',tel:'2644551122',
+     horario:'Lunes a Viernes 8-18hs.',urgencias:'No',
+     obras:['PAMI','OSDE','IPOS'],zona:'Capital, Rivadavia, Chimbas',
+     especialidad:'Kinesióloga',matricula:'K-1204',
+     desc:'Especializada en adultos mayores. Rehabilitación motora, respiratoria y post-quirúrgica a domicilio.',
+     plan:'estandar',status:'active'},
+    {id:203,tipo:'profesional',nombre:'Enf. Roberto Díaz — Enfermería Domiciliaria',dept:'Rawson',dir:'A domicilio',tel:'2644883300',
+     horario:'Lunes a Sábados 7-22hs.',urgencias:'Sí, en horario de atención',
+     obras:['PAMI','Particular'],zona:'Capital, Rawson, Santa Lucía',
+     especialidad:'Enfermero profesional',matricula:'E-3341',
+     desc:'Curaciones, inyectables, colocación de sondas, control de signos vitales y guardias domiciliarias.',
+     plan:'estandar',status:'active'},
+    {id:204,tipo:'profesional',nombre:'InternaSJ — Internaciones Domiciliarias',dept:'Capital',dir:'Coordinación central',tel:'2644100200',
+     horario:'Coordinación 24hs.',urgencias:'Sí, guardia 24hs',
+     obras:['PAMI','OSDE','IPOS','Swiss Medical','Particular'],zona:'Toda la provincia',
+     especialidad:'Internación domiciliaria integral',matricula:'Hab. MS-224',
+     desc:'Equipo completo: médico clínico, enfermería, kinesiología y equipos. Atención continua para internación en casa.',
+     plan:'premium',status:'active'},
+    {id:205,tipo:'profesional',nombre:'Dra. Silvina Morales — Geriatría',dept:'Capital',dir:'A domicilio',tel:'2644312233',
+     horario:'Martes, Jueves y Sábados 9-16hs.',urgencias:'No',
+     obras:['PAMI','IPOS','Particular'],zona:'Capital y Chimbas',
+     especialidad:'Geriatra',matricula:'6102',
+     desc:'Especialista en adultos mayores. Evaluación geriátrica integral y seguimiento de pacientes crónicos.',
+     plan:'estandar',status:'active'},
+    {id:101,tipo:'farmacia',nombre:'Farmacia Del Pueblo',dept:'Capital',dir:'Av. José I. de la Roza 890, Capital',tel:'2644211122',
+     horario:'Lun-Sáb 8-21hs. Turno Martes y Viernes 24hs.',urgencias:'Sí, en horario',
+     obras:['PAMI','IPOS','OSDE'],zona:'Capital',
+     desc:'Farmacia con delivery en Capital. Turno Martes y Viernes. Preparados magistrales.',
+     plan:'premium',status:'active',delivery:'Sí, con costo de envío'},
+    {id:102,tipo:'farmacia',nombre:'Farmacia Central Rawson',dept:'Rawson',dir:'Av. Rawson 1200, Rawson',tel:'2644428888',
+     horario:'Lun-Sáb 8-21hs. Turno Lunes y Jueves 24hs.',urgencias:'Sí, en horario',
+     obras:['PAMI','IPOS','OSDE'],zona:'Rawson y Capital',
+     desc:'Farmacia con delivery en Rawson y Capital. Preparados magistrales y aplicación de inyecciones.',
+     plan:'estandar',status:'active',delivery:'Sí, con costo de envío'},
+    {id:103,tipo:'insumos',nombre:'OrthoMed San Juan',dept:'Capital',dir:'Mendoza 892, Capital',tel:'2644310044',
+     horario:'Lun-Vie 9-18hs. Sáb 9-13hs.',urgencias:'No',
+     obras:['PAMI','OSDE'],zona:'Toda la provincia',
+     desc:'Insumos médicos y ortopédicos. Venta y alquiler. Sillas, andadores, camas, colchones antiescaras, pañales.',
+     plan:'estandar',status:'active',delivery:'Sí, con costo de envío'},
+    {id:104,tipo:'oxigeno',nombre:'OxiSan — Oxígeno Domiciliario',dept:'Capital',dir:'Rioja 456, Capital',tel:'2644580001',
+     horario:'Lun-Sáb 8-20hs. Urgencias 24hs.',urgencias:'Sí, guardia 24hs',
+     obras:['PAMI','OSDE','Particular'],zona:'Toda la provincia',
+     desc:'Proveedor autorizado ANMAT. Oxígeno medicinal, concentradores, CPAP y nebulizadores. Entrega urgente 24hs.',
+     plan:'premium',status:'active',delivery:'Sí, gratis en zona'},
+  ];
+}
+function save(){localStorage.setItem('sr9_pend',JSON.stringify(pending));}
+
+let tsS='todos',tdS='todos',tsP='todos',tdP='todos';
+let regPlan='estandar',rdos={};
+let ctxC={};
+
+document.addEventListener('DOMContentLoaded',()=>{
+  initEJS();
+  // Also init directly in case DOMContentLoaded already fired
+  try{if(window.emailjs)emailjs.init({publicKey:EJS.publicKey});}catch(e){}
+  updH();
+  document.getElementById('si-s').addEventListener('keydown',e=>{if(e.key==='Enter')doS();});
+  document.getElementById('si-p').addEventListener('keydown',e=>{if(e.key==='Enter')doP();});
+});
+function updH(){updCB();}
+function gv(v){
+  document.querySelectorAll('.view').forEach(e=>e.classList.remove('active'));
+  document.getElementById('view-'+v).classList.add('active');
+  if(v==='home')updH();
+  if(v==='servicios')rS(fS());
+  if(v==='productos')rP(fP());
+  if(v==='carrito')rCart();
+  if(v==='admin')rAdm();
+  window.scrollTo(0,0);
+}
+
+function hsSearch(){
+  const q=document.getElementById('hs-input').value.trim();
+  if(!q)return;
+  gv('servicios');
+  setTimeout(()=>{
+    document.getElementById('si-s').value=q;
+    doS();
+  },100);
+}
+function hsGo(q){
+  document.getElementById('hs-input').value=q;
+  hsSearch();
+}
+
+function hsSearch(){
+  const q=document.getElementById('hs-input').value.trim();
+  if(!q)return;
+  gv('servicios');
+  setTimeout(()=>{document.getElementById('si-s').value=q;doS();},150);
+}
+function hsSearch2(q){
+  gv('servicios');
+  setTimeout(()=>{document.getElementById('si-s').value=q;doS();},150);
+}
+
+function hsSearch(){
+  const q=document.getElementById('hs-input').value.trim();
+  if(!q)return;
+  gv('servicios');
+  setTimeout(()=>{document.getElementById('si-s').value=q;doS();},150);
+}
+function hsSearch2(q){
+  gv('servicios');
+  setTimeout(()=>{document.getElementById('si-s').value=q;doS();},150);
+}
+
+// SERVICIOS
+function fS(){let d=db.filter(x=>x.status==='active'&&T[x.tipo]?.sec==='s');if(tsS!=='todos')d=d.filter(x=>x.tipo===tsS);if(tdS!=='todos')d=d.filter(x=>x.dept===tdS);return d.sort((a,b)=>a.plan==='premium'?-1:b.plan==='premium'?1:0);}
+function ftS(t,b){tsS=t;document.querySelectorAll('#fts .ftab').forEach(x=>x.classList.remove('on'));b.classList.add('on');document.getElementById('si-s').value='';document.getElementById('ais').classList.remove('on');rS(fS());}
+function fdS(d,b){tdS=d;document.querySelectorAll('#dbs .dtab').forEach(x=>x.classList.remove('on'));b.classList.add('on');rS(fS());}
+function qsS(q){document.getElementById('si-s').value=q;doS();}
+async function doS(){
+  const q=document.getElementById('si-s').value.trim();if(!q){rS(fS());return;}
+  tsS='todos';document.querySelectorAll('#fts .ftab').forEach((b,i)=>{b.classList.remove('on');if(i===0)b.classList.add('on');});
+  const tk=document.getElementById('tks'),ai=document.getElementById('ais');
+  tk.classList.add('on');ai.classList.remove('on');document.getElementById('slist').innerHTML='';document.getElementById('nors').classList.remove('on');
+  const a=db.filter(x=>x.status==='active'&&T[x.tipo]?.sec==='s');
+  const str=a.map(x=>`[${x.id}] ${x.nombre} (${T[x.tipo].l}, ${x.dept}) — ${x.desc||''} — Obras: ${(x.obras||[]).join(', ')} — ${x.especialidades||x.servicios||''} ${x.especialidad||''}`).join('\n');
+  try{
+    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:400,system:`Buscador SaludRed SJ (San Juan, Argentina). Directorio:\n${str}\nResponde SOLO JSON sin backticks: {"ids":[IDs máx 6],"mensaje":"frase breve"}`,messages:[{role:'user',content:`"${q}"`}]})});
+    const data=await r.json();
+    const p=JSON.parse(data.content.map(c=>c.text||'').join('').replace(/```json|```/g,'').trim());
+    tk.classList.remove('on');
+    const found=(p.ids||[]).map(id=>a.find(x=>x.id===id)).filter(Boolean);
+    ai.innerHTML=`<strong>Resultado</strong>${p.mensaje||''}`;ai.classList.add('on');rS(found);
+  }catch{
+    tk.classList.remove('on');
+    const q2=q.toLowerCase();
+    rS(fS().filter(x=>x.nombre.toLowerCase().includes(q2)||x.dept.toLowerCase().includes(q2)||(x.desc&&x.desc.toLowerCase().includes(q2))||(x.obras||[]).some(o=>o.toLowerCase().includes(q2))||(x.especialidades&&x.especialidades.toLowerCase().includes(q2))||(x.servicios&&x.servicios.toLowerCase().includes(q2))||(x.especialidad&&x.especialidad.toLowerCase().includes(q2))));
+  }
+}
+function rS(data){
+  const list=document.getElementById('slist'),nores=document.getElementById('nors'),cnt=document.getElementById('scnt-s'),meta=document.getElementById('rms');
+  cnt.textContent=data.length>0?`${data.length} resultado${data.length!==1?'s':''}` : '';
+  meta.textContent=data.length>0?`${data.length} establecimiento${data.length!==1?'s':''} encontrado${data.length!==1?'s':''}` : '';
+  if(!data.length){list.innerHTML='';nores.classList.add('on');return;}
+  nores.classList.remove('on');
+  list.innerHTML=data.map((p,i)=>{
+    const t=T[p.tipo];const isPrem=p.plan==='premium';const full=p.plan!=='gratis';
+    let fields='';
+    if(full){
+      if(p.tipo==='residencia')fields=`
+        <div class="sc-field"><div class="sfl">Disponibilidad</div><div class="sfv ${p.disponibilidad?.includes('Disponible')?'ok':''}">${p.disponibilidad||'—'}</div></div>
+        <div class="sc-field"><div class="sfl">Capacidad</div><div class="sfv">${p.capacidad||'—'}</div></div>
+        <div class="sc-field"><div class="sfl">Tipo de residentes</div><div class="sfv">${p.tipoResidentes||'—'}</div></div>
+        <div class="sc-field"><div class="sfl">Modalidad</div><div class="sfv">${p.modalidades||'—'}</div></div>
+        <div class="sc-field"><div class="sfl">Asistencia</div><div class="sfv ok">${p.urgencias||'—'}</div></div>
+        <div class="sc-field"><div class="sfl">Equipo profesional</div><div class="sfv">${p.equipo||'—'}</div></div>
+        <div class="sc-field"><div class="sfl">Visitas familiares</div><div class="sfv ok">${p.visitas||p.horario||'—'}</div></div>
+        <div class="sc-field"><div class="sfl">Precio orientativo</div><div class="sfv">${p.precio||'Consultar'}</div></div>`;
+      else if(p.tipo==='clinica')fields=`
+        <div class="sc-field"><div class="sfl">Guardia / Urgencias</div><div class="sfv ${p.urgencias?.includes('Sí')?'ok':''}">${p.urgencias||'—'}</div></div>
+        <div class="sc-field"><div class="sfl">Horarios</div><div class="sfv">${p.horario||'—'}</div></div>`;
+      else if(p.tipo==='profesional')fields=`
+        <div class="sc-field"><div class="sfl">Especialidad</div><div class="sfv">${p.especialidad||'—'} — Mat. ${p.matricula||'—'}</div></div>
+        <div class="sc-field"><div class="sfl">Horarios</div><div class="sfv">${p.horario||'—'}</div></div>
+        <div class="sc-field"><div class="sfl">Urgencias</div><div class="sfv ${p.urgencias?.includes('Sí')?'ok':''}">${p.urgencias||'—'}</div></div>
+        <div class="sc-field"><div class="sfl">Zona</div><div class="sfv">${p.zona||p.dept}</div></div>`;
+    }
+    const osp=full&&p.obras?.length?`<div class="sc-pills">${p.obras.map(o=>`<span class="pill pill-teal">${o}</span>`).join('')}</div>`:'';
+    const esp=full&&p.tipo==='clinica'&&p.especialidades?`<div class="sc-pills">${p.especialidades.split(',').map(e=>`<span class="pill">${e.trim()}</span>`).join('')}</div>`:'';
+    const srv=full&&p.tipo==='residencia'&&p.servicios?`<div class="sc-pills">${p.servicios.split(',').map(s=>`<span class="pill">${s.trim()}</span>`).join('')}</div>`:'';
+    const hasServs=full&&p.tipo==='profesional'&&SERVS[p.id];
+    const servsTgl=hasServs?`<div class="sc-toggle" onclick="tExp('${p.id}')"><span>Ver servicios y aranceles</span><span id="sa-${p.id}">▾</span></div><div class="sc-expand" id="se-${p.id}"><div class="sg">${SERVS[p.id].map(s=>`<div class="si"><div class="si-n">${s.i} ${s.n}</div><div class="si-d">${s.d}</div><div class="si-meta"><span class="si-pr">${s.pr>0?'$'+s.pr.toLocaleString('es-AR'):'A coordinar'}</span><span class="si-dur">⏱ ${s.dur}</span></div><button class="si-btn pur" onclick="openC('profesional',${p.id},'${s.id}')">Pedir turno</button></div>`).join('')}</div></div>`:'';
+    let btn='';
+    if(p.tipo==='residencia')btn=`<button class="btn-p navy" onclick="openC('residencia',${p.id})">Solicitar entrevista</button>`;
+    else if(p.tipo==='clinica')btn=`<button class="btn-p navy" onclick="openC('clinica',${p.id})">Pedir turno</button>`;
+    else if(p.tipo==='profesional'&&!full)btn=`<button class="btn-p pur" onclick="openC('profesional',${p.id})">Consultar</button>`;
+    const mainPhoto='';
+    const thumbs=p.fotos&&p.fotos.length>1?`<div class="sc-photos">${p.fotos.slice(1,6).map((f,fi)=>`<img class="sc-photo" src="${f}" alt="Foto ${fi+2}" onclick="openLB(${p.id},${fi+1})" onerror="this.parentElement&&this.parentElement.classList.contains('sc-photos')?this.style.display='none':this.style.visibility='hidden'">`).join('')}</div>`:'';
+    return `<div class="scard${isPrem?' dest':''}" style="animation-delay:${i*0.04}s">
+      ${mainPhoto}
+      <div class="sc-hd"><div class="sc-ico" style="background:${t.bg}">${t.ico}</div><div class="sc-titles"><div class="sc-name">${p.nombre}</div><div class="sc-sub">${t.l} · ${p.dept}</div><div class="sc-badges">${isPrem?'<span class="badge b-dest">✦ Destacado</span>':''}<span class="badge b-ok">✓ Habilitado</span>${p.tipo==='profesional'?'<span class="badge b-pur">A domicilio</span>':''}${p.urgencias?.includes('24hs')?'<span class="badge b-red">🚨 24hs</span>':''}</div></div></div>
+      ${full&&p.desc?`<div class="sc-desc">${p.desc}</div>`:''}
+      ${thumbs}
+      ${fields?`<div class="sc-fields">${fields}</div>`:''}
+      ${osp}${esp}${srv}${servsTgl}
+      <div class="sc-foot">${btn||p.tipo==='profesional'&&full?`${btn}`:`<button class="btn-p navy" onclick="openC('general',${p.id})">Consultar →</button>`}</div>
+    </div>`;
+  }).join('');
+}
+function tExp(id){const el=document.getElementById('se-'+id),arr=document.getElementById('sa-'+id);if(!el)return;el.classList.toggle('open');if(arr)arr.textContent=el.classList.contains('open')?'▴':'▾';}
+
+// PRODUCTOS
+function fP(){let d=db.filter(x=>x.status==='active'&&T[x.tipo]?.sec==='p');if(tsP!=='todos')d=d.filter(x=>x.tipo===tsP);if(tdP!=='todos')d=d.filter(x=>x.dept===tdP);return d.sort((a,b)=>a.plan==='premium'?-1:b.plan==='premium'?1:0);}
+function ftP(t,b){tsP=t;document.querySelectorAll('#ftp .ftab').forEach(x=>x.classList.remove('on'));b.classList.add('on');document.getElementById('si-p').value='';document.getElementById('aip').classList.remove('on');rP(fP());}
+function fdP(d,b){tdP=d;document.querySelectorAll('#dbp .dtab').forEach(x=>x.classList.remove('on'));b.classList.add('on');rP(fP());}
+function qsP(q){document.getElementById('si-p').value=q;doP();}
+async function doP(){
+  const q=document.getElementById('si-p').value.trim();if(!q){rP(fP());return;}
+  tsP='todos';document.querySelectorAll('#ftp .ftab').forEach((b,i)=>{b.classList.remove('on');if(i===0)b.classList.add('on');});
+  const tk=document.getElementById('tkp'),ai=document.getElementById('aip');
+  tk.classList.add('on');ai.classList.remove('on');document.getElementById('plist').innerHTML='';document.getElementById('norp').classList.remove('on');
+  const a=db.filter(x=>x.status==='active'&&T[x.tipo]?.sec==='p');
+  const str=a.map(x=>`[${x.id}] ${x.nombre} — ${(CATS[x.id]||[]).map(p=>p.n).join(', ')}`).join('\n');
+  try{
+    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:300,system:`Buscador SaludRed SJ productos. Proveedores:\n${str}\nRespuesta: SOLO JSON sin backticks: {"ids":[],"mensaje":""}`,messages:[{role:'user',content:`"${q}"`}]})});
+    const data=await r.json();
+    const p=JSON.parse(data.content.map(c=>c.text||'').join('').replace(/```json|```/g,'').trim());
+    tk.classList.remove('on');
+    const found=(p.ids||[]).map(id=>a.find(x=>x.id===id)).filter(Boolean);
+    ai.innerHTML=`<strong>Resultado</strong>${p.mensaje||''}`;ai.classList.add('on');rP(found);
+  }catch{
+    tk.classList.remove('on');const q2=q.toLowerCase();
+    rP(fP().filter(x=>x.nombre.toLowerCase().includes(q2)||(CATS[x.id]||[]).some(p=>p.n.toLowerCase().includes(q2))));
+  }
+}
+function rP(data){
+  const list=document.getElementById('plist'),nores=document.getElementById('norp'),cnt=document.getElementById('scnt-p'),meta=document.getElementById('rmp');
+  cnt.textContent=data.length>0?`${data.length} proveedor${data.length!==1?'es':''}` : '';
+  meta.textContent=cnt.textContent;
+  if(!data.length){list.innerHTML='';nores.classList.add('on');return;}
+  nores.classList.remove('on');
+  list.innerHTML=data.map((p,i)=>{
+    const t=T[p.tipo];const isPrem=p.plan==='premium';const hasCat=CATS[p.id]&&p.plan!=='gratis';
+    return `<div class="pcard${isPrem?' dest':''}" style="animation-delay:${i*0.04}s">
+      <div class="sc-hd"><div class="sc-ico" style="background:${t.bg}">${t.ico}</div><div class="sc-titles"><div class="sc-name">${p.nombre}</div><div class="sc-sub">${t.l} · ${p.dept}</div><div class="sc-badges" style="margin-top:3px">${isPrem?'<span class="badge b-dest">✦ Destacado</span>':''}<span class="badge b-ok">✓ Verificado</span>${p.delivery&&p.delivery!=='No'?`<span class="badge b-navy">🚚 ${p.delivery}</span>`:''}</div></div></div>
+      ${p.plan!=='gratis'&&p.desc?`<div class="sc-desc">${p.desc}</div>`:''}
+      ${p.plan!=='gratis'?`<div style="padding:6px 15px;font-size:12px;color:var(--ink2);border-bottom:1px solid var(--border)"><b style="color:var(--ink)">Horario:</b> ${p.horario||'—'} · <b style="color:var(--ink)">Zona:</b> ${p.zona||p.dept}</div>`:''}
+      ${hasCat?`<div class="pc-toggle" onclick="tCat(${p.id})"><span>Ver catálogo y precios</span><span id="pa-${p.id}">▾</span></div><div class="pc-cat" id="pc-${p.id}"><table class="ptable">${(CATS[p.id]||[]).map(prod=>`<tr><td class="pt-ico">${prod.i}</td><td><div class="pt-name">${prod.n}</div><div class="pt-desc">${prod.d}</div></td><td class="pt-pr">$${prod.pr.toLocaleString('es-AR')}</td><td class="pt-add"><button class="btn-add${cart[p.id]?.items?.find(x=>x.prod.id===prod.id)?` added`:''}" id="btn-${prod.id}" onclick="addC(${p.id},'${prod.id}')">${cart[p.id]?.items?.find(x=>x.prod.id===prod.id)?'✓ En carrito':'+ Agregar'}</button></td></tr>`).join('')}</table></div>`:`<div class="sc-foot"><button class="btn-p" onclick="openC('general',${p.id})">Consultar →</button></div>`}
+    </div>`;
+  }).join('');
+}
+function tCat(id){const el=document.getElementById('pc-'+id),arr=document.getElementById('pa-'+id);if(!el)return;el.classList.toggle('open');if(arr)arr.textContent=el.classList.contains('open')?'▴':'▾';}
+
+// CARRITO
+function addC(provId,prodId){
+  const prov=db.find(x=>x.id===provId);const prod=(CATS[provId]||[]).find(x=>x.id===prodId);if(!prov||!prod)return;
+  if(!cart[provId])cart[provId]={prov,items:[]};
+  const ex=cart[provId].items.find(x=>x.prod.id===prodId);
+  if(ex)ex.qty++;else cart[provId].items.push({prod,qty:1});
+  const btn=document.getElementById('btn-'+prodId);if(btn){btn.textContent='✓ En carrito';btn.classList.add('added');}
+  updCB();
+}
+function updCB(){
+  const tot=Object.values(cart).reduce((s,g)=>s+g.items.reduce((ss,i)=>ss+i.qty,0),0);
+  const el=document.getElementById('cct');
+  if(el){el.textContent=tot;tot>0?el.classList.add('on'):el.classList.remove('on');}
+}
+function rCart(){
+  const grps=Object.values(cart).filter(g=>g.items.length>0);
+  const empty=document.getElementById('cart-empty'),content=document.getElementById('cart-content'),sv=document.getElementById('sv');
+  sv.classList.remove('on');
+  document.getElementById('cgrps').style.display='';document.querySelector('.co-box').style.display='';document.getElementById('tbox').style.display='';document.getElementById('btn-cc').style.display='';
+  if(!grps.length){empty.style.display='block';content.style.display='none';return;}
+  empty.style.display='none';content.style.display='block';
+  document.getElementById('cgrps').innerHTML=grps.map(g=>{
+    const t=T[g.prov.tipo];const sub=g.items.reduce((s,i)=>s+i.prod.pr*i.qty,0);
+    return `<div class="cgrp"><div class="cg-hd"><span>${t.ico}</span>${g.prov.nombre}</div>${g.items.map(item=>`<div class="cg-row"><div class="cr-info"><div class="cr-n">${item.prod.n}</div><div class="cr-pr">$${item.prod.pr.toLocaleString('es-AR')} c/u</div></div><div class="cr-qty"><button class="qb" onclick="chQ(${g.prov.id},'${item.prod.id}',-1)">−</button><span class="qn">${item.qty}</span><button class="qb" onclick="chQ(${g.prov.id},'${item.prod.id}',1)">+</button></div><div class="cr-tot">$${(item.prod.pr*item.qty).toLocaleString('es-AR')}</div></div>`).join('')}<div class="cg-sub"><span>Subtotal</span><strong>$${sub.toLocaleString('es-AR')}</strong></div></div>`;
+  }).join('');
+  const total=grps.reduce((s,g)=>s+g.items.reduce((ss,i)=>ss+i.prod.pr*i.qty,0),0);
+  document.getElementById('tbox').innerHTML=`<div class="tr"><span>Subtotal</span><strong>$${total.toLocaleString('es-AR')}</strong></div><div class="tr"><span>Delivery</span><strong style="color:#A8D5CE">Coordinado con cada proveedor</strong></div><div class="tr"><span>Pago</span><strong style="color:#A8D5CE">Directo al proveedor</strong></div><div class="tr big"><span>Total estimado</span><strong>$${total.toLocaleString('es-AR')}</strong></div>`;
+}
+function chQ(pId,prodId,d){
+  const g=cart[pId];if(!g)return;const item=g.items.find(x=>x.prod.id===prodId);if(!item)return;
+  item.qty+=d;if(item.qty<=0){g.items=g.items.filter(x=>x.prod.id!==prodId);if(!g.items.length)delete cart[pId];const btn=document.getElementById('btn-'+prodId);if(btn){btn.textContent='+ Agregar';btn.classList.remove('added');}}
+  updCB();rCart();
+}
+function confirmar(){
+  const n=document.getElementById('co-n').value.trim(),t=document.getElementById('co-t').value.trim(),d=document.getElementById('co-d').value.trim();
+  if(!n||!t||!d){alert('Completá nombre, teléfono y dirección.');return;}
+  const grps=Object.values(cart).filter(g=>g.items.length>0);
+  const nt=document.getElementById('co-nt').value.trim();
+  ['cgrps','.co-box','tbox','btn-cc'].forEach(id=>{const el=document.getElementById(id)||document.querySelector(id);if(el)el.style.display='none';});
+  document.querySelectorAll('#cart-content button:not(#btn-cc)').forEach(b=>{if(b.textContent.includes('Seguir'))b.style.display='none';});
+  const orders=grps.map(g=>{
+    const items=g.items.map(i=>`• ${i.prod.n} x${i.qty} = $${(i.prod.pr*i.qty).toLocaleString('es-AR')}`).join('\n');
+    const sub=g.items.reduce((s,i)=>s+i.prod.pr*i.qty,0);
+    const msg=`Hola, hago un pedido desde SaludRed SJ.\n\nDatos: ${n} · ${t} · ${d}${nt?'\nNotas: '+nt:''}\n\nPedido:\n${items}\n\nSubtotal: $${sub.toLocaleString('es-AR')}\n\n¿Podés confirmar disponibilidad y envío?`;
+    return{prov:g.prov,msg,sub};
+  });
+  document.getElementById('sv-lead').textContent=`Enviamos ${orders.length} pedido${orders.length!==1?'s':''} a los proveedores. Te confirman por WhatsApp.`;
+  document.getElementById('sv-orders').innerHTML=orders.map(o=>`<div class="or"><span style="font-size:1.1rem">${T[o.prov.tipo].ico}</span><div><div class="or-n">${o.prov.nombre}</div><div class="or-s">$${o.sub.toLocaleString('es-AR')}</div></div><button class="btn-wsp" onclick="window.open('https://wa.me/549${o.prov.tel}?text=${encodeURIComponent(o.msg)}','_blank')">Enviar WA →</button></div>`).join('');
+  document.getElementById('sv').classList.add('on');
+}
+function finComp(){cart={};updCB();document.querySelectorAll('.btn-add.added').forEach(b=>{b.textContent='+ Agregar';b.classList.remove('added');});gv('home');}
+function goW(tel,n){openC('general',0,null,n,tel);}
+
+function openC(mode,provId,servId,nombreOverride,telOverride){
+  const prov=provId?db.find(x=>x.id===provId):null;
+  const t=prov?T[prov.tipo]:{ico:'🏥',bg:'#E8F4F2',l:'Establecimiento'};
+  ctxC={mode,provId,servId,tel:telOverride||(prov?.tel||''),nombre:nombreOverride||(prov?.nombre||'')};
+  document.getElementById('mc-ico').textContent=t.ico;
+  document.getElementById('mc-n2').textContent=ctxC.nombre;
+  document.getElementById('mc-tp').textContent=prov?(t.l+(prov.dept?' · '+prov.dept:'')):'';
+  ['mc-n','mc-tel','mc-d','mc-os','mc-h','mc-m'].forEach(id=>document.getElementById(id).value='');
+  const sBox=document.getElementById('mc-serv'),mEl=document.getElementById('mc-inner');
+  mEl.className='modal';
+  if(mode==='residencia'){
+    document.getElementById('mc-t').textContent='Solicitar entrevista';
+    document.getElementById('mc-s').textContent='Coordinamos una visita para conocer las instalaciones y evaluar el ingreso.';
+    document.getElementById('mc-ln').textContent='Tu nombre *';
+    document.getElementById('mc-ld').textContent='Dirección actual del familiar';
+    document.getElementById('mc-los').textContent='Obra social del futuro residente';
+    document.getElementById('mc-lh').textContent='Día y horario preferido para la visita';
+    document.getElementById('mc-lm').textContent='Datos del familiar (edad, diagnóstico, movilidad, urgencia)';
+    document.getElementById('mc-h').placeholder='Ej: Miércoles por la tarde';
+    document.getElementById('mc-m').placeholder='Ej: 84 años, Alzheimer moderado, camina con andador...';
+    document.getElementById('mc-btn').textContent='Enviar solicitud →';
+    document.getElementById('mc-btn').className='modal-btn navy';
+    mEl.classList.add('navy');sBox.style.display='none';
+  }else if(mode==='clinica'){
+    document.getElementById('mc-t').textContent='Pedir turno';
+    document.getElementById('mc-s').textContent='Completá tus datos para coordinar un turno.';
+    document.getElementById('mc-ld').textContent='Tu dirección';
+    document.getElementById('mc-los').textContent='Obra social / Prepaga';
+    document.getElementById('mc-lh').textContent='Especialidad y horario preferido';
+    document.getElementById('mc-lm').textContent='Motivo de consulta (opcional)';
+    document.getElementById('mc-h').placeholder='Ej: Traumatología, martes por la mañana';
+    document.getElementById('mc-m').placeholder='Describí brevemente...';
+    document.getElementById('mc-btn').textContent='Enviar solicitud →';
+    document.getElementById('mc-btn').className='modal-btn navy';
+    mEl.classList.add('navy');sBox.style.display='none';
+  }else{
+    const serv=servId?(SERVS[provId]||[]).find(x=>x.id===servId):null;
+    document.getElementById('mc-t').textContent='Solicitar turno o consulta';
+    document.getElementById('mc-s').textContent='El establecimiento te contacta directamente.';
+    document.getElementById('mc-ld').textContent='Dirección (para servicios a domicilio)';
+    document.getElementById('mc-los').textContent='Obra social / Particular';
+    document.getElementById('mc-lh').textContent='Día y horario preferido';
+    document.getElementById('mc-lm').textContent='Motivo / consulta';
+    document.getElementById('mc-h').placeholder='Ej: Martes o jueves por la mañana';
+    document.getElementById('mc-btn').textContent='Enviar solicitud →';
+    document.getElementById('mc-btn').className='modal-btn pur';
+    mEl.classList.add('pur');
+    if(serv){document.getElementById('mc-sn').textContent=serv.n;document.getElementById('mc-sm').textContent=`${serv.d} · ⏱ ${serv.dur}${serv.pr>0?' · $'+serv.pr.toLocaleString('es-AR'):''}`;sBox.className='modal-serv pur';sBox.style.display='block';}
+    else sBox.style.display='none';
+  }
+  document.getElementById('mc-ov').classList.add('on');
+}
+function closeM(){document.getElementById('mc-ov').classList.remove('on');}
+async function enviarC(){
+  const n=document.getElementById('mc-n').value.trim(),t=document.getElementById('mc-tel').value.trim();
+  if(!n||!t){alert('Completá nombre y teléfono.');return;}
+  const os=document.getElementById('mc-os').value.trim(),h=document.getElementById('mc-h').value.trim(),m=document.getElementById('mc-m').value.trim(),d=document.getElementById('mc-d').value.trim();
+  const serv=ctxC.servId?(SERVS[ctxC.provId]||[]).find(x=>x.id===ctxC.servId):null;
+  const btn=document.getElementById('mc-btn');
+  btn.textContent='Enviando...';btn.disabled=true;
+
+  // Armar mensaje para el establecimiento
+  const modoLabel={residencia:'Solicitud de entrevista',clinica:'Solicitud de turno',profesional:'Solicitud de turno',general:'Consulta'}[ctxC.mode]||'Consulta';
+  const paramsContacto={
+    establecimiento: ctxC.nombre,
+    tipo_solicitud:  modoLabel,
+    nombre_usuario:  n,
+    telefono_usuario:t,
+    direccion:       d||'No indicada',
+    obra_social:     os||'No indicada',
+    horario_pref:    h||'No indicado',
+    motivo:          m||'No indicado',
+    servicio:        serv?(serv.n+' · '+serv.dur+(serv.pr>0?' · $'+serv.pr.toLocaleString('es-AR'):'')):'No especificado',
+    wsp_link:        'https://wa.me/549'+ctxC.tel.replace(/\D/g,'')+'?text='+encodeURIComponent('Hola, recibí una consulta de '+n+' ('+t+') desde SaludRed. '+(m||''))
+  };
+
+  // Usar template de contacto — template_contacto_prov
+  // Por ahora enviamos a saludredsj y desde ahí se reenvía
+  // TODO: cuando cada proveedor tenga email, enviar directo a ellos
+  try{
+    await emailjs.send(EJS.serviceId,'template_4kcynb9',{
+      nombre: '[CONTACTO para '+ctxC.nombre+']',
+      tipo: modoLabel,
+      depto: '',
+      telefono: t,
+      email_prov: 'saludredsj@gmail.com',
+      cuit: '',
+      habilitacion: '',
+      plan: '',
+      obras: os||'—',
+      horario: h||'—',
+      urgencias: '—',
+      disponibilidad: '—',
+      descripcion: 'USUARIO: '+n+' ('+t+')\nDirección: '+(d||'—')+'\nObra social: '+(os||'—')+'\nHorario preferido: '+(h||'—')+'\nMotivo: '+(m||'—')+(serv?'\nServicio: '+serv.n:''),
+      precio: '—',
+      zona: '—',
+      esp_campos: 'PARA REENVIAR A: '+ctxC.nombre,
+      fecha: new Date().toLocaleDateString('es-AR'),
+      id_solicitud: String(Date.now()),
+    });
+    btn.textContent='Enviar solicitud →';btn.disabled=false;
+    closeM();
+    alert('✅ Tu solicitud fue enviada a '+ctxC.nombre+'. Te contactan a la brevedad al teléfono que indicaste.');
+  }catch(err){
+    console.error(err);
+    btn.textContent='Enviar solicitud →';btn.disabled=false;
+    alert('Hubo un error al enviar. Por favor intentá de nuevo.');
+  }
+}
+
+// REGISTRO
+function selP(p){
+  regPlan=p;
+  document.querySelectorAll('.plan-c').forEach(el=>{el.classList.remove('sel','sel-gold');});
+  document.getElementById('pc-'+p).classList.add(p==='premium'?'sel-gold':'sel');
+}
+function selR(el,grp,val){document.querySelectorAll('#'+grp+' .rdo').forEach(b=>b.classList.remove('sel'));el.classList.add('sel');rdos[grp]=val;}
+function adaptF(){
+  const tipo=document.getElementById('rt').value;
+  const hint=document.getElementById('tipo-hint');
+  const hint2=document.getElementById('tipo-hint2');
+  const sec=document.getElementById('sec-esp');
+  const isRes=tipo==='residencia';
+  const isEstab=['residencia','clinica','farmacia','insumos','oxigeno','otro_estab'].includes(tipo);
+  const isProf=['medico','enfermeria','kinesiologia','psicologia','fonoaudiologia','terapia_ocupacional','laboratorio','cuidador','nutricion','otro_prof'].includes(tipo);
+
+  if(!tipo){hint.style.display='none';sec.style.display='none';return;}
+
+  // Habilitacion hints
+  const hints={
+    medico:'📄 Requerido: matrícula provincial activa del Colegio Médico de San Juan.',
+    enfermeria:'📄 Requerido: matrícula provincial de enfermería.',
+    kinesiologia:'📄 Requerido: matrícula provincial del Colegio de Kinesiólogos de San Juan.',
+    psicologia:'📄 Requerido: matrícula provincial del Colegio de Psicólogos de San Juan.',
+    fonoaudiologia:'📄 Requerido: matrícula provincial de fonoaudiología.',
+    terapia_ocupacional:'📄 Requerido: matrícula provincial de terapia ocupacional.',
+    laboratorio:'📄 Requerido: habilitación ANMAT y matrícula del bioquímico director.',
+    cuidador:'📄 Requerido: certificado de capacitación en cuidados domiciliarios.',
+    nutricion:'📄 Requerido: matrícula provincial de nutrición.',
+    otro_prof:'📄 Requerido: matrícula o habilitación profesional correspondiente.',
+    residencia:'📄 Requerido: N° habilitación del Ministerio de Salud de San Juan, certificado de bomberos y habilitación municipal.',
+    clinica:'📄 Requerido: N° habilitación provincial y CUIT del establecimiento.',
+    farmacia:'📄 Requerido: habilitación ANMAT y matrícula del director técnico.',
+    insumos:'📄 Requerido: CUIT activo y actividad comercial habilitada.',
+    oxigeno:'📄 Requerido: autorización ANMAT (DROG o DISP).',
+    otro_estab:'📄 Requerido: habilitación correspondiente al tipo de establecimiento.',
+  };
+  hint.textContent=hints[tipo]||'';
+  hint.style.display=hints[tipo]?'block':'none';
+  hint2.textContent=hints[tipo]||'';
+  hint2.style.display=hints[tipo]?'block':'none';
+
+  // Specific fields per type
+  const esp={
+    medico:{t:'Especialidad médica',html:`
+      <div class="fg"><label class="fl">Especialidad principal *</label>
+      <div class="cbx-grid">
+        <label class="cbx"><input type="checkbox" name="esp" value="Clínica médica"> Clínica médica</label>
+        <label class="cbx"><input type="checkbox" name="esp" value="Cardiología"> Cardiología</label>
+        <label class="cbx"><input type="checkbox" name="esp" value="Neurología"> Neurología</label>
+        <label class="cbx"><input type="checkbox" name="esp" value="Geriatría"> Geriatría</label>
+        <label class="cbx"><input type="checkbox" name="esp" value="Pediatría"> Pediatría</label>
+        <label class="cbx"><input type="checkbox" name="esp" value="Traumatología"> Traumatología</label>
+        <label class="cbx"><input type="checkbox" name="esp" value="Psiquiatría"> Psiquiatría</label>
+        <label class="cbx"><input type="checkbox" name="esp" value="Dermatología"> Dermatología</label>
+        <label class="cbx"><input type="checkbox" name="esp" value="Endocrinología"> Endocrinología</label>
+        <label class="cbx"><input type="checkbox" name="esp" value="Medicina familiar"> Medicina familiar</label>
+        <label class="cbx"><input type="checkbox" name="esp" value="Otra"> Otra (especificar)</label>
+      </div></div>
+      <div class="fg"><label class="fl">Subespecialidad (opcional)</label><input type="text" class="fi" id="r-subesp" placeholder="Ej: Cardiología intervencionista"></div>
+      <div class="fg"><label class="fl">Modalidad de atención</label>
+      <div class="cbx-grid">
+        <label class="cbx"><input type="checkbox" name="mod" value="Consultorio"> Consultorio</label>
+        <label class="cbx"><input type="checkbox" name="mod" value="Domicilio"> Domicilio</label>
+        <label class="cbx"><input type="checkbox" name="mod" value="Telemedicina"> Telemedicina</label>
+      </div></div>
+      <div class="fg"><label class="fl">Zona de cobertura</label><input type="text" class="fi" id="r-zona" placeholder="Ej: Capital y Rawson"></div>
+    `},
+    enfermeria:{t:'Servicios de enfermería',html:`
+      <div class="fg"><label class="fl">¿Qué servicios realizás?</label>
+      <div class="cbx-grid">
+        <label class="cbx"><input type="checkbox" name="srv" value="Curación de escaras"> Curación de escaras</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Inyectables"> Aplicación de inyectables</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Sueros"> Colocación de sueros</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Signos vitales"> Control de signos vitales</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Medicación"> Administración de medicación</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Domiciliaria"> Atención domiciliaria</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Cuidados paliativos"> Cuidados paliativos</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Geriátrica"> Enfermería geriátrica</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Postoperatoria"> Enfermería postoperatoria</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Acompañamiento"> Acompañamiento hospitalario</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Otros"> Otros (especificar)</label>
+      </div></div>
+      <div class="fg"><label class="fl">Zona de cobertura *</label><input type="text" class="fi" id="r-zona" placeholder="Ej: Capital, Rawson, Santa Lucía"></div>
+    `},
+    kinesiologia:{t:'Especialidades de kinesiología',html:`
+      <div class="fg"><label class="fl">¿Qué especialidades realizás?</label>
+      <div class="cbx-grid">
+        <label class="cbx"><input type="checkbox" name="srv" value="Respiratoria"> Kinesiología respiratoria</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Motora"> Kinesiología motora</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Rehab neurológica"> Rehabilitación neurológica</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Rehab traumatológica"> Rehabilitación traumatológica</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Rehab deportiva"> Rehabilitación deportiva</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Rehab geriátrica"> Rehabilitación geriátrica</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Rehab postquirúrgica"> Rehabilitación postquirúrgica</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Drenaje linfático"> Drenaje linfático</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Domiciliaria"> Atención domiciliaria</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Otros"> Otros (especificar)</label>
+      </div></div>
+      <div class="fg"><label class="fl">Zona de cobertura *</label><input type="text" class="fi" id="r-zona" placeholder="Ej: Capital y Rawson"></div>
+    `},
+    psicologia:{t:'Modalidad de atención en psicología',html:`
+      <div class="fg"><label class="fl">¿Qué modalidades ofrecés?</label>
+      <div class="cbx-grid">
+        <label class="cbx"><input type="checkbox" name="srv" value="Individual"> Terapia individual</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Pareja"> Terapia de pareja</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Familiar"> Terapia familiar</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Infantil"> Terapia infantil</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Adolescente"> Terapia adolescente</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Adultos mayores"> Adultos mayores</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Online"> Atención online</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Presencial"> Atención presencial</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Otros"> Otros (especificar)</label>
+      </div></div>
+    `},
+    fonoaudiologia:{t:'Servicios de fonoaudiología',html:`
+      <div class="fg"><label class="fl">¿Qué servicios ofrecés?</label>
+      <div class="cbx-grid">
+        <label class="cbx"><input type="checkbox" name="srv" value="Lenguaje"> Rehabilitación del lenguaje</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Deglución"> Trastornos de la deglución</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Neurológica"> Rehabilitación neurológica</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Estimulación"> Estimulación temprana</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Domiciliaria"> Atención domiciliaria</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Otros"> Otros (especificar)</label>
+      </div></div>
+      <div class="fg"><label class="fl">Zona de cobertura</label><input type="text" class="fi" id="r-zona" placeholder="Ej: Capital y Rawson"></div>
+    `},
+    terapia_ocupacional:{t:'Servicios de terapia ocupacional',html:`
+      <div class="fg"><label class="fl">¿Qué servicios ofrecés?</label>
+      <div class="cbx-grid">
+        <label class="cbx"><input type="checkbox" name="srv" value="Neurológica"> Rehabilitación neurológica</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Adultos mayores"> Adultos mayores</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Adaptación"> Adaptación funcional</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Domiciliaria"> Atención domiciliaria</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Cognitiva"> Estimulación cognitiva</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Otros"> Otros (especificar)</label>
+      </div></div>
+      <div class="fg"><label class="fl">Zona de cobertura</label><input type="text" class="fi" id="r-zona" placeholder="Ej: Capital y Rawson"></div>
+    `},
+    laboratorio:{t:'Servicios del laboratorio',html:`
+      <div class="fg"><label class="fl">¿Qué servicios ofrecés?</label>
+      <div class="cbx-grid">
+        <label class="cbx"><input type="checkbox" name="srv" value="Extracción domicilio"> Extracción a domicilio</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Análisis clínicos"> Análisis clínicos</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Rutina"> Análisis de rutina</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Hormonales"> Estudios hormonales</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Bacteriológicos"> Estudios bacteriológicos</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Especializados"> Estudios especializados</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Ocupacionales"> Análisis ocupacionales</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Otros"> Otros (especificar)</label>
+      </div></div>
+      <div class="fg"><label class="fl">¿Entregás resultados online?</label>
+      <div class="rdo-g" id="rg-online">
+        <div class="rdo" onclick="selR(this,'rg-online','Sí')">Sí</div>
+        <div class="rdo" onclick="selR(this,'rg-online','No')">No</div>
+      </div></div>
+    `},
+    cuidador:{t:'Servicios de cuidado domiciliario',html:`
+      <div class="fg"><label class="fl">¿Qué servicios ofrecés?</label>
+      <div class="cbx-grid">
+        <label class="cbx"><input type="checkbox" name="srv" value="Acompañamiento"> Acompañamiento diurno</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Nocturno"> Acompañamiento nocturno</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="24hs"> Cuidado 24hs</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Higiene"> Higiene personal</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Medicación"> Administración de medicación</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Traslados"> Traslados médicos</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Otros"> Otros (especificar)</label>
+      </div></div>
+      <div class="fg"><label class="fl">Zona de cobertura *</label><input type="text" class="fi" id="r-zona" placeholder="Ej: Capital y Rawson"></div>
+    `},
+    nutricion:{t:'Servicios de nutrición',html:`
+      <div class="fg"><label class="fl">¿Qué modalidades ofrecés?</label>
+      <div class="cbx-grid">
+        <label class="cbx"><input type="checkbox" name="srv" value="Consulta"> Consulta nutricional</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Domicilio"> Atención a domicilio</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Online"> Atención online</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Geriátrica"> Nutrición geriátrica</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Clínica"> Nutrición clínica</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Otros"> Otros (especificar)</label>
+      </div></div>
+    `},
+    residencia:{t:'Información de la residencia',html:`
+      <div class="fg"><label class="fl">Tipo de residencia *</label>
+      <div class="cbx-grid">
+        <label class="cbx"><input type="checkbox" name="tipores" value="Permanente"> Permanente</label>
+        <label class="cbx"><input type="checkbox" name="tipores" value="Temporal"> Temporal</label>
+        <label class="cbx"><input type="checkbox" name="tipores" value="Centro de día"> Centro de día</label>
+        <label class="cbx"><input type="checkbox" name="tipores" value="Hogar con asistencia parcial"> Hogar con asistencia parcial</label>
+        <label class="cbx"><input type="checkbox" name="tipores" value="Otros"> Otros</label>
+      </div></div>
+      <div class="fg"><label class="fl">Tipo de residentes que reciben *</label>
+      <div class="cbx-grid">
+        <label class="cbx"><input type="checkbox" name="tipopac" value="Autoválidos"> Autoválidos</label>
+        <label class="cbx"><input type="checkbox" name="tipopac" value="Semidependientes"> Semidependientes</label>
+        <label class="cbx"><input type="checkbox" name="tipopac" value="Dependientes"> Dependientes</label>
+        <label class="cbx"><input type="checkbox" name="tipopac" value="Deterioro cognitivo"> Deterioro cognitivo</label>
+        <label class="cbx"><input type="checkbox" name="tipopac" value="Patologías polivalentes"> Patologías polivalentes</label>
+        <label class="cbx"><input type="checkbox" name="tipopac" value="Todos"> Todos</label>
+      </div></div>
+      <div class="frow">
+        <div class="fg"><label class="fl">Capacidad total *</label><input type="number" class="fi" id="r-cap" placeholder="Ej: 12"></div>
+        <div class="fg"><label class="fl">N° de habitaciones</label><input type="number" class="fi" id="r-hab2" placeholder="Ej: 8"></div>
+      </div>
+      <div class="fg"><label class="fl">Servicios incluidos</label>
+      <div class="cbx-grid">
+        <label class="cbx"><input type="checkbox" name="srv" value="Enfermería 24hs"> Enfermería 24hs</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Médico de cabecera"> Médico de cabecera</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Kinesiología"> Kinesiología</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Nutrición"> Nutrición</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Terapia ocupacional"> Terapia ocupacional</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Psicología"> Psicología</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Actividades recreativas"> Actividades recreativas</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Lavandería"> Lavandería</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Cocina propia"> Cocina propia</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Habitaciones compartidas"> Habitaciones compartidas</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Habitaciones privadas"> Habitaciones privadas</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Cuidados paliativos"> Cuidados paliativos</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Otros"> Otros</label>
+      </div></div>
+      <div class="fg"><label class="fl">Horario de visitas familiares *</label><input type="text" class="fi" id="r-visitas" placeholder="Ej: Todos los días 10-12hs y 16-19hs"></div>
+      <div class="fg"><label class="fl">¿Reciben residentes de otros departamentos?</label>
+      <div class="rdo-g" id="rg-otrodept">
+        <div class="rdo" onclick="selR(this,'rg-otrodept','Sí')">Sí</div>
+        <div class="rdo" onclick="selR(this,'rg-otrodept','No')">No</div>
+      </div></div>
+    `},
+    clinica:{t:'Información de la clínica / sanatorio',html:`
+      <div class="fg"><label class="fl">Especialidades médicas disponibles *</label><input type="text" class="fi" id="r-esp2" placeholder="Ej: Traumatología, Cardiología, Pediatría, Ginecología"></div>
+      <div class="fg"><label class="fl">¿Tienen guardia permanente?</label>
+      <div class="rdo-g" id="rg-guardia">
+        <div class="rdo" onclick="selR(this,'rg-guardia','Sí, 24hs')">Sí, 24hs</div>
+        <div class="rdo" onclick="selR(this,'rg-guardia','Solo en horario')">Solo en horario</div>
+        <div class="rdo" onclick="selR(this,'rg-guardia','No')">No</div>
+      </div></div>
+      <div class="fg"><label class="fl">¿Tienen internación?</label><input type="text" class="fi" id="r-intern" placeholder="Sí, hasta N camas / No, solo consultorios"></div>
+      <div class="fg"><label class="fl">Equipamiento y servicios especiales</label><input type="text" class="fi" id="r-equip" placeholder="Ej: UCI, quirófano, laboratorio, ecografía, rayos X"></div>
+    `},
+    farmacia:{t:'Servicios de la farmacia',html:`
+      <div class="fg"><label class="fl">¿Qué servicios ofrecés?</label>
+      <div class="cbx-grid">
+        <label class="cbx"><input type="checkbox" name="srv" value="Magistrales"> Preparados magistrales</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Inyecciones"> Aplicación de inyecciones</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Turno guardia"> Turno de guardia</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Delivery"> Delivery</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Insumos"> Venta de insumos médicos</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Otros"> Otros</label>
+      </div></div>
+      <div class="fg"><label class="fl">Zona de cobertura del delivery</label><input type="text" class="fi" id="r-zona" placeholder="Ej: Capital y Rawson"></div>
+      <div class="fg"><label class="fl">Días de turno</label><input type="text" class="fi" id="r-turno" placeholder="Ej: Turno los lunes y jueves 24hs"></div>
+    `},
+    insumos:{t:'Catálogo y servicios',html:`
+      <div class="fg"><label class="fl">Productos principales</label><textarea class="fta" id="r-prod" placeholder="Ej: Sillas de ruedas, andadores, camas ortopédicas, colchones antiescaras, pañales adulto"></textarea></div>
+      <div class="fg"><label class="fl">¿Alquilan equipos?</label>
+      <div class="rdo-g" id="rg-alq">
+        <div class="rdo" onclick="selR(this,'rg-alq','Sí, alquilamos y vendemos')">Sí, alquilan y venden</div>
+        <div class="rdo" onclick="selR(this,'rg-alq','Solo vendemos')">Solo venden</div>
+      </div></div>
+      <div class="fg"><label class="fl">Zona de cobertura del delivery</label><input type="text" class="fi" id="r-zona" placeholder="Ej: Toda la provincia"></div>
+    `},
+    oxigeno:{t:'Equipos y servicios',html:`
+      <div class="fg"><label class="fl">Equipos disponibles</label>
+      <div class="cbx-grid">
+        <label class="cbx"><input type="checkbox" name="srv" value="Oxígeno medicinal"> Oxígeno medicinal</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Concentrador"> Concentrador de O₂</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="CPAP"> CPAP</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="BiPAP"> BiPAP</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Nebulizador"> Nebulizador</label>
+        <label class="cbx"><input type="checkbox" name="srv" value="Otros"> Otros</label>
+      </div></div>
+      <div class="fg"><label class="fl">¿Realizan instalación y mantenimiento?</label>
+      <div class="rdo-g" id="rg-inst">
+        <div class="rdo" onclick="selR(this,'rg-inst','Sí, incluido')">Sí, incluido</div>
+        <div class="rdo" onclick="selR(this,'rg-inst','Sí, con costo adicional')">Sí, con costo</div>
+        <div class="rdo" onclick="selR(this,'rg-inst','No')">No</div>
+      </div></div>
+      <div class="fg"><label class="fl">¿Tienen urgencias 24hs?</label>
+      <div class="rdo-g" id="rg-urg24">
+        <div class="rdo" onclick="selR(this,'rg-urg24','Sí, 24hs')">Sí, 24hs</div>
+        <div class="rdo" onclick="selR(this,'rg-urg24','No')">No</div>
+      </div></div>
+    `},
+  };
+
+  const cfg=esp[tipo];
+  if(cfg){
+    document.getElementById('sec-esp-t').textContent=cfg.t;
+    document.getElementById('sec-esp-b').innerHTML=cfg.html;
+    sec.style.display='block';
+  } else {
+    sec.style.display='none';
+  }
+
+  document.getElementById('fg-disp').style.display=isRes?'block':'none';
+  document.getElementById('fg-del').style.display=['farmacia','insumos','oxigeno'].includes(tipo)?'block':'none';
+}
+// ═══════════════════════════════════════
+// EMAILJS CONFIG
+// ═══════════════════════════════════════
+const EJS = {
+  serviceId:  'service_saludred',
+  tplAdmin:   'template_4kcynb9',   // llega a saludredsj@gmail.com
+  tplAprobac: 'template_hne9tl9',   // llega al proveedor
+  publicKey:  'BPgtHGORe-lFFH5Ol',
+};
+// Links de pago Mercado Pago (reemplazá con los tuyos cuando los tengas)
+const MP = {
+  estandar: 'https://mpago.la/2TRWCDj',  // $30.000/mes
+  premium:  'https://mpago.la/1ZUM431',   // $60.000/mes
+};
+
+// ═══════════════════════════════════════
+// SUPABASE CONFIG
+// ═══════════════════════════════════════
+const SUPA = {
+  url: 'https://gozindrtxchnrhlpxknh.supabase.co',
+  key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdvemluZHJ0eGNobnJobHB4a25oIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODExOTQxMzgsImV4cCI6MjA5Njc3MDEzOH0.5302LUDqg279Bacz3gpjlcDGpdr8keMP4Gqmm0vWH1Q',
+};
+
+async function supaFetch(path, method, body){
+  var res = await fetch(SUPA.url + '/rest/v1/' + path, {
+    method: method||'GET',
+    headers: {
+      'apikey': SUPA.key,
+      'Authorization': 'Bearer ' + SUPA.key,
+      'Content-Type': 'application/json',
+      'Prefer': method==='POST' ? 'return=representation' : ''
+    },
+    body: body ? JSON.stringify(body) : undefined
+  });
+  if(!res.ok){
+    var err = await res.text();
+    throw new Error(err);
+  }
+  return res.json();
+}
+
+function initEJS(){
+  try{
+    if(window.emailjs){
+      emailjs.init({publicKey:EJS.publicKey});
+      console.log('EmailJS initialized with key:', EJS.publicKey);
+    } else {
+      console.warn('EmailJS not loaded yet');
+    }
+  }catch(e){console.warn("EmailJS init error:",e);}
+}
+
+// ═══════════════════════════════════════
+// REGISTRO — envío con EmailJS
+// ═══════════════════════════════════════
+async function submitReg(){
+  const n=document.getElementById('r-n').value.trim();
+  const t=document.getElementById('r-tel').value.trim();
+  const tipo=document.getElementById('rt').value;
+  const hab=document.getElementById('r-hab').value.trim();
+  const d=document.getElementById('r-d').value;
+  const emailProv=document.getElementById('r-email').value.trim();
+
+  if(!n||!t||!tipo||!hab||!d){
+    alert('Completá los campos obligatorios marcados con *');return;
+  }
+  if(!emailProv){
+    alert('El email es obligatorio para recibir la confirmación de activación.');return;
+  }
+
+  const os=Array.from(document.querySelectorAll('input[name="os"]:checked')).map(cb=>cb.value);
+  const entry={
+    id:Date.now(),tipo,nombre:n,dept:d,
+    dir:document.getElementById('r-dir').value.trim(),
+    tel:t.replace(/\D/g,''),
+    email:emailProv,
+    cuit:document.getElementById('r-cuit').value.trim(),
+    hab,obras:os,
+    osOtras:document.getElementById('r-os-o').value.trim(),
+    horario:document.getElementById('r-hor').value.trim(),
+    urgencias:rdos['rg-urg']||'No especificado',
+    disponibilidad:rdos['rg-disp']||'',
+    delivery:rdos['rg-del']||'',
+    desc:document.getElementById('r-desc').value.trim(),
+    precio:document.getElementById('r-pr')?.value.trim()||'',
+    zona:document.getElementById('r-z')?.value.trim()||'',
+    plan:regPlan,status:'pending',
+    fecha:new Date().toLocaleDateString('es-AR')
+  };
+  pending.push(entry);
+  save();
+
+  // Mostrar estado enviando
+  const btn=document.querySelector('.btn-submit');
+  btn.textContent='Enviando...';btn.disabled=true;
+
+  // Mostrar email en el mensaje de ok
+  const elOkEmail=document.getElementById('reg-ok-email');
+  if(elOkEmail) elOkEmail.textContent=emailProv;
+
+  // Campos específicos del tipo
+  let espCampos='';
+  const cfg=CAMPOS[tipo];
+  if(cfg){
+    espCampos=cfg.c.map(c=>{
+      const el=document.getElementById(c.id);
+      return el?(c.l+': '+(el.value.trim()||'\u2014')):'';
+    }).filter(Boolean).join('\n');
+  }
+
+  // Armar params para template admin
+  const paramsAdmin={
+    nombre:       n,
+    tipo:         T[tipo]?.l||tipo,
+    depto:        d,
+    telefono:     t,
+    email_prov:   emailProv,
+    cuit:         entry.cuit||'—',
+    habilitacion: hab,
+    plan:         PL[regPlan]?.l||regPlan,
+    obras:        os.length?os.join(', '):'Solo particular',
+    horario:      entry.horario||'—',
+    urgencias:    entry.urgencias,
+    disponibilidad: entry.disponibilidad||'—',
+    descripcion:  entry.desc||'—',
+    precio:       entry.precio||'—',
+    zona:         entry.zona||'—',
+    esp_campos:   espCampos||'—',
+    fecha:        entry.fecha,
+    id_solicitud: String(entry.id),
+  };
+
+  try{
+    await emailjs.send(EJS.serviceId, EJS.tplAdmin, paramsAdmin);
+    btn.textContent='Enviar solicitud de registro →';
+    btn.disabled=false;
+    const okEl=document.getElementById('reg-ok');
+    const okEmail=document.getElementById('reg-ok-email');
+    if(okEmail) okEmail.textContent=emailProv;
+    okEl.classList.add('on');
+    okEl.scrollIntoView({behavior:'smooth'});
+  }catch(err){
+    console.error('EmailJS error:', err);
+    btn.textContent='Enviar solicitud de registro →';
+    btn.disabled=false;
+    alert('Hubo un error al enviar la solicitud. Por favor escribinos directamente a saludredsj@gmail.com con tus datos.');
+  }
+}
+
+// ═══════════════════════════════════════
+// ADMIN
+// ═══════════════════════════════════════
+function openAdm(){document.getElementById('adm-ov').classList.add('on');setTimeout(()=>document.getElementById('ap').focus(),100);}
+function chkA(){if(document.getElementById('ap').value==='SaludRed2026!'){document.getElementById('adm-ov').classList.remove('on');document.getElementById('ap').value='';gv('admin');}else alert('Contraseña incorrecta');}
+
+function rAdm(){
+  // Load pending from Supabase async then re-render
+  supaFetch('solicitudes?estado=eq.pendiente&order=created_at.desc').then(function(solics){
+    pending = solics.map(function(s){
+      return {
+        id: s.id,
+        tipo: Object.keys(T).find(function(k){return T[k]&&T[k].l===s.tipo;})||'profesional',
+        nombre: s.nombre, dept: s.dept, tel: s.tel, email: s.email,
+        cuit: s.cuit||'—', hab: s.hab||'—', plan: s.plan||'estandar',
+        obras: s.obras?s.obras.split(', '):[],
+        horario: s.horario||'—', urgencias: s.urgencias||'—',
+        disponibilidad: s.disponibilidad||'',
+        delivery: s.delivery||'',
+        desc: s.desc_texto||'—', precio: s.precio||'—',
+        zona: s.zona||'—', esp_campos: s.esp_campos||'—',
+        fecha: s.fecha||'—', status: 'pending',
+        _supaId: s.id
+      };
+    });
+    renderAdm();
+  }).catch(function(e){
+    console.warn('Supabase load error:', e);
+    renderAdm();
+  });
+  // Render is done in renderAdm() after supabase loads
+  renderAdm();
+}
+
+function renderAdm(){
+  const a=db.filter(x=>x.status==='active');
+  const mrr=a.reduce((s,x)=>s+(PL[x.plan]?.p||0),0);
+  document.getElementById('k-a').textContent=a.length;
+  document.getElementById('k-p').textContent=pending.length;
+  document.getElementById('k-pr').textContent=a.filter(x=>x.plan==='premium').length;
+  document.getElementById('k-m').textContent='$'+mrr.toLocaleString('es-AR');
+  document.getElementById('pb').textContent=pending.length;
+
+  const pEl=document.getElementById('adm-pend');
+  pEl.innerHTML=pending.length?pending.map(e=>{
+    const t=T[e.tipo]||{ico:'?',bg:'#eee',l:'?'};
+    return '<div class="adm-card" id="acard-'+e.id+'"><div class="adm-ico" style="background:'+t.bg+'">'+t.ico+'</div><div class="adm-info"><div class="adm-n">'+e.nombre+'</div><div class="adm-m">'+t.l+' · '+e.dept+' · '+e.tel+' · '+(e.email||'sin email')+' · Plan: '+(PL[e.plan]?.l||'?')+' · '+e.fecha+'</div><div class="adm-m">Hab: '+(e.hab||'—')+' · CUIT: '+(e.cuit||'—')+' · Urgencias: '+(e.urgencias||'—')+'</div>'+(e.obras?.length?'<div class="adm-m">OS: '+e.obras.join(', ')+'</div>':'')+(e.desc?'<div class="adm-m" style="font-style:italic">"'+e.desc.substring(0,120)+(e.desc.length>120?'...':'')+'"</div>':'')+'</div><div class="adm-acts"><button class="ab ab-ok" onclick="apro('+e.id+')" id="btn-apro-'+e.id+'">✓ Aprobar</button><button class="ab ab-rej" onclick="rech('+e.id+')">✗ Rechazar</button></div></div>';
+  }).join(''):'<div class="empty-msg">Sin solicitudes pendientes.</div>';
+
+  const aEl=document.getElementById('adm-act');
+  aEl.innerHTML=a.map(e=>{
+    const t=T[e.tipo]||{ico:'?',bg:'#eee',l:'?'};
+    const pl=PL[e.plan];
+    return '<div class="adm-card"><div class="adm-ico" style="background:'+t.bg+'">'+t.ico+'</div><div class="adm-info"><div class="adm-n">'+e.nombre+'</div><div class="adm-m">'+t.l+' · '+e.dept+' · '+(e.email||'sin email')+' · Plan: '+(pl?.l||'—')+(e.trial_hasta?' · <span style="color:var(--gold);font-weight:700">⏳ Prueba hasta '+e.trial_hasta+'</span>':'')+'</div></div><span class="plan-tag" style="background:'+(e.plan==='premium'?'var(--gold-l)':'var(--teal-l)')+';color:'+(e.plan==='premium'?'var(--gold)':'var(--teal)')+';border-color:'+(e.plan==='premium'?'rgba(154,111,26,0.25)':'rgba(13,107,94,0.2)')+'">'+pl.l+'</span><div class="adm-acts">'+(e.plan!=='premium'?'<button class="ab ab-up" onclick="upP('+e.id+')">↑ Premium</button>':'')+'<button class="ab ab-del" onclick="eli('+e.id+')">Eliminar</button></div></div>';
+  }).join('');
+}
+
+async function apro(id){
+  const e=pending.find(x=>x.id===id);
+  if(!e)return;
+
+  if(!e.email){
+    alert('Este registro no tiene email — no se puede enviar notificación al proveedor. Aprobalo igual y contactalo por teléfono.');
+  }
+
+  const btn=document.getElementById('btn-apro-'+id);
+  if(btn){btn.textContent='Enviando...';btn.disabled=true;}
+
+  // Mover a activos con fecha de vencimiento de prueba
+  e.status='active';
+  const venc=new Date();
+  venc.setDate(venc.getDate()+15);
+  e.trial_hasta=venc.toLocaleDateString('es-AR');
+  db.push(e);
+  pending=pending.filter(x=>x.id!==id);
+  save();
+  // Update Supabase
+  if(e._supaId){
+    supaFetch('solicitudes?id=eq.'+e._supaId, 'PATCH', {estado:'aprobado'}).catch(function(err){console.warn('Supabase update error:', err);});
+  }
+
+  // Mandar mail al proveedor si tiene email
+  if(e.email){
+    const fechaVenc=new Date();
+    fechaVenc.setDate(fechaVenc.getDate()+15);
+    const fechaVencStr=fechaVenc.toLocaleDateString('es-AR',{day:'numeric',month:'long',year:'numeric'});
+
+    const paramsAprobac={
+      nombre_prov:    e.nombre,
+      email_prov:     e.email,
+      tipo:           T[e.tipo]?.l||e.tipo,
+      depto:          e.dept,
+      plan_elegido:   PL[e.plan]?.l||e.plan,
+      precio_estandar:'$30.000',
+      precio_premium: '$50.000',
+      link_estandar:  MP.estandar,
+      link_premium:   MP.premium,
+      fecha_venc:     fechaVencStr,
+      fecha:          new Date().toLocaleDateString('es-AR'),
+    };
+    try{
+      await emailjs.send(EJS.serviceId, EJS.tplAprobac, paramsAprobac);
+    }catch(err){
+      console.error('Error enviando aprobación:', err);
+      alert('✅ Perfil aprobado. No se pudo enviar el mail automático. Escribile vos a: '+e.email);
+    }
+  }
+
+  rAdm();updH();
+}
+
+async function rechazarConMail(id){
+  const e=pending.find(x=>x.id===id);
+  if(!e)return;
+  if(!confirm('¿Rechazar la solicitud de "'+e.nombre+'"?'))return;
+  pending=pending.filter(x=>x.id!==id);
+  save();rAdm();
+}
+
+function rech(id){rechazarConMail(id);}
+function eli(id){if(!confirm('¿Eliminar?'))return;db=db.filter(x=>x.id!==id);save();rAdm();updH();}
+function upP(id){const e=db.find(x=>x.id===id);if(e){e.plan='premium';save();rAdm();}}
+function mAgr(){
+  const n=document.getElementById('m-n').value.trim();if(!n){alert('Ingresá el nombre.');return;}
+  const osRaw=document.getElementById('m-os')?document.getElementById('m-os').value.trim():'';
+  db.push({id:Date.now(),
+    tipo:document.getElementById('m-t').value,nombre:n,
+    dept:document.getElementById('m-d').value,
+    tel:document.getElementById('m-tel').value.trim(),
+    wsp:document.getElementById('m-wsp')?document.getElementById('m-wsp').value.trim():'',
+    email:document.getElementById('m-email')?document.getElementById('m-email').value.trim():'',
+    hab:document.getElementById('m-hab')?document.getElementById('m-hab').value.trim():'',
+    especialidad:document.getElementById('m-esp')?document.getElementById('m-esp').value.trim():'',
+    horario:document.getElementById('m-hor')?document.getElementById('m-hor').value.trim():'',
+    urgencias:document.getElementById('m-urg')?document.getElementById('m-urg').value.trim():'No especificado',
+    obras:osRaw?osRaw.split(',').map(function(x){return x.trim();}):[],
+    osOtras:osRaw||'Solo particular',
+    zona:document.getElementById('m-zona')?document.getElementById('m-zona').value.trim():'',
+    servicios:document.getElementById('m-srv')?document.getElementById('m-srv').value.trim():'',
+    precio:document.getElementById('m-pr')?document.getElementById('m-pr').value.trim():'',
+    desc:document.getElementById('m-desc').value.trim(),
+    plan:document.getElementById('m-pl').value,status:'active',delivery:'',fotos:[]});
+  save();['m-n','m-tel','m-desc'].forEach(i=>document.getElementById(i).value='');rAdm();updH();alert('✅ "'+n+'" agregado.');
+}
+
+// LIGHTBOX
+var lbProvId=null,lbIdx=0;
+function openLB(provId,idx){
+  var p=db.find(function(x){return x.id===provId;});
+  if(!p||!p.fotos)return;
+  lbProvId=provId;lbIdx=idx;
+  document.getElementById('lb-img').src=p.fotos[idx];
+  document.getElementById('lb-ov').classList.add('on');
+  document.body.style.overflow='hidden';
+}
+function closeLB(){
+  document.getElementById('lb-ov').classList.remove('on');
+  document.body.style.overflow='';
+}
+function lbNav(dir){
+  var p=db.find(function(x){return x.id===lbProvId;});
+  if(!p||!p.fotos)return;
+  lbIdx=(lbIdx+dir+p.fotos.length)%p.fotos.length;
+  document.getElementById('lb-img').src=p.fotos[lbIdx];
+}
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape')closeLB();
+  if(e.key==='ArrowLeft')lbNav(-1);
+  if(e.key==='ArrowRight')lbNav(1);
+});
+
+
+var regPlanProf='estandar', regPlanEstab='estandar';
+
+function selPP(p){
+  regPlanProf=p;
+  document.querySelectorAll('[id^="pcp-"]').forEach(el=>el.classList.remove('sel','sel-gold'));
+  document.getElementById('pcp-'+p).classList.add(p==='premium'?'sel-gold':'sel');
+}
+function selPE(p){
+  regPlanEstab=p;
+  document.querySelectorAll('[id^="pce-"]').forEach(el=>el.classList.remove('sel','sel-gold'));
+  document.getElementById('pce-'+p).classList.add(p==='premium'?'sel-gold':'sel');
+}
+
+function adaptProfEsp(){
+  var esp=document.getElementById('pp-esp').value;
+  var otraDiv=document.getElementById('pp-otra-esp');
+  otraDiv.style.display=esp==='Otra'?'block':'none';
+  var secSrv=document.getElementById('pp-sec-srv');
+  var srvBody=document.getElementById('pp-srv-body');
+  var srvTit=document.getElementById('pp-srv-titulo');
+  var srv={
+    'Kinesiología':{t:'Especialidades',html:'<div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pp-srv" value="Respiratoria"> Respiratoria</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Motora"> Motora</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Neurológica"> Neurológica</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Traumatológica"> Traumatológica</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Geriátrica"> Geriátrica</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Postquirúrgica"> Postquirúrgica</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Domiciliaria"> Domiciliaria</label></div>'},
+    'Enfermería':{t:'Servicios',html:'<div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pp-srv" value="Curación escaras"> Curación de escaras</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Inyectables"> Inyectables</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Sueros"> Sueros IV</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Signos vitales"> Signos vitales</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Medicación"> Medicación</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Geriátrica"> Geriátrica</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Cuidados paliativos"> Cuidados paliativos</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Acompañamiento"> Acompañamiento hospitalario</label></div>'},
+    'Psicología':{t:'Modalidades',html:'<div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pp-srv" value="Individual"> Individual</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Pareja"> Pareja</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Familiar"> Familiar</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Infantil"> Infantil</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Adolescente"> Adolescente</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Adultos mayores"> Adultos mayores</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Online"> Online</label></div>'},
+    'Fonoaudiología':{t:'Servicios',html:'<div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pp-srv" value="Lenguaje"> Lenguaje</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Deglución"> Deglución</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Neurológica"> Neurológica</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Estimulación temprana"> Estimulación temprana</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Domiciliaria"> Domiciliaria</label></div>'},
+    'Terapia Ocupacional':{t:'Servicios',html:'<div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pp-srv" value="Neurológica"> Neurológica</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Adultos mayores"> Adultos mayores</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Adaptación funcional"> Adaptación funcional</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Cognitiva"> Estimulación cognitiva</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Domiciliaria"> Domiciliaria</label></div>'},
+    'Laboratorio/Bioquímica':{t:'Servicios',html:'<div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pp-srv" value="Extracción domicilio"> Extracción domicilio</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Análisis clínicos"> Análisis clínicos</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Hormonales"> Hormonales</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Bacteriológicos"> Bacteriológicos</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Ocupacionales"> Ocupacionales</label></div>'},
+    'Cuidador domiciliario':{t:'Servicios',html:'<div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pp-srv" value="Diurno"> Acompañamiento diurno</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Nocturno"> Nocturno</label><label class="cbx"><input type="checkbox" name="pp-srv" value="24hs"> 24hs</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Higiene"> Higiene personal</label><label class="cbx"><input type="checkbox" name="pp-srv" value="Traslados"> Traslados</label></div>'},
+  };
+  if(srv[esp]){
+    srvTit.textContent=srv[esp].t;
+    srvBody.innerHTML=srv[esp].html;
+    secSrv.style.display='block';
+  } else {
+    secSrv.style.display='none';
+  }
+}
+
+function adaptEstabTipo(){
+  var tipo=document.getElementById('pe-tipo').value;
+  var hint=document.getElementById('pe-tipo-hint');
+  var sec=document.getElementById('pe-sec-esp');
+  var body=document.getElementById('pe-esp-body');
+  var tit=document.getElementById('pe-esp-titulo');
+  var hints={
+    residencia:'📄 Requerido: N° habilitación del Ministerio de Salud de San Juan, certificado de bomberos y habilitación municipal.',
+    clinica:'📄 Requerido: N° habilitación provincial y CUIT del establecimiento.',
+    farmacia:'📄 Requerido: habilitación ANMAT y matrícula del director técnico.',
+    insumos:'📄 Requerido: CUIT activo y actividad comercial habilitada.',
+    oxigeno:'📄 Requerido: autorización ANMAT (DROG o DISP).',
+  };
+  hint.textContent=hints[tipo]||'';
+  hint.style.display=hints[tipo]?'block':'none';
+  var esp={
+    residencia:{t:'Información de la residencia',html:'<div class="fg"><label class="fl">Tipo de residencia</label><div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pe-tipores" value="Permanente"> Permanente</label><label class="cbx"><input type="checkbox" name="pe-tipores" value="Temporal"> Temporal</label><label class="cbx"><input type="checkbox" name="pe-tipores" value="Centro de día"> Centro de día</label></div></div><div class="fg"><label class="fl">Tipo de residentes</label><div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Autoválidos"> Autoválidos</label><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Semidependientes"> Semidependientes</label><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Dependientes"> Dependientes</label><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Deterioro cognitivo"> Deterioro cognitivo</label><label class="cbx"><input type="checkbox" name="pe-tipopac" value="Patologías polivalentes"> Patologías polivalentes</label></div></div><div class="frow"><div class="fg"><label class="fl">Capacidad total *</label><input type="number" class="fi" id="pe-cap" placeholder="Ej: 12"></div><div class="fg"><label class="fl">N° de habitaciones</label><input type="number" class="fi" id="pe-hab2" placeholder="Ej: 8"></div></div><div class="fg"><label class="fl">Servicios incluidos</label><div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pe-srv" value="Enfermería 24hs"> Enfermería 24hs</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Médico de cabecera"> Médico de cabecera</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Kinesiología"> Kinesiología</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Nutrición"> Nutrición</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Psicología"> Psicología</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Terapia ocupacional"> Terapia ocupacional</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Actividades recreativas"> Actividades recreativas</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Lavandería"> Lavandería</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Cuidados paliativos"> Cuidados paliativos</label></div></div><div class="fg"><label class="fl">Horario de visitas familiares *</label><input type="text" class="fi" id="pe-visitas" placeholder="Ej: Todos los días 10-12hs y 16-19hs"></div>'},
+    clinica:{t:'Información de la clínica',html:(function(){
+      var h='';
+      h+='<div class="fg"><label class="fl">Especialidades disponibles *</label>';
+      h+='<input type="text" class="fi" id="pe-esp2" placeholder="Ej: Traumatología, Cardiología, Pediatría"></div>';
+      h+='<div class="fg"><label class="fl">¿Tienen guardia 24hs?</label>';
+      h+='<div class="rdo-g" id="rg-pe-guardia">';
+      h+='<div class="rdo" onclick="selR(this,\'rg-pe-guardia\',\'Sí\')">Sí</div>';
+      h+='<div class="rdo" onclick="selR(this,\'rg-pe-guardia\',\'No\')">No</div>';
+      h+='</div></div>';
+      h+='<div class="fg"><label class="fl">¿Tienen internación?</label>';
+      h+='<input type="text" class="fi" id="pe-intern" placeholder="Sí, N camas / No, solo consultorios"></div>';
+      return h;
+    })()},
+    
+    farmacia:{t:'Servicios de la farmacia',html:'<div class="fg"><label class="fl">Servicios</label><div class="cbx-grid"><label class="cbx"><input type="checkbox" name="pe-srv" value="Magistrales"> Magistrales</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Inyecciones"> Inyecciones</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Turno guardia"> Turno guardia</label><label class="cbx"><input type="checkbox" name="pe-srv" value="Delivery"> Delivery</label></div></div><div class="fg"><label class="fl">Zona de delivery</label><input type="text" class="fi" id="pe-zona" placeholder="Ej: Capital y Rawson"></div>'},
+    insumos:{t:'Catálogo',html:(function(){
+      var h='';
+      h+='<div class="fg"><label class="fl">Productos principales</label>';
+      h+='<textarea class="fta" id="pe-prod" placeholder="Ej: Sillas de ruedas, andadores, camas, pañales"></textarea></div>';
+      h+='<div class="fg"><label class="fl">¿Alquilan?</label>';
+      h+='<div class="rdo-g" id="rg-pe-alq">';
+      h+='<div class="rdo" onclick="selR(this,\'rg-pe-alq\',\'Sí\')">Sí, alquilan y venden</div>';
+      h+='<div class="rdo" onclick="selR(this,\'rg-pe-alq\',\'Solo venden\')">Solo venden</div>';
+      h+='</div></div>';
+      return h;
+    })()},
+    oxigeno:{t:'Equipos',html:(function(){
+      var h='';
+      h+='<div class="fg"><label class="fl">Equipos disponibles</label>';
+      h+='<div class="cbx-grid">';
+      h+='<label class="cbx"><input type="checkbox" name="pe-srv" value="Oxígeno medicinal"> Oxígeno medicinal</label>';
+      h+='<label class="cbx"><input type="checkbox" name="pe-srv" value="Concentrador"> Concentrador</label>';
+      h+='<label class="cbx"><input type="checkbox" name="pe-srv" value="CPAP"> CPAP</label>';
+      h+='<label class="cbx"><input type="checkbox" name="pe-srv" value="BiPAP"> BiPAP</label>';
+      h+='<label class="cbx"><input type="checkbox" name="pe-srv" value="Nebulizador"> Nebulizador</label>';
+      h+='</div></div>';
+      h+='<div class="fg"><label class="fl">¿Urgencias 24hs?</label>';
+      h+='<div class="rdo-g" id="rg-pe-urg">';
+      h+='<div class="rdo" onclick="selR(this,\'rg-pe-urg\',\'Sí\')">Sí</div>';
+      h+='<div class="rdo" onclick="selR(this,\'rg-pe-urg\',\'No\')">No</div>';
+      h+='</div></div>';
+      return h;
+    })()},
+  };
+  if(esp[tipo]){
+    tit.textContent=esp[tipo].t;
+    body.innerHTML=esp[tipo].html;
+    sec.style.display='block';
+  } else {
+    sec.style.display=tipo==='otro'?'none':'none';
+  }
+}
+
+async function submitRegProf(){
+  var n=document.getElementById('pp-nombre').value.trim();
+  var esp=document.getElementById('pp-esp').value;
+  var mat=document.getElementById('pp-matricula').value.trim();
+  var tel=document.getElementById('pp-tel').value.trim();
+  var email=document.getElementById('pp-email').value.trim();
+  if(!n||!esp||!mat||!tel||!email){alert('Completá los campos obligatorios (*).');return;}
+  // Reinit emailjs just in case
+  try{emailjs.init({publicKey:EJS.publicKey});}catch(e){}
+  var depts=Array.from(document.querySelectorAll('input[name="pp-dept"]:checked')).map(function(x){return x.value;});
+  if(!depts.length){alert('Seleccioná al menos un departamento donde atendés.');return;}
+  var os=Array.from(document.querySelectorAll('input[name="pp-os"]:checked')).map(function(x){return x.value;});
+  var srv=Array.from(document.querySelectorAll('input[name="pp-srv"]:checked')).map(function(x){return x.value;});
+  var btn=document.querySelector('#view-reg-prof .btn-submit');
+  btn.textContent='Enviando...';btn.disabled=true;
+  var params={
+    nombre:n, tipo:'Profesional - '+esp, depto:depts.join(', '),
+    telefono:tel, email_prov:email, cuit:'—',
+    habilitacion:mat, plan:regPlanProf,
+    obras:os.length?os.join(', '):'Solo particular',
+    horario:document.getElementById('pp-horario').value.trim()||'—',
+    urgencias:'—', disponibilidad:'—',
+    descripcion:document.getElementById('pp-desc').value.trim()||'—',
+    precio:document.getElementById('pp-precio').value.trim()||'—',
+    zona:depts.join(', '),
+    esp_campos:'Servicios: '+(srv.length?srv.join(', '):'—'),
+    fecha:new Date().toLocaleDateString('es-AR'),
+    id_solicitud:String(Date.now()),
+  };
+  try{
+    await emailjs.send(EJS.serviceId,EJS.tplAdmin,params);
+    // Save to Supabase
+    try{
+      await supaFetch('solicitudes', 'POST', {
+        tipo: 'Profesional - '+esp,
+        nombre: n, dept: depts.join(', '), tel: tel, email: email,
+        cuit: '—', hab: mat, plan: regPlanProf,
+        obras: os.length?os.join(', '):'Solo particular',
+        horario: document.getElementById('pp-horario').value.trim()||'—',
+        desc_texto: document.getElementById('pp-desc').value.trim()||'—',
+        precio: document.getElementById('pp-precio').value.trim()||'—',
+        zona: depts.join(', '),
+        esp_campos: 'Servicios: '+(srv.length?srv.join(', '):'—'),
+        fecha: new Date().toLocaleDateString('es-AR'),
+        estado: 'pendiente'
+      });
+    }catch(e){console.warn('Supabase save error:', e);}
+    btn.textContent='Enviar solicitud →';btn.disabled=false;
+    document.getElementById('reg-ok-prof-email').textContent=email;
+    document.getElementById('reg-ok-prof').classList.add('on');
+    document.getElementById('reg-ok-prof').scrollIntoView({behavior:'smooth'});
+  }catch(err){
+    console.error('EmailJS error:', err);
+    btn.textContent='Enviar solicitud →';btn.disabled=false;
+    alert('Error: ' + JSON.stringify(err));
+  }
+}
+
+async function submitRegEstab(){
+  var n=document.getElementById('pe-nombre').value.trim();
+  var tipo=document.getElementById('pe-tipo').value;
+  var tel=document.getElementById('pe-tel').value.trim();
+  var email=document.getElementById('pe-email').value.trim();
+  var hab=document.getElementById('pe-hab').value.trim();
+  var dept=document.getElementById('pe-dept').value;
+  if(!n||!tipo||!tel||!email||!hab||!dept){alert('Completá los campos obligatorios (*).');return;}
+  // Reinit emailjs just in case
+  try{emailjs.init({publicKey:EJS.publicKey});}catch(e){}
+  var os=Array.from(document.querySelectorAll('input[name="pe-os"]:checked')).map(function(x){return x.value;});
+  var srv=Array.from(document.querySelectorAll('input[name="pe-srv"]:checked')).map(function(x){return x.value;});
+  var btn=document.querySelector('#view-reg-estab .btn-submit');
+  btn.textContent='Enviando...';btn.disabled=true;
+  var espCampos=srv.length?'Servicios: '+srv.join(', '):'';
+  var cap=document.getElementById('pe-cap');
+  if(cap&&cap.value) espCampos+=' | Capacidad: '+cap.value;
+  var vis=document.getElementById('pe-visitas');
+  if(vis&&vis.value) espCampos+=' | Visitas: '+vis.value;
+  var params={
+    nombre:n, tipo:T[tipo]?T[tipo].l:tipo, depto:dept,
+    telefono:tel, email_prov:email,
+    cuit:document.getElementById('pe-cuit').value.trim()||'—',
+    habilitacion:hab, plan:regPlanEstab,
+    obras:os.length?os.join(', '):'Solo particular',
+    horario:document.getElementById('pe-horario').value.trim()||'—',
+    urgencias:'—', disponibilidad:'—',
+    descripcion:document.getElementById('pe-desc').value.trim()||'—',
+    precio:document.getElementById('pe-precio').value.trim()||'—',
+    zona:dept,
+    esp_campos:espCampos||'—',
+    fecha:new Date().toLocaleDateString('es-AR'),
+    id_solicitud:String(Date.now()),
+  };
+  try{
+    await emailjs.send(EJS.serviceId,EJS.tplAdmin,params);
+    // Save to Supabase
+    try{
+      await supaFetch('solicitudes', 'POST', {
+        tipo: T[tipo]?T[tipo].l:tipo,
+        nombre: n, dept: dept, tel: tel, email: email,
+        cuit: document.getElementById('pe-cuit').value.trim()||'—',
+        hab: hab, plan: regPlanEstab,
+        obras: os.length?os.join(', '):'Solo particular',
+        horario: document.getElementById('pe-horario').value.trim()||'—',
+        desc_texto: document.getElementById('pe-desc').value.trim()||'—',
+        precio: document.getElementById('pe-precio').value.trim()||'—',
+        zona: dept,
+        esp_campos: espCampos||'—',
+        fecha: new Date().toLocaleDateString('es-AR'),
+        estado: 'pendiente'
+      });
+    }catch(e){console.warn('Supabase save error:', e);}
+    btn.textContent='Enviar solicitud →';btn.disabled=false;
+    document.getElementById('reg-ok-estab-email').textContent=email;
+    document.getElementById('reg-ok-estab').classList.add('on');
+    document.getElementById('reg-ok-estab').scrollIntoView({behavior:'smooth'});
+  }catch(err){
+    console.error('EmailJS error:', err);
+    btn.textContent='Enviar solicitud →';btn.disabled=false;
+    alert('Error: ' + JSON.stringify(err));
+  }
+}
+
+</script>
+
+<!-- LIGHTBOX -->
+<div class="lb-ov" id="lb-ov" onclick="if(event.target===this)closeLB()">
+  <button class="lb-close" onclick="closeLB()">✕</button>
+  <button class="lb-prev" onclick="lbNav(-1)">❮</button>
+  <img class="lb-img" id="lb-img" src="" alt="">
+  <button class="lb-next" onclick="lbNav(1)">❯</button>
+</div>
+
+</body>
+</html>
