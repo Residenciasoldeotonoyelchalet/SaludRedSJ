@@ -1548,6 +1548,33 @@ const CAMPOS={
 let db=[];
 let pending=JSON.parse(localStorage.getItem('sr9_pend')||'[]');
 let cart={};
+// Load proveedores from Supabase on startup
+supaFetch('proveedores?estado=eq.active').then(function(rows){
+  if(rows && rows.length){
+    rows.forEach(function(r){
+      if(!db.find(function(x){return x.nombre===r.nombre && x.tipo===r.tipo;})){
+        db.push({
+          id: r.id,
+          tipo: r.tipo, nombre: r.nombre, dept: r.dept,
+          dir: r.dir||'', tel: r.tel, email: r.email||'',
+          hab: r.hab||'', plan: r.plan||'estandar',
+          obras: typeof r.obras==='string'?JSON.parse(r.obras||'[]'):r.obras||[],
+          horario: r.horario||'', urgencias: r.urgencias||'',
+          disponibilidad: r.disponibilidad||'Disponible — hay lugares',
+          delivery: r.delivery||'', desc: r.desc_texto||'',
+          precio: r.precio||'', zona: r.zona||'',
+          especialidad: r.especialidad||'', matricula: r.matricula||'',
+          capacidad: r.capacidad||'', modalidades: r.modalidades||'',
+          fotos: typeof r.fotos==='string'?JSON.parse(r.fotos||'[]'):r.fotos||[],
+          trial_hasta: r.trial_hasta||'', status: 'active',
+          osOtras: r.obras||'Solo particular'
+        });
+      }
+    });
+    updH();
+  }
+}).catch(function(e){console.warn('Supabase load proveedores error:', e);});
+
 if(!db.length){
   db=[
     {id:11,tipo:'residencia',nombre:'Residencia El Chalet',dept:'Santa Lucía',dir:'Hipólito Yrigoyen 1856 Este, Santa Lucía',tel:'2655057363',
@@ -2499,10 +2526,37 @@ async function apro(id){
   db.push(e);
   pending=pending.filter(x=>x.id!==id);
   save();
-  // Update Supabase
+  // Update Supabase solicitud status
   if(e._supaId){
     supaFetch('solicitudes?id=eq.'+e._supaId, 'PATCH', {estado:'aprobado'}).catch(function(err){console.warn('Supabase update error:', err);});
   }
+  // Save to Supabase proveedores
+  supaFetch('proveedores', 'POST', {
+    tipo: e.tipo,
+    nombre: e.nombre,
+    dept: e.dept,
+    dir: e.dir||'A domicilio',
+    tel: e.tel,
+    email: e.email||'',
+    cuit: e.cuit||'',
+    hab: e.hab||'',
+    plan: e.plan||'estandar',
+    obras: JSON.stringify(e.obras||[]),
+    horario: e.horario||'',
+    urgencias: e.urgencias||'',
+    disponibilidad: e.disponibilidad||'',
+    delivery: e.delivery||'',
+    desc_texto: e.desc||'',
+    precio: e.precio||'',
+    zona: e.zona||'',
+    especialidad: e.especialidad||e.esp_campos||'',
+    matricula: e.hab||'',
+    capacidad: e.capacidad||'',
+    modalidades: e.modalidades||'',
+    fotos: JSON.stringify(e.fotos||[]),
+    trial_hasta: e.trial_hasta||'',
+    estado: 'active'
+  }).catch(function(err){console.warn('Supabase proveedores error:', err);});
 
   // Mandar mail al proveedor si tiene email
   if(e.email){
