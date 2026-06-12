@@ -205,7 +205,7 @@ async function submitRegProf(){
         desc_texto: document.getElementById('pp-desc').value.trim()||'—',
         precio: document.getElementById('pp-precio').value.trim()||'—',
         zona: depts.join(', '),
-        esp_campos: 'Servicios: '+(srv.length?srv.join(', '):'—'),
+        esp_campos: 'Servicios: '+(srv.length?srv.join(', '):'—') + (lugares.length?' | Lugares: '+formatLugares(lugares):'') + (document.getElementById('pp-domicilio').checked?' | Atiende a domicilio':'') + (document.getElementById('pp-virtual').checked?' | Consultas virtuales':''),
         fecha: new Date().toLocaleDateString('es-AR'),
         estado: 'pendiente'
       });
@@ -283,6 +283,84 @@ async function submitRegEstab(){
     btn.textContent='Enviar solicitud →';btn.disabled=false;
     alert('Error: ' + JSON.stringify(err));
   }
+}
+
+
+var lugarCount = 0;
+
+function addLugar(){
+  lugarCount++;
+  const id = lugarCount;
+  const div = document.createElement('div');
+  div.className = 'hor-lugar';
+  div.id = 'lugar-'+id;
+  div.innerHTML = `
+    <div class="hor-lugar-hdr">
+      <span>Lugar ${id}</span>
+      <button onclick="removeLugar(${id})">✕ Quitar</button>
+    </div>
+    <div class="fg"><label class="fl">¿Dónde trabajás?</label>
+      <input type="text" class="fi" id="lugar-nom-${id}" placeholder="Ej: Sanatorio San Martín, Consultorio propio...">
+    </div>
+    <div class="fg"><label class="fl">¿Qué días?</label>
+      <div class="dias-grid">
+        <div class="dia-btn" onclick="toggleDia(this,'lun-${id}')">Lun</div>
+        <div class="dia-btn" onclick="toggleDia(this,'mar-${id}')">Mar</div>
+        <div class="dia-btn" onclick="toggleDia(this,'mie-${id}')">Mié</div>
+        <div class="dia-btn" onclick="toggleDia(this,'jue-${id}')">Jue</div>
+        <div class="dia-btn" onclick="toggleDia(this,'vie-${id}')">Vie</div>
+        <div class="dia-btn" onclick="toggleDia(this,'sab-${id}')">Sáb</div>
+        <div class="dia-btn" onclick="toggleDia(this,'dom-${id}')">Dom</div>
+      </div>
+    </div>
+    <div class="fg"><label class="fl">Horario</label>
+      <div class="hor-row">
+        <label>Desde</label>
+        <input type="time" class="fi" id="desde-${id}">
+        <label>Hasta</label>
+        <input type="time" class="fi" id="hasta-${id}">
+      </div>
+    </div>
+  `;
+  document.getElementById('lugares-container').appendChild(div);
+}
+
+function removeLugar(id){
+  var el = document.getElementById('lugar-'+id);
+  if(el) el.remove();
+}
+
+function toggleDia(btn, id){
+  btn.classList.toggle('sel');
+}
+
+function getLugares(){
+  var lugares = [];
+  document.querySelectorAll('.hor-lugar').forEach(function(div){
+    var id = div.id.replace('lugar-','');
+    var nom = document.getElementById('lugar-nom-'+id);
+    if(!nom || !nom.value.trim()) return;
+    var dias = [];
+    div.querySelectorAll('.dia-btn.sel').forEach(function(d){dias.push(d.textContent);});
+    var desde = document.getElementById('desde-'+id);
+    var hasta = document.getElementById('hasta-'+id);
+    lugares.push({
+      lugar: nom.value.trim(),
+      dias: dias.join(', '),
+      desde: desde?desde.value:'',
+      hasta: hasta?hasta.value:''
+    });
+  });
+  return lugares;
+}
+
+function formatLugares(lugares){
+  if(!lugares||!lugares.length) return '';
+  return lugares.map(function(l){
+    var hor = l.desde&&l.hasta ? l.desde+' a '+l.hasta : '';
+    var dias = l.dias ? l.dias : '';
+    return l.lugar + (dias?' — '+dias:'') + (hor?' ('+hor+')':'');
+  }).join(' | ');
 }
 
 </script>
@@ -465,7 +543,7 @@ async function submitRegProf(){
         desc_texto: document.getElementById('pp-desc').value.trim()||'—',
         precio: document.getElementById('pp-precio').value.trim()||'—',
         zona: depts.join(', '),
-        esp_campos: 'Servicios: '+(srv.length?srv.join(', '):'—'),
+        esp_campos: 'Servicios: '+(srv.length?srv.join(', '):'—') + (lugares.length?' | Lugares: '+formatLugares(lugares):'') + (document.getElementById('pp-domicilio').checked?' | Atiende a domicilio':'') + (document.getElementById('pp-virtual').checked?' | Consultas virtuales':''),
         fecha: new Date().toLocaleDateString('es-AR'),
         estado: 'pendiente'
       });
@@ -543,6 +621,84 @@ async function submitRegEstab(){
     btn.textContent='Enviar solicitud →';btn.disabled=false;
     alert('Error: ' + JSON.stringify(err));
   }
+}
+
+
+var lugarCount = 0;
+
+function addLugar(){
+  lugarCount++;
+  const id = lugarCount;
+  const div = document.createElement('div');
+  div.className = 'hor-lugar';
+  div.id = 'lugar-'+id;
+  div.innerHTML = `
+    <div class="hor-lugar-hdr">
+      <span>Lugar ${id}</span>
+      <button onclick="removeLugar(${id})">✕ Quitar</button>
+    </div>
+    <div class="fg"><label class="fl">¿Dónde trabajás?</label>
+      <input type="text" class="fi" id="lugar-nom-${id}" placeholder="Ej: Sanatorio San Martín, Consultorio propio...">
+    </div>
+    <div class="fg"><label class="fl">¿Qué días?</label>
+      <div class="dias-grid">
+        <div class="dia-btn" onclick="toggleDia(this,'lun-${id}')">Lun</div>
+        <div class="dia-btn" onclick="toggleDia(this,'mar-${id}')">Mar</div>
+        <div class="dia-btn" onclick="toggleDia(this,'mie-${id}')">Mié</div>
+        <div class="dia-btn" onclick="toggleDia(this,'jue-${id}')">Jue</div>
+        <div class="dia-btn" onclick="toggleDia(this,'vie-${id}')">Vie</div>
+        <div class="dia-btn" onclick="toggleDia(this,'sab-${id}')">Sáb</div>
+        <div class="dia-btn" onclick="toggleDia(this,'dom-${id}')">Dom</div>
+      </div>
+    </div>
+    <div class="fg"><label class="fl">Horario</label>
+      <div class="hor-row">
+        <label>Desde</label>
+        <input type="time" class="fi" id="desde-${id}">
+        <label>Hasta</label>
+        <input type="time" class="fi" id="hasta-${id}">
+      </div>
+    </div>
+  `;
+  document.getElementById('lugares-container').appendChild(div);
+}
+
+function removeLugar(id){
+  var el = document.getElementById('lugar-'+id);
+  if(el) el.remove();
+}
+
+function toggleDia(btn, id){
+  btn.classList.toggle('sel');
+}
+
+function getLugares(){
+  var lugares = [];
+  document.querySelectorAll('.hor-lugar').forEach(function(div){
+    var id = div.id.replace('lugar-','');
+    var nom = document.getElementById('lugar-nom-'+id);
+    if(!nom || !nom.value.trim()) return;
+    var dias = [];
+    div.querySelectorAll('.dia-btn.sel').forEach(function(d){dias.push(d.textContent);});
+    var desde = document.getElementById('desde-'+id);
+    var hasta = document.getElementById('hasta-'+id);
+    lugares.push({
+      lugar: nom.value.trim(),
+      dias: dias.join(', '),
+      desde: desde?desde.value:'',
+      hasta: hasta?hasta.value:''
+    });
+  });
+  return lugares;
+}
+
+function formatLugares(lugares){
+  if(!lugares||!lugares.length) return '';
+  return lugares.map(function(l){
+    var hor = l.desde&&l.hasta ? l.desde+' a '+l.hasta : '';
+    var dias = l.dias ? l.dias : '';
+    return l.lugar + (dias?' — '+dias:'') + (hor?' ('+hor+')':'');
+  }).join(' | ');
 }
 
 </script>
@@ -928,6 +1084,20 @@ html, body { width: 100%; overflow-x: hidden; }
 .ver-mas{color:var(--teal);font-weight:600;text-decoration:none;font-size:14px;}
 .ver-mas:hover{text-decoration:underline;}
 
+
+.hor-lugar{border:1px solid var(--border);border-radius:6px;padding:14px;margin-bottom:10px;background:#fafafa;}
+.hor-lugar-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+.hor-lugar-hdr span{font-weight:600;font-size:14px;color:var(--ink2);}
+.hor-lugar-hdr button{background:none;border:none;color:var(--red);cursor:pointer;font-size:13px;padding:2px 6px;}
+.dias-grid{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;}
+.dia-btn{padding:5px 10px;border:1px solid var(--border);border-radius:4px;cursor:pointer;font-size:13px;background:#fff;transition:all .15s;}
+.dia-btn.sel{background:var(--teal);color:#fff;border-color:var(--teal);}
+.hor-row{display:flex;gap:10px;align-items:center;}
+.hor-row label{font-size:13px;color:var(--ink2);flex-shrink:0;}
+.hor-row input{width:100px;}
+.btn-agregar-lugar{background:none;border:1px dashed var(--teal);color:var(--teal);padding:8px 16px;border-radius:4px;cursor:pointer;font-size:14px;font-weight:600;width:100%;margin-top:4px;}
+.btn-agregar-lugar:hover{background:var(--teal-l);}
+
 </style>
 </head>
 <body>
@@ -1251,6 +1421,22 @@ html, body { width: 100%; overflow-x: hidden; }
       <div class="fsec-hd"><span class="fsec-title">Horarios de atención</span><span class="fsec-req">* obligatorio</span></div>
       <div class="fsec-body">
         <div class="fg"><input type="text" class="fi" id="pp-horario" placeholder="Ej: Lunes a viernes 8-18hs. Sábados 8-13hs."></div>
+      </div>
+    </div>
+
+    <!-- LUGARES Y HORARIOS -->
+    <div class="fsec-box">
+      <div class="fsec-hd"><span class="fsec-title">¿Dónde y cuándo te encontramos?</span><span class="fsec-req">* al menos uno</span></div>
+      <div class="fsec-body">
+        <div id="lugares-container"></div>
+        <button class="btn-agregar-lugar" onclick="addLugar()">+ Agregar lugar de trabajo</button>
+        <div style="margin-top:14px;">
+          <label class="fl">Modalidades adicionales</label>
+          <div class="cbx-grid" style="margin-top:6px;">
+            <label class="cbx"><input type="checkbox" id="pp-domicilio"> Atiendo a domicilio</label>
+            <label class="cbx"><input type="checkbox" id="pp-virtual"> Hago consultas virtuales / por videollamada</label>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1605,7 +1791,7 @@ function loadProveedoresFromSupabase(){supaFetch('proveedores?estado=eq.active')
           precio: r.precio||'', zona: r.zona||'',
           especialidad: r.especialidad||'', matricula: r.matricula||'',
           capacidad: r.capacidad||'', modalidades: r.modalidades||'',
-          fotos: typeof r.fotos==='string'?JSON.parse(r.fotos||'[]'):r.fotos||[],
+          fotos: r.fotos?(typeof r.fotos==='string'?JSON.parse(r.fotos):Array.isArray(r.fotos)?r.fotos:[]):[],
           trial_hasta: r.trial_hasta||'', status: 'active',
           osOtras: r.obras||'Solo particular'
         });
@@ -2780,7 +2966,7 @@ async function submitRegProf(){
         desc_texto: document.getElementById('pp-desc').value.trim()||'—',
         precio: document.getElementById('pp-precio').value.trim()||'—',
         zona: depts.join(', '),
-        esp_campos: 'Servicios: '+(srv.length?srv.join(', '):'—'),
+        esp_campos: 'Servicios: '+(srv.length?srv.join(', '):'—') + (lugares.length?' | Lugares: '+formatLugares(lugares):'') + (document.getElementById('pp-domicilio').checked?' | Atiende a domicilio':'') + (document.getElementById('pp-virtual').checked?' | Consultas virtuales':''),
         fecha: new Date().toLocaleDateString('es-AR'),
         estado: 'pendiente'
       });
@@ -2858,6 +3044,84 @@ async function submitRegEstab(){
     btn.textContent='Enviar solicitud →';btn.disabled=false;
     alert('Error: ' + JSON.stringify(err));
   }
+}
+
+
+var lugarCount = 0;
+
+function addLugar(){
+  lugarCount++;
+  const id = lugarCount;
+  const div = document.createElement('div');
+  div.className = 'hor-lugar';
+  div.id = 'lugar-'+id;
+  div.innerHTML = `
+    <div class="hor-lugar-hdr">
+      <span>Lugar ${id}</span>
+      <button onclick="removeLugar(${id})">✕ Quitar</button>
+    </div>
+    <div class="fg"><label class="fl">¿Dónde trabajás?</label>
+      <input type="text" class="fi" id="lugar-nom-${id}" placeholder="Ej: Sanatorio San Martín, Consultorio propio...">
+    </div>
+    <div class="fg"><label class="fl">¿Qué días?</label>
+      <div class="dias-grid">
+        <div class="dia-btn" onclick="toggleDia(this,'lun-${id}')">Lun</div>
+        <div class="dia-btn" onclick="toggleDia(this,'mar-${id}')">Mar</div>
+        <div class="dia-btn" onclick="toggleDia(this,'mie-${id}')">Mié</div>
+        <div class="dia-btn" onclick="toggleDia(this,'jue-${id}')">Jue</div>
+        <div class="dia-btn" onclick="toggleDia(this,'vie-${id}')">Vie</div>
+        <div class="dia-btn" onclick="toggleDia(this,'sab-${id}')">Sáb</div>
+        <div class="dia-btn" onclick="toggleDia(this,'dom-${id}')">Dom</div>
+      </div>
+    </div>
+    <div class="fg"><label class="fl">Horario</label>
+      <div class="hor-row">
+        <label>Desde</label>
+        <input type="time" class="fi" id="desde-${id}">
+        <label>Hasta</label>
+        <input type="time" class="fi" id="hasta-${id}">
+      </div>
+    </div>
+  `;
+  document.getElementById('lugares-container').appendChild(div);
+}
+
+function removeLugar(id){
+  var el = document.getElementById('lugar-'+id);
+  if(el) el.remove();
+}
+
+function toggleDia(btn, id){
+  btn.classList.toggle('sel');
+}
+
+function getLugares(){
+  var lugares = [];
+  document.querySelectorAll('.hor-lugar').forEach(function(div){
+    var id = div.id.replace('lugar-','');
+    var nom = document.getElementById('lugar-nom-'+id);
+    if(!nom || !nom.value.trim()) return;
+    var dias = [];
+    div.querySelectorAll('.dia-btn.sel').forEach(function(d){dias.push(d.textContent);});
+    var desde = document.getElementById('desde-'+id);
+    var hasta = document.getElementById('hasta-'+id);
+    lugares.push({
+      lugar: nom.value.trim(),
+      dias: dias.join(', '),
+      desde: desde?desde.value:'',
+      hasta: hasta?hasta.value:''
+    });
+  });
+  return lugares;
+}
+
+function formatLugares(lugares){
+  if(!lugares||!lugares.length) return '';
+  return lugares.map(function(l){
+    var hor = l.desde&&l.hasta ? l.desde+' a '+l.hasta : '';
+    var dias = l.dias ? l.dias : '';
+    return l.lugar + (dias?' — '+dias:'') + (hor?' ('+hor+')':'');
+  }).join(' | ');
 }
 
 </script>
