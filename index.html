@@ -1548,8 +1548,8 @@ const CAMPOS={
 let db=[];
 let pending=JSON.parse(localStorage.getItem('sr9_pend')||'[]');
 let cart={};
-// Load proveedores from Supabase on startup
-supaFetch('proveedores?estado=eq.active').then(function(rows){
+// Load proveedores from Supabase on startup - called after DOMContentLoaded
+function loadProveedoresFromSupabase(){supaFetch('proveedores?estado=eq.active').then(function(rows){
   if(rows && rows.length){
     rows.forEach(function(r){
       if(!db.find(function(x){return x.nombre===r.nombre && x.tipo===r.tipo;})){
@@ -1573,11 +1573,11 @@ supaFetch('proveedores?estado=eq.active').then(function(rows){
     });
     updH();
   }
-}).catch(function(e){console.warn('Supabase load proveedores error:', e);});
+}).catch(function(e){console.warn('Supabase load proveedores error:', e);});}
 
 if(!db.length){
   db=[
-    {id:11,tipo:'residencia',nombre:'Residencia El Chalet',dept:'Santa Lucía',dir:'Hipólito Yrigoyen 1856 Este, Santa Lucía',tel:'2655057363',
+    {id:11,tipo:'residencia',nombre:'Residencia El Chalet',email:'residenciasoldeotonosj@gmail.com',dept:'Santa Lucía',dir:'Hipólito Yrigoyen 1856 Este, Santa Lucía',tel:'2655057363',
      horario:'Consultar horarios.',urgencias:'Sí, enfermería 24hs',disponibilidad:'Disponible — hay lugares',
      obras:[],osOtras:'Solo particular',capacidad:'12 residentes',modalidades:'Permanente',
      tipoResidentes:'Autoválidos',equipo:'Enfermería 24hs, Médico clínico, Nutricionista, Psicología',
@@ -1587,7 +1587,7 @@ if(!db.length){
      desc:'Residencia geriátrica para adultos mayores autoválidos, dirigida por sus propios dueños desde 2019. Ambiente cálido y familiar, equipo interdisciplinario completo.',
      fotos:["https://lh3.googleusercontent.com/d/18P0pLrLnV78_rRVI1erPvjbLUPSsQHnb","https://lh3.googleusercontent.com/d/1-dO51CAI97WSPoP46-XDoUDGOr4nOKtl","https://lh3.googleusercontent.com/d/1smFIBtVPUH-EBdCFSnNnjjpfxJ06Z6Tc","https://lh3.googleusercontent.com/d/1o7Zm2pYcmSlknsgBjsEBO59EnB_FbBtM","https://lh3.googleusercontent.com/d/1Yz2WOT3mlvBZIq-orkt-SnkGyDRE0xhk","https://lh3.googleusercontent.com/d/1iyBf3MFijpI9wDl4vXrSdWkj_SULX9dW","https://lh3.googleusercontent.com/d/1Eqou9Ui3a53kEfkvLxDp4vCEnCtn-Lxd","https://lh3.googleusercontent.com/d/10N2kLJ6SJzXp2VfAWSQ3ED8bML9Wyofe","https://lh3.googleusercontent.com/d/111pTFF2Dxc7t3ILmd1TOJgmjqq6Z_Ibd","https://lh3.googleusercontent.com/d/1QYqAapKAK9gnNsdKBWVKHKmck4_t9unG","https://lh3.googleusercontent.com/d/1oQQj2AwP2eRGlfBp5hQK_lwOepO-OL5L","https://lh3.googleusercontent.com/d/1Im0cT7We6KmuXUEMwVVOaRKGJKMG8NoD","https://lh3.googleusercontent.com/d/1RTYt8Od5HXh0DwPyP8NKmLAw2NPTW4We","https://lh3.googleusercontent.com/d/10hqDxvk9Rx09RrGCxEJT9y9nDHSTdh-3","https://lh3.googleusercontent.com/d/10c5KMw3bvn42otBDO4k8Gf_TYugN7Qn4"],
      plan:'premium',status:'active'},
-    {id:12,tipo:'residencia',nombre:'Residencia Sol de Otoño',dept:'Rawson',dir:'Ezpeleta 95 Oeste, Rawson',tel:'2645057363',
+    {id:12,tipo:'residencia',nombre:'Residencia Sol de Otoño',email:'residenciasoldeotonosj@gmail.com',dept:'Rawson',dir:'Ezpeleta 95 Oeste, Rawson',tel:'2645057363',
      horario:'Lunes a lunes, mañana y tarde.',urgencias:'Sí, enfermería 24hs',disponibilidad:'Disponible — hay lugares',
      obras:[],osOtras:'Solo particular',capacidad:'18 residentes',modalidades:'Permanente',
      tipoResidentes:'Patologías polivalentes — Semidependientes y Dependientes',
@@ -1672,6 +1672,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   initEJS();
   // Also init directly in case DOMContentLoaded already fired
   try{if(window.emailjs)emailjs.init({publicKey:EJS.publicKey});}catch(e){}
+  loadProveedoresFromSupabase();
   updH();
   document.getElementById('si-s').addEventListener('keydown',e=>{if(e.key==='Enter')doS();});
   document.getElementById('si-p').addEventListener('keydown',e=>{if(e.key==='Enter')doP();});
@@ -1899,7 +1900,7 @@ function goW(tel,n){openC('general',0,null,n,tel);}
 function openC(mode,provId,servId,nombreOverride,telOverride){
   const prov=provId?db.find(x=>x.id===provId):null;
   const t=prov?T[prov.tipo]:{ico:'🏥',bg:'#E8F4F2',l:'Establecimiento'};
-  ctxC={mode,provId,servId,tel:telOverride||(prov?.tel||''),nombre:nombreOverride||(prov?.nombre||'')};
+  ctxC={mode,provId,servId,tel:telOverride||(prov?.tel||''),nombre:nombreOverride||(prov?.nombre||''),email:prov?.email||''};
   document.getElementById('mc-ico').textContent=t.ico;
   document.getElementById('mc-n2').textContent=ctxC.nombre;
   document.getElementById('mc-tp').textContent=prov?(t.l+(prov.dept?' · '+prov.dept:'')):'';
@@ -1981,7 +1982,7 @@ async function enviarC(){
       tipo: modoLabel,
       depto: '',
       telefono: t,
-      email_prov: 'saludredsj@gmail.com',
+      email_prov: ctxC.email||'saludredsj@gmail.com',
       cuit: '',
       habilitacion: '',
       plan: '',
