@@ -925,6 +925,9 @@ html, body { width: 100%; overflow-x: hidden; }
   .btn-submit{font-size:15px;padding:14px;}
 }
 
+.ver-mas{color:var(--teal);font-weight:600;text-decoration:none;font-size:14px;}
+.ver-mas:hover{text-decoration:underline;}
+
 </style>
 </head>
 <body>
@@ -1762,8 +1765,14 @@ function rS(data){
     const thumbs=p.fotos&&p.fotos.length>1?`<div class="sc-photos">${p.fotos.slice(1,6).map((f,fi)=>`<img class="sc-photo" src="${f}" alt="Foto ${fi+2}" onclick="openLB(${p.id},${fi+1})" onerror="this.parentElement&&this.parentElement.classList.contains('sc-photos')?this.style.display='none':this.style.visibility='hidden'">`).join('')}</div>`:'';
     return `<div class="scard${isPrem?' dest':''}" style="animation-delay:${i*0.04}s">
       ${mainPhoto}
-      <div class="sc-hd"><div class="sc-ico" style="background:${t.bg}">${t.ico}</div><div class="sc-titles"><div class="sc-name">${p.nombre}</div><div class="sc-sub">${t.l} · ${p.dept}</div><div class="sc-badges">${isPrem?'<span class="badge b-dest">✦ Destacado</span>':''}<span class="badge b-ok">✓ Habilitado</span>${p.tipo==='profesional'?'<span class="badge b-pur">A domicilio</span>':''}${p.urgencias?.includes('24hs')?'<span class="badge b-red">🚨 24hs</span>':''}</div></div></div>
-      ${full&&p.desc?`<div class="sc-desc">${p.desc}</div>`:''}
+      <div class="sc-hd"><div class="sc-ico" style="background:${t.bg}">${t.ico}</div><div class="sc-titles"><div class="sc-name">${p.nombre}</div><div class="sc-sub">${t.l} · ${p.dept}</div><div class="sc-badges">${isPrem?'<span class="badge b-dest">✦ Destacado</span>':''}<span class="badge b-ok">${p.tipo==='profesional'?'✓ Matriculado':'✓ Habilitado'}</span>${p.tipo==='profesional'?'<span class="badge b-pur">A domicilio</span>':''}${p.urgencias?.includes('24hs')?'<span class="badge b-red">🚨 24hs</span>':''}</div></div></div>
+      ${full&&p.desc?`<div class="sc-desc">
+        ${p.desc.length>180?
+          `<span class="sc-desc-short">${p.desc.substring(0,180)}... <a href="#" class="ver-mas" onclick="event.preventDefault();this.parentElement.parentElement.querySelector('.sc-desc-full').style.display='block';this.parentElement.style.display='none';">Ver más</a></span>
+           <span class="sc-desc-full" style="display:none">${p.desc} <a href="#" class="ver-mas" onclick="event.preventDefault();this.parentElement.style.display='none';this.parentElement.parentElement.querySelector('.sc-desc-short').style.display='block';">Ver menos</a></span>`
+          :p.desc
+        }
+      </div>`:''}
       ${thumbs}
       ${fields?`<div class="sc-fields">${fields}</div>`:''}
       ${osp}${esp}${srv}${servsTgl}
