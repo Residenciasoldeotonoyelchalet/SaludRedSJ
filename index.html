@@ -411,6 +411,11 @@ function mostrarPanelActivo(){
   document.getElementById('panel-precio').value = p.precio||'';
   var fotos = p.fotos?(typeof p.fotos==='string'?JSON.parse(p.fotos):(Array.isArray(p.fotos)?p.fotos:[])):[];
   document.getElementById('panel-foto').value = fotos[0]||'';
+  // Load productos
+  cargarProductos(p.id);
+  // Show/hide productos section based on type
+  var secProd = document.getElementById('panel-sec-productos');
+  if(secProd) secProd.style.display = ['farmacia','insumos','oxigeno'].includes(p.tipo) ? 'block' : 'block';
 }
 
 async function guardarPerfil(){
@@ -463,6 +468,80 @@ function generateToken(){
   var token='SR-';
   for(var i=0;i<6;i++) token+=chars[Math.floor(Math.random()*chars.length)];
   return token;
+}
+
+
+// ═══════════════════════════════════════
+// PRODUCTOS DEL PROVEEDOR
+// ═══════════════════════════════════════
+async function cargarProductos(provId){
+  try{
+    var prods = await supaFetch('productos?proveedor_id=eq.'+provId+'&disponible=eq.true&order=created_at.desc');
+    var lista = document.getElementById('panel-productos-lista');
+    if(!prods||!prods.length){
+      lista.innerHTML='<p style="color:var(--ink3);font-size:14px;">Todavía no cargaste productos.</p>';
+      return;
+    }
+    lista.innerHTML = prods.map(function(p){
+      return '<div style="border:1px solid var(--border);border-radius:6px;padding:12px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;gap:10px;">'
+        +(p.foto?'<img src="'+p.foto+'" style="width:60px;height:60px;object-fit:cover;border-radius:4px;flex-shrink:0;">':'')
+        +'<div style="flex:1"><div style="font-weight:600;font-size:14px;">'+p.nombre+'</div>'
+        +(p.descripcion?'<div style="font-size:13px;color:var(--ink3);">'+p.descripcion+'</div>':'')
+        +(p.precio?'<div style="font-size:13px;color:var(--teal);font-weight:600;">$'+Number(p.precio).toLocaleString('es-AR')+(p.modalidad?' — '+p.modalidad:'')+'</div>':'')
+        +'</div>'
+        +'<button onclick="eliminarProducto('+p.id+')" style="background:none;border:none;color:var(--red);cursor:pointer;font-size:13px;flex-shrink:0;">✕</button>'
+        +'</div>';
+    }).join('');
+  }catch(e){console.warn('Error cargando productos:',e);}
+}
+
+async function agregarProducto(){
+  if(!panelProv){return;}
+  var nombre = document.getElementById('prod-nombre').value.trim();
+  if(!nombre){alert('Ingresá el nombre del producto.');return;}
+  var fotoUrl = document.getElementById('prod-foto').value.trim();
+  if(fotoUrl.includes('drive.google.com/file/d/')){
+    var id = fotoUrl.match(/\/d\/([^/]+)/);
+    if(id) fotoUrl = 'https://drive.google.com/thumbnail?id='+id[1]+'&sz=w400';
+  }
+  var btn = document.querySelector('#panel-sec-productos .btn-submit');
+  btn.textContent='Agregando...';btn.disabled=true;
+  try{
+    await supaFetch('productos','POST',{
+      proveedor_id: panelProv.proveedores.id,
+      nombre: nombre,
+      descripcion: document.getElementById('prod-desc').value.trim()||null,
+      precio: document.getElementById('prod-precio').value||null,
+      categoria: document.getElementById('prod-cat').value,
+      foto: fotoUrl||null,
+      modalidad: document.querySelector('#rg-prod-mod .rdo.sel')?.textContent||'Venta',
+      disponible: true
+    });
+    // Clear form
+    ['prod-nombre','prod-desc','prod-precio','prod-foto'].forEach(function(id){
+      var el=document.getElementById(id);if(el)el.value='';
+    });
+    btn.textContent='Agregar →';btn.disabled=false;
+    cargarProductos(panelProv.proveedores.id);
+  }catch(e){
+    console.error(e);
+    btn.textContent='Agregar →';btn.disabled=false;
+    alert('Error al agregar. Intentá de nuevo.');
+  }
+}
+
+async function eliminarProducto(prodId){
+  if(!confirm('¿Eliminar este producto?'))return;
+  try{
+    await supaFetch('productos?id=eq.'+prodId,'PATCH',{disponible:false});
+    if(panelProv) cargarProductos(panelProv.proveedores.id);
+  }catch(e){console.warn('Error eliminando:',e);}
+}
+
+
+function toggleMod(el){
+  el.closest('.rdo-g').querySelectorAll('.rdo').forEach(function(r){r.classList.remove('sel');});
+  el.classList.add('sel');
 }
 
 </script>
@@ -851,6 +930,11 @@ function mostrarPanelActivo(){
   document.getElementById('panel-precio').value = p.precio||'';
   var fotos = p.fotos?(typeof p.fotos==='string'?JSON.parse(p.fotos):(Array.isArray(p.fotos)?p.fotos:[])):[];
   document.getElementById('panel-foto').value = fotos[0]||'';
+  // Load productos
+  cargarProductos(p.id);
+  // Show/hide productos section based on type
+  var secProd = document.getElementById('panel-sec-productos');
+  if(secProd) secProd.style.display = ['farmacia','insumos','oxigeno'].includes(p.tipo) ? 'block' : 'block';
 }
 
 async function guardarPerfil(){
@@ -903,6 +987,80 @@ function generateToken(){
   var token='SR-';
   for(var i=0;i<6;i++) token+=chars[Math.floor(Math.random()*chars.length)];
   return token;
+}
+
+
+// ═══════════════════════════════════════
+// PRODUCTOS DEL PROVEEDOR
+// ═══════════════════════════════════════
+async function cargarProductos(provId){
+  try{
+    var prods = await supaFetch('productos?proveedor_id=eq.'+provId+'&disponible=eq.true&order=created_at.desc');
+    var lista = document.getElementById('panel-productos-lista');
+    if(!prods||!prods.length){
+      lista.innerHTML='<p style="color:var(--ink3);font-size:14px;">Todavía no cargaste productos.</p>';
+      return;
+    }
+    lista.innerHTML = prods.map(function(p){
+      return '<div style="border:1px solid var(--border);border-radius:6px;padding:12px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;gap:10px;">'
+        +(p.foto?'<img src="'+p.foto+'" style="width:60px;height:60px;object-fit:cover;border-radius:4px;flex-shrink:0;">':'')
+        +'<div style="flex:1"><div style="font-weight:600;font-size:14px;">'+p.nombre+'</div>'
+        +(p.descripcion?'<div style="font-size:13px;color:var(--ink3);">'+p.descripcion+'</div>':'')
+        +(p.precio?'<div style="font-size:13px;color:var(--teal);font-weight:600;">$'+Number(p.precio).toLocaleString('es-AR')+(p.modalidad?' — '+p.modalidad:'')+'</div>':'')
+        +'</div>'
+        +'<button onclick="eliminarProducto('+p.id+')" style="background:none;border:none;color:var(--red);cursor:pointer;font-size:13px;flex-shrink:0;">✕</button>'
+        +'</div>';
+    }).join('');
+  }catch(e){console.warn('Error cargando productos:',e);}
+}
+
+async function agregarProducto(){
+  if(!panelProv){return;}
+  var nombre = document.getElementById('prod-nombre').value.trim();
+  if(!nombre){alert('Ingresá el nombre del producto.');return;}
+  var fotoUrl = document.getElementById('prod-foto').value.trim();
+  if(fotoUrl.includes('drive.google.com/file/d/')){
+    var id = fotoUrl.match(/\/d\/([^/]+)/);
+    if(id) fotoUrl = 'https://drive.google.com/thumbnail?id='+id[1]+'&sz=w400';
+  }
+  var btn = document.querySelector('#panel-sec-productos .btn-submit');
+  btn.textContent='Agregando...';btn.disabled=true;
+  try{
+    await supaFetch('productos','POST',{
+      proveedor_id: panelProv.proveedores.id,
+      nombre: nombre,
+      descripcion: document.getElementById('prod-desc').value.trim()||null,
+      precio: document.getElementById('prod-precio').value||null,
+      categoria: document.getElementById('prod-cat').value,
+      foto: fotoUrl||null,
+      modalidad: document.querySelector('#rg-prod-mod .rdo.sel')?.textContent||'Venta',
+      disponible: true
+    });
+    // Clear form
+    ['prod-nombre','prod-desc','prod-precio','prod-foto'].forEach(function(id){
+      var el=document.getElementById(id);if(el)el.value='';
+    });
+    btn.textContent='Agregar →';btn.disabled=false;
+    cargarProductos(panelProv.proveedores.id);
+  }catch(e){
+    console.error(e);
+    btn.textContent='Agregar →';btn.disabled=false;
+    alert('Error al agregar. Intentá de nuevo.');
+  }
+}
+
+async function eliminarProducto(prodId){
+  if(!confirm('¿Eliminar este producto?'))return;
+  try{
+    await supaFetch('productos?id=eq.'+prodId,'PATCH',{disponible:false});
+    if(panelProv) cargarProductos(panelProv.proveedores.id);
+  }catch(e){console.warn('Error eliminando:',e);}
+}
+
+
+function toggleMod(el){
+  el.closest('.rdo-g').querySelectorAll('.rdo').forEach(function(r){r.classList.remove('sel');});
+  el.classList.add('sel');
 }
 
 </script>
@@ -3126,6 +3284,11 @@ function mostrarPanelActivo(){
   document.getElementById('panel-precio').value = p.precio||'';
   var fotos = p.fotos?(typeof p.fotos==='string'?JSON.parse(p.fotos):(Array.isArray(p.fotos)?p.fotos:[])):[];
   document.getElementById('panel-foto').value = fotos[0]||'';
+  // Load productos
+  cargarProductos(p.id);
+  // Show/hide productos section based on type
+  var secProd = document.getElementById('panel-sec-productos');
+  if(secProd) secProd.style.display = ['farmacia','insumos','oxigeno'].includes(p.tipo) ? 'block' : 'block';
 }
 
 async function guardarPerfil(){
@@ -3178,6 +3341,80 @@ function generateToken(){
   var token='SR-';
   for(var i=0;i<6;i++) token+=chars[Math.floor(Math.random()*chars.length)];
   return token;
+}
+
+
+// ═══════════════════════════════════════
+// PRODUCTOS DEL PROVEEDOR
+// ═══════════════════════════════════════
+async function cargarProductos(provId){
+  try{
+    var prods = await supaFetch('productos?proveedor_id=eq.'+provId+'&disponible=eq.true&order=created_at.desc');
+    var lista = document.getElementById('panel-productos-lista');
+    if(!prods||!prods.length){
+      lista.innerHTML='<p style="color:var(--ink3);font-size:14px;">Todavía no cargaste productos.</p>';
+      return;
+    }
+    lista.innerHTML = prods.map(function(p){
+      return '<div style="border:1px solid var(--border);border-radius:6px;padding:12px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;gap:10px;">'
+        +(p.foto?'<img src="'+p.foto+'" style="width:60px;height:60px;object-fit:cover;border-radius:4px;flex-shrink:0;">':'')
+        +'<div style="flex:1"><div style="font-weight:600;font-size:14px;">'+p.nombre+'</div>'
+        +(p.descripcion?'<div style="font-size:13px;color:var(--ink3);">'+p.descripcion+'</div>':'')
+        +(p.precio?'<div style="font-size:13px;color:var(--teal);font-weight:600;">$'+Number(p.precio).toLocaleString('es-AR')+(p.modalidad?' — '+p.modalidad:'')+'</div>':'')
+        +'</div>'
+        +'<button onclick="eliminarProducto('+p.id+')" style="background:none;border:none;color:var(--red);cursor:pointer;font-size:13px;flex-shrink:0;">✕</button>'
+        +'</div>';
+    }).join('');
+  }catch(e){console.warn('Error cargando productos:',e);}
+}
+
+async function agregarProducto(){
+  if(!panelProv){return;}
+  var nombre = document.getElementById('prod-nombre').value.trim();
+  if(!nombre){alert('Ingresá el nombre del producto.');return;}
+  var fotoUrl = document.getElementById('prod-foto').value.trim();
+  if(fotoUrl.includes('drive.google.com/file/d/')){
+    var id = fotoUrl.match(/\/d\/([^/]+)/);
+    if(id) fotoUrl = 'https://drive.google.com/thumbnail?id='+id[1]+'&sz=w400';
+  }
+  var btn = document.querySelector('#panel-sec-productos .btn-submit');
+  btn.textContent='Agregando...';btn.disabled=true;
+  try{
+    await supaFetch('productos','POST',{
+      proveedor_id: panelProv.proveedores.id,
+      nombre: nombre,
+      descripcion: document.getElementById('prod-desc').value.trim()||null,
+      precio: document.getElementById('prod-precio').value||null,
+      categoria: document.getElementById('prod-cat').value,
+      foto: fotoUrl||null,
+      modalidad: document.querySelector('#rg-prod-mod .rdo.sel')?.textContent||'Venta',
+      disponible: true
+    });
+    // Clear form
+    ['prod-nombre','prod-desc','prod-precio','prod-foto'].forEach(function(id){
+      var el=document.getElementById(id);if(el)el.value='';
+    });
+    btn.textContent='Agregar →';btn.disabled=false;
+    cargarProductos(panelProv.proveedores.id);
+  }catch(e){
+    console.error(e);
+    btn.textContent='Agregar →';btn.disabled=false;
+    alert('Error al agregar. Intentá de nuevo.');
+  }
+}
+
+async function eliminarProducto(prodId){
+  if(!confirm('¿Eliminar este producto?'))return;
+  try{
+    await supaFetch('productos?id=eq.'+prodId,'PATCH',{disponible:false});
+    if(panelProv) cargarProductos(panelProv.proveedores.id);
+  }catch(e){console.warn('Error eliminando:',e);}
+}
+
+
+function toggleMod(el){
+  el.closest('.rdo-g').querySelectorAll('.rdo').forEach(function(r){r.classList.remove('sel');});
+  el.classList.add('sel');
 }
 
 </script>
@@ -3255,6 +3492,56 @@ function generateToken(){
         </div>
         <button class="btn-submit" onclick="guardarPerfil()" style="margin-top:10px;">Guardar cambios →</button>
         <div class="reg-ok" id="panel-guardado"><h3>✅ Perfil actualizado</h3><p>Los cambios ya se ven en tu perfil público.</p></div>
+      </div>
+    </div>
+
+    <!-- PRODUCTOS -->
+    <div class="fsec-box" id="panel-sec-productos">
+      <div class="fsec-hd"><span class="fsec-title">📦 Mis productos / servicios</span></div>
+      <div class="fsec-body">
+        <div class="doc-note" style="margin-bottom:12px;">
+          Cargá tus productos o servicios. Aparecen en la sección <strong>Productos</strong> del sitio.<br>
+          Podés agregar medicamentos, insumos, equipos, servicios específicos, etc.
+        </div>
+
+        <!-- Lista de productos existentes -->
+        <div id="panel-productos-lista" style="margin-bottom:16px;"></div>
+
+        <!-- Agregar producto -->
+        <div style="border:1px dashed var(--border);border-radius:6px;padding:14px;background:#fafafa;">
+          <div style="font-weight:600;font-size:14px;margin-bottom:12px;color:var(--ink2);">➕ Agregar producto o servicio</div>
+          <div class="fg"><label class="fl">Nombre *</label>
+            <input type="text" class="fi" id="prod-nombre" placeholder="Ej: Silla de ruedas plegable, Pañales adulto talle M, Oxígeno medicinal">
+          </div>
+          <div class="fg"><label class="fl">Descripción</label>
+            <input type="text" class="fi" id="prod-desc" placeholder="Ej: Alta resistencia, incluye reposapiés">
+          </div>
+          <div class="frow">
+            <div class="fg"><label class="fl">Precio</label>
+              <input type="number" class="fi" id="prod-precio" placeholder="Ej: 45000">
+            </div>
+            <div class="fg"><label class="fl">Categoría</label>
+              <select class="fs" id="prod-cat">
+                <option value="insumos">Insumo médico</option>
+                <option value="medicamento">Medicamento</option>
+                <option value="oxigeno">Oxígeno / Equipos</option>
+                <option value="servicio">Servicio</option>
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+          </div>
+          <div class="fg"><label class="fl">Modalidad</label>
+            <div class="rdo-g" id="rg-prod-mod">
+              <div class="rdo sel" onclick="toggleMod(this)">Venta</div>
+              <div class="rdo" onclick="toggleMod(this)">Alquiler</div>
+              <div class="rdo" onclick="toggleMod(this)">Venta y alquiler</div>
+            </div>
+          </div>
+          <div class="fg"><label class="fl">Foto (link de Google Drive)</label>
+            <input type="text" class="fi" id="prod-foto" placeholder="https://drive.google.com/...">
+          </div>
+          <button class="btn-submit" onclick="agregarProducto()" style="margin-top:8px;">Agregar →</button>
+        </div>
       </div>
     </div>
 
