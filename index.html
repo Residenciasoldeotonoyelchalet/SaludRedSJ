@@ -363,6 +363,108 @@ function formatLugares(lugares){
   }).join(' | ');
 }
 
+
+// ═══════════════════════════════════════
+// PANEL DEL PROVEEDOR
+// ═══════════════════════════════════════
+var panelProv = null;
+var panelToken = null;
+
+async function loginPanel(){
+  var token = document.getElementById('panel-token-input').value.trim().toUpperCase();
+  if(!token){alert('Ingresá tu código de acceso.');return;}
+  var btn = document.querySelector('#panel-login .btn-submit');
+  btn.textContent='Verificando...';btn.disabled=true;
+  try{
+    var rows = await supaFetch('tokens?token=eq.'+token+'&select=*,proveedores(*)');
+    if(!rows||!rows.length){
+      document.getElementById('panel-login-err').style.display='block';
+      btn.textContent='Ingresar →';btn.disabled=false;
+      return;
+    }
+    panelToken = token;
+    panelProv = rows[0];
+    // Update last access
+    supaFetch('tokens?token=eq.'+token,'PATCH',{last_access:new Date().toISOString()}).catch(function(){});
+    mostrarPanelActivo();
+  }catch(e){
+    console.error(e);
+    btn.textContent='Ingresar →';btn.disabled=false;
+    alert('Error al verificar. Intentá de nuevo.');
+  }
+}
+
+function mostrarPanelActivo(){
+  var p = panelProv.proveedores;
+  document.getElementById('panel-login').style.display='none';
+  document.getElementById('panel-activo').style.display='block';
+  document.getElementById('panel-bienvenida').textContent='Hola, ' + (p.nombre||'') + ' 👋';
+  document.getElementById('panel-kpi-plan').textContent = p.plan==='premium'?'Premium ✦':'Estándar';
+  document.getElementById('panel-kpi-venc').textContent = p.trial_hasta||'—';
+  // Fill form
+  document.getElementById('panel-desc').value = p.desc_texto||'';
+  document.getElementById('panel-esp').value = p.especialidad||'';
+  document.getElementById('panel-tel').value = p.tel||'';
+  document.getElementById('panel-wsp').value = p.wsp||'';
+  document.getElementById('panel-hor').value = p.horario||'';
+  document.getElementById('panel-zona').value = p.zona||'';
+  document.getElementById('panel-precio').value = p.precio||'';
+  var fotos = p.fotos?(typeof p.fotos==='string'?JSON.parse(p.fotos):(Array.isArray(p.fotos)?p.fotos:[])):[];
+  document.getElementById('panel-foto').value = fotos[0]||'';
+}
+
+async function guardarPerfil(){
+  if(!panelProv){return;}
+  var p = panelProv.proveedores;
+  var fotoUrl = document.getElementById('panel-foto').value.trim();
+  // Convert Drive URL to thumbnail
+  if(fotoUrl.includes('drive.google.com/file/d/')){
+    var id = fotoUrl.match(/\/d\/([^/]+)/);
+    if(id) fotoUrl = 'https://drive.google.com/thumbnail?id='+id[1]+'&sz=w400';
+  }
+  var fotos = fotoUrl ? JSON.stringify([fotoUrl]) : JSON.stringify([]);
+  var updates = {
+    desc_texto: document.getElementById('panel-desc').value.trim(),
+    especialidad: document.getElementById('panel-esp').value.trim(),
+    tel: document.getElementById('panel-tel').value.trim(),
+    horario: document.getElementById('panel-hor').value.trim(),
+    zona: document.getElementById('panel-zona').value.trim(),
+    precio: document.getElementById('panel-precio').value.trim(),
+    fotos: fotos,
+  };
+  var btn = document.querySelector('#panel-activo .btn-submit');
+  btn.textContent='Guardando...';btn.disabled=true;
+  try{
+    await supaFetch('proveedores?id=eq.'+p.id,'PATCH',updates);
+    btn.textContent='Guardar cambios →';btn.disabled=false;
+    // Also update local db
+    var local = db.find(function(x){return x.id===p.id;});
+    if(local){Object.assign(local,{desc:updates.desc_texto,especialidad:updates.especialidad,tel:updates.tel,horario:updates.horario,zona:updates.zona,precio:updates.precio});}
+    document.getElementById('panel-guardado').classList.add('on');
+    setTimeout(function(){document.getElementById('panel-guardado').classList.remove('on');},3000);
+  }catch(e){
+    console.error(e);
+    btn.textContent='Guardar cambios →';btn.disabled=false;
+    alert('Error al guardar. Intentá de nuevo.');
+  }
+}
+
+function logoutPanel(){
+  panelProv=null;panelToken=null;
+  document.getElementById('panel-login').style.display='block';
+  document.getElementById('panel-activo').style.display='none';
+  document.getElementById('panel-token-input').value='';
+  gv('home');
+}
+
+// Generate token when approving
+function generateToken(){
+  var chars='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  var token='SR-';
+  for(var i=0;i<6;i++) token+=chars[Math.floor(Math.random()*chars.length)];
+  return token;
+}
+
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
@@ -699,6 +801,108 @@ function formatLugares(lugares){
     var dias = l.dias ? l.dias : '';
     return l.lugar + (dias?' — '+dias:'') + (hor?' ('+hor+')':'');
   }).join(' | ');
+}
+
+
+// ═══════════════════════════════════════
+// PANEL DEL PROVEEDOR
+// ═══════════════════════════════════════
+var panelProv = null;
+var panelToken = null;
+
+async function loginPanel(){
+  var token = document.getElementById('panel-token-input').value.trim().toUpperCase();
+  if(!token){alert('Ingresá tu código de acceso.');return;}
+  var btn = document.querySelector('#panel-login .btn-submit');
+  btn.textContent='Verificando...';btn.disabled=true;
+  try{
+    var rows = await supaFetch('tokens?token=eq.'+token+'&select=*,proveedores(*)');
+    if(!rows||!rows.length){
+      document.getElementById('panel-login-err').style.display='block';
+      btn.textContent='Ingresar →';btn.disabled=false;
+      return;
+    }
+    panelToken = token;
+    panelProv = rows[0];
+    // Update last access
+    supaFetch('tokens?token=eq.'+token,'PATCH',{last_access:new Date().toISOString()}).catch(function(){});
+    mostrarPanelActivo();
+  }catch(e){
+    console.error(e);
+    btn.textContent='Ingresar →';btn.disabled=false;
+    alert('Error al verificar. Intentá de nuevo.');
+  }
+}
+
+function mostrarPanelActivo(){
+  var p = panelProv.proveedores;
+  document.getElementById('panel-login').style.display='none';
+  document.getElementById('panel-activo').style.display='block';
+  document.getElementById('panel-bienvenida').textContent='Hola, ' + (p.nombre||'') + ' 👋';
+  document.getElementById('panel-kpi-plan').textContent = p.plan==='premium'?'Premium ✦':'Estándar';
+  document.getElementById('panel-kpi-venc').textContent = p.trial_hasta||'—';
+  // Fill form
+  document.getElementById('panel-desc').value = p.desc_texto||'';
+  document.getElementById('panel-esp').value = p.especialidad||'';
+  document.getElementById('panel-tel').value = p.tel||'';
+  document.getElementById('panel-wsp').value = p.wsp||'';
+  document.getElementById('panel-hor').value = p.horario||'';
+  document.getElementById('panel-zona').value = p.zona||'';
+  document.getElementById('panel-precio').value = p.precio||'';
+  var fotos = p.fotos?(typeof p.fotos==='string'?JSON.parse(p.fotos):(Array.isArray(p.fotos)?p.fotos:[])):[];
+  document.getElementById('panel-foto').value = fotos[0]||'';
+}
+
+async function guardarPerfil(){
+  if(!panelProv){return;}
+  var p = panelProv.proveedores;
+  var fotoUrl = document.getElementById('panel-foto').value.trim();
+  // Convert Drive URL to thumbnail
+  if(fotoUrl.includes('drive.google.com/file/d/')){
+    var id = fotoUrl.match(/\/d\/([^/]+)/);
+    if(id) fotoUrl = 'https://drive.google.com/thumbnail?id='+id[1]+'&sz=w400';
+  }
+  var fotos = fotoUrl ? JSON.stringify([fotoUrl]) : JSON.stringify([]);
+  var updates = {
+    desc_texto: document.getElementById('panel-desc').value.trim(),
+    especialidad: document.getElementById('panel-esp').value.trim(),
+    tel: document.getElementById('panel-tel').value.trim(),
+    horario: document.getElementById('panel-hor').value.trim(),
+    zona: document.getElementById('panel-zona').value.trim(),
+    precio: document.getElementById('panel-precio').value.trim(),
+    fotos: fotos,
+  };
+  var btn = document.querySelector('#panel-activo .btn-submit');
+  btn.textContent='Guardando...';btn.disabled=true;
+  try{
+    await supaFetch('proveedores?id=eq.'+p.id,'PATCH',updates);
+    btn.textContent='Guardar cambios →';btn.disabled=false;
+    // Also update local db
+    var local = db.find(function(x){return x.id===p.id;});
+    if(local){Object.assign(local,{desc:updates.desc_texto,especialidad:updates.especialidad,tel:updates.tel,horario:updates.horario,zona:updates.zona,precio:updates.precio});}
+    document.getElementById('panel-guardado').classList.add('on');
+    setTimeout(function(){document.getElementById('panel-guardado').classList.remove('on');},3000);
+  }catch(e){
+    console.error(e);
+    btn.textContent='Guardar cambios →';btn.disabled=false;
+    alert('Error al guardar. Intentá de nuevo.');
+  }
+}
+
+function logoutPanel(){
+  panelProv=null;panelToken=null;
+  document.getElementById('panel-login').style.display='block';
+  document.getElementById('panel-activo').style.display='none';
+  document.getElementById('panel-token-input').value='';
+  gv('home');
+}
+
+// Generate token when approving
+function generateToken(){
+  var chars='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  var token='SR-';
+  for(var i=0;i<6;i++) token+=chars[Math.floor(Math.random()*chars.length)];
+  return token;
 }
 
 </script>
@@ -1442,9 +1646,14 @@ html, body { width: 100%; overflow-x: hidden; }
 
     <!-- DESCRIPCIÓN -->
     <div class="fsec-box">
-      <div class="fsec-hd"><span class="fsec-title">Descripción</span></div>
+      <div class="fsec-hd"><span class="fsec-title">Descripción</span><span class="fsec-req">* obligatorio</span></div>
       <div class="fsec-body">
-        <div class="fg"><textarea class="fta" id="pp-desc" style="min-height:90px" placeholder="Contá quién sos, tu experiencia y qué te diferencia. Cuanto más específico, mejor."></textarea></div>
+        <div class="doc-note" style="margin-bottom:12px;">
+          📋 <strong>Este texto es lo que va a aparecer en tu perfil público.</strong><br>
+          Escribí con cuidado — usá mayúsculas, tildes y buena ortografía. Contá quién sos, tu experiencia y qué te diferencia.<br>
+          <em>Ejemplo: "Enfermera universitaria con 10 años de experiencia en geriatría e internaciones domiciliarias. Atención personalizada y cuidados paliativos."</em>
+        </div>
+        <div class="fg"><textarea class="fta" id="pp-desc" style="min-height:110px" placeholder="Escribí tu descripción aquí. Usá tildes y buena ortografía — este texto aparece en tu perfil público."></textarea></div>
         <div class="fg"><label class="fl">Precio orientativo</label><input type="text" class="fi" id="pp-precio" placeholder="Ej: Consulta desde $15.000"></div>
       </div>
     </div>
@@ -1602,7 +1811,12 @@ html, body { width: 100%; overflow-x: hidden; }
     <div class="fsec-box">
       <div class="fsec-hd"><span class="fsec-title">Descripción y precio</span></div>
       <div class="fsec-body">
-        <div class="fg"><textarea class="fta" id="pe-desc" style="min-height:90px" placeholder="Describí tu establecimiento, qué ofrecés y qué lo diferencia."></textarea></div>
+        <div class="doc-note" style="margin-bottom:12px;">
+          📋 <strong>Este texto es lo que va a aparecer en tu perfil público.</strong><br>
+          Escribí con cuidado — usá mayúsculas, tildes y buena ortografía.<br>
+          <em>Ejemplo: "Residencia geriátrica especializada en adultos mayores con atención personalizada, enfermería 24hs y actividades recreativas diarias."</em>
+        </div>
+        <div class="fg"><textarea class="fta" id="pe-desc" style="min-height:110px" placeholder="Escribí tu descripción aquí. Usá tildes y buena ortografía — este texto aparece en tu perfil público."></textarea></div>
         <div class="fg"><label class="fl">Precio orientativo</label><input type="text" class="fi" id="pe-precio" placeholder="Ej: Residencia desde $1.600.000/mes. Consultar."></div>
       </div>
     </div>
@@ -1724,12 +1938,13 @@ async function supaFetch(path, method, body){
       'apikey': SUPA.key,
       'Authorization': 'Bearer ' + SUPA.key,
       'Content-Type': 'application/json',
-      'Prefer': method==='POST' ? 'return=representation' : ''
+      'Prefer': (method==='POST'||method==='PATCH') ? 'return=representation' : ''
     },
     body: body ? JSON.stringify(body) : undefined
   });
   if(!res.ok){var err = await res.text();throw new Error(err);}
-  return res.json();
+  var text = await res.text();
+  return text ? JSON.parse(text) : {};
 }
 
 const CATS={
@@ -1865,6 +2080,19 @@ document.addEventListener('DOMContentLoaded',()=>{
   loadProveedoresFromSupabase();
   updH();
   document.getElementById('si-s').addEventListener('keydown',e=>{if(e.key==='Enter')doS();});
+  // Handle panel token in URL
+  var urlParams=new URLSearchParams(window.location.search);
+  var urlHash=window.location.hash;
+  if(urlHash.includes('panel?token=')){
+    var tok=urlHash.split('token=')[1];
+    if(tok){
+      gv('panel');
+      setTimeout(function(){
+        document.getElementById('panel-token-input').value=tok;
+        loginPanel();
+      },500);
+    }
+  }
   document.getElementById('si-p').addEventListener('keydown',e=>{if(e.key==='Enter')doP();});
 });
 function updH(){updCB();}
@@ -2219,7 +2447,7 @@ async function supaFetch(path, method, body){
       'apikey': SUPA.key,
       'Authorization': 'Bearer ' + SUPA.key,
       'Content-Type': 'application/json',
-      'Prefer': method==='POST' ? 'return=representation' : ''
+      'Prefer': (method==='POST'||method==='PATCH') ? 'return=representation' : ''
     },
     body: body ? JSON.stringify(body) : undefined
   });
@@ -2452,6 +2680,7 @@ async function apro(id){
     fechaVenc.setDate(fechaVenc.getDate()+15);
     const fechaVencStr=fechaVenc.toLocaleDateString('es-AR',{day:'numeric',month:'long',year:'numeric'});
 
+    var provToken = generateToken();
     const paramsAprobac={
       nombre_prov:    e.nombre,
       email_prov:     e.email,
@@ -2461,12 +2690,16 @@ async function apro(id){
       precio_estandar:'$30.000',
       precio_premium: '$50.000',
       link_estandar:  MP.estandar,
+      codigo_acceso:  provToken,
+      link_panel:     'https://saludred.com.ar/#panel?token='+provToken,
       link_premium:   MP.premium,
       fecha_venc:     fechaVencStr,
       fecha:          new Date().toLocaleDateString('es-AR'),
     };
     try{
       await emailjs.send(EJS.serviceId, EJS.tplAprobac, paramsAprobac);
+    // Save token after email sent
+    supaFetch('tokens','POST',{token:provToken,proveedor_id:e.id||null,email:e.email,nombre:e.nombre}).catch(function(err){console.warn('Token save error:',err);});
     }catch(err){
       console.error('Error enviando aprobación:', err);
       alert('✅ Perfil aprobado. No se pudo enviar el mail automático. Escribile vos a: '+e.email);
@@ -2845,6 +3078,108 @@ function formatLugares(lugares){
   }).join(' | ');
 }
 
+
+// ═══════════════════════════════════════
+// PANEL DEL PROVEEDOR
+// ═══════════════════════════════════════
+var panelProv = null;
+var panelToken = null;
+
+async function loginPanel(){
+  var token = document.getElementById('panel-token-input').value.trim().toUpperCase();
+  if(!token){alert('Ingresá tu código de acceso.');return;}
+  var btn = document.querySelector('#panel-login .btn-submit');
+  btn.textContent='Verificando...';btn.disabled=true;
+  try{
+    var rows = await supaFetch('tokens?token=eq.'+token+'&select=*,proveedores(*)');
+    if(!rows||!rows.length){
+      document.getElementById('panel-login-err').style.display='block';
+      btn.textContent='Ingresar →';btn.disabled=false;
+      return;
+    }
+    panelToken = token;
+    panelProv = rows[0];
+    // Update last access
+    supaFetch('tokens?token=eq.'+token,'PATCH',{last_access:new Date().toISOString()}).catch(function(){});
+    mostrarPanelActivo();
+  }catch(e){
+    console.error(e);
+    btn.textContent='Ingresar →';btn.disabled=false;
+    alert('Error al verificar. Intentá de nuevo.');
+  }
+}
+
+function mostrarPanelActivo(){
+  var p = panelProv.proveedores;
+  document.getElementById('panel-login').style.display='none';
+  document.getElementById('panel-activo').style.display='block';
+  document.getElementById('panel-bienvenida').textContent='Hola, ' + (p.nombre||'') + ' 👋';
+  document.getElementById('panel-kpi-plan').textContent = p.plan==='premium'?'Premium ✦':'Estándar';
+  document.getElementById('panel-kpi-venc').textContent = p.trial_hasta||'—';
+  // Fill form
+  document.getElementById('panel-desc').value = p.desc_texto||'';
+  document.getElementById('panel-esp').value = p.especialidad||'';
+  document.getElementById('panel-tel').value = p.tel||'';
+  document.getElementById('panel-wsp').value = p.wsp||'';
+  document.getElementById('panel-hor').value = p.horario||'';
+  document.getElementById('panel-zona').value = p.zona||'';
+  document.getElementById('panel-precio').value = p.precio||'';
+  var fotos = p.fotos?(typeof p.fotos==='string'?JSON.parse(p.fotos):(Array.isArray(p.fotos)?p.fotos:[])):[];
+  document.getElementById('panel-foto').value = fotos[0]||'';
+}
+
+async function guardarPerfil(){
+  if(!panelProv){return;}
+  var p = panelProv.proveedores;
+  var fotoUrl = document.getElementById('panel-foto').value.trim();
+  // Convert Drive URL to thumbnail
+  if(fotoUrl.includes('drive.google.com/file/d/')){
+    var id = fotoUrl.match(/\/d\/([^/]+)/);
+    if(id) fotoUrl = 'https://drive.google.com/thumbnail?id='+id[1]+'&sz=w400';
+  }
+  var fotos = fotoUrl ? JSON.stringify([fotoUrl]) : JSON.stringify([]);
+  var updates = {
+    desc_texto: document.getElementById('panel-desc').value.trim(),
+    especialidad: document.getElementById('panel-esp').value.trim(),
+    tel: document.getElementById('panel-tel').value.trim(),
+    horario: document.getElementById('panel-hor').value.trim(),
+    zona: document.getElementById('panel-zona').value.trim(),
+    precio: document.getElementById('panel-precio').value.trim(),
+    fotos: fotos,
+  };
+  var btn = document.querySelector('#panel-activo .btn-submit');
+  btn.textContent='Guardando...';btn.disabled=true;
+  try{
+    await supaFetch('proveedores?id=eq.'+p.id,'PATCH',updates);
+    btn.textContent='Guardar cambios →';btn.disabled=false;
+    // Also update local db
+    var local = db.find(function(x){return x.id===p.id;});
+    if(local){Object.assign(local,{desc:updates.desc_texto,especialidad:updates.especialidad,tel:updates.tel,horario:updates.horario,zona:updates.zona,precio:updates.precio});}
+    document.getElementById('panel-guardado').classList.add('on');
+    setTimeout(function(){document.getElementById('panel-guardado').classList.remove('on');},3000);
+  }catch(e){
+    console.error(e);
+    btn.textContent='Guardar cambios →';btn.disabled=false;
+    alert('Error al guardar. Intentá de nuevo.');
+  }
+}
+
+function logoutPanel(){
+  panelProv=null;panelToken=null;
+  document.getElementById('panel-login').style.display='block';
+  document.getElementById('panel-activo').style.display='none';
+  document.getElementById('panel-token-input').value='';
+  gv('home');
+}
+
+// Generate token when approving
+function generateToken(){
+  var chars='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  var token='SR-';
+  for(var i=0;i<6;i++) token+=chars[Math.floor(Math.random()*chars.length)];
+  return token;
+}
+
 </script>
 
 <!-- LIGHTBOX -->
@@ -2853,6 +3188,86 @@ function formatLugares(lugares){
   <button class="lb-prev" onclick="lbNav(-1)">❮</button>
   <img class="lb-img" id="lb-img" src="" alt="">
   <button class="lb-next" onclick="lbNav(1)">❯</button>
+</div>
+
+
+<!-- PANEL PROVEEDOR -->
+<div id="view-panel" class="view">
+  <div class="reg-hdr">
+    <h2>Mi panel — SaludRed</h2>
+    <p id="panel-bienvenida">Cargando tu perfil...</p>
+  </div>
+
+  <!-- LOGIN POR TOKEN -->
+  <div id="panel-login" class="reg-body">
+    <div class="fsec-box">
+      <div class="fsec-hd"><span class="fsec-title">Accedé a tu panel</span></div>
+      <div class="fsec-body">
+        <div class="doc-note">Ingresá el código que recibiste por mail cuando tu perfil fue aprobado.</div>
+        <div class="fg"><label class="fl">Tu código de acceso *</label>
+          <input type="text" class="fi" id="panel-token-input" placeholder="Ej: SR-XXXXXX">
+        </div>
+        <button class="btn-submit" onclick="loginPanel()">Ingresar →</button>
+        <div id="panel-login-err" style="display:none;color:var(--red);padding:10px;font-size:14px;">Código incorrecto. Verificá el mail de aprobación.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANEL ACTIVO -->
+  <div id="panel-activo" style="display:none" class="reg-body">
+
+    <!-- KPIs -->
+    <div class="adm-kpi-grid" style="margin-bottom:20px;">
+      <div class="adm-kpi"><div class="adm-kn">Consultas recibidas</div><div class="adm-kv" id="panel-kpi-consultas">0</div></div>
+      <div class="adm-kpi"><div class="adm-kn">Plan activo</div><div class="adm-kv" id="panel-kpi-plan">—</div></div>
+      <div class="adm-kpi"><div class="adm-kn">Activo hasta</div><div class="adm-kv" id="panel-kpi-venc">—</div></div>
+    </div>
+
+    <!-- EDITAR PERFIL -->
+    <div class="fsec-box">
+      <div class="fsec-hd"><span class="fsec-title">✏️ Editá tu perfil</span></div>
+      <div class="fsec-body">
+        <div class="doc-note" style="margin-bottom:12px;">Lo que editás acá se refleja inmediatamente en tu perfil público en saludred.com.ar</div>
+
+        <div class="fg"><label class="fl">Descripción *</label>
+          <div style="font-size:13px;color:var(--ink3);margin-bottom:6px;">⚠️ Este texto aparece en tu perfil público. Usá tildes, mayúsculas y buena ortografía.</div>
+          <textarea class="fta" id="panel-desc" style="min-height:110px" placeholder="Escribí tu descripción..."></textarea>
+        </div>
+        <div class="fg"><label class="fl">Especialidad</label>
+          <input type="text" class="fi" id="panel-esp" placeholder="Ej: Enfermería, Kinesiología, Médico clínico...">
+        </div>
+        <div class="frow">
+          <div class="fg"><label class="fl">Teléfono</label><input type="text" class="fi" id="panel-tel" placeholder="264-XXX-XXXX"></div>
+          <div class="fg"><label class="fl">WhatsApp</label><input type="text" class="fi" id="panel-wsp" placeholder="264-XXX-XXXX"></div>
+        </div>
+        <div class="fg"><label class="fl">Horarios de atención</label>
+          <input type="text" class="fi" id="panel-hor" placeholder="Ej: Lunes a viernes 8-18hs">
+        </div>
+        <div class="fg"><label class="fl">Zona de cobertura</label>
+          <input type="text" class="fi" id="panel-zona" placeholder="Ej: Capital y Rawson">
+        </div>
+        <div class="fg"><label class="fl">Precio orientativo</label>
+          <input type="text" class="fi" id="panel-precio" placeholder="Ej: Consulta desde $15.000">
+        </div>
+        <div class="fg"><label class="fl">Foto de perfil (link de Google Drive)</label>
+          <input type="text" class="fi" id="panel-foto" placeholder="https://drive.google.com/...">
+          <div class="fhint">Subí tu foto a Google Drive → compartir → "Cualquier persona con el link" → pegá el link acá.</div>
+        </div>
+        <button class="btn-submit" onclick="guardarPerfil()" style="margin-top:10px;">Guardar cambios →</button>
+        <div class="reg-ok" id="panel-guardado"><h3>✅ Perfil actualizado</h3><p>Los cambios ya se ven en tu perfil público.</p></div>
+      </div>
+    </div>
+
+    <!-- CONSULTAS RECIBIDAS -->
+    <div class="fsec-box">
+      <div class="fsec-hd"><span class="fsec-title">📩 Consultas recibidas</span></div>
+      <div class="fsec-body" id="panel-consultas-lista">
+        <p style="color:var(--ink3);font-size:14px;">Todavía no recibiste consultas.</p>
+      </div>
+    </div>
+
+    <button onclick="logoutPanel()" style="background:none;border:1px solid var(--border);color:var(--ink3);padding:10px 20px;cursor:pointer;margin:10px 0;border-radius:4px;">Cerrar sesión</button>
+  </div>
 </div>
 
 </body>
